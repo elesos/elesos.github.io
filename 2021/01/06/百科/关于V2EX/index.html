@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="这个网站是一个社区，发的帖子，内容也不是很长。大家可以评论。 创始人是 https:&#x2F;&#x2F;jp.v2ex.com&#x2F;member&#x2F;Livid  ，昆明人。 月度 pageviews 目前大约 2500 万 它的广告费用还挺贵的。 全站广告 - 广告以按月买断方式进行销售，价格 40000 人民币 https:&#x2F;&#x2F;www.v2ex.com&#x2F;advertise 我是 527086 号会员，加入于 2021">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于V2EX">
+<meta property="og:url" content="https://elesos.github.io/2021/01/06/%E7%99%BE%E7%A7%91/%E5%85%B3%E4%BA%8EV2EX/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="这个网站是一个社区，发的帖子，内容也不是很长。大家可以评论。 创始人是 https:&#x2F;&#x2F;jp.v2ex.com&#x2F;member&#x2F;Livid  ，昆明人。 月度 pageviews 目前大约 2500 万 它的广告费用还挺贵的。 全站广告 - 广告以按月买断方式进行销售，价格 40000 人民币 https:&#x2F;&#x2F;www.v2ex.com&#x2F;advertise 我是 527086 号会员，加入于 2021">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-06T06:23:17.000Z">
+<meta property="article:modified_time" content="2021-06-26T08:48:37.458Z">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="百科">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://elesos.github.io/2021/01/06/%E7%99%BE%E7%A7%91/%E5%85%B3%E4%BA%8EV2EX/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>关于V2EX | 艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/01/06/%E7%99%BE%E7%A7%91/%E5%85%B3%E4%BA%8EV2EX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于V2EX
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-06 14:23:17" itemprop="dateCreated datePublished" datetime="2021-01-06T14:23:17+08:00">2021-01-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%99%BE%E7%A7%91/" itemprop="url" rel="index">
+                    <span itemprop="name">百科</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这个网站是一个社区，发的帖子，内容也不是很长。大家可以评论。</p>
+<p>创始人是 <a href="https://jp.v2ex.com/member/Livid" target="_blank" rel="noopener">https://jp.v2ex.com/member/Livid</a>  ，昆明人。</p>
+<p>月度 pageviews 目前大约 2500 万</p>
+<p>它的广告费用还挺贵的。</p>
+<p>全站广告 - 广告以按月买断方式进行销售，价格 40000 人民币</p>
+<p><a href="https://www.v2ex.com/advertise" target="_blank" rel="noopener">https://www.v2ex.com/advertise</a></p>
+<p>我是 527086 号会员，加入于 2021-01-06 ，之前有个号忘记密码了。</p>
+<p>4800 人在线   最高记录 5298</p>
+<p>不会全文转载任何文章，而只会以链接方式分享</p>
+<p>反对无信息量的“顶”，“沙发”，“不明觉厉”等回复。</p>
+<p>如果你的回复对别人没有帮助，就不要回复了。</p>
+<p><a href="https://github.com/livid/" target="_blank" rel="noopener">https://github.com/livid/</a></p>
+<p><a href="https://livid.v2ex.com/about.html" target="_blank" rel="noopener">https://livid.v2ex.com/about.html</a></p>
+<p>这里有ifanr的创始人写的一篇：</p>
+<p><a href="https://www.ifanr.com/22202" target="_blank" rel="noopener">https://www.ifanr.com/22202</a></p>
+<p>商业模式，或者用更通俗的说法，如何赚钱，应该是从第一天就开始考虑的。</p>
+<p>即使不是从第一天就开始有收入，也应该让如何创造收入的 idea 在脑子中进行反复迭代，</p>
+<p>并在一个恰当的时间点在实际上的产品上应用。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%99%BE%E7%A7%91/" rel="tag"># 百科</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/01/05/%E4%BB%98%E8%B4%B9%E7%94%B5%E5%BD%B1%E5%85%8D%E8%B4%B9%E7%9C%8B%EF%BC%8C%E5%A6%88%E5%A6%88%E6%8A%B1%E6%80%A8%E6%99%BA%E8%83%BD%E7%94%B5%E8%A7%86%E5%BE%88%E5%A4%9A%E8%A6%81%E4%BC%9A%E5%91%98%EF%BC%8C%E8%BF%99%E6%AC%A1%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3%E4%BA%86/" rel="next" title="付费电影免费看，妈妈抱怨智能电视很多要会员，这次彻底解决了">
+                  <i class="fa fa-chevron-left"></i> 付费电影免费看，妈妈抱怨智能电视很多要会员，这次彻底解决了
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/03/10/proj_02/" rel="prev" title="视频直播app">
+                  视频直播app <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNi8yNDAwNg=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="支持一对一视频按分钟计费，支持群视频计费，直播刷礼物，IM聊天 职责整个后端工作：从选购服务器开始一直到开发出具体逻辑的api  红包逻辑 好友关系 群消息免打扰 人脸识别集成 苹果支付、微信与支付宝支付集成 后台管理系统api开发：设置app开机画面、广告设置、设置主播提现比例、推送系统消息等 C语言开发底层的音视频编码和解码功能 集成QQ与微信登录等  登录 voip 一对一音视频通话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视频直播app">
+<meta property="og:url" content="https://elesos.github.io/2021/03/10/proj_02/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="支持一对一视频按分钟计费，支持群视频计费，直播刷礼物，IM聊天 职责整个后端工作：从选购服务器开始一直到开发出具体逻辑的api  红包逻辑 好友关系 群消息免打扰 人脸识别集成 苹果支付、微信与支付宝支付集成 后台管理系统api开发：设置app开机画面、广告设置、设置主播提现比例、推送系统消息等 C语言开发底层的音视频编码和解码功能 集成QQ与微信登录等  登录 voip 一对一音视频通话">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_0.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/voip_1.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/voip_2.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/voip_3.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/voip_4.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_5.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_6.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_7.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_8.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_9.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_10.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_11.png">
+<meta property="og:image" content="https://elesos.github.io/images/2021/pic_12.png">
+<meta property="article:published_time" content="2021-03-10T07:45:44.000Z">
+<meta property="article:modified_time" content="2021-06-26T09:53:55.359Z">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://elesos.github.io/images/2021/pic_0.png">
+
+<link rel="canonical" href="https://elesos.github.io/2021/03/10/proj_02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>视频直播app | 艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/10/proj_02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          视频直播app
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-03-10 15:45:44" itemprop="dateCreated datePublished" datetime="2021-03-10T15:45:44+08:00">2021-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-26 17:53:55" itemprop="dateModified" datetime="2021-06-26T17:53:55+08:00">2021-06-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>支持一对一视频按分钟计费，支持群视频计费，直播刷礼物，IM聊天</p>
+<h2 id="职责"><a href="#职责" class="headerlink" title="职责"></a>职责</h2><p>整个后端工作：从选购服务器开始一直到开发出具体逻辑的api</p>
+<ul>
+<li>红包逻辑</li>
+<li>好友关系</li>
+<li>群消息免打扰</li>
+<li>人脸识别集成</li>
+<li>苹果支付、微信与支付宝支付集成</li>
+<li>后台管理系统api开发：设置app开机画面、广告设置、设置主播提现比例、推送系统消息等</li>
+<li>C语言开发底层的音视频编码和解码功能</li>
+<li>集成QQ与微信登录等</li>
+</ul>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p><img src="/images/2021/pic_0.png" alt=""></p>
+<h2 id="voip-一对一音视频通话"><a href="#voip-一对一音视频通话" class="headerlink" title="voip 一对一音视频通话"></a>voip 一对一音视频通话</h2><p><img src="/images/2021/voip_1.png" alt=""></p>
+<p><img src="/images/2021/voip_2.png" alt=""></p>
+<p><img src="/images/2021/voip_3.png" alt=""></p>
+<p><img src="/images/2021/voip_4.png" alt=""></p>
+<h2 id="好友"><a href="#好友" class="headerlink" title="好友"></a>好友</h2><p><img src="/images/2021/pic_5.png" alt=""></p>
+<h2 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h2><p><img src="/images/2021/pic_6.png" alt=""></p>
+<p><img src="/images/2021/pic_7.png" alt=""></p>
+<p><img src="/images/2021/pic_8.png" alt=""></p>
+<p><img src="/images/2021/pic_9.png" alt=""></p>
+<h2 id="群"><a href="#群" class="headerlink" title="群"></a>群</h2><p><img src="/images/2021/pic_10.png" alt=""></p>
+<h2 id="群内直播"><a href="#群内直播" class="headerlink" title="群内直播"></a>群内直播</h2><p><img src="/images/2021/pic_11.png" alt=""></p>
+<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p><img src="/images/2021/pic_12.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag"># 项目</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/01/06/%E7%99%BE%E7%A7%91/%E5%85%B3%E4%BA%8EV2EX/" rel="next" title="关于V2EX">
+                  <i class="fa fa-chevron-left"></i> 关于V2EX
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/03/10/proj_03/" rel="prev" title="知识图谱 分类标注">
+                  知识图谱 分类标注 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNi8yNDAwNg=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#职责"><span class="nav-number">1.</span> <span class="nav-text">职责</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#voip-一对一音视频通话"><span class="nav-number">3.</span> <span class="nav-text">voip 一对一音视频通话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好友"><span class="nav-number">4.</span> <span class="nav-text">好友</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直播"><span class="nav-number">5.</span> <span class="nav-text">直播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群"><span class="nav-number">6.</span> <span class="nav-text">群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#群内直播"><span class="nav-number">7.</span> <span class="nav-text">群内直播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息"><span class="nav-number">8.</span> <span class="nav-text">消息</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
