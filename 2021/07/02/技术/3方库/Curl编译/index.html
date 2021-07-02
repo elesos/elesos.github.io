@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="先编译openssl 12345git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.gitautoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO.&#x2F;co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Curl编译">
+<meta property="og:url" content="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="先编译openssl 12345git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.gitautoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO.&#x2F;co">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-02T13:09:41.000Z">
+<meta property="article:modified_time" content="2021-07-02T13:13:05.277Z">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="Curl">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Curl编译 | 艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Curl编译
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-02 21:09:41 / Modified: 21:13:05" itemprop="dateCreated datePublished" datetime="2021-07-02T21:09:41+08:00">2021-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index">
+                    <span itemprop="name">编译</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>先编译openssl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.git</span><br><span class="line">autoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO</span><br><span class="line">.&#x2F;configure  --with-ssl&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl  --prefix&#x3D;   </span><br><span class="line">make </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>If you have OpenSSL installed in /usr/local/ssl, you can run configure like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<p>否则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl&#x3D;&#x2F;opt&#x2F;OpenSSL</span><br></pre></td></tr></table></figure>
+
+<p>If you have OpenSSL installed, but with the libraries in one place and the header files somewhere else, you have to set the LDFLAGS and CPPFLAGS environment variables prior to running configure. Something like this should work:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPPFLAGS&#x3D;&quot;-I&#x2F;path&#x2F;to&#x2F;ssl&#x2F;include&quot; LDFLAGS&#x3D;&quot;-L&#x2F;path&#x2F;to&#x2F;ssl&#x2F;lib&quot; .&#x2F;configure  &#x2F;&#x2F;如果删除了动态库的软链接，还需要修改pc文件。</span><br></pre></td></tr></table></figure>
+
+<p>If you have shared SSL libs installed in a directory where your run-time linker doesn’t find them (which usually causes configure failures), you can provide this option to gcc to set a hard-coded path to the run-time linker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS&#x3D;-Wl,-R&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib .&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apple&#39;s SSL&#x2F;TLS implementation ,secure transport: --with-secure-transport  or --with-darwin-ssl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ARCH&#x3D;x86_64</span><br><span class="line">export SDK&#x3D;macosx</span><br><span class="line">export DEPLOYMENT_TARGET&#x3D;10.8</span><br><span class="line"></span><br><span class="line">export CFLAGS&#x3D;&quot;-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min&#x3D;$DEPLOYMENT_TARGET&quot;</span><br><span class="line">.&#x2F;configure --host&#x3D;$ARCH-apple-darwin --prefix $(pwd)&#x2F;artifacts --with-darwin-ssl</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>其它选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--disable-static --with-zlib&#x3D;PATH</span><br></pre></td></tr></table></figure>
+
+<h2 id="win"><a href="#win" class="headerlink" title="win"></a>win</h2><p>开始菜单中打开 Visual Studio 目录中的 VS2017的开发人员命令提示符，并切换到 curl 解压目录下的 winbuild 目录下；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll &#x2F;&#x2F;输出在 curl 目录 builds 下。</span><br><span class="line">静态 nmake &#x2F;f Makefile.vc mode&#x3D;static ENABLE_IDN&#x3D;no</span><br><span class="line"></span><br><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll ZLIB_PATH&#x3D;D:\fvbl\3rdparty\libz\win SSL_PATH&#x3D;D:\fvbl\3rdparty\OpenSSL\win ENABLE_WINSSL&#x3D;no WITH_SSL&#x3D;dll WITH_ZLIB&#x3D;dll MACHINE&#x3D;x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-ssl&#x3D;xxx&#x2F;OpenSSL--with-zlib&#x3D;&#x2F;xxx&#x2F;zlib&#x2F; --disable-static</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://curl.haxx.se/docs/install.html" target="_blank" rel="noopener">https://curl.haxx.se/docs/install.html</a></p>
+<p><a href="https://curl.se/download.html" target="_blank" rel="noopener">https://curl.se/download.html</a></p>
+<p><a href="https://www.cnblogs.com/rxbook/p/10881822.html" target="_blank" rel="noopener">https://www.cnblogs.com/rxbook/p/10881822.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Curl/" rel="tag"># Curl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++-%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" rel="next" title="c++ 互相调用">
+                  <i class="fa fa-chevron-left"></i> c++ 互相调用
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" rel="prev" title="C++经典书籍推荐">
+                  C++经典书籍推荐 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNi8yNDAwNg=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac"><span class="nav-number">1.</span> <span class="nav-text">Mac</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win"><span class="nav-number">2.</span> <span class="nav-text">win</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
