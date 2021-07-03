@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/" class="post-title-link" itemprop="url">c++ Lambda</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">C++常用语法手册</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 08:04:02 / Modified: 08:07:55" itemprop="dateCreated datePublished" datetime="2021-07-02T08:04:02+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 21:17:07 / Modified: 21:19:30" itemprop="dateCreated datePublished" datetime="2021-07-02T21:17:07+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,19 +241,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>方便定义匿名函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[capture list] (params list) mutable exception-&gt; return type &#123; function body &#125;</span><br><span class="line">[capture list] (params list) -&gt; return type &#123;function body&#125;</span><br><span class="line">[capture list] (params list) &#123;function body&#125;</span><br><span class="line">[capture list] &#123;function body&#125;</span><br></pre></td></tr></table></figure>
+          <p>C++98是第一个C++标准，1998年发布。</p>
+<p>C++11，第三个C++标准，2011年</p>
+<p>C++14，第四个C++标准，2014年</p>
+<p>C++17，第五个C++标准，2017年</p>
+<p>C++20 , 2020</p>
+<p>下一代是C++23</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><a href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-keyword-intro.html</a></p>
+<p>范围for</p>
+<p>using代替typedef</p>
+<p>用vector和迭代器代替数组和指针</p>
+<p>用string代替c风格字符串 常量对象只能调用常成员函数</p>
+<p>拷贝构造函数何时调用：</p>
+<p>一个对象初始化另一个对象；函数参数；返回对象</p>
+<p>构造函数调用顺序：先调用内嵌对象的构造函数，按定义顺序 在类外对静态数据成员定义和初始化</p>
+<p>静态函数成员一般用于访问静态数据成员，如果要访问非静态数据，需要传递对象进来。</p>
+<p>常对象（数据成员不能改变）只能调用常成员函数（不能改数据成员，不能调普通函数）</p>
+<p>explicit 构造函数用来防止隐式转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D; default; 指示编译器自动生成函数体</span><br><span class="line">建议重载的方法都加了override 关键字。防止出现不正确的继承行为</span><br></pre></td></tr></table></figure>
 
-<p>capture list：捕获外部变量列表 , &amp;, a, b除a和b按值进行传递外，其他参数都按引用进行传递。 a, &amp;b 将a按值进行传递，b按引用进行传递。 =，&amp;a, &amp;b 除a和b按引用进行传递外，其他参数都按值进行传递。</p>
-<p>params list：形参</p>
-<p>mutable指示符：用来说明是否可以修改捕获的变量</p>
-<p>exception：异常设定</p>
-<p>return type：返回类型</p>
-<p>function body：函数体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 123;</span><br><span class="line">  auto f &#x3D; [a]()mutable &#123; cout &lt;&lt; ++a; &#125;; &#x2F;&#x2F; 不会报错</span><br><span class="line">  cout &lt;&lt; a &lt;&lt; endl; &#x2F;&#x2F; 输出：123</span><br><span class="line">  f(); &#x2F;&#x2F; 输出：124</span><br></pre></td></tr></table></figure>
-
-<h1 id="可调用对象"><a href="#可调用对象" class="headerlink" title="可调用对象"></a>可调用对象</h1><p>对于一个对象或者一个表达式，如果可以对其使用调用运算符，则称为可调用对象，如果类定义了调用运算符，则该类的对象称作函数对象</p>
-<p>一个 lambda 表达式表示一个可调用的代码单元</p>
+<p><a href="http://c.biancheng.net/view/400.html" target="_blank" rel="noopener">http://c.biancheng.net/view/400.html</a></p>
 
       
     </div>
@@ -273,7 +280,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_thread/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -287,7 +294,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_thread/" class="post-title-link" itemprop="url">c++ thread</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">C++经典书籍推荐</a>
         </h1>
 
         <div class="post-meta">
@@ -298,7 +305,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 07:55:17 / Modified: 08:02:17" itemprop="dateCreated datePublished" datetime="2021-07-02T07:55:17+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 21:14:22 / Modified: 21:15:37" itemprop="dateCreated datePublished" datetime="2021-07-02T21:14:22+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,23 +330,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::thread thread_obj(func, params);</span><br><span class="line"></span><br><span class="line">std::thread::join()  &#x2F;&#x2F;wait for a thread </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> std::thread t1(callable);   &#x2F;&#x2F; Start thread t1   </span><br><span class="line"> t1.join(); &#x2F;&#x2F; Wait for t1 to finish</span><br><span class="line"> </span><br><span class="line"> if(joinable())&#123;</span><br><span class="line">表示线程已结束</span><br><span class="line">&#125;</span><br><span class="line">终止线程，需要先设置一个循环退出变量，然后检查是否joinable,然后用join等待退出</span><br></pre></td></tr></table></figure>
-
-<h1 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> std::this_thread::sleep_for(std::chrono::seconds(1));</span><br><span class="line">std::this_thread::sleep_for(std::chrono::milliseconds(interval));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">auto start &#x3D; std::chrono::high_resolution_clock::now(); &#x2F;&#x2F;#include &lt;chrono&gt;</span><br><span class="line">  std::this_thread::sleep_for(2000ms);  &#x2F;&#x2F;Blocks the execution of the current thread</span><br><span class="line">  auto end &#x3D; std::chrono::high_resolution_clock::now();</span><br><span class="line">  std::chrono::duration&lt;double, std::milli&gt; elapsed &#x3D; end-start;</span><br><span class="line">  std::cout &lt;&lt; &quot;Waited &quot; &lt;&lt; elapsed.count() &lt;&lt; &quot; ms\n&quot;;   &#x2F;&#x2F;Waited 2000.12 ms</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">离开作用域就释放mutex了</span><br><span class="line">std::lock_guard&lt;std::mutex&gt; lock(io_mutex); &#x2F;&#x2F;lock_guard是一个类，是mutex的包装 https:&#x2F;&#x2F;en.cppreference.com&#x2F;w&#x2F;cpp&#x2F;thread&#x2F;lock_guard</span><br><span class="line">std::unique_lock&lt;std::mutex&gt; locker(mutex_);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown" target="_blank" rel="noopener">https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown</a>.</p>
-<h2 id="detach"><a href="#detach" class="headerlink" title="detach"></a>detach</h2><p>使用join(),线程运行完,main函数才能结束。</p>
-<p>当使用detach()函数时，主调线程继续运行，被调线程驻留后台运行，主调线程无法再取得该被调线程的控制权。当主调线程结束时，由运行时库负责清理与被调线程相关的资源。使用detach(),main函数不用等待线程结束才能结束。有时候线程还没运行完，main函数就已经结束了。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://en.cppreference.com/w/cpp/thread/thread/detach" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/detach</a></p>
-<p><a href="https://en.cppreference.com/w/cpp/thread/thread/joinable" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/joinable</a></p>
-<p><a href="https://www.cplusplus.com/reference/thread/thread/detach/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/thread/thread/detach/</a></p>
-<p><a href="https://www.geeksforgeeks.org/multithreading-in-cpp/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/multithreading-in-cpp/</a></p>
+          <p><a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list" target="_blank" rel="noopener">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
+<p>definitive：最权威的</p>
 
       
     </div>
@@ -359,7 +351,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -373,7 +365,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/" class="post-title-link" itemprop="url">c++ list</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">Curl编译</a>
         </h1>
 
         <div class="post-meta">
@@ -384,7 +376,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 07:50:13 / Modified: 07:53:11" itemprop="dateCreated datePublished" datetime="2021-07-02T07:50:13+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 21:09:41 / Modified: 21:13:05" itemprop="dateCreated datePublished" datetime="2021-07-02T21:09:41+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -392,8 +384,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index">
+                    <span itemprop="name">编译</span>
                   </a>
                 </span>
             </span>
@@ -409,9 +401,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">std::list&lt;int&gt; first;                                &#x2F;&#x2F; empty list of ints</span><br><span class="line"> std::list&lt;int&gt; second (4,100);                       &#x2F;&#x2F; four ints with value 100</span><br><span class="line"> std::list&lt;int&gt; third (second.begin(),second.end());  &#x2F;&#x2F; iterating through second</span><br><span class="line"> std::list&lt;int&gt; fourth (third);                       &#x2F;&#x2F; a copy of third</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> mylist.push_back(77);</span><br><span class="line">mylist.front()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace_front(10,&#39;a&#39;);</span><br><span class="line"> </span><br><span class="line">  mylist.emplace_back(10,&#39;a&#39;);</span><br><span class="line"> mylist.emplace_back(20,&#39;b&#39;);</span><br><span class="line"> </span><br><span class="line"> first.assign (7,100);                      &#x2F;&#x2F; 7 ints with value 100</span><br><span class="line"> second.assign (first.begin(),first.end()); &#x2F;&#x2F; a copy of first</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace ( mylist.begin(), 100, &#39;x&#39; );</span><br><span class="line"> </span><br><span class="line"> erase根据位置删除</span><br><span class="line">remove根据值删除</span><br><span class="line">double mydoubles[]&#x3D;&#123; 12.15,  2.72, 73.0,  12.77,  3.14,  12.77, 73.35, 72.25, 15.3,  72.25 &#125;;</span><br><span class="line"> std::list&lt;double&gt; mylist (mydoubles,mydoubles+10);</span><br></pre></td></tr></table></figure>
+          <p>先编译openssl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.git</span><br><span class="line">autoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO</span><br><span class="line">.&#x2F;configure  --with-ssl&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl  --prefix&#x3D;   </span><br><span class="line">make </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://www.cplusplus.com/reference/list/list/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/list/list/</a></p>
+<p>If you have OpenSSL installed in /usr/local/ssl, you can run configure like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<p>否则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl&#x3D;&#x2F;opt&#x2F;OpenSSL</span><br></pre></td></tr></table></figure>
+
+<p>If you have OpenSSL installed, but with the libraries in one place and the header files somewhere else, you have to set the LDFLAGS and CPPFLAGS environment variables prior to running configure. Something like this should work:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPPFLAGS&#x3D;&quot;-I&#x2F;path&#x2F;to&#x2F;ssl&#x2F;include&quot; LDFLAGS&#x3D;&quot;-L&#x2F;path&#x2F;to&#x2F;ssl&#x2F;lib&quot; .&#x2F;configure  &#x2F;&#x2F;如果删除了动态库的软链接，还需要修改pc文件。</span><br></pre></td></tr></table></figure>
+
+<p>If you have shared SSL libs installed in a directory where your run-time linker doesn’t find them (which usually causes configure failures), you can provide this option to gcc to set a hard-coded path to the run-time linker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS&#x3D;-Wl,-R&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib .&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apple&#39;s SSL&#x2F;TLS implementation ,secure transport: --with-secure-transport  or --with-darwin-ssl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ARCH&#x3D;x86_64</span><br><span class="line">export SDK&#x3D;macosx</span><br><span class="line">export DEPLOYMENT_TARGET&#x3D;10.8</span><br><span class="line"></span><br><span class="line">export CFLAGS&#x3D;&quot;-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min&#x3D;$DEPLOYMENT_TARGET&quot;</span><br><span class="line">.&#x2F;configure --host&#x3D;$ARCH-apple-darwin --prefix $(pwd)&#x2F;artifacts --with-darwin-ssl</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>其它选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--disable-static --with-zlib&#x3D;PATH</span><br></pre></td></tr></table></figure>
+
+<h2 id="win"><a href="#win" class="headerlink" title="win"></a>win</h2><p>开始菜单中打开 Visual Studio 目录中的 VS2017的开发人员命令提示符，并切换到 curl 解压目录下的 winbuild 目录下；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll &#x2F;&#x2F;输出在 curl 目录 builds 下。</span><br><span class="line">静态 nmake &#x2F;f Makefile.vc mode&#x3D;static ENABLE_IDN&#x3D;no</span><br><span class="line"></span><br><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll ZLIB_PATH&#x3D;D:\fvbl\3rdparty\libz\win SSL_PATH&#x3D;D:\fvbl\3rdparty\OpenSSL\win ENABLE_WINSSL&#x3D;no WITH_SSL&#x3D;dll WITH_ZLIB&#x3D;dll MACHINE&#x3D;x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-ssl&#x3D;xxx&#x2F;OpenSSL--with-zlib&#x3D;&#x2F;xxx&#x2F;zlib&#x2F; --disable-static</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://curl.haxx.se/docs/install.html" target="_blank" rel="noopener">https://curl.haxx.se/docs/install.html</a></p>
+<p><a href="https://curl.se/download.html" target="_blank" rel="noopener">https://curl.se/download.html</a></p>
+<p><a href="https://www.cnblogs.com/rxbook/p/10881822.html" target="_blank" rel="noopener">https://www.cnblogs.com/rxbook/p/10881822.html</a></p>
 
       
     </div>
@@ -431,7 +450,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -477,20 +496,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

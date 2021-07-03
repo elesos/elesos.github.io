@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Python/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Abseil/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Python/" class="post-title-link" itemprop="url">源码编译Python</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Abseil/" class="post-title-link" itemprop="url">Abseil</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 08:33:29 / Modified: 08:36:15" itemprop="dateCreated datePublished" datetime="2021-07-03T08:33:29+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-03 15:21:59 / Modified: 15:22:15" itemprop="dateCreated datePublished" datetime="2021-07-03T15:21:59+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/%E4%B8%8D%E5%A5%BD%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">不好分类</span>
                   </a>
                 </span>
             </span>
@@ -241,49 +241,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>注意xcode里面也有python framework</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Contents&#x2F;Developer&#x2F;SDKs&#x2F;MacOSX.sdk&#x2F;System&#x2F;Library&#x2F;Frameworks&#x2F;Python.framework</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://devguide.python.org/setup/" target="_blank" rel="noopener">https://devguide.python.org/setup/</a></p>
-<p>以下在mac下测试</p>
-<p>libzma</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install openssl xz gdbm zlib</span><br></pre></td></tr></table></figure>
-
-
-<p>GNU dbm (or GDBM, for short) is a library of database functions that use extensible hashing and work similar to the standard UNIX dbm. These routines are provided to a programmer needing to create and manipulate a hashed database.</p>
-<p>The basic use of GDBM is to store key/data pairs in a data file. Each key must be unique and each key is paired with only one data item.</p>
-<p><a href="https://github.com/python/cpython/blob/master/Mac/README.rst" target="_blank" rel="noopener">https://github.com/python/cpython/blob/master/Mac/README.rst</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-pydebug --with-openssl&#x3D;$(brew --prefix openssl) --with-zlib</span><br></pre></td></tr></table></figure>
-
-<p>unrecognized options: –with-zlib</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--with-libs&#x3D;zlib CPPFLAGS&#x3D;&#39;-I&#x2F;opt&#x2F;zlib&#x2F;include&#39; LDFLAGS&#x3D;&#39;-L&#x2F;opt&#x2F;zlib&#x2F;lib&#39;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew --prefix openssl&#x3D;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;openssl@1.1&#x2F; 里面放的是include，bin和lib,如果是源码安装的openssl，自己指定目录，不要用brew的</span><br></pre></td></tr></table></figure>
-
-<p>You might need to run make clean before or after re-running configure in a particular build directory.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir debug</span><br><span class="line">cd debug</span><br><span class="line">..&#x2F;configure --with-pydebug</span><br><span class="line">make</span><br><span class="line">$ .&#x2F;configure --enable-framework&#x3D;&#x2F;Users&#x2F;ronald&#x2F;Library&#x2F;Frameworks</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
-
-<p>This will install the framework itself in /Users/ronald/Library/Frameworks, the applications in a subdirectory of /Users/ronald/Applications and the command-line tools in /Users/ronald/bin.</p>
-<p><a href="https://github.com/python/cpython/tree/master/Mac#building-and-using-a-framework-based-python-on-macos" target="_blank" rel="noopener">https://github.com/python/cpython/tree/master/Mac#building-and-using-a-framework-based-python-on-macos</a></p>
-<p>有用选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--prefix&#x3D; --enable-shared </span><br><span class="line">--with-pydebug          build with Py_DEBUG defined</span><br><span class="line">--with-libs&#x3D;&#39;lib1 ...&#39;  link against additional libs</span><br><span class="line"></span><br><span class="line">..&#x2F;configure --with-openssl&#x3D;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;openssl@1.1 --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;python_build_2 --enable-shared --with-libs&#x3D;zlib CPPFLAGS&#x3D;&#39;-I&#x2F;Users&#x2F;xx&#x2F;Downloads&#x2F;zlib_build&#x2F;include&#39; LDFLAGS&#x3D;&#39;-L&#x2F;Users&#x2F;xx&#x2F;Downloads&#x2F;zlib_build&#x2F;lib&#39;</span><br><span class="line">LDFLAGS&#x3D;&quot;-L&#x2F;usr&#x2F;local&#x2F;lib $LDFLAGS&quot;</span><br><span class="line">--with-libs&#x3D;libz</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;configure --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;python --enable-optimizations --disable-shared --disable-ipv6 --with-libs&#x3D;libz --with-openssl&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;openssl CPPFLAGS&#x3D;-I&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;zlib LDFLAGS&#x3D;-L&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;zlib</span><br><span class="line"></span><br><span class="line">.&#x2F;python3 -c &quot;import zlib; print(zlib.__version__)&quot;</span><br><span class="line">Edit &#x2F;Modules&#x2F;Setup and uncomment the line:</span><br></pre></td></tr></table></figure>
-
-<p>zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --enable-shared --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;build&#x2F;python --with-openssl&#x3D;&#x2F;Users&#x2F;ws&#x2F;build&#x2F;openssl CPPFLAGS&#x3D;-I&#x2F;Users&#x2F;ws&#x2F;build&#x2F;zlib&#x2F;include LDFLAGS&#x3D;-L&#x2F;Users&#x2F;ws&#x2F;build&#x2F;zlib&#x2F;lib</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-openssl&#x3D;xxx&#x2F;OpenSSL&#x2F; --enable-shared</span><br></pre></td></tr></table></figure>
-
-<p>记得最后确认下输出，以确保ssl被链接上。如果ssl有rpath,把ssl库拷贝到python源码目录就可以。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python build finished, but the necessary bits to build these modules were not found:</span><br></pre></td></tr></table></figure>
-
-<h2 id="精简"><a href="#精简" class="headerlink" title="精简"></a>精简</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">rm -rf __pycache__ \</span><br><span class="line">rm -rf asyncio&#x2F;__pycache__ \</span><br><span class="line">rm -rf collections&#x2F;__pycache__ \</span><br><span class="line">rm -rf concurrent&#x2F;__pycache__  \</span><br><span class="line">rm -rf concurrent&#x2F;futures&#x2F;__pycache__  \</span><br><span class="line">rm -rf config-3.8-darwin  \</span><br><span class="line">rm -rf ctypes&#x2F;__pycache__  \</span><br><span class="line">rm -rf ctypes&#x2F;macholib&#x2F;__pycache__  \</span><br><span class="line">rm -rf ctypes&#x2F;test&#x2F;__pycache__  \</span><br><span class="line">rm -rf ctypes&#x2F;test  \</span><br><span class="line">rm -rf curses&#x2F;__pycache__  \</span><br><span class="line">rm -rf dbm&#x2F;__pycache__  \</span><br><span class="line">rm -rf distutils&#x2F;__pycache__  \</span><br><span class="line">rm -rf distutils&#x2F;command&#x2F;__pycache__  \</span><br><span class="line">rm -rf distutils&#x2F;tests  \</span><br><span class="line">rm -rf email&#x2F;__pycache__  \</span><br><span class="line">rm -rf email&#x2F;mime&#x2F;__pycache__  \</span><br><span class="line">rm -rf encodings&#x2F;__pycache__  \</span><br><span class="line">rm -rf ensurepip&#x2F;__pycache__  \</span><br><span class="line">rm -rf html&#x2F;__pycache__  \</span><br><span class="line">rm -rf http&#x2F;__pycache__  \</span><br><span class="line">rm -rf idlelib&#x2F;__pycache__  \</span><br><span class="line">rm -rf idlelib&#x2F;idle_test  \</span><br><span class="line">rm -rf importlib&#x2F;__pycache__  \</span><br><span class="line">rm -rf json&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;fixes&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;pgen2&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;tests  \</span><br><span class="line">rm -rf logging&#x2F;__pycache__  \</span><br><span class="line">rm -rf multiprocessing&#x2F;__pycache__  \</span><br><span class="line">rm -rf multiprocessing&#x2F;dummy&#x2F;__pycache__  \</span><br><span class="line">rm -rf pydoc_data&#x2F;__pycache__ \</span><br><span class="line">rm -rf sqlite3&#x2F;__pycache__  \</span><br><span class="line">rm -rf sqlite3&#x2F;test  \</span><br><span class="line">rm -rf test  \</span><br><span class="line">rm -rf tkinter&#x2F;__pycache__  \</span><br><span class="line">rm -rf tkinter&#x2F;test  \</span><br><span class="line">rm -rf turtledemo&#x2F;__pycache__  \</span><br><span class="line">rm -rf unittest  \</span><br><span class="line">rm -rf urllib&#x2F;__pycache__  \</span><br><span class="line">rm -rf venv&#x2F;__pycache__  \</span><br><span class="line">rm -rf wsgiref&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;dom&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;etree&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;parsers&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;sax&#x2F;__pycache__  \</span><br><span class="line">rm -rf xmlrpc&#x2F;__pycache__ </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">distutils\command\下的exe</span><br><span class="line">rm -rf site-packages&#x2F;*</span><br></pre></td></tr></table></figure>
+          <p>一个开源的C++库，从谷歌的代码库里面收集而来，可以扩展C++标准库的功能</p>
+<p>通过Bazel来编译，也可以使用cmake</p>
+<p><a href="https://github.com/abseil/abseil-cpp" target="_blank" rel="noopener">https://github.com/abseil/abseil-cpp</a></p>
 
       
     </div>
@@ -303,7 +263,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/Electron%E6%89%93%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/FFmpeg%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -317,7 +277,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/Electron%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">Electron打包</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/FFmpeg%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">FFmpeg简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -328,7 +288,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 08:17:04 / Modified: 08:19:53" itemprop="dateCreated datePublished" datetime="2021-07-03T08:17:04+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-03 11:10:29 / Modified: 13:54:29" itemprop="dateCreated datePublished" datetime="2021-07-03T11:10:29+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -336,8 +296,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Electron/" itemprop="url" rel="index">
-                    <span itemprop="name">Electron</span>
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
+                    <span itemprop="name">FFmpeg</span>
                   </a>
                 </span>
             </span>
@@ -353,27 +313,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>打包用electron-builder，它比electron-packager有更丰富的的功能，可以生成安装程序，支持自动更新</p>
-<p><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="noopener">https://github.com/electron-userland/electron-builder</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g yarn  # package manager，类似npm</span><br><span class="line">yarn add electron-builder --dev</span><br></pre></td></tr></table></figure>
-
-<p>需要在package.json里面指定build配置，</p>
-<p>比如files指定把哪些文件打包，在scripts里面定义打包的key，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;pack&quot;: &quot;electron-builder --dir&quot;,   &#x2F;&#x2F;运行yarn pack,用于测试</span><br><span class="line">  &quot;dist&quot;: &quot;electron-builder&quot;,  &#x2F;&#x2F;运行yarn dist打包成windows installer等</span><br><span class="line">&quot;postinstall&quot;: &quot;electron-builder install-app-deps&quot;  &#x2F;&#x2F;依赖</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>electron-webpack：Scripts and configurations to compile Electron applications using webpack</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron-userland&#x2F;electron-webpack-quick-start.git</span><br><span class="line">yarn  # install dependencies，可能需要如下配置：</span><br><span class="line">yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">yarn dist  #compile source code ,create webpack output and build with electron-builder,这步会下载https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;releases&#x2F;download&#x2F;v8.2.0&#x2F;electron-v8.2.0-win32-x64.zip,可以自已下载后放到%LOCALAPPDATA%&#x2F;electron&#x2F;Cache</span><br></pre></td></tr></table></figure>
-
-<p>最终会生成一个安装包程序。</p>
-<ul>
-<li>32位系统的包怎么打？</li>
-</ul>
-<p><a href="https://www.electron.build/cli" target="_blank" rel="noopener">https://www.electron.build/cli</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &#123;</span><br><span class="line">  &quot;win&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;target&quot;: &quot;nsis&quot;,</span><br><span class="line">        &quot;arch&quot;: [</span><br><span class="line">          &quot;x64&quot;,</span><br><span class="line">          &quot;ia32&quot;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>electron-forge combines electron-packager and electron-builder together into one tool in order to perform both parts in one go (plus other features).</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/xiaoniuzai/p/12356208.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoniuzai/p/12356208.html</a></p>
-
+          
       
     </div>
 
@@ -392,7 +332,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -406,7 +346,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Electron简明教程</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">webrtc简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -417,7 +357,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 07:50:34 / Modified: 08:18:44" itemprop="dateCreated datePublished" datetime="2021-07-03T07:50:34+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-03 11:10:12 / Modified: 15:20:49" itemprop="dateCreated datePublished" datetime="2021-07-03T11:10:12+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -425,8 +365,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Electron/" itemprop="url" rel="index">
-                    <span itemprop="name">Electron</span>
+                  <a href="/categories/webrtc/" itemprop="url" rel="index">
+                    <span itemprop="name">webrtc</span>
                   </a>
                 </span>
             </span>
@@ -442,33 +382,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>GitHub开发的，可通过JavaScript（主要还是node.js）, HTML和CSS开发跨平台的桌面软件，兼容 Mac、Windows 和 Linux，vscode就是基于electron开发的。teams也是</p>
-<p>2021年，有道云笔记也用这个了。</p>
-<p><a href="https://github.com/electron/electron" target="_blank" rel="noopener">https://github.com/electron/electron</a></p>
-<p><a href="https://www.electronjs.org/" target="_blank" rel="noopener">https://www.electronjs.org/</a></p>
-<p>参考：<a href="https://www.zhihu.com/question/53230344" target="_blank" rel="noopener">https://www.zhihu.com/question/53230344</a></p>
-<h1 id="electron-quick-start"><a href="#electron-quick-start" class="headerlink" title="electron-quick-start"></a>electron-quick-start</h1><p>Electron不是某个GUI库的javascript版本，可以把它当作一个精简版的 Chromium 浏览器，使用web页面作为它的GUI</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron --save-dev &#x2F;&#x2F;Mac下不要-g</span><br></pre></td></tr></table></figure>
+          <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;webrtc.googlesource.com&#x2F;src</span><br></pre></td></tr></table></figure>
 
-<p>示例工程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start</span><br><span class="line">cd electron-quick-start</span><br><span class="line">npm install</span><br><span class="line">npm start  &#x2F;&#x2F;npm start命令会让npm执行定义在package.json中的start命令</span><br></pre></td></tr></table></figure>
-
-<p>这样会生成一个GUI桌面程序，参考文档：<a href="https://electronjs.org/docs/tutorial/quick-start" target="_blank" rel="noopener">https://electronjs.org/docs/tutorial/quick-start</a></p>
-<p>应用的入口是 package.json 文件，</p>
-<p>最基本的 Electron 应用一般包含3个文件， package.json，main.js(应用的启动脚本)和index.html</p>
-<p>electron.app负责管理Electron 应用程序的生命周期</p>
-<p>electron.BrowserWindow类负责创建窗口</p>
-<p>第一行是js解构赋值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; &#x3D; require(&#39;electron&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>参考var {name, age, passport} = person;</p>
-<h1 id="electron-api-demos"><a href="#electron-api-demos" class="headerlink" title="electron-api-demos"></a>electron-api-demos</h1><p><a href="https://github.com/electron/electron-api-demos" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos</a> &amp;&amp; <a href="https://github.com/electron/electron-api-demos/blob/master/docs.md" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos/blob/master/docs.md</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-api-demos</span><br><span class="line">$ cd electron-api-demos</span><br><span class="line">$ npm install</span><br><span class="line">$ npm start  &#x2F;&#x2F;or npm run dev</span><br></pre></td></tr></table></figure>
-
-<h1 id="electron-sample-apps"><a href="#electron-sample-apps" class="headerlink" title="electron-sample-apps"></a>electron-sample-apps</h1><p><a href="https://github.com/sindresorhus/awesome-electron" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome-electron</a></p>
-<p><a href="https://github.com/hokein/electron-sample-apps" target="_blank" rel="noopener">https://github.com/hokein/electron-sample-apps</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron</span><br><span class="line">electron &lt;electron-sample-apps-path&gt;&#x2F;&lt;sample-name&gt;</span><br></pre></td></tr></table></figure>
-
+<p>API:  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://webrtc.org/" target="_blank" rel="noopener">https://webrtc.org/</a>  官网</p>
+<p><a href="https://webrtc.github.io/webrtc-org/" target="_blank" rel="noopener">https://webrtc.github.io/webrtc-org/</a>   我搭建的文档站 <a href="https://elesos.github.io/webrtc.org/">https://elesos.github.io/webrtc.org/</a></p>
+<p><a href="https://webrtc.github.io/samples/" target="_blank" rel="noopener">https://webrtc.github.io/samples/</a>       我搭建的示例<a href="https://elesos.github.io/sites/webrtc/samples/">https://elesos.github.io/sites/webrtc/samples/</a></p>
 
       
     </div>
@@ -488,7 +407,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -534,20 +453,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

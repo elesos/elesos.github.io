@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_string/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++-%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_string/" class="post-title-link" itemprop="url">c++ string</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++-%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">c++ 互相调用</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 07:47:31 / Modified: 21:19:12" itemprop="dateCreated datePublished" datetime="2021-07-02T07:47:31+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 08:13:01 / Modified: 08:16:57" itemprop="dateCreated datePublished" datetime="2021-07-02T08:13:01+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,34 +241,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">std::string s2 (s0); &#x2F;&#x2F;copy </span><br><span class="line"> std::string s3 (s0, 8, 3);  &#x2F;&#x2F; 获取子串 http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;string&#x2F;string&#x2F;string&#x2F;</span><br><span class="line"> std::string s4 (&quot;A character sequence&quot;);</span><br><span class="line"> std::string s5 (&quot;Another character sequence&quot;, 12); </span><br><span class="line"> std::string s6a (10, &#39;x&#39;);   &#x2F;&#x2F;填充x</span><br><span class="line"> std::string s6b (10, 42);      &#x2F;&#x2F; 42 is the ASCII code for &#39;*&#39;</span><br><span class="line"> std::string s7 (s0.begin(), s0.begin()+7);</span><br><span class="line"> </span><br><span class="line"> str.size()跟str.length()一样返回大小</span><br><span class="line">str.clear();</span><br><span class="line"></span><br><span class="line">assign</span><br><span class="line">append</span><br><span class="line">str.push_back(&#39;s&#39;);</span><br><span class="line">insert</span><br><span class="line"></span><br><span class="line">find_first_of</span><br><span class="line">substr (pos &#x3D; 0, len &#x3D; npos)</span><br><span class="line">compare</span><br><span class="line"></span><br><span class="line">判断标志npos</span><br><span class="line"></span><br><span class="line">const char* data() const;&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
+          <h1 id="C-调C"><a href="#C-调C" class="headerlink" title="C++调C"></a>C++调C</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;c头文件或函数</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
 
+<h1 id="C-中调用C库"><a href="#C-中调用C库" class="headerlink" title="C++中调用C库"></a>C++中调用C库</h1><p>做一个C动态库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void hello()&#123;  </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">gcc -shared -fPIC -o libhello.so hello.c</span><br></pre></td></tr></table></figure>
 
+<p>C++程序调用它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp  -lhello</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char greeting[] &#x3D; &quot;Hello&quot;;&#x2F;&#x2F;C风格 #include &lt;cstring&gt;</span><br><span class="line">strchr(s1, ch);返回指针，指向字符串 s1 中字符 ch 第一次出现的位置，如果输出会输出剩余字符串。</span><br><span class="line">strstr(s1, s2);返回指针，指向字符串 s1 中字符串 s2 第一次出现的位置，如果输出会输出剩余字符串。</span><br></pre></td></tr></table></figure>
+<h1 id="C中调用C-库"><a href="#C中调用C-库" class="headerlink" title="C中调用C++库"></a>C中调用C++库</h1><p>将 C++ 函数声明为extern “C”（在你的 C++ 代码里做这个声明）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world()</span><br><span class="line">&#123;  </span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;world&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>编译并copy到系统库目录下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC -o libworld.so world.cpp </span><br><span class="line">cp libworld.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
 
+<p>做一个中间接口库，对C++库进行二次封装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; mid.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world();</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;  &#x2F;&#x2F; 即使这是一个C++程序，下列这个函数的实现也要以C约定的风格！</span><br><span class="line">#endif  </span><br><span class="line"> </span><br><span class="line">void m_world()  </span><br><span class="line">&#123;    </span><br><span class="line"></span><br><span class="line">  world();  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt;</span><br><span class="line">构造函数：</span><br><span class="line">string s1();         &#x2F;&#x2F; si &#x3D; &quot;&quot;</span><br><span class="line">string s2(&quot;Hello&quot;);  &#x2F;&#x2F; s2 &#x3D; &quot;Hello&quot;</span><br><span class="line">string s3(4, &#39;K&#39;);  &#x2F;&#x2F; s3 &#x3D; &quot;KKKK&quot;</span><br><span class="line">string s4(&quot;12345&quot;, 1, 3);  &#x2F;&#x2F;s4 &#x3D; &quot;234&quot;，从下标 1 开始，长度为 3 的子串</span><br><span class="line">长度：length 和size</span><br></pre></td></tr></table></figure>
+<p>其中m_world为libworld库中world方法的二次封装， 编译并copy到系统库目录下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared  -fPIC -o libmid.so mid.cpp -lworld</span><br><span class="line">cp libmid.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">子串：</span><br><span class="line">s1 &#x3D; &quot;this is ok&quot;;</span><br><span class="line">s2 &#x3D; s1.substr(2, 4);  &#x2F;&#x2F; s2 &#x3D; &quot;is i&quot;</span><br></pre></td></tr></table></figure>
+<p>在C程序中通过链接<strong>二次接口库</strong>去调用C++库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  m_world(); </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gcc test.c -lmid -o test</span><br></pre></td></tr></table></figure>
 
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查找子串和字符，返回值都是子串或字符的位置：</span><br><span class="line">find：从前往后查找子串或字符出现的位置。</span><br><span class="line">rfind：从后往前查找子串或字符出现的位置。</span><br><span class="line">find_first_of：从前往后查找何处出现另一个字符串中包含的字符。如：s1.find_first_of(&quot;abc&quot;);  &#x2F;&#x2F;查找s1中第一次出现&quot;abc&quot;中任一字符的位置</span><br><span class="line">find_last_of： 从后往前查找何处出现另一个字符串中包含的字符。</span><br><span class="line">find_first_not_of：从前往后查找何处出现另一个字符串中没有包含的字符。</span><br><span class="line">find_last_not_of：从后往前查找何处出现另一个字符串中没有包含的字符。</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ((n &#x3D; s1.find(&#39;u&#39;)) !&#x3D; string::npos) &#x2F;&#x2F;查找 u 出现的位置，查不到则返回静态常量string::npos</span><br><span class="line">       cout &lt;&lt; &quot;1) &quot; &lt;&lt; n &lt;&lt; &quot;,&quot; &lt;&lt; s1.substr(n) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">替换：replace</span><br><span class="line">删除子串：erase </span><br><span class="line">插入字符串：insert</span><br></pre></td></tr></table></figure>
-
-<p>用算法操作string</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    string s(&quot;afgcbed&quot;);</span><br><span class="line">    string::iterator p &#x3D; find(s.begin(), s.end(), &#39;c&#39;);</span><br><span class="line">    if (p!&#x3D; s.end())</span><br><span class="line">        cout &lt;&lt; p - s.begin() &lt;&lt; endl;  &#x2F;&#x2F;输出 3</span><br><span class="line">    sort(s.begin(), s.end());</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;  &#x2F;&#x2F;输出 abcdefg  </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a href="http://www.cplusplus.com/reference/string/string/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/string/string/</a></p>
-<p><a href="https://www.geeksforgeeks.org/stdstring-class-in-c/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/stdstring-class-in-c/</a></p>
-<p><a href="https://www.tutorialspoint.com/cplusplus/cpp_strings.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/cplusplus/cpp_strings.htm</a></p>
+<p>注：对于C++库中含有类的，可以在二次接口函数中生成临时对象来调用对应的功能函数。</p>
+<p><a href="http://www.cppblog.com/wolf/articles/77828.html" target="_blank" rel="noopener">http://www.cppblog.com/wolf/articles/77828.html</a></p>
 
       
     </div>
@@ -288,7 +285,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E8%B4%AD%E7%89%A9/c++_%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -302,7 +299,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">YUV格式分析</a>
+            <a href="/2021/07/02/%E8%B4%AD%E7%89%A9/c++_%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">c++_互相调用</a>
         </h1>
 
         <div class="post-meta">
@@ -311,9 +308,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-07-01 08:07:24 / Modified: 08:16:28" itemprop="dateCreated datePublished" datetime="2021-07-01T08:07:24+08:00">2021-07-01</time>
+              <time title="Created: 2021-07-02 08:12:00" itemprop="dateCreated datePublished" datetime="2021-07-02T08:12:00+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -321,8 +317,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
+                  <a href="/categories/%E4%B8%8D%E5%A5%BD%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">不好分类</span>
                   </a>
                 </span>
             </span>
@@ -338,43 +334,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="大小计算"><a href="#大小计算" class="headerlink" title="大小计算"></a>大小计算</h2><p>RGB24 size＝w×h×3 Byte</p>
-<p>RGB32 size＝w×h×4 Byte</p>
-<p>I420（yuv420p）的数据量是 size＝w×h×1.5 Byte。 # w<em>h+ (w</em>h) / 4 + (w<em>h) / 4 = (w</em>h) * 3 / 2</p>
-<p>yuv420p示意图：</p>
-<ul>
-<li><img src="/images/2021/yuv-1.jpeg" alt=""></li>
-</ul>
-<p>其中前w<em>h Byte存储Y，接着的（w</em>h)/4 Byte存储U，最后(w*h)/4 Byte存储V</p>
-<p>注意上图中的yuv颜色对应关系，4个Y对应一组uv</p>
-<p>即： I420: YYYYYYYY UU VV =&gt;YUV420P</p>
-<p>YV12: YYYYYYYY VV UU =&gt;YUV420P # YV12虽然也是（4：2：0）,但是和I420在存储空间上面有些区别：UV的顺序不同，Plane模式, 类似格式：YU12</p>
-<p>NV12: YYYYYYYY UV UV =&gt;YUV420SP</p>
-<p>NV21: YYYYYYYY VU VU =&gt;YUV420SP</p>
-<p>ffmpeg中像素格式名称后面有“P”的，代表是planar格式，否则有可能是packed格式</p>
-<p>YUV格式有两大类：planar和packed。对于planar的YUV格式，先连续存储所有像素点的Y，紧接着存储所有像素点的U，随后是所有像素点的V。对于packed的YUV格式，每个像素点的Y,U,V是连续<strong>交叉存储</strong>的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AV_PIX_FMT_YUV420P,    &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp&#x3D;1.5B*8&#x3D;12, (1 Cr &amp; Cb sample per 2x2 Y samples, 相当1比4的关系)   </span><br><span class="line">AV_PIX_FMT_NV12,       &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first byte U and the </span><br><span class="line">following byte V)  ，一种two-plane模式，即Y和UV分为两个Plane，但是UV（CbCr）为交错存储,U&#x3D;Cb</span><br><span class="line">AV_PIX_FMT_NV21,       &#x2F;&#x2F;&#x2F;&lt; as above, but U and V bytes are swapped  </span><br><span class="line">AV_PIX_FMT_YUYV422,   &#x2F;&#x2F;&#x2F;&lt; packed YUV 4:2:2, 16bpp</span><br></pre></td></tr></table></figure>
-
-<h2 id="采样方式"><a href="#采样方式" class="headerlink" title="采样方式"></a>采样方式</h2><p>主流的采样方式有三种，YUV4:4:4，YUV4:2:2，YUV4:2:0</p>
-<p>以黑点表示采样该像素点的Y分量，以空心圆圈表示采用该像素点的UV分量:</p>
-<p><img src="/images/2021/yuv-2.png" alt=""></p>
-<p>YUV 4:2:0采样，每四个Y共用一组UV分量， 1.5B*8=12</p>
-<p>YUV 4:2:2采样，每两个Y共用一组UV分量， wh+wh/2+wh/2=2wh=16bit</p>
-<p>YUV 4:4:4采样，每一个Y对应一组UV分量</p>
-<h2 id="YUYV"><a href="#YUYV" class="headerlink" title="YUYV"></a>YUYV</h2><p>属于YUV422,每两个Y共用一组UV分量</p>
-<h2 id="YUV422P"><a href="#YUV422P" class="headerlink" title="YUV422P"></a>YUV422P</h2><p>属于YUV422,先存所有的Y，然后存所有的U，最后存所有的V</p>
-<h2 id="YUY2"><a href="#YUY2" class="headerlink" title="YUY2"></a>YUY2</h2><p>4:2:2，应该是指YUYV</p>
-<p><img src="/images/2021/yuy2.gif" alt=""></p>
-<p>Y0 U0 Y1 V0, Y2 U1 Y3 V1</p>
-<h2 id="UYVY"><a href="#UYVY" class="headerlink" title="UYVY"></a>UYVY</h2><p>4:2:2</p>
-<p><img src="/images/2021/uyvy.gif" alt=""></p>
-<p>U0 Y0 V0 Y1,U1 Y2 V1 Y3</p>
-<h1 id="读"><a href="#读" class="headerlink" title="读"></a>读</h1><h1 id="写"><a href="#写" class="headerlink" title="写"></a>写</h1><h2 id="保存YUV420P"><a href="#保存YUV420P" class="headerlink" title="保存YUV420P"></a>保存YUV420P</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fwrite(pFrameYUV-&gt;data[0],wxh,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[1],wxh&#x2F;4,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[2],wxh&#x2F;4,1,output);</span><br></pre></td></tr></table></figure>
-
-<h1 id="编码器需要的格式"><a href="#编码器需要的格式" class="headerlink" title="编码器需要的格式"></a>编码器需要的格式</h1><p>x264 支持直接输入YUV420P，NV12 h264_omx，mpeg1video支持YUV420P</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering</a></p>
-<p><a href="https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422" target="_blank" rel="noopener">https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422</a></p>
-
+          
       
     </div>
 
@@ -393,7 +353,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_map_pair/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -407,7 +367,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">Python常见错误</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_map_pair/" class="post-title-link" itemprop="url">c++ map pair</a>
         </h1>
 
         <div class="post-meta">
@@ -418,7 +378,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-01 07:55:19 / Modified: 08:05:32" itemprop="dateCreated datePublished" datetime="2021-07-01T07:55:19+08:00">2021-07-01</time>
+              <time title="Created: 2021-07-02 08:06:59 / Modified: 08:11:11" itemprop="dateCreated datePublished" datetime="2021-07-02T08:06:59+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -426,14 +386,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSL/" itemprop="url" rel="index">
-                    <span itemprop="name">SSL</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -449,27 +403,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="‘SSLCertVerificationError’-object-has-no-attribute-‘message’"><a href="#‘SSLCertVerificationError’-object-has-no-attribute-‘message’" class="headerlink" title="‘SSLCertVerificationError’ object has no attribute ‘message’"></a>‘SSLCertVerificationError’ object has no attribute ‘message’</h1><p>‘SSLCertVerificationError’ object has no attribute ‘message’ 错误：调试python后定位到</p>
-<p>‘[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1125)’</p>
-<p>The error indicates that a certificate is missing.</p>
-<p>one solution: Run /Applications/Python\ 3.7/Install\ Certificates.command（this command replaces the root certificates of the default Python installation with the ones shipped through the certifi package. ） certifi模块目录下面有一个cacert.pem，上面的命令应该是拷贝那个certifi下面的证书到openssl目录下。</p>
-<p><a href="https://www.openssl.org/docs/faq.html" target="_blank" rel="noopener">https://www.openssl.org/docs/faq.html</a> Why does <SSL program> fail with a certificate verify error?</p>
-<p>This problem is usually indicated by log messages saying something like “unable to get local issuer certificate” or “self signed certificate”.</p>
-<p>When a certificate is verified its root CA must be “trusted” by OpenSSL this typically means that</p>
-<p>the CA certificate must be placed in a directory or file</p>
-<p>and the relevant相关的 program configured to read it.</p>
-<p>you trust one specific certificate because you trust the parent of that certificate</p>
-<p><a href="https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate" target="_blank" rel="noopener">https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate</a></p>
-<p>指定编译的python3.8.0时, 在vs code中遇到 调试设置中的 python 路径无效， 无法使用自定义的python解释器:最后发现需要搞一个没有rpath的python3.8.0才能调试。</p>
-<p>在settings.json</p>
-<p><code>&quot;python.pythonPath&quot;:&quot;python3.8.0_for_debug&quot;</code></p>
-<p>在launch.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;env&quot;:&#123;&quot;DYLD_LIBRARY_PATH&quot;:&quot;&#x2F;path&#x2F;to&#x2F;python3&#x2F;mac&#x2F;lib:&#x2F;path&#x2F;to&#x2F;openssl&#x2F;lib&quot;&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;utility&gt;      &#x2F;&#x2F; std::pair, std::make_pair</span><br><span class="line"></span><br><span class="line">pair &lt;string,double&gt; product1;                     &#x2F;&#x2F; default constructor</span><br><span class="line">pair &lt;string,double&gt; product2 (&quot;tomatoes&quot;,2.30);   &#x2F;&#x2F; value init</span><br><span class="line">pair &lt;string,double&gt; product3 (product2);          &#x2F;&#x2F; copy constructor</span><br><span class="line"></span><br><span class="line">product1 &#x3D; make_pair(string(&quot;lightbulbs&quot;), 0.99);   &#x2F;&#x2F; using make_pair (move)</span><br><span class="line">g2 &#x3D; make_pair(1, &#39;a&#39;);</span><br><span class="line"></span><br><span class="line">product2.first &#x3D; &quot;shoes&quot;;                &#x2F;&#x2F;赋值</span><br><span class="line">product2.second &#x3D; 39.90;</span><br></pre></td></tr></table></figure>
 
-<p>最后通过在代码中加入下面2行解决。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">os.environ[&#39;REQUESTS_CA_BUNDLE&#39;]&#x3D; &#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39;</span><br><span class="line">os.environ[&#39;SSL_CERT_FILE&#39;]&#x3D;&#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39; 或者参考上面的命令Install Certificates.command里面建立软链接。不过openssl的目录可能不对。</span><br><span class="line">或者用certifi.where() 代替上面的路径！！！</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cplusplus.com/reference/utility/pair/pair/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/utility/pair/pair/</a></p>
+<p><a href="https://www.geeksforgeeks.org/pair-in-cpp-stl/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/pair-in-cpp-stl/</a></p>
+<h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><p>map are slower than unordered_map containers to access individual elements by their key, but they allow the direct iteration迭代 on subsets based on their order.</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>元素排了序</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mymap.insert ( pair&lt;char,int&gt;(&#39;a&#39;,100) );  &#x2F;&#x2F;map_name.insert(&#123;key, element&#125;)</span><br><span class="line">mymap.insert (it, pair&lt;char,int&gt;(&#39;b&#39;,300));</span><br><span class="line">anothermap.insert(mymap.begin(),mymap.find(&#39;c&#39;));  </span><br><span class="line"></span><br><span class="line">map&lt;char,int&gt; mymap;</span><br><span class="line">mymap.emplace(&#39;x&#39;,100);  &#x2F;&#x2F;map_name.emplace(key, element)</span><br><span class="line">for (auto &amp;x: mymap)</span><br><span class="line">   cout &lt;&lt; &quot; [&quot; &lt;&lt; x.first &lt;&lt; &#39;:&#39; &lt;&lt; x.second &lt;&lt; &#39;]&#39;;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"> find</span><br><span class="line"> </span><br><span class="line"> 删除</span><br><span class="line"> mymap.erase (it);  </span><br><span class="line">mymap.erase (&#39;c&#39;);                  &#x2F;&#x2F; erasing by key</span><br><span class="line">mymap.erase ( it, mymap.end() );    &#x2F;&#x2F; erasing by range</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">count(key) &#x2F;&#x2F;Count elements with a specific key</span><br></pre></td></tr></table></figure>
 
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror" target="_blank" rel="noopener">https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror</a></p>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>all containers (vector, stack, queue, set, map, etc) support both insert and emplace operations.</p>
+<p>emplace不copy of object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ms.insert(make_pair(&#39;b&#39;, 25));</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/</a></p>
+<p><a href="https://www.cplusplus.com/reference/map/map/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/map/map/</a></p>
 
       
     </div>
@@ -489,7 +436,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -535,20 +482,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
