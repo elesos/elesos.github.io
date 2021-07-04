@@ -50,20 +50,20 @@
   };
 </script>
 
-  <meta name="description" content="C++调C123456789#ifdef __cplusplusextern &quot;C&quot; &amp;#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接#endif &#x2F;&#x2F;c头文件或函数 #ifdef __cplusplus&amp;#125;#endif  C++中调用C库做一个C动态库： 12345#include">
+  <meta name="description" content="功能：计算字节数 所有指针变量的sizeof结果均为4。 1234int *p;sizeof(p)&#x3D;4;但sizeof(*p)相当于sizeof(int);int a[10];sizeof(a)等于4*10&#x3D;40;  注意对比与strlen的不同：计算字符串的长度，且长度不包括’\0’ 结构体的空间计算遵循两个原则： (1)整体空间是 占用空间最大的成员的类型所占字节数的整倍数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++ 互相调用">
-<meta property="og:url" content="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++-%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
+<meta property="og:title" content="c sizeof">
+<meta property="og:url" content="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/">
 <meta property="og:site_name" content="艺搜天下 | 视频技术博客">
-<meta property="og:description" content="C++调C123456789#ifdef __cplusplusextern &quot;C&quot; &amp;#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接#endif &#x2F;&#x2F;c头文件或函数 #ifdef __cplusplus&amp;#125;#endif  C++中调用C库做一个C动态库： 12345#include">
+<meta property="og:description" content="功能：计算字节数 所有指针变量的sizeof结果均为4。 1234int *p;sizeof(p)&#x3D;4;但sizeof(*p)相当于sizeof(int);int a[10];sizeof(a)等于4*10&#x3D;40;  注意对比与strlen的不同：计算字符串的长度，且长度不包括’\0’ 结构体的空间计算遵循两个原则： (1)整体空间是 占用空间最大的成员的类型所占字节数的整倍数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-02T00:13:01.000Z">
-<meta property="article:modified_time" content="2021-07-02T00:16:57.308Z">
+<meta property="article:published_time" content="2021-07-04T02:39:37.000Z">
+<meta property="article:modified_time" content="2021-07-04T02:40:33.924Z">
 <meta property="article:author" content="elesos">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++-%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
+<link rel="canonical" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/">
 
 
 <script id="page-configurations">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>c++ 互相调用 | 艺搜天下 | 视频技术博客</title>
+  <title>c sizeof | 艺搜天下 | 视频技术博客</title>
   
 
 
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++-%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          c++ 互相调用
+          c sizeof
         </h1>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 08:13:01 / Modified: 08:16:57" itemprop="dateCreated datePublished" datetime="2021-07-02T08:13:01+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-04 10:39:37 / Modified: 10:40:33" itemprop="dateCreated datePublished" datetime="2021-07-04T10:39:37+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -242,31 +242,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="C-调C"><a href="#C-调C" class="headerlink" title="C++调C"></a>C++调C</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;c头文件或函数</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+        <p>功能：计算字节数</p>
+<p>所有指针变量的sizeof结果均为4。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *p;</span><br><span class="line">sizeof(p)&#x3D;4;但sizeof(*p)相当于sizeof(int);</span><br><span class="line">int a[10];</span><br><span class="line">sizeof(a)等于4*10&#x3D;40;</span><br></pre></td></tr></table></figure>
 
-<h1 id="C-中调用C库"><a href="#C-中调用C库" class="headerlink" title="C++中调用C库"></a>C++中调用C库</h1><p>做一个C动态库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void hello()&#123;  </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">gcc -shared -fPIC -o libhello.so hello.c</span><br></pre></td></tr></table></figure>
+<p>注意对比与strlen的不同：计算字符串的长度，且长度不包括’\0’</p>
+<h2 id="结构体的空间计算"><a href="#结构体的空间计算" class="headerlink" title="结构体的空间计算"></a>结构体的空间计算</h2><p>遵循两个原则：</p>
+<p>(1)整体空间是 占用空间最大的成员的类型所占字节数的整倍数</p>
+<p>(2)数据对齐原则：内存按结构成员的先后顺序排列，当排到该成员变量时，其前面已摆放的空间大小必须是该成员类型大小的整倍数，如果不够则补齐。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct s1&#123;</span><br><span class="line"> char a;</span><br><span class="line"> double b;&#x2F;&#x2F;8</span><br><span class="line"> int c;</span><br><span class="line"> char d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">struct s2&#123;</span><br><span class="line"> char a;</span><br><span class="line"> char b;</span><br><span class="line"> int c;</span><br><span class="line"> double d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">cout&lt;&lt;sizeof(s1)&lt;&lt;endl;&#x2F;&#x2F; 24</span><br><span class="line">cout&lt;&lt;sizeof(s2)&lt;&lt;endl;&#x2F;&#x2F; 16</span><br></pre></td></tr></table></figure>
 
-<p>C++程序调用它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp  -lhello</span><br></pre></td></tr></table></figure>
-
-<h1 id="C中调用C-库"><a href="#C中调用C-库" class="headerlink" title="C中调用C++库"></a>C中调用C++库</h1><p>将 C++ 函数声明为extern “C”（在你的 C++ 代码里做这个声明）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world()</span><br><span class="line">&#123;  </span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;world&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译并copy到系统库目录下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC -o libworld.so world.cpp </span><br><span class="line">cp libworld.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>做一个中间接口库，对C++库进行二次封装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; mid.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world();</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;  &#x2F;&#x2F; 即使这是一个C++程序，下列这个函数的实现也要以C约定的风格！</span><br><span class="line">#endif  </span><br><span class="line"> </span><br><span class="line">void m_world()  </span><br><span class="line">&#123;    </span><br><span class="line"></span><br><span class="line">  world();  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<p>其中m_world为libworld库中world方法的二次封装， 编译并copy到系统库目录下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared  -fPIC -o libmid.so mid.cpp -lworld</span><br><span class="line">cp libmid.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>在C程序中通过链接<strong>二次接口库</strong>去调用C++库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  m_world(); </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gcc test.c -lmid -o test</span><br></pre></td></tr></table></figure>
-
-<p>注：对于C++库中含有类的，可以在二次接口函数中生成临时对象来调用对应的功能函数。</p>
-<p><a href="http://www.cppblog.com/wolf/articles/77828.html" target="_blank" rel="noopener">http://www.cppblog.com/wolf/articles/77828.html</a></p>
+<p>同样是两个char型，一个int，一个double型，</p>
+<p>但因为对齐问题，导致他们的大小不同。</p>
+<p>计算结构体大小可以采用元素摆放法，首先判断结构体的对界，s1和s2的对界都取最大的元素类型，也就是double类型的对界8。然后开始摆放每个元素。</p>
+<p>对于s1，首先把a放到8的对界，假定是0，此时下一个空闲的地址是1，但是下一个元素b是double类型，要放到8的对界上，离1最接近的地址是8了，所以b被放在了8，此时下一个空闲地址变成了16，下一个元素c的对界是4，16可以满足，所以c放在了16，此时下一个空闲地址变成了20，下一个元素d需要对界1，也正好落在对界上，所以d放在了20，结构体在地址21处结束。由于s1的大小需要是8的倍数，所以21-23的空间被保留，s1的大小变成了24。</p>
+<p>对于s2，首先把a放到8的对界，假定是0，此时下一个空闲地址是1，下一个元素的对界也是1，所以b摆放在1，下一个空闲地址变成了2；下一个元素c的对界是4，所以取离2最近的地址4摆放c，下一个空闲地址变成了8，下一个元素d的对界是8，所以d摆放在8，所有元素摆放完毕，结构体在15处结束，占用总空间为16，正好是8的倍数。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://en.wikipedia.org/wiki/Sizeof" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Sizeof</a></p>
+<p><a href="http://en.cppreference.com/w/cpp/language/sizeof" target="_blank" rel="noopener">http://en.cppreference.com/w/cpp/language/sizeof</a></p>
 
     </div>
 
@@ -283,16 +275,16 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2021/07/02/%E8%B4%AD%E7%89%A9/c++_%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" rel="next" title="c++_互相调用">
-                  <i class="fa fa-chevron-left"></i> c++_互相调用
+                <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%84C%E5%92%8CC++%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/" rel="next" title="值得推荐的C和C++框架和库">
+                  <i class="fa fa-chevron-left"></i> 值得推荐的C和C++框架和库
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/" rel="prev" title="Curl编译">
-                  Curl编译 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/%E7%A5%9E%E7%AD%96SDK/" rel="prev" title="神策SDK">
+                  神策SDK <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -337,7 +329,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-调C"><span class="nav-number">1.</span> <span class="nav-text">C++调C</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-中调用C库"><span class="nav-number">2.</span> <span class="nav-text">C++中调用C库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C中调用C-库"><span class="nav-number">3.</span> <span class="nav-text">C中调用C++库</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构体的空间计算"><span class="nav-number">1.</span> <span class="nav-text">结构体的空间计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -353,20 +345,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

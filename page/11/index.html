@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/06/26/%E6%8A%80%E6%9C%AF/%E5%BB%BA%E7%AB%99/wordpress-and-mediawiki-vs-github-pages/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/26/%E6%8A%80%E6%9C%AF/%E5%BB%BA%E7%AB%99/wordpress-and-mediawiki-vs-github-pages/" class="post-title-link" itemprop="url">利用Jekyll 或 Hexo 搭建GitHub Pages的区别和对比</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">C++经典书籍推荐</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-06-26 21:35:11 / Modified: 21:45:44" itemprop="dateCreated datePublished" datetime="2021-06-26T21:35:11+08:00">2021-06-26</time>
+              <time title="Created: 2021-07-02 21:14:22 / Modified: 21:15:37" itemprop="dateCreated datePublished" datetime="2021-07-02T21:14:22+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BB%BA%E7%AB%99/" itemprop="url" rel="index">
-                    <span itemprop="name">建站</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -241,40 +241,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>不用mediawiki或wordpress是因为要自己买服务器。哪天没续费，数据就没有了。</p>
-<p>Jekyll 和 hexo 都是静态网站生成工具</p>
-<h1 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h1><p>是台湾小伙使用nodejs开发的，需要在本地生成静态页面后再提交到github，不过hexo内置了hexo deploy命令，提交也是挺方便的。</p>
-<h1 id="jekyll"><a href="#jekyll" class="headerlink" title="jekyll"></a>jekyll</h1><p>用ruby开发，需要安装ruby,python等，github内置了jekyll，可以直接将jekyll相关的文件提交到github，github会自动生成静态页面。</p>
-<h1 id="Hexo博客搭建"><a href="#Hexo博客搭建" class="headerlink" title="Hexo博客搭建"></a>Hexo博客搭建</h1><p>windows下 </p>
-<ol>
-<li><p>安装git <a href="https://git-scm.com/downloads，" target="_blank" rel="noopener">https://git-scm.com/downloads，</a></p>
-</li>
-<li><p>安装nodejs时，勾选Add to PATH选项</p>
-</li>
-</ol>
-<p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
-<ol start="3">
-<li>安装Hexo:<br><code>npm install -g hexo-cli</code></li>
-<li>写作，必须这样才能自动生成文章的创建时间，不要复制md文件再改<br><code>hexo new post xxx</code></li>
-<li>发布<br><code>hexo clean &amp;&amp; hexo g -d -b -f</code></li>
-</ol>
-<p>其中hexo clean清除public, windows可能需要手动删除public目录</p>
-<p>-g表示生成，-d表示生成后立即部署，-b生成过程中如果发生异常则抛出异常, -f 强制重新生成。</p>
-<ol start="6">
-<li>其它问题 码云可能需要手动更新:<a href="https://gitee.com/elesos/elesos/pages" target="_blank" rel="noopener">https://gitee.com/elesos/elesos/pages</a></li>
-</ol>
-<p>码云创建时不用username.gitee.io,只需要username即可, 码云还支持Hugo</p>
-<p>github上username.github.io只能发布到master分支。错误，在master有源码的情况下，gh-pages分支也能发布，测试过。（github将默认分支从master改为main了，可在settings/repositories里修改Repository default branch）</p>
-<p>其它库开启github pages后生成到username.github.io/projectname目录,其它的库可以使用master,gh-pages分支或在master分支的docs文件夹</p>
-<p>gh-pages分支的创建与提交</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout --orphan gh-pages &#x2F;&#x2F;Creates a new branch, with no history or contents</span><br><span class="line">git push origin gh-pages</span><br></pre></td></tr></table></figure>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
-<li><p>YAMLException: end of the stream or a document separator is expected<br>在:冒号之后要有空格</p>
-</li>
-<li><p>TypeError [ERR_INVALID_ARG_TYPE]: The “list[0]” argument must be one of type Buffer or Uint8Array. Received type string<br>有可能是npm安装的软件版本问题</p>
-</li>
-</ol>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://zhuanlan.zhihu.com/p/77651304" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/77651304</a><br><a href="https://gitee.com/help/articles/4136" target="_blank" rel="noopener">https://gitee.com/help/articles/4136</a><br><a href="https://hexo.io/zh-cn/docs/commands#clean" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands#clean</a></p>
+          <p><a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list" target="_blank" rel="noopener">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
+<p>definitive：最权威的</p>
 
       
     </div>
@@ -294,7 +262,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/18/%E5%BD%B1%E8%A7%86/%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -308,7 +276,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/18/%E5%BD%B1%E8%A7%86/%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E/" class="post-title-link" itemprop="url">肖申克的救赎</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">Curl编译</a>
         </h1>
 
         <div class="post-meta">
@@ -317,24 +285,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-18 11:09:25" itemprop="dateCreated datePublished" datetime="2021-03-18T11:09:25+08:00">2021-03-18</time>
+              <time title="Created: 2021-07-02 21:09:41 / Modified: 21:13:05" itemprop="dateCreated datePublished" datetime="2021-07-02T21:09:41+08:00">2021-07-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BD%B1%E8%A7%86/" itemprop="url" rel="index">
-                    <span itemprop="name">影视</span>
+                  <a href="/categories/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index">
+                    <span itemprop="name">编译</span>
                   </a>
                 </span>
             </span>
@@ -350,8 +312,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>下载：关注公众号回复暗语 ajte  获取下载链接</p>
-<p><img src="/images/qrcode.jpg" alt=""></p>
+          <p>先编译openssl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.git</span><br><span class="line">autoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO</span><br><span class="line">.&#x2F;configure  --with-ssl&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl  --prefix&#x3D;   </span><br><span class="line">make </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>If you have OpenSSL installed in /usr/local/ssl, you can run configure like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<p>否则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl&#x3D;&#x2F;opt&#x2F;OpenSSL</span><br></pre></td></tr></table></figure>
+
+<p>If you have OpenSSL installed, but with the libraries in one place and the header files somewhere else, you have to set the LDFLAGS and CPPFLAGS environment variables prior to running configure. Something like this should work:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPPFLAGS&#x3D;&quot;-I&#x2F;path&#x2F;to&#x2F;ssl&#x2F;include&quot; LDFLAGS&#x3D;&quot;-L&#x2F;path&#x2F;to&#x2F;ssl&#x2F;lib&quot; .&#x2F;configure  &#x2F;&#x2F;如果删除了动态库的软链接，还需要修改pc文件。</span><br></pre></td></tr></table></figure>
+
+<p>If you have shared SSL libs installed in a directory where your run-time linker doesn’t find them (which usually causes configure failures), you can provide this option to gcc to set a hard-coded path to the run-time linker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS&#x3D;-Wl,-R&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib .&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apple&#39;s SSL&#x2F;TLS implementation ,secure transport: --with-secure-transport  or --with-darwin-ssl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ARCH&#x3D;x86_64</span><br><span class="line">export SDK&#x3D;macosx</span><br><span class="line">export DEPLOYMENT_TARGET&#x3D;10.8</span><br><span class="line"></span><br><span class="line">export CFLAGS&#x3D;&quot;-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min&#x3D;$DEPLOYMENT_TARGET&quot;</span><br><span class="line">.&#x2F;configure --host&#x3D;$ARCH-apple-darwin --prefix $(pwd)&#x2F;artifacts --with-darwin-ssl</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>其它选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--disable-static --with-zlib&#x3D;PATH</span><br></pre></td></tr></table></figure>
+
+<h2 id="win"><a href="#win" class="headerlink" title="win"></a>win</h2><p>开始菜单中打开 Visual Studio 目录中的 VS2017的开发人员命令提示符，并切换到 curl 解压目录下的 winbuild 目录下；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll &#x2F;&#x2F;输出在 curl 目录 builds 下。</span><br><span class="line">静态 nmake &#x2F;f Makefile.vc mode&#x3D;static ENABLE_IDN&#x3D;no</span><br><span class="line"></span><br><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll ZLIB_PATH&#x3D;D:\fvbl\3rdparty\libz\win SSL_PATH&#x3D;D:\fvbl\3rdparty\OpenSSL\win ENABLE_WINSSL&#x3D;no WITH_SSL&#x3D;dll WITH_ZLIB&#x3D;dll MACHINE&#x3D;x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-ssl&#x3D;xxx&#x2F;OpenSSL--with-zlib&#x3D;&#x2F;xxx&#x2F;zlib&#x2F; --disable-static</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://curl.haxx.se/docs/install.html" target="_blank" rel="noopener">https://curl.haxx.se/docs/install.html</a></p>
+<p><a href="https://curl.se/download.html" target="_blank" rel="noopener">https://curl.se/download.html</a></p>
+<p><a href="https://www.cnblogs.com/rxbook/p/10881822.html" target="_blank" rel="noopener">https://www.cnblogs.com/rxbook/p/10881822.html</a></p>
 
       
     </div>
@@ -371,7 +361,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/10/%E7%90%90%E4%BA%8B/%E5%8A%9E%E7%90%86%E8%90%A5%E4%B8%9A%E6%89%A7%E7%85%A7/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -385,7 +375,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/10/%E7%90%90%E4%BA%8B/%E5%8A%9E%E7%90%86%E8%90%A5%E4%B8%9A%E6%89%A7%E7%85%A7/" class="post-title-link" itemprop="url">办理营业执照</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">c++ 互相调用</a>
         </h1>
 
         <div class="post-meta">
@@ -395,14 +385,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-03-10 15:52:20" itemprop="dateCreated datePublished" datetime="2021-03-10T15:52:20+08:00">2021-03-10</time>
+              <time title="Created: 2021-07-02 08:13:01" itemprop="dateCreated datePublished" datetime="2021-07-02T08:13:01+08:00">2021-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
+                <time title="Modified: 2021-07-04 10:42:02" itemprop="dateModified" datetime="2021-07-04T10:42:02+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -410,8 +400,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -427,11 +417,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>因为需要申请微信支付，而个人订阅号不能申请，所以申请了个体工商户的营业执照。</p>
-<p>我所在的地方，是需要村里先开个证明，模板最好找工商所要最新的，不然他们不认可。</p>
-<p>然后自已下载一个”登记注册身份验证”的app，是国家工商总局开发的。在里面选择”新用户注册”，然后人脸识别。这一步不会的可以让工作人员帮你弄。</p>
-<p>不要多久，就会给你把执照打印出来了。（工本费25元）</p>
-<p>临走记得说声谢谢。</p>
+          <h1 id="C-调C"><a href="#C-调C" class="headerlink" title="C++调C"></a>C++调C</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;c头文件或函数</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<h1 id="C-中调用C库"><a href="#C-中调用C库" class="headerlink" title="C++中调用C库"></a>C++中调用C库</h1><p>做一个C动态库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void hello()&#123;  </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">gcc -shared -fPIC -o libhello.so hello.c</span><br></pre></td></tr></table></figure>
+
+<p>C++程序调用它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp  -lhello</span><br></pre></td></tr></table></figure>
+
+<h1 id="C中调用C-库"><a href="#C中调用C-库" class="headerlink" title="C中调用C++库"></a>C中调用C++库</h1><p>将 C++ 函数声明为extern “C”（在你的 C++ 代码里做这个声明）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world()</span><br><span class="line">&#123;  </span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;world&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译并copy到系统库目录下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC -o libworld.so world.cpp </span><br><span class="line">cp libworld.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>做一个中间接口库，对C++库进行二次封装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; mid.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world();</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;  &#x2F;&#x2F; 即使这是一个C++程序，下列这个函数的实现也要以C约定的风格！</span><br><span class="line">#endif  </span><br><span class="line"> </span><br><span class="line">void m_world()  </span><br><span class="line">&#123;    </span><br><span class="line"></span><br><span class="line">  world();  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>其中m_world为libworld库中world方法的二次封装， 编译并copy到系统库目录下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared  -fPIC -o libmid.so mid.cpp -lworld</span><br><span class="line">cp libmid.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>在C程序中通过链接<strong>二次接口库</strong>去调用C++库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  m_world(); </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gcc test.c -lmid -o test</span><br></pre></td></tr></table></figure>
+
+<p>注：对于C++库中含有类的，可以在二次接口函数中生成临时对象来调用对应的功能函数。</p>
+<p><a href="http://www.cppblog.com/wolf/articles/77828.html" target="_blank" rel="noopener">http://www.cppblog.com/wolf/articles/77828.html</a></p>
+<h1 id="C-调用-Python"><a href="#C-调用-Python" class="headerlink" title="C++ 调用 Python"></a>C++ 调用 Python</h1><p>Python 本身就是一个C库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyRun_SimpleString(&quot;print &#39;Hello Python!&#39;\n&quot;);</span><br><span class="line">所有Python元素，module、function、tuple、string等等，实际上都是PyObject。C语言里操纵它们，一律使用PyObject *</span><br><span class="line">创建Python类型的变量，使用PyXXX_New可以创建类型为XXX的变量 PyTuple_New(1);</span><br></pre></td></tr></table></figure>
+
+<p>环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH&#x3D;.:$PYTHONPATH</span><br></pre></td></tr></table></figure>
+
+<p>//加载模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyImport_ImportModule(char *name)</span><br><span class="line">PyObject* PyImport_Import(PyObject *name)</span><br><span class="line">PyObject* PyString_FromString(const char*)</span><br></pre></td></tr></table></figure>
+
+<p>上面两个api都是用来动态加载python模块的。区别在于前者一个使用的是C的字符串，而后者的name是一个python对象，这个python对象需要通过PyString_FromString(const char*)来生成，其值为要导入的模块名</p>
+<p>//导入函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyModule_GetDict( PyObject *module)</span><br></pre></td></tr></table></figure>
+
+<p>可以获得Python模块中的函数列表。函数返回一个字典。字典中的关键字为函数名，值为函数的调用地址。 字典里面的值可以通过PyObject* PyDict_GetItemString( PyObject *p, const char *key) 函数来获取，其中p是PyModule_GetDict()的字典，而key则是对应的函数名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_GetAttrString(PyObject *o, char *attr_name)</span><br></pre></td></tr></table></figure>
+
+<p>返回模块对象中的attr_name属性或<strong>函数</strong>，相当于Python中表达式语句：o.attr_name</p>
+<p>//调用函数相关</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_CallObject( PyObject *callable_object, PyObject *args)</span><br><span class="line">PyObject* PyObject_CallFunction( PyObject *callable_object, char *format, ...)</span><br></pre></td></tr></table></figure>
+
+<p>使用上面两个函数可以在C程序中调用Python中的函数。callable_object为要调用的函数对象，也就是通过上述导入函数得到的函数对象，</p>
+<p>区别在于前者使用python的tuple来传参，后者则使用类似c语言printf的风格进行传参。</p>
+<p>如果不需要参数，那么args可能为NULL。返回成功时调用的结果，或失败时返回NULL。</p>
+<p>相当于Python表达式 apply(callable_object, args) 或 callable_object(*args)</p>
+<p>对数字和字符串进行转换处理，使之变成Python中相应的数据类型。 PyObject* Py_BuildValue( const char *format, …) format是要构造的参数的类型列表，函数中剩余的参数即要转换的C语言中的整型、浮点型或者字符串等。其返回值为PyObject型的指针。</p>
+<p>PyObject* PyList_New( Py_ssize_t len)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建一个新的Python列表，len为所创建列表的长度</span><br></pre></td></tr></table></figure>
+
+
+<p>PyObject* PyTuple_New( Py_ssize_t len)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyTuple_New()函数返回所创建的元组。</span><br></pre></td></tr></table></figure>
+
+
+<p>PyObject* PyDict_New()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyDict_New()函数返回所创建的字典。</span><br></pre></td></tr></table></figure>
+
+<p>向 Python 传递参数 使用 PyTuple_New 创建元组， PyTuple_SetItem 设置元组值</p>
+<p>转换 Python 返回值</p>
+<p>库里面的一些函数将返回值转换为 C++ , 例如 PyInt_AsLong，PyFloat_AsDouble， PyString_AsString 等。</p>
+<p>还可以使用 PyArg_ParseTuple 函数来将返回值作为元组解析</p>
+<p>把Python代码直接变成C代码 easy_install -U cython <a href="http://docs.cython.org/en/latest/index.html" target="_blank" rel="noopener">http://docs.cython.org/en/latest/index.html</a></p>
+<p><a href="https://docs.python.org/2/c-api/index.html" target="_blank" rel="noopener">https://docs.python.org/2/c-api/index.html</a></p>
+<p><a href="https://docs.python.org/2/extending/embedding.html" target="_blank" rel="noopener">https://docs.python.org/2/extending/embedding.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/20150641" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20150641</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/79896193" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79896193</a></p>
+<p><a href="https://blog.csdn.net/tobacco5648/article/details/50890106" target="_blank" rel="noopener">https://blog.csdn.net/tobacco5648/article/details/50890106</a></p>
 
       
     </div>
@@ -451,7 +507,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -497,20 +553,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">87</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
