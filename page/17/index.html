@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/10/%E9%A1%B9%E7%9B%AE/proj_03/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_string/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/10/%E9%A1%B9%E7%9B%AE/proj_03/" class="post-title-link" itemprop="url">知识图谱 分类标注</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_string/" class="post-title-link" itemprop="url">c++ string</a>
         </h1>
 
         <div class="post-meta">
@@ -214,24 +214,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-10 15:47:14" itemprop="dateCreated datePublished" datetime="2021-03-10T15:47:14+08:00">2021-03-10</time>
+              <time title="Created: 2021-07-02 07:47:31 / Modified: 21:19:12" itemprop="dateCreated datePublished" datetime="2021-07-02T07:47:31+08:00">2021-07-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 17:54:52" itemprop="dateModified" datetime="2021-06-26T17:54:52+08:00">2021-06-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">项目</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -247,10 +241,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>知识图谱分类标记是推荐系统的前期工作。</p>
-<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>Docker, Laravel, <a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">Vue.js</a>, <a href="https://element.eleme.cn/#/zh-CN/component/installation" target="_blank" rel="noopener">Element</a><br><img src="/images/knowledge-graph-tool.png" alt=""></p>
-<p>主动将原Flash版标注工具重构为网页版，减少安装成本，便于版本更新。</p>
-<p>自学laravel+vue后完成。</p>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">std::string s2 (s0); &#x2F;&#x2F;copy </span><br><span class="line"> std::string s3 (s0, 8, 3);  &#x2F;&#x2F; 获取子串 http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;string&#x2F;string&#x2F;string&#x2F;</span><br><span class="line"> std::string s4 (&quot;A character sequence&quot;);</span><br><span class="line"> std::string s5 (&quot;Another character sequence&quot;, 12); </span><br><span class="line"> std::string s6a (10, &#39;x&#39;);   &#x2F;&#x2F;填充x</span><br><span class="line"> std::string s6b (10, 42);      &#x2F;&#x2F; 42 is the ASCII code for &#39;*&#39;</span><br><span class="line"> std::string s7 (s0.begin(), s0.begin()+7);</span><br><span class="line"> </span><br><span class="line"> str.size()跟str.length()一样返回大小</span><br><span class="line">str.clear();</span><br><span class="line"></span><br><span class="line">assign</span><br><span class="line">append</span><br><span class="line">str.push_back(&#39;s&#39;);</span><br><span class="line">insert</span><br><span class="line"></span><br><span class="line">find_first_of</span><br><span class="line">substr (pos &#x3D; 0, len &#x3D; npos)</span><br><span class="line">compare</span><br><span class="line"></span><br><span class="line">判断标志npos</span><br><span class="line"></span><br><span class="line">const char* data() const;&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char greeting[] &#x3D; &quot;Hello&quot;;&#x2F;&#x2F;C风格 #include &lt;cstring&gt;</span><br><span class="line">strchr(s1, ch);返回指针，指向字符串 s1 中字符 ch 第一次出现的位置，如果输出会输出剩余字符串。</span><br><span class="line">strstr(s1, s2);返回指针，指向字符串 s1 中字符串 s2 第一次出现的位置，如果输出会输出剩余字符串。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt;</span><br><span class="line">构造函数：</span><br><span class="line">string s1();         &#x2F;&#x2F; si &#x3D; &quot;&quot;</span><br><span class="line">string s2(&quot;Hello&quot;);  &#x2F;&#x2F; s2 &#x3D; &quot;Hello&quot;</span><br><span class="line">string s3(4, &#39;K&#39;);  &#x2F;&#x2F; s3 &#x3D; &quot;KKKK&quot;</span><br><span class="line">string s4(&quot;12345&quot;, 1, 3);  &#x2F;&#x2F;s4 &#x3D; &quot;234&quot;，从下标 1 开始，长度为 3 的子串</span><br><span class="line">长度：length 和size</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">子串：</span><br><span class="line">s1 &#x3D; &quot;this is ok&quot;;</span><br><span class="line">s2 &#x3D; s1.substr(2, 4);  &#x2F;&#x2F; s2 &#x3D; &quot;is i&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查找子串和字符，返回值都是子串或字符的位置：</span><br><span class="line">find：从前往后查找子串或字符出现的位置。</span><br><span class="line">rfind：从后往前查找子串或字符出现的位置。</span><br><span class="line">find_first_of：从前往后查找何处出现另一个字符串中包含的字符。如：s1.find_first_of(&quot;abc&quot;);  &#x2F;&#x2F;查找s1中第一次出现&quot;abc&quot;中任一字符的位置</span><br><span class="line">find_last_of： 从后往前查找何处出现另一个字符串中包含的字符。</span><br><span class="line">find_first_not_of：从前往后查找何处出现另一个字符串中没有包含的字符。</span><br><span class="line">find_last_not_of：从后往前查找何处出现另一个字符串中没有包含的字符。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ((n &#x3D; s1.find(&#39;u&#39;)) !&#x3D; string::npos) &#x2F;&#x2F;查找 u 出现的位置，查不到则返回静态常量string::npos</span><br><span class="line">       cout &lt;&lt; &quot;1) &quot; &lt;&lt; n &lt;&lt; &quot;,&quot; &lt;&lt; s1.substr(n) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">替换：replace</span><br><span class="line">删除子串：erase </span><br><span class="line">插入字符串：insert</span><br></pre></td></tr></table></figure>
+
+<p>用算法操作string</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    string s(&quot;afgcbed&quot;);</span><br><span class="line">    string::iterator p &#x3D; find(s.begin(), s.end(), &#39;c&#39;);</span><br><span class="line">    if (p!&#x3D; s.end())</span><br><span class="line">        cout &lt;&lt; p - s.begin() &lt;&lt; endl;  &#x2F;&#x2F;输出 3</span><br><span class="line">    sort(s.begin(), s.end());</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;  &#x2F;&#x2F;输出 abcdefg  </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a href="http://www.cplusplus.com/reference/string/string/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/string/string/</a></p>
+<p><a href="https://www.geeksforgeeks.org/stdstring-class-in-c/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/stdstring-class-in-c/</a></p>
+<p><a href="https://www.tutorialspoint.com/cplusplus/cpp_strings.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/cplusplus/cpp_strings.htm</a></p>
 
       
     </div>
@@ -270,7 +288,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/10/%E9%A1%B9%E7%9B%AE/proj_02/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -284,7 +302,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/10/%E9%A1%B9%E7%9B%AE/proj_02/" class="post-title-link" itemprop="url">视频直播app</a>
+            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">YUV格式分析</a>
         </h1>
 
         <div class="post-meta">
@@ -293,24 +311,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-10 15:45:44" itemprop="dateCreated datePublished" datetime="2021-03-10T15:45:44+08:00">2021-03-10</time>
+              <time title="Created: 2021-07-01 08:07:24 / Modified: 08:16:28" itemprop="dateCreated datePublished" datetime="2021-07-01T08:07:24+08:00">2021-07-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 17:53:55" itemprop="dateModified" datetime="2021-06-26T17:53:55+08:00">2021-06-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">项目</span>
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
                   </a>
                 </span>
             </span>
@@ -326,31 +338,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>支持一对一视频按分钟计费，支持群视频计费，直播刷礼物，IM聊天</p>
-<h2 id="职责"><a href="#职责" class="headerlink" title="职责"></a>职责</h2><p>整个后端工作：从选购服务器开始一直到开发出具体逻辑的api</p>
+          <h2 id="大小计算"><a href="#大小计算" class="headerlink" title="大小计算"></a>大小计算</h2><p>RGB24 size＝w×h×3 Byte</p>
+<p>RGB32 size＝w×h×4 Byte</p>
+<p>I420（yuv420p）的数据量是 size＝w×h×1.5 Byte。 # w<em>h+ (w</em>h) / 4 + (w<em>h) / 4 = (w</em>h) * 3 / 2</p>
+<p>yuv420p示意图：</p>
 <ul>
-<li>红包逻辑</li>
-<li>好友关系</li>
-<li>群消息免打扰</li>
-<li>人脸识别集成</li>
-<li>苹果支付、微信与支付宝支付集成</li>
-<li>后台管理系统api开发：设置app开机画面、广告设置、设置主播提现比例、推送系统消息等</li>
-<li>C语言开发底层的音视频编码和解码功能</li>
-<li>集成QQ与微信登录等</li>
+<li><img src="/images/2021/yuv-1.jpeg" alt=""></li>
 </ul>
-<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p><img src="/images/2021/pic_0.png" alt=""></p>
-<h2 id="voip-一对一音视频通话"><a href="#voip-一对一音视频通话" class="headerlink" title="voip 一对一音视频通话"></a>voip 一对一音视频通话</h2><p><img src="/images/2021/voip_1.png" alt=""></p>
-<p><img src="/images/2021/voip_2.png" alt=""></p>
-<p><img src="/images/2021/voip_3.png" alt=""></p>
-<p><img src="/images/2021/voip_4.png" alt=""></p>
-<h2 id="好友"><a href="#好友" class="headerlink" title="好友"></a>好友</h2><p><img src="/images/2021/pic_5.png" alt=""></p>
-<h2 id="直播"><a href="#直播" class="headerlink" title="直播"></a>直播</h2><p><img src="/images/2021/pic_6.png" alt=""></p>
-<p><img src="/images/2021/pic_7.png" alt=""></p>
-<p><img src="/images/2021/pic_8.png" alt=""></p>
-<p><img src="/images/2021/pic_9.png" alt=""></p>
-<h2 id="群"><a href="#群" class="headerlink" title="群"></a>群</h2><p><img src="/images/2021/pic_10.png" alt=""></p>
-<h2 id="群内直播"><a href="#群内直播" class="headerlink" title="群内直播"></a>群内直播</h2><p><img src="/images/2021/pic_11.png" alt=""></p>
-<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p><img src="/images/2021/pic_12.png" alt=""></p>
+<p>其中前w<em>h Byte存储Y，接着的（w</em>h)/4 Byte存储U，最后(w*h)/4 Byte存储V</p>
+<p>注意上图中的yuv颜色对应关系，4个Y对应一组uv</p>
+<p>即： I420: YYYYYYYY UU VV =&gt;YUV420P</p>
+<p>YV12: YYYYYYYY VV UU =&gt;YUV420P # YV12虽然也是（4：2：0）,但是和I420在存储空间上面有些区别：UV的顺序不同，Plane模式, 类似格式：YU12</p>
+<p>NV12: YYYYYYYY UV UV =&gt;YUV420SP</p>
+<p>NV21: YYYYYYYY VU VU =&gt;YUV420SP</p>
+<p>ffmpeg中像素格式名称后面有“P”的，代表是planar格式，否则有可能是packed格式</p>
+<p>YUV格式有两大类：planar和packed。对于planar的YUV格式，先连续存储所有像素点的Y，紧接着存储所有像素点的U，随后是所有像素点的V。对于packed的YUV格式，每个像素点的Y,U,V是连续<strong>交叉存储</strong>的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AV_PIX_FMT_YUV420P,    &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp&#x3D;1.5B*8&#x3D;12, (1 Cr &amp; Cb sample per 2x2 Y samples, 相当1比4的关系)   </span><br><span class="line">AV_PIX_FMT_NV12,       &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first byte U and the </span><br><span class="line">following byte V)  ，一种two-plane模式，即Y和UV分为两个Plane，但是UV（CbCr）为交错存储,U&#x3D;Cb</span><br><span class="line">AV_PIX_FMT_NV21,       &#x2F;&#x2F;&#x2F;&lt; as above, but U and V bytes are swapped  </span><br><span class="line">AV_PIX_FMT_YUYV422,   &#x2F;&#x2F;&#x2F;&lt; packed YUV 4:2:2, 16bpp</span><br></pre></td></tr></table></figure>
+
+<h2 id="采样方式"><a href="#采样方式" class="headerlink" title="采样方式"></a>采样方式</h2><p>主流的采样方式有三种，YUV4:4:4，YUV4:2:2，YUV4:2:0</p>
+<p>以黑点表示采样该像素点的Y分量，以空心圆圈表示采用该像素点的UV分量:</p>
+<p><img src="/images/2021/yuv-2.png" alt=""></p>
+<p>YUV 4:2:0采样，每四个Y共用一组UV分量， 1.5B*8=12</p>
+<p>YUV 4:2:2采样，每两个Y共用一组UV分量， wh+wh/2+wh/2=2wh=16bit</p>
+<p>YUV 4:4:4采样，每一个Y对应一组UV分量</p>
+<h2 id="YUYV"><a href="#YUYV" class="headerlink" title="YUYV"></a>YUYV</h2><p>属于YUV422,每两个Y共用一组UV分量</p>
+<h2 id="YUV422P"><a href="#YUV422P" class="headerlink" title="YUV422P"></a>YUV422P</h2><p>属于YUV422,先存所有的Y，然后存所有的U，最后存所有的V</p>
+<h2 id="YUY2"><a href="#YUY2" class="headerlink" title="YUY2"></a>YUY2</h2><p>4:2:2，应该是指YUYV</p>
+<p><img src="/images/2021/yuy2.gif" alt=""></p>
+<p>Y0 U0 Y1 V0, Y2 U1 Y3 V1</p>
+<h2 id="UYVY"><a href="#UYVY" class="headerlink" title="UYVY"></a>UYVY</h2><p>4:2:2</p>
+<p><img src="/images/2021/uyvy.gif" alt=""></p>
+<p>U0 Y0 V0 Y1,U1 Y2 V1 Y3</p>
+<h1 id="读"><a href="#读" class="headerlink" title="读"></a>读</h1><h1 id="写"><a href="#写" class="headerlink" title="写"></a>写</h1><h2 id="保存YUV420P"><a href="#保存YUV420P" class="headerlink" title="保存YUV420P"></a>保存YUV420P</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fwrite(pFrameYUV-&gt;data[0],wxh,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[1],wxh&#x2F;4,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[2],wxh&#x2F;4,1,output);</span><br></pre></td></tr></table></figure>
+
+<h1 id="编码器需要的格式"><a href="#编码器需要的格式" class="headerlink" title="编码器需要的格式"></a>编码器需要的格式</h1><p>x264 支持直接输入YUV420P，NV12 h264_omx，mpeg1video支持YUV420P</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering</a></p>
+<p><a href="https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422" target="_blank" rel="noopener">https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422</a></p>
 
       
     </div>
@@ -370,7 +393,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/01/06/%E7%99%BE%E7%A7%91/%E5%85%B3%E4%BA%8EV2EX/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -384,7 +407,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/06/%E7%99%BE%E7%A7%91/%E5%85%B3%E4%BA%8EV2EX/" class="post-title-link" itemprop="url">关于V2EX</a>
+            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">Python常见错误</a>
         </h1>
 
         <div class="post-meta">
@@ -393,24 +416,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-01-06 14:23:17" itemprop="dateCreated datePublished" datetime="2021-01-06T14:23:17+08:00">2021-01-06</time>
+              <time title="Created: 2021-07-01 07:55:19 / Modified: 08:05:32" itemprop="dateCreated datePublished" datetime="2021-07-01T07:55:19+08:00">2021-07-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%99%BE%E7%A7%91/" itemprop="url" rel="index">
-                    <span itemprop="name">百科</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSL/" itemprop="url" rel="index">
+                    <span itemprop="name">SSL</span>
                   </a>
                 </span>
             </span>
@@ -426,24 +449,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这个网站是一个社区，发的帖子，内容也不是很长。大家可以评论。</p>
-<p>创始人是 <a href="https://jp.v2ex.com/member/Livid" target="_blank" rel="noopener">https://jp.v2ex.com/member/Livid</a>  ，昆明人。</p>
-<p>月度 pageviews 目前大约 2500 万</p>
-<p>它的广告费用还挺贵的。</p>
-<p>全站广告 - 广告以按月买断方式进行销售，价格 40000 人民币</p>
-<p><a href="https://www.v2ex.com/advertise" target="_blank" rel="noopener">https://www.v2ex.com/advertise</a></p>
-<p>我是 527086 号会员，加入于 2021-01-06 ，之前有个号忘记密码了。</p>
-<p>4800 人在线   最高记录 5298</p>
-<p>不会全文转载任何文章，而只会以链接方式分享</p>
-<p>反对无信息量的“顶”，“沙发”，“不明觉厉”等回复。</p>
-<p>如果你的回复对别人没有帮助，就不要回复了。</p>
-<p><a href="https://github.com/livid/" target="_blank" rel="noopener">https://github.com/livid/</a></p>
-<p><a href="https://livid.v2ex.com/about.html" target="_blank" rel="noopener">https://livid.v2ex.com/about.html</a></p>
-<p>这里有ifanr的创始人写的一篇：</p>
-<p><a href="https://www.ifanr.com/22202" target="_blank" rel="noopener">https://www.ifanr.com/22202</a></p>
-<p>商业模式，或者用更通俗的说法，如何赚钱，应该是从第一天就开始考虑的。</p>
-<p>即使不是从第一天就开始有收入，也应该让如何创造收入的 idea 在脑子中进行反复迭代，</p>
-<p>并在一个恰当的时间点在实际上的产品上应用。</p>
+          <h1 id="‘SSLCertVerificationError’-object-has-no-attribute-‘message’"><a href="#‘SSLCertVerificationError’-object-has-no-attribute-‘message’" class="headerlink" title="‘SSLCertVerificationError’ object has no attribute ‘message’"></a>‘SSLCertVerificationError’ object has no attribute ‘message’</h1><p>‘SSLCertVerificationError’ object has no attribute ‘message’ 错误：调试python后定位到</p>
+<p>‘[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1125)’</p>
+<p>The error indicates that a certificate is missing.</p>
+<p>one solution: Run /Applications/Python\ 3.7/Install\ Certificates.command（this command replaces the root certificates of the default Python installation with the ones shipped through the certifi package. ） certifi模块目录下面有一个cacert.pem，上面的命令应该是拷贝那个certifi下面的证书到openssl目录下。</p>
+<p><a href="https://www.openssl.org/docs/faq.html" target="_blank" rel="noopener">https://www.openssl.org/docs/faq.html</a> Why does <SSL program> fail with a certificate verify error?</p>
+<p>This problem is usually indicated by log messages saying something like “unable to get local issuer certificate” or “self signed certificate”.</p>
+<p>When a certificate is verified its root CA must be “trusted” by OpenSSL this typically means that</p>
+<p>the CA certificate must be placed in a directory or file</p>
+<p>and the relevant相关的 program configured to read it.</p>
+<p>you trust one specific certificate because you trust the parent of that certificate</p>
+<p><a href="https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate" target="_blank" rel="noopener">https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate</a></p>
+<p>指定编译的python3.8.0时, 在vs code中遇到 调试设置中的 python 路径无效， 无法使用自定义的python解释器:最后发现需要搞一个没有rpath的python3.8.0才能调试。</p>
+<p>在settings.json</p>
+<p><code>&quot;python.pythonPath&quot;:&quot;python3.8.0_for_debug&quot;</code></p>
+<p>在launch.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;env&quot;:&#123;&quot;DYLD_LIBRARY_PATH&quot;:&quot;&#x2F;path&#x2F;to&#x2F;python3&#x2F;mac&#x2F;lib:&#x2F;path&#x2F;to&#x2F;openssl&#x2F;lib&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后通过在代码中加入下面2行解决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">os.environ[&#39;REQUESTS_CA_BUNDLE&#39;]&#x3D; &#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39;</span><br><span class="line">os.environ[&#39;SSL_CERT_FILE&#39;]&#x3D;&#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39; 或者参考上面的命令Install Certificates.command里面建立软链接。不过openssl的目录可能不对。</span><br><span class="line">或者用certifi.where() 代替上面的路径！！！</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror" target="_blank" rel="noopener">https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror</a></p>
 
       
     </div>
@@ -463,7 +489,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -509,20 +535,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

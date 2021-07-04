@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/cJSON%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Xcode%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/cJSON%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">cJSON 使用手册</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Xcode%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Xcode简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 10:54:00 / Modified: 10:54:55" itemprop="dateCreated datePublished" datetime="2021-07-04T10:54:00+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 12:06:30 / Modified: 12:10:22" itemprop="dateCreated datePublished" datetime="2021-07-04T12:06:30+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/3%E6%96%B9%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">3方库</span>
+                  <a href="/categories/Xcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Xcode</span>
                   </a>
                 </span>
             </span>
@@ -241,8 +241,131 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://github.com/myforkers/cJSON" target="_blank" rel="noopener">https://github.com/myforkers/cJSON</a></p>
-<p>拷贝cJSON.h 和 cJSON.c 即可</p>
+          <p><a href="https://help.apple.com/xcode/mac/current/" target="_blank" rel="noopener">https://help.apple.com/xcode/mac/current/</a></p>
+<p><a href="https://developer.apple.com/documentation/xcode/" target="_blank" rel="noopener">https://developer.apple.com/documentation/xcode/</a></p>
+<h1 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h1><p>用文本编辑器打开,保存</p>
+<h1 id="Xcode-select是什么"><a href="#Xcode-select是什么" class="headerlink" title="Xcode-select是什么"></a>Xcode-select是什么</h1><p>Print or change the path to the active developer directory. This directory controls which tools are used for the Xcode command line tools</p>
+<p>你可以在 Xcode -&gt; Preference -&gt; Locations 去选择自己得 Command Line Tools，</p>
+<p>在这里选择 效力等同于 xcode-select,</p>
+<h1 id="XCode环境变量"><a href="#XCode环境变量" class="headerlink" title="XCode环境变量"></a>XCode环境变量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(PROJECT_DIR) .xcodeproj所在目录</span><br><span class="line">$(TARGETNAME) 工程名称</span><br></pre></td></tr></table></figure>
+
+<h1 id="调试-填写-命令行参数"><a href="#调试-填写-命令行参数" class="headerlink" title="调试 填写 命令行参数"></a>调试 填写 命令行参数</h1><p>Edit Scheme，弹出一个对话框如下，在Run-&gt;Arguments按顺序填写需要的命令行参数。</p>
+<h1 id="Xcode-scheme-排列-乱序"><a href="#Xcode-scheme-排列-乱序" class="headerlink" title="Xcode scheme 排列 乱序"></a>Xcode scheme 排列 乱序</h1><p>Open the file [YourApp].xcodeproj/xcuserdata/[YourUsername].xcuserdata/xcschemes/xcschememanagement.plist</p>
+<p>The “SchemeUserState” dictionary has entries for each scheme. In my file at least, they seem to be in alphabetical order. However, there is an integer key “orderHint” that seems to control the order in the scheme dropdown.</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/Vue-js%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/Vue-js%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Vue.js简明教程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 12:05:07 / Modified: 12:06:00" itemprop="dateCreated datePublished" datetime="2021-07-04T12:05:07+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var app &#x3D; new Vue(&#123;</span><br><span class="line"> el: &#39;#app&#39;,  #el 表示挂载绑定的html元素</span><br></pre></td></tr></table></figure>
+
+<h2 id="元素属性绑定"><a href="#元素属性绑定" class="headerlink" title="元素属性绑定"></a>元素属性绑定</h2><p>元素的属性，可以用v-bind绑定</p>
+<p>缩写，可以不用前面的v-bind，如:href=</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-bind:href&#x3D;&quot;url&quot;&gt;点我&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a :href&#x3D;&quot;url&quot;&gt;点我&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><p>html页面中值的显示用2个大括号包围起来 <div id="app">  </div> 这些渲染的代码可以放在单文件组件的template元素里面</p>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p>v-if，如果想用v-if同时控制多个html元素，可将这些html元素放在一个<template>元素里面，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-if&#x3D;&quot;ok&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在组件上用v-for（key是必须存在的） :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component v-for&#x3D;&quot;item in items&quot; :key&#x3D;&quot;item.id&quot;&gt;&lt;&#x2F;my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>v-for 还支持一个可选的第二个参数，即当前项的索引。</p>
+<p>也可以将第2个参数作为键名</p>
+<p>用第三个参数作为索引</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-on:click&#x3D;&quot;doSomething&quot;&gt;执行事件&lt;&#x2F;a&gt;  可以@click缩写</span><br><span class="line">&lt;a @click&#x3D;&quot;doSomething&quot;&gt;...&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>会执行在methods中定义的事件函数</p>
+<h2 id="向组件传递数据"><a href="#向组件传递数据" class="headerlink" title="向组件传递数据"></a>向组件传递数据</h2><p>用props，包括向嵌套的子组件传递数据也是用props</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post</span><br><span class="line"> v-for&#x3D;&quot;post in posts&quot;</span><br><span class="line"> v-bind:key&#x3D;&quot;post.id&quot;</span><br><span class="line"> v-bind:post&#x3D;&quot;post&quot;</span><br><span class="line">&gt;&lt;&#x2F;blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中blog-post是一个组件，post是一个对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props: [&#39;post&#39;],    在props中的变量不要用驼峰命名，可以用my_data这种形式。</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html</a></p>
+<p>不带参数的v-bind，可以传递一个对象的所有属性，下面假设有id和title2个属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post v-bind&#x3D;&quot;post&quot;&gt;&lt;&#x2F;blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p>等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post</span><br><span class="line"> v-bind:id&#x3D;&quot;post.id&quot;</span><br><span class="line"> v-bind:title&#x3D;&quot;post.title&quot;</span><br><span class="line">&gt;&lt;&#x2F;blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
+<h2 id="给组件传一个数组"><a href="#给组件传一个数组" class="headerlink" title="给组件传一个数组"></a>给组件传一个数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;elesos-component :my_data&#x3D;&#39;@json($tag_name_arr)&#39;&gt;&lt;&#x2F;elesos-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中的my_data是在props里面声明的变量。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>如何给button 绑定事件，并获取button的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button v-for&#x3D;&quot;(value, name, index) in my_data&quot; v-bind:value&#x3D;&quot;name&quot; @click&#x3D;&quot;process_click(name)&quot; type&#x3D;&quot;success&quot; plain&gt;&#123;&#123;name&#125;&#125;&#123;&#123;value&#125;&#125;&lt;&#x2F;el-button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>声明变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props: [&#39;my_data&#39;],</span><br></pre></td></tr></table></figure>
+
+<p>事件函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process_click:function (name) &#123;</span><br><span class="line">               console.log(name);            </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -262,7 +385,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/C%E5%92%8CC++%E8%AF%AD%E8%A8%80%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc/WebRTC%20%E5%BC%80%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -276,7 +399,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/C%E5%92%8CC++%E8%AF%AD%E8%A8%80%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">C和C++语言常见问题</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc/WebRTC%20%E5%BC%80%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">WebRTC 开源服务器</a>
         </h1>
 
         <div class="post-meta">
@@ -287,7 +410,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 10:52:49 / Modified: 10:53:35" itemprop="dateCreated datePublished" datetime="2021-07-04T10:52:49+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 12:03:47 / Modified: 12:04:26" itemprop="dateCreated datePublished" datetime="2021-07-04T12:03:47+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,8 +418,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/webrtc/" itemprop="url" rel="index">
+                    <span itemprop="name">webrtc</span>
                   </a>
                 </span>
             </span>
@@ -312,131 +435,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>#pragma pack(push,1)</li>
-</ul>
-<p>结构体字节对齐方式设置，把原来对齐方式压栈，并将新的对齐方式设置为一个字节对齐</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma pack(pop)            恢复对齐状态</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/vbLittleBoy/article/details/6935165" target="_blank" rel="noopener">https://blog.csdn.net/vbLittleBoy/article/details/6935165</a></p>
-<ul>
-<li>enum不要将变量写在后面</li>
-</ul>
-<p>正确的是enum test{}; 而不是enum {} test;</p>
-<ul>
-<li>cpp编译时：error: use of undeclared identifier ‘memcpy’</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Objective-C%20oc%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Objective-C%20oc%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Objective-C oc简明教程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 10:50:15 / Modified: 10:51:46" itemprop="dateCreated datePublished" datetime="2021-07-04T10:50:15+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html" target="_blank" rel="noopener">https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html</a></p>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (readonly) NSString *lastName;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void SomeFunction();</span><br></pre></td></tr></table></figure>
-
-<p>The equivalent Objective-C method declaration looks like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)someMethod;  减号： it is an instance method, which can be called on any instance of the class</span><br><span class="line">void SomeFunction(SomeType value);</span><br><span class="line">- (void)someMethodWithValue:(SomeType)value;</span><br><span class="line">- (void)someMethodWithFirstValue:(SomeType)value1 secondValue:(AnotherType)value2;</span><br></pre></td></tr></table></figure>
-
-<p>调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[someObject doSomething];</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)saySomething:(NSString *)greeting &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, greeting);  &#x2F;&#x2F;%@, used to denote an object    NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">&#125;</span><br><span class="line">NSString *testString &#x3D; @&quot;Hello, world!&quot;;  &#x2F;&#x2F;@符号  将C字符串转换为OC字符串,还有OC中的绝大部份的关键字都是以@符号开头，如@interface</span><br></pre></td></tr></table></figure>
-
-
-<p>“Jack”，这是一个C语言的字符串</p>
-<p>@“Jack”，这是一个OC的字符串常量</p>
-<p>NSString类型的指针变量，只能存储OC字符串的地址。</p>
-<p>语法格式：</p>
-<p>NSString *变量名 = @字符串常量;</p>
-<p>减号表示</p>
-<p>为实例方法，必须使用类的实例才可以调用的。加号表示类方法，这类方法是可以直接用类名来调用的</p>
-<p>中括号可以认为是调用你刚才写的这个方法，通常在Objective-C里说“消息”。</p>
-<p>比如C语言里你可以这么写：</p>
-<p>this.hello(true);</p>
-<p>在Objective-C里，就要写成：</p>
-<p>[self hello:YES];</p>
-<h2 id="与c对比"><a href="#与c对比" class="headerlink" title="与c对比"></a>与c对比</h2><p>OC中支持C语言中的所有的数据类型。</p>
-<p>OC语言完全兼容C语言，在OC中可以写任意的C代码</p>
-<h2 id="c-调用oc"><a href="#c-调用oc" class="headerlink" title="c++调用oc"></a>c++调用oc</h2><p>convert char * to NSString</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char* cstring &#x3D; &quot;Try harder&quot;;</span><br><span class="line">NSString* objcstring &#x3D; @(cstring);</span><br></pre></td></tr></table></figure>
-
-<p>convert map to NSDictionary</p>
-<p>void registerPubProperties(std::map&lt;std::string, std::string&gt; pubProperties){</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; &quot;sdk recv map data:&quot;&lt;&lt;std::endl;</span><br><span class="line"></span><br><span class="line">NSMutableDictionary *dict &#x3D; NSMutableDictionary.alloc.init;</span><br><span class="line">for(auto &amp;item:pubProperties)&#123;</span><br><span class="line">    std::cout&lt;&lt;item.first&lt;&lt;&quot;---&gt;&quot;&lt;&lt;item.second&lt;&lt;std::endl;</span><br><span class="line">    &#x2F;&#x2F;NSString *key &#x3D;   [NSString stringWithCString:item.first.c_str() encoding:NSUTF8StringEncoding];</span><br><span class="line">    &#x2F;&#x2F;NSString *value &#x3D; [NSString stringWithCString:item.second.c_str() encoding:NSUTF8StringEncoding];</span><br><span class="line">    NSString *key &#x3D; @(item.first.c_str());</span><br><span class="line">    NSString *val &#x3D; @(item.second.c_str());</span><br><span class="line">    dict[key] &#x3D; val;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;%@&quot;, dict);</span><br></pre></td></tr></table></figure>
-
-<p>}</p>
-<h2 id="oc调c"><a href="#oc调c" class="headerlink" title="oc调c++"></a>oc调c++</h2><p>.m =&gt; .mm</p>
+          <h2 id="Jitsi"><a href="#Jitsi" class="headerlink" title="Jitsi"></a>Jitsi</h2><p>SFU， 开发语言（java, lua）</p>
+<h2 id="Kurento"><a href="#Kurento" class="headerlink" title="Kurento"></a>Kurento</h2><p>开发语言（java）</p>
+<h2 id="mediasoup"><a href="#mediasoup" class="headerlink" title="mediasoup"></a>mediasoup</h2><h2 id="Janus"><a href="#Janus" class="headerlink" title="Janus"></a>Janus</h2><p>开发语言（C语言）</p>
+<h2 id="Licode"><a href="#Licode" class="headerlink" title="Licode"></a>Licode</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ctiforum.com/news/guonei/572996.html" target="_blank" rel="noopener">http://www.ctiforum.com/news/guonei/572996.html</a></p>
 
       
     </div>
@@ -456,7 +458,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -502,20 +504,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

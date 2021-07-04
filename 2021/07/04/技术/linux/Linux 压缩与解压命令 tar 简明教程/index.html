@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="常见压缩文件的扩展名 .gz：gzip压缩的；  .bz2：bzip2压缩的；  .tar：tar程序打包但没有压缩的；  .tar.gz：打包后并经过gzip压缩的；  .tar.bz2：打包后并经过bzip2压缩的；   语法123tar [-j或-z][cv][-f 生成的压缩文件名]  要被压缩的文件或目录   &#x2F;&#x2F;打包与压缩tar [-j或-z][xv][-f 生成的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tar简明教程">
+<meta property="og:url" content="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+<meta property="og:site_name" content="艺搜天下 | 视频技术博客">
+<meta property="og:description" content="常见压缩文件的扩展名 .gz：gzip压缩的；  .bz2：bzip2压缩的；  .tar：tar程序打包但没有压缩的；  .tar.gz：打包后并经过gzip压缩的；  .tar.bz2：打包后并经过bzip2压缩的；   语法123tar [-j或-z][cv][-f 生成的压缩文件名]  要被压缩的文件或目录   &#x2F;&#x2F;打包与压缩tar [-j或-z][xv][-f 生成的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-04T04:12:30.000Z">
+<meta property="article:modified_time" content="2021-07-04T04:13:49.172Z">
+<meta property="article:author" content="elesos">
+<meta property="article:tag" content="tar">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>tar简明教程 | 艺搜天下 | 视频技术博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">艺搜天下 | 视频技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">视频技术博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          tar简明教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 12:12:30 / Modified: 12:13:49" itemprop="dateCreated datePublished" datetime="2021-07-04T12:12:30+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tar/" itemprop="url" rel="index">
+                    <span itemprop="name">tar</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="常见压缩文件的扩展名"><a href="#常见压缩文件的扩展名" class="headerlink" title="常见压缩文件的扩展名"></a>常见压缩文件的扩展名</h2><ul>
+<li><p>.gz：gzip压缩的；</p>
+</li>
+<li><p>.bz2：bzip2压缩的；</p>
+</li>
+<li><p>.tar：tar程序打包但没有压缩的；</p>
+</li>
+<li><p>.tar.gz：打包后并经过gzip压缩的；</p>
+</li>
+<li><p>.tar.bz2：打包后并经过bzip2压缩的；</p>
+</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar [-j或-z][cv][-f 生成的压缩文件名]  要被压缩的文件或目录   &#x2F;&#x2F;打包与压缩</span><br><span class="line">tar [-j或-z][xv][-f 生成的压缩文件名][-C  解压目录]       &#x2F;&#x2F;解压</span><br><span class="line">tar [-j或-z][tv][-f 生成的压缩文件名]                  &#x2F;&#x2F;查看</span><br></pre></td></tr></table></figure>
+
+<p>参数解释： c建立打包档案，x解压, t查看含有哪些文件，（cxt不能同时使用）v显示处理信息</p>
+<p>j用于tar.bz2</p>
+<p>z用于.tar.gz，tgz</p>
+<h2 id="排除某些文件夹"><a href="#排除某些文件夹" class="headerlink" title="排除某些文件夹"></a>排除某些文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zcvf  tomcat.tar.gz --exclude&#x3D;tomcat&#x2F;logs --exclude&#x3D;tomcat&#x2F;webapp&#x2F;xxxx&#x2F;&#x2F;WEB-INF&#x2F;logs tomcat</span><br></pre></td></tr></table></figure>
+
+<p>将tomcat目录中，除了tomcat/logs 和 tomcat/webapp/xxxx//WEB-INF/logs 之外的文件压缩成压缩包：tomcat.tar.gz</p>
+<p>注意，去除的文件夹后面不能带/,否则该文件夹依然会被压缩！</p>
+<p>又如：如果123目录下有3个子目录，aa、bb、cc。我现在想只对aa和bb目录打包压缩，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf 123.tar.gz --exclude&#x3D;cc 123    #在123目录的外面运行</span><br></pre></td></tr></table></figure>
+
+<p>使用exclude参数来过滤不需要的目录或文件，排除某个文件的操作和目录一样。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以test目录为例：</p>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>首先进入上一层目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jcv-f test.tar.bz2 test</span><br></pre></td></tr></table></figure>
+
+<p>查看压缩包里有什么文件:（t重点在查看含有哪些文件，v显示详细信息）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -jtv-f test.tar.bz2</span><br><span class="line">tar -jt-f test.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jx-f test.tar.bz2 -C&#x2F;tmp   &#x2F;&#x2F;熟悉后，可以直接tar-jxf test.tar.bz2 -C&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压xz"><a href="#解压xz" class="headerlink" title="解压xz"></a>解压xz</h2><p>解压tar.xz文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf test.tar.xz</span><br></pre></td></tr></table></figure>
+
+<p>如果不能解压，请先执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install xz xz-devel</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压rar"><a href="#解压rar" class="headerlink" title="解压rar"></a>解压rar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;www.rarlab.com&#x2F;rar&#x2F;rarlinux-3.8.0.tar.gz </span><br><span class="line">tar zxvf rarlinux-3.8.0.tar.gz   </span><br><span class="line">cd rar </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>解压rar文件，可以使用unrar x **.rar</p>
+<p>如果报错：unrar: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory</p>
+<p>解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-y install libstdc++.so.6</span><br></pre></td></tr></table></figure>
+
+<h2 id="zip文件unzip"><a href="#zip文件unzip" class="headerlink" title="zip文件unzip"></a>zip文件unzip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y unzip zip</span><br><span class="line">tar (child): bzip2: Cannot exec: No such file or directory</span><br><span class="line">yum install bzip2</span><br><span class="line">tar: command not found</span><br><span class="line">yum install tar -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="Zip-只打包不压缩"><a href="#Zip-只打包不压缩" class="headerlink" title="Zip 只打包不压缩"></a>Zip 只打包不压缩</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip -0 -r mydirectory.zip mydirectory</span><br><span class="line">-0 means store and don&#39;t compress (-r recursive, -p preserve relative path).</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ha97.com/4024.html" target="_blank" rel="noopener">http://www.ha97.com/4024.html</a></p>
+<p><a href="http://dl528888.blog.51cto.com/2382721/739871" target="_blank" rel="noopener">http://dl528888.blog.51cto.com/2382721/739871</a></p>
+<p><a href="http://blog.is36.com/rar_for_linux/" target="_blank" rel="noopener">http://blog.is36.com/rar_for_linux/</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tar/" rel="tag"># tar</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/07/04/%E5%86%99%E4%BD%9C/YAML%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" rel="next" title="YAML简明教程">
+                  <i class="fa fa-chevron-left"></i> YAML简明教程
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzUwNi8yNDAwNg=="></div>
+  </div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见压缩文件的扩展名"><span class="nav-number">1.</span> <span class="nav-text">常见压缩文件的扩展名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排除某些文件夹"><span class="nav-number">3.</span> <span class="nav-text">排除某些文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩"><span class="nav-number">4.1.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压"><span class="nav-number">4.2.</span> <span class="nav-text">解压</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压xz"><span class="nav-number">5.</span> <span class="nav-text">解压xz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压rar"><span class="nav-number">6.</span> <span class="nav-text">解压rar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip文件unzip"><span class="nav-number">7.</span> <span class="nav-text">zip文件unzip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zip-只打包不压缩"><span class="nav-number"></span> <span class="nav-text">Zip 只打包不压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="elesos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">elesos</p>
+  <div class="site-description" itemprop="description">视频经验，视频解答，视频教程，视频教学</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/starRTC" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;starRTC" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:895377235@qq.com" title="E-Mail &amp;rarr; mailto:895377235@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">elesos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>

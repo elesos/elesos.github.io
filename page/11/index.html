@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Python/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">C++经典书籍推荐</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Python/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Python/" class="post-title-link" itemprop="url">源码编译Python</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 21:14:22 / Modified: 21:15:37" itemprop="dateCreated datePublished" datetime="2021-07-02T21:14:22+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-03 08:33:29 / Modified: 08:36:15" itemprop="dateCreated datePublished" datetime="2021-07-03T08:33:29+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
             </span>
@@ -241,8 +241,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list" target="_blank" rel="noopener">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
-<p>definitive：最权威的</p>
+          <p>注意xcode里面也有python framework</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Contents&#x2F;Developer&#x2F;SDKs&#x2F;MacOSX.sdk&#x2F;System&#x2F;Library&#x2F;Frameworks&#x2F;Python.framework</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://devguide.python.org/setup/" target="_blank" rel="noopener">https://devguide.python.org/setup/</a></p>
+<p>以下在mac下测试</p>
+<p>libzma</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install openssl xz gdbm zlib</span><br></pre></td></tr></table></figure>
+
+
+<p>GNU dbm (or GDBM, for short) is a library of database functions that use extensible hashing and work similar to the standard UNIX dbm. These routines are provided to a programmer needing to create and manipulate a hashed database.</p>
+<p>The basic use of GDBM is to store key/data pairs in a data file. Each key must be unique and each key is paired with only one data item.</p>
+<p><a href="https://github.com/python/cpython/blob/master/Mac/README.rst" target="_blank" rel="noopener">https://github.com/python/cpython/blob/master/Mac/README.rst</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-pydebug --with-openssl&#x3D;$(brew --prefix openssl) --with-zlib</span><br></pre></td></tr></table></figure>
+
+<p>unrecognized options: –with-zlib</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--with-libs&#x3D;zlib CPPFLAGS&#x3D;&#39;-I&#x2F;opt&#x2F;zlib&#x2F;include&#39; LDFLAGS&#x3D;&#39;-L&#x2F;opt&#x2F;zlib&#x2F;lib&#39;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew --prefix openssl&#x3D;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;openssl@1.1&#x2F; 里面放的是include，bin和lib,如果是源码安装的openssl，自己指定目录，不要用brew的</span><br></pre></td></tr></table></figure>
+
+<p>You might need to run make clean before or after re-running configure in a particular build directory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir debug</span><br><span class="line">cd debug</span><br><span class="line">..&#x2F;configure --with-pydebug</span><br><span class="line">make</span><br><span class="line">$ .&#x2F;configure --enable-framework&#x3D;&#x2F;Users&#x2F;ronald&#x2F;Library&#x2F;Frameworks</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+<p>This will install the framework itself in /Users/ronald/Library/Frameworks, the applications in a subdirectory of /Users/ronald/Applications and the command-line tools in /Users/ronald/bin.</p>
+<p><a href="https://github.com/python/cpython/tree/master/Mac#building-and-using-a-framework-based-python-on-macos" target="_blank" rel="noopener">https://github.com/python/cpython/tree/master/Mac#building-and-using-a-framework-based-python-on-macos</a></p>
+<p>有用选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--prefix&#x3D; --enable-shared </span><br><span class="line">--with-pydebug          build with Py_DEBUG defined</span><br><span class="line">--with-libs&#x3D;&#39;lib1 ...&#39;  link against additional libs</span><br><span class="line"></span><br><span class="line">..&#x2F;configure --with-openssl&#x3D;&#x2F;usr&#x2F;local&#x2F;opt&#x2F;openssl@1.1 --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;python_build_2 --enable-shared --with-libs&#x3D;zlib CPPFLAGS&#x3D;&#39;-I&#x2F;Users&#x2F;xx&#x2F;Downloads&#x2F;zlib_build&#x2F;include&#39; LDFLAGS&#x3D;&#39;-L&#x2F;Users&#x2F;xx&#x2F;Downloads&#x2F;zlib_build&#x2F;lib&#39;</span><br><span class="line">LDFLAGS&#x3D;&quot;-L&#x2F;usr&#x2F;local&#x2F;lib $LDFLAGS&quot;</span><br><span class="line">--with-libs&#x3D;libz</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;configure --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;python --enable-optimizations --disable-shared --disable-ipv6 --with-libs&#x3D;libz --with-openssl&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;openssl CPPFLAGS&#x3D;-I&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;zlib LDFLAGS&#x3D;-L&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;build&#x2F;zlib</span><br><span class="line"></span><br><span class="line">.&#x2F;python3 -c &quot;import zlib; print(zlib.__version__)&quot;</span><br><span class="line">Edit &#x2F;Modules&#x2F;Setup and uncomment the line:</span><br></pre></td></tr></table></figure>
+
+<p>zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --enable-shared --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;build&#x2F;python --with-openssl&#x3D;&#x2F;Users&#x2F;ws&#x2F;build&#x2F;openssl CPPFLAGS&#x3D;-I&#x2F;Users&#x2F;ws&#x2F;build&#x2F;zlib&#x2F;include LDFLAGS&#x3D;-L&#x2F;Users&#x2F;ws&#x2F;build&#x2F;zlib&#x2F;lib</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-openssl&#x3D;xxx&#x2F;OpenSSL&#x2F; --enable-shared</span><br></pre></td></tr></table></figure>
+
+<p>记得最后确认下输出，以确保ssl被链接上。如果ssl有rpath,把ssl库拷贝到python源码目录就可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python build finished, but the necessary bits to build these modules were not found:</span><br></pre></td></tr></table></figure>
+
+<h2 id="精简"><a href="#精简" class="headerlink" title="精简"></a>精简</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">rm -rf __pycache__ \</span><br><span class="line">rm -rf asyncio&#x2F;__pycache__ \</span><br><span class="line">rm -rf collections&#x2F;__pycache__ \</span><br><span class="line">rm -rf concurrent&#x2F;__pycache__  \</span><br><span class="line">rm -rf concurrent&#x2F;futures&#x2F;__pycache__  \</span><br><span class="line">rm -rf config-3.8-darwin  \</span><br><span class="line">rm -rf ctypes&#x2F;__pycache__  \</span><br><span class="line">rm -rf ctypes&#x2F;macholib&#x2F;__pycache__  \</span><br><span class="line">rm -rf ctypes&#x2F;test&#x2F;__pycache__  \</span><br><span class="line">rm -rf ctypes&#x2F;test  \</span><br><span class="line">rm -rf curses&#x2F;__pycache__  \</span><br><span class="line">rm -rf dbm&#x2F;__pycache__  \</span><br><span class="line">rm -rf distutils&#x2F;__pycache__  \</span><br><span class="line">rm -rf distutils&#x2F;command&#x2F;__pycache__  \</span><br><span class="line">rm -rf distutils&#x2F;tests  \</span><br><span class="line">rm -rf email&#x2F;__pycache__  \</span><br><span class="line">rm -rf email&#x2F;mime&#x2F;__pycache__  \</span><br><span class="line">rm -rf encodings&#x2F;__pycache__  \</span><br><span class="line">rm -rf ensurepip&#x2F;__pycache__  \</span><br><span class="line">rm -rf html&#x2F;__pycache__  \</span><br><span class="line">rm -rf http&#x2F;__pycache__  \</span><br><span class="line">rm -rf idlelib&#x2F;__pycache__  \</span><br><span class="line">rm -rf idlelib&#x2F;idle_test  \</span><br><span class="line">rm -rf importlib&#x2F;__pycache__  \</span><br><span class="line">rm -rf json&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;fixes&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;pgen2&#x2F;__pycache__  \</span><br><span class="line">rm -rf lib2to3&#x2F;tests  \</span><br><span class="line">rm -rf logging&#x2F;__pycache__  \</span><br><span class="line">rm -rf multiprocessing&#x2F;__pycache__  \</span><br><span class="line">rm -rf multiprocessing&#x2F;dummy&#x2F;__pycache__  \</span><br><span class="line">rm -rf pydoc_data&#x2F;__pycache__ \</span><br><span class="line">rm -rf sqlite3&#x2F;__pycache__  \</span><br><span class="line">rm -rf sqlite3&#x2F;test  \</span><br><span class="line">rm -rf test  \</span><br><span class="line">rm -rf tkinter&#x2F;__pycache__  \</span><br><span class="line">rm -rf tkinter&#x2F;test  \</span><br><span class="line">rm -rf turtledemo&#x2F;__pycache__  \</span><br><span class="line">rm -rf unittest  \</span><br><span class="line">rm -rf urllib&#x2F;__pycache__  \</span><br><span class="line">rm -rf venv&#x2F;__pycache__  \</span><br><span class="line">rm -rf wsgiref&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;dom&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;etree&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;parsers&#x2F;__pycache__  \</span><br><span class="line">rm -rf xml&#x2F;sax&#x2F;__pycache__  \</span><br><span class="line">rm -rf xmlrpc&#x2F;__pycache__ </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">distutils\command\下的exe</span><br><span class="line">rm -rf site-packages&#x2F;*</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -262,7 +303,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -276,7 +317,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">Curl编译</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">Electron打包</a>
         </h1>
 
         <div class="post-meta">
@@ -287,7 +328,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 21:09:41 / Modified: 21:13:05" itemprop="dateCreated datePublished" datetime="2021-07-02T21:09:41+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-03 08:17:04 / Modified: 08:19:53" itemprop="dateCreated datePublished" datetime="2021-07-03T08:17:04+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,8 +336,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index">
-                    <span itemprop="name">编译</span>
+                  <a href="/categories/Electron/" itemprop="url" rel="index">
+                    <span itemprop="name">Electron</span>
                   </a>
                 </span>
             </span>
@@ -312,36 +353,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>先编译openssl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.git</span><br><span class="line">autoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO</span><br><span class="line">.&#x2F;configure  --with-ssl&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl  --prefix&#x3D;   </span><br><span class="line">make </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+          <p>打包用electron-builder，它比electron-packager有更丰富的的功能，可以生成安装程序，支持自动更新</p>
+<p><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="noopener">https://github.com/electron-userland/electron-builder</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g yarn  # package manager，类似npm</span><br><span class="line">yarn add electron-builder --dev</span><br></pre></td></tr></table></figure>
 
-<p>If you have OpenSSL installed in /usr/local/ssl, you can run configure like:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+<p>需要在package.json里面指定build配置，</p>
+<p>比如files指定把哪些文件打包，在scripts里面定义打包的key，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;pack&quot;: &quot;electron-builder --dir&quot;,   &#x2F;&#x2F;运行yarn pack,用于测试</span><br><span class="line">  &quot;dist&quot;: &quot;electron-builder&quot;,  &#x2F;&#x2F;运行yarn dist打包成windows installer等</span><br><span class="line">&quot;postinstall&quot;: &quot;electron-builder install-app-deps&quot;  &#x2F;&#x2F;依赖</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>否则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl&#x3D;&#x2F;opt&#x2F;OpenSSL</span><br></pre></td></tr></table></figure>
+<p>electron-webpack：Scripts and configurations to compile Electron applications using webpack</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron-userland&#x2F;electron-webpack-quick-start.git</span><br><span class="line">yarn  # install dependencies，可能需要如下配置：</span><br><span class="line">yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">yarn dist  #compile source code ,create webpack output and build with electron-builder,这步会下载https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;releases&#x2F;download&#x2F;v8.2.0&#x2F;electron-v8.2.0-win32-x64.zip,可以自已下载后放到%LOCALAPPDATA%&#x2F;electron&#x2F;Cache</span><br></pre></td></tr></table></figure>
 
-<p>If you have OpenSSL installed, but with the libraries in one place and the header files somewhere else, you have to set the LDFLAGS and CPPFLAGS environment variables prior to running configure. Something like this should work:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPPFLAGS&#x3D;&quot;-I&#x2F;path&#x2F;to&#x2F;ssl&#x2F;include&quot; LDFLAGS&#x3D;&quot;-L&#x2F;path&#x2F;to&#x2F;ssl&#x2F;lib&quot; .&#x2F;configure  &#x2F;&#x2F;如果删除了动态库的软链接，还需要修改pc文件。</span><br></pre></td></tr></table></figure>
+<p>最终会生成一个安装包程序。</p>
+<ul>
+<li>32位系统的包怎么打？</li>
+</ul>
+<p><a href="https://www.electron.build/cli" target="_blank" rel="noopener">https://www.electron.build/cli</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &#123;</span><br><span class="line">  &quot;win&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;target&quot;: &quot;nsis&quot;,</span><br><span class="line">        &quot;arch&quot;: [</span><br><span class="line">          &quot;x64&quot;,</span><br><span class="line">          &quot;ia32&quot;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>If you have shared SSL libs installed in a directory where your run-time linker doesn’t find them (which usually causes configure failures), you can provide this option to gcc to set a hard-coded path to the run-time linker:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS&#x3D;-Wl,-R&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib .&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apple&#39;s SSL&#x2F;TLS implementation ,secure transport: --with-secure-transport  or --with-darwin-ssl</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ARCH&#x3D;x86_64</span><br><span class="line">export SDK&#x3D;macosx</span><br><span class="line">export DEPLOYMENT_TARGET&#x3D;10.8</span><br><span class="line"></span><br><span class="line">export CFLAGS&#x3D;&quot;-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min&#x3D;$DEPLOYMENT_TARGET&quot;</span><br><span class="line">.&#x2F;configure --host&#x3D;$ARCH-apple-darwin --prefix $(pwd)&#x2F;artifacts --with-darwin-ssl</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>其它选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--disable-static --with-zlib&#x3D;PATH</span><br></pre></td></tr></table></figure>
-
-<h2 id="win"><a href="#win" class="headerlink" title="win"></a>win</h2><p>开始菜单中打开 Visual Studio 目录中的 VS2017的开发人员命令提示符，并切换到 curl 解压目录下的 winbuild 目录下；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll &#x2F;&#x2F;输出在 curl 目录 builds 下。</span><br><span class="line">静态 nmake &#x2F;f Makefile.vc mode&#x3D;static ENABLE_IDN&#x3D;no</span><br><span class="line"></span><br><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll ZLIB_PATH&#x3D;D:\fvbl\3rdparty\libz\win SSL_PATH&#x3D;D:\fvbl\3rdparty\OpenSSL\win ENABLE_WINSSL&#x3D;no WITH_SSL&#x3D;dll WITH_ZLIB&#x3D;dll MACHINE&#x3D;x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-ssl&#x3D;xxx&#x2F;OpenSSL--with-zlib&#x3D;&#x2F;xxx&#x2F;zlib&#x2F; --disable-static</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://curl.haxx.se/docs/install.html" target="_blank" rel="noopener">https://curl.haxx.se/docs/install.html</a></p>
-<p><a href="https://curl.se/download.html" target="_blank" rel="noopener">https://curl.se/download.html</a></p>
-<p><a href="https://www.cnblogs.com/rxbook/p/10881822.html" target="_blank" rel="noopener">https://www.cnblogs.com/rxbook/p/10881822.html</a></p>
+<p>electron-forge combines electron-packager and electron-builder together into one tool in order to perform both parts in one go (plus other features).</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/xiaoniuzai/p/12356208.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoniuzai/p/12356208.html</a></p>
 
       
     </div>
@@ -361,7 +392,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -375,7 +406,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">c++ 互相调用</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Electron简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -384,24 +415,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-07-02 08:13:01" itemprop="dateCreated datePublished" datetime="2021-07-02T08:13:01+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-03 07:50:34 / Modified: 08:18:44" itemprop="dateCreated datePublished" datetime="2021-07-03T07:50:34+08:00">2021-07-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 10:42:02" itemprop="dateModified" datetime="2021-07-04T10:42:02+08:00">2021-07-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/Electron/" itemprop="url" rel="index">
+                    <span itemprop="name">Electron</span>
                   </a>
                 </span>
             </span>
@@ -417,77 +442,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C-调C"><a href="#C-调C" class="headerlink" title="C++调C"></a>C++调C</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;c头文件或函数</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+          <p>GitHub开发的，可通过JavaScript（主要还是node.js）, HTML和CSS开发跨平台的桌面软件，兼容 Mac、Windows 和 Linux，vscode就是基于electron开发的。teams也是</p>
+<p>2021年，有道云笔记也用这个了。</p>
+<p><a href="https://github.com/electron/electron" target="_blank" rel="noopener">https://github.com/electron/electron</a></p>
+<p><a href="https://www.electronjs.org/" target="_blank" rel="noopener">https://www.electronjs.org/</a></p>
+<p>参考：<a href="https://www.zhihu.com/question/53230344" target="_blank" rel="noopener">https://www.zhihu.com/question/53230344</a></p>
+<h1 id="electron-quick-start"><a href="#electron-quick-start" class="headerlink" title="electron-quick-start"></a>electron-quick-start</h1><p>Electron不是某个GUI库的javascript版本，可以把它当作一个精简版的 Chromium 浏览器，使用web页面作为它的GUI</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron --save-dev &#x2F;&#x2F;Mac下不要-g</span><br></pre></td></tr></table></figure>
 
-<h1 id="C-中调用C库"><a href="#C-中调用C库" class="headerlink" title="C++中调用C库"></a>C++中调用C库</h1><p>做一个C动态库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void hello()&#123;  </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">gcc -shared -fPIC -o libhello.so hello.c</span><br></pre></td></tr></table></figure>
+<p>示例工程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start</span><br><span class="line">cd electron-quick-start</span><br><span class="line">npm install</span><br><span class="line">npm start  &#x2F;&#x2F;npm start命令会让npm执行定义在package.json中的start命令</span><br></pre></td></tr></table></figure>
 
-<p>C++程序调用它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp  -lhello</span><br></pre></td></tr></table></figure>
+<p>这样会生成一个GUI桌面程序，参考文档：<a href="https://electronjs.org/docs/tutorial/quick-start" target="_blank" rel="noopener">https://electronjs.org/docs/tutorial/quick-start</a></p>
+<p>应用的入口是 package.json 文件，</p>
+<p>最基本的 Electron 应用一般包含3个文件， package.json，main.js(应用的启动脚本)和index.html</p>
+<p>electron.app负责管理Electron 应用程序的生命周期</p>
+<p>electron.BrowserWindow类负责创建窗口</p>
+<p>第一行是js解构赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; &#x3D; require(&#39;electron&#39;)</span><br></pre></td></tr></table></figure>
 
-<h1 id="C中调用C-库"><a href="#C中调用C-库" class="headerlink" title="C中调用C++库"></a>C中调用C++库</h1><p>将 C++ 函数声明为extern “C”（在你的 C++ 代码里做这个声明）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world()</span><br><span class="line">&#123;  </span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;world&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考var {name, age, passport} = person;</p>
+<h1 id="electron-api-demos"><a href="#electron-api-demos" class="headerlink" title="electron-api-demos"></a>electron-api-demos</h1><p><a href="https://github.com/electron/electron-api-demos" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos</a> &amp;&amp; <a href="https://github.com/electron/electron-api-demos/blob/master/docs.md" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos/blob/master/docs.md</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-api-demos</span><br><span class="line">$ cd electron-api-demos</span><br><span class="line">$ npm install</span><br><span class="line">$ npm start  &#x2F;&#x2F;or npm run dev</span><br></pre></td></tr></table></figure>
 
-<p>编译并copy到系统库目录下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC -o libworld.so world.cpp </span><br><span class="line">cp libworld.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+<h1 id="electron-sample-apps"><a href="#electron-sample-apps" class="headerlink" title="electron-sample-apps"></a>electron-sample-apps</h1><p><a href="https://github.com/sindresorhus/awesome-electron" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome-electron</a></p>
+<p><a href="https://github.com/hokein/electron-sample-apps" target="_blank" rel="noopener">https://github.com/hokein/electron-sample-apps</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron</span><br><span class="line">electron &lt;electron-sample-apps-path&gt;&#x2F;&lt;sample-name&gt;</span><br></pre></td></tr></table></figure>
 
-<p>做一个中间接口库，对C++库进行二次封装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; mid.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world();</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;  &#x2F;&#x2F; 即使这是一个C++程序，下列这个函数的实现也要以C约定的风格！</span><br><span class="line">#endif  </span><br><span class="line"> </span><br><span class="line">void m_world()  </span><br><span class="line">&#123;    </span><br><span class="line"></span><br><span class="line">  world();  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<p>其中m_world为libworld库中world方法的二次封装， 编译并copy到系统库目录下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared  -fPIC -o libmid.so mid.cpp -lworld</span><br><span class="line">cp libmid.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>在C程序中通过链接<strong>二次接口库</strong>去调用C++库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  m_world(); </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gcc test.c -lmid -o test</span><br></pre></td></tr></table></figure>
-
-<p>注：对于C++库中含有类的，可以在二次接口函数中生成临时对象来调用对应的功能函数。</p>
-<p><a href="http://www.cppblog.com/wolf/articles/77828.html" target="_blank" rel="noopener">http://www.cppblog.com/wolf/articles/77828.html</a></p>
-<h1 id="C-调用-Python"><a href="#C-调用-Python" class="headerlink" title="C++ 调用 Python"></a>C++ 调用 Python</h1><p>Python 本身就是一个C库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyRun_SimpleString(&quot;print &#39;Hello Python!&#39;\n&quot;);</span><br><span class="line">所有Python元素，module、function、tuple、string等等，实际上都是PyObject。C语言里操纵它们，一律使用PyObject *</span><br><span class="line">创建Python类型的变量，使用PyXXX_New可以创建类型为XXX的变量 PyTuple_New(1);</span><br></pre></td></tr></table></figure>
-
-<p>环境变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH&#x3D;.:$PYTHONPATH</span><br></pre></td></tr></table></figure>
-
-<p>//加载模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyImport_ImportModule(char *name)</span><br><span class="line">PyObject* PyImport_Import(PyObject *name)</span><br><span class="line">PyObject* PyString_FromString(const char*)</span><br></pre></td></tr></table></figure>
-
-<p>上面两个api都是用来动态加载python模块的。区别在于前者一个使用的是C的字符串，而后者的name是一个python对象，这个python对象需要通过PyString_FromString(const char*)来生成，其值为要导入的模块名</p>
-<p>//导入函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyModule_GetDict( PyObject *module)</span><br></pre></td></tr></table></figure>
-
-<p>可以获得Python模块中的函数列表。函数返回一个字典。字典中的关键字为函数名，值为函数的调用地址。 字典里面的值可以通过PyObject* PyDict_GetItemString( PyObject *p, const char *key) 函数来获取，其中p是PyModule_GetDict()的字典，而key则是对应的函数名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_GetAttrString(PyObject *o, char *attr_name)</span><br></pre></td></tr></table></figure>
-
-<p>返回模块对象中的attr_name属性或<strong>函数</strong>，相当于Python中表达式语句：o.attr_name</p>
-<p>//调用函数相关</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_CallObject( PyObject *callable_object, PyObject *args)</span><br><span class="line">PyObject* PyObject_CallFunction( PyObject *callable_object, char *format, ...)</span><br></pre></td></tr></table></figure>
-
-<p>使用上面两个函数可以在C程序中调用Python中的函数。callable_object为要调用的函数对象，也就是通过上述导入函数得到的函数对象，</p>
-<p>区别在于前者使用python的tuple来传参，后者则使用类似c语言printf的风格进行传参。</p>
-<p>如果不需要参数，那么args可能为NULL。返回成功时调用的结果，或失败时返回NULL。</p>
-<p>相当于Python表达式 apply(callable_object, args) 或 callable_object(*args)</p>
-<p>对数字和字符串进行转换处理，使之变成Python中相应的数据类型。 PyObject* Py_BuildValue( const char *format, …) format是要构造的参数的类型列表，函数中剩余的参数即要转换的C语言中的整型、浮点型或者字符串等。其返回值为PyObject型的指针。</p>
-<p>PyObject* PyList_New( Py_ssize_t len)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建一个新的Python列表，len为所创建列表的长度</span><br></pre></td></tr></table></figure>
-
-
-<p>PyObject* PyTuple_New( Py_ssize_t len)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyTuple_New()函数返回所创建的元组。</span><br></pre></td></tr></table></figure>
-
-
-<p>PyObject* PyDict_New()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyDict_New()函数返回所创建的字典。</span><br></pre></td></tr></table></figure>
-
-<p>向 Python 传递参数 使用 PyTuple_New 创建元组， PyTuple_SetItem 设置元组值</p>
-<p>转换 Python 返回值</p>
-<p>库里面的一些函数将返回值转换为 C++ , 例如 PyInt_AsLong，PyFloat_AsDouble， PyString_AsString 等。</p>
-<p>还可以使用 PyArg_ParseTuple 函数来将返回值作为元组解析</p>
-<p>把Python代码直接变成C代码 easy_install -U cython <a href="http://docs.cython.org/en/latest/index.html" target="_blank" rel="noopener">http://docs.cython.org/en/latest/index.html</a></p>
-<p><a href="https://docs.python.org/2/c-api/index.html" target="_blank" rel="noopener">https://docs.python.org/2/c-api/index.html</a></p>
-<p><a href="https://docs.python.org/2/extending/embedding.html" target="_blank" rel="noopener">https://docs.python.org/2/extending/embedding.html</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/20150641" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20150641</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/79896193" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79896193</a></p>
-<p><a href="https://blog.csdn.net/tobacco5648/article/details/50890106" target="_blank" rel="noopener">https://blog.csdn.net/tobacco5648/article/details/50890106</a></p>
 
       
     </div>
@@ -507,7 +488,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -553,20 +534,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -58,7 +58,7 @@
 <meta property="og:description" content="#pragma pack(push,1)  结构体字节对齐方式设置，把原来对齐方式压栈，并将新的对齐方式设置为一个字节对齐 1#pragma pack(pop)            恢复对齐状态  https:&#x2F;&#x2F;blog.csdn.net&#x2F;vbLittleBoy&#x2F;article&#x2F;details&#x2F;6935165  enum不要将变量写在后面  正确的是enum test{}; 而不是enum">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-04T02:52:49.000Z">
-<meta property="article:modified_time" content="2021-07-04T02:53:35.527Z">
+<meta property="article:modified_time" content="2021-07-04T04:11:22.605Z">
 <meta property="article:author" content="elesos">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 10:52:49 / Modified: 10:53:35" itemprop="dateCreated datePublished" datetime="2021-07-04T10:52:49+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 10:52:49 / Modified: 12:11:22" itemprop="dateCreated datePublished" datetime="2021-07-04T10:52:49+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,6 +257,34 @@
 <li>cpp编译时：error: use of undeclared identifier ‘memcpy’</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>xcode non-portable path to file specified path differs in case from file name on disk</li>
+</ul>
+<p>可能是Include的文件大小写不对。</p>
+<ul>
+<li><p>xcode __stdcall calling convention ignored for this target</p>
+<p>stdcall is used only on Windows and has no meaning in Linux</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ifndef WIN32 </span><br><span class="line">#define __stdcall</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>warning C4018: “&lt;”: 有符号/无符号不匹配</li>
+</ul>
+<p>一般都是加上强制转换符 (size_t)(bytes - begin) &lt; str.length()</p>
+<ul>
+<li>overrides a member function but is not marked ‘override’</li>
+</ul>
+<p>覆盖的函数加上override关键字</p>
+<ul>
+<li>Use of undeclared identifier ‘std’</li>
+</ul>
+<p>看看std后面用的什么组件。加上它的头文件</p>
+<ul>
+<li>error LNK2001</li>
+</ul>
+<p>看是不是把dllimport误写成dllexport了</p>
 
     </div>
 
@@ -342,20 +370,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

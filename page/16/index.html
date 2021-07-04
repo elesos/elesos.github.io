@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/18/%E5%BD%B1%E8%A7%86/%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/18/%E5%BD%B1%E8%A7%86/%E8%82%96%E7%94%B3%E5%85%8B%E7%9A%84%E6%95%91%E8%B5%8E/" class="post-title-link" itemprop="url">肖申克的救赎</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/" class="post-title-link" itemprop="url">c++ Lambda</a>
         </h1>
 
         <div class="post-meta">
@@ -214,24 +214,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-18 11:09:25" itemprop="dateCreated datePublished" datetime="2021-03-18T11:09:25+08:00">2021-03-18</time>
+              <time title="Created: 2021-07-02 08:04:02 / Modified: 08:07:55" itemprop="dateCreated datePublished" datetime="2021-07-02T08:04:02+08:00">2021-07-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BD%B1%E8%A7%86/" itemprop="url" rel="index">
-                    <span itemprop="name">影视</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -247,8 +241,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>下载：关注公众号回复暗语 ajte  获取下载链接</p>
-<p><img src="/images/qrcode.jpg" alt=""></p>
+          <p>方便定义匿名函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[capture list] (params list) mutable exception-&gt; return type &#123; function body &#125;</span><br><span class="line">[capture list] (params list) -&gt; return type &#123;function body&#125;</span><br><span class="line">[capture list] (params list) &#123;function body&#125;</span><br><span class="line">[capture list] &#123;function body&#125;</span><br></pre></td></tr></table></figure>
+
+<p>capture list：捕获外部变量列表 , &amp;, a, b除a和b按值进行传递外，其他参数都按引用进行传递。 a, &amp;b 将a按值进行传递，b按引用进行传递。 =，&amp;a, &amp;b 除a和b按引用进行传递外，其他参数都按值进行传递。</p>
+<p>params list：形参</p>
+<p>mutable指示符：用来说明是否可以修改捕获的变量</p>
+<p>exception：异常设定</p>
+<p>return type：返回类型</p>
+<p>function body：函数体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 123;</span><br><span class="line">  auto f &#x3D; [a]()mutable &#123; cout &lt;&lt; ++a; &#125;; &#x2F;&#x2F; 不会报错</span><br><span class="line">  cout &lt;&lt; a &lt;&lt; endl; &#x2F;&#x2F; 输出：123</span><br><span class="line">  f(); &#x2F;&#x2F; 输出：124</span><br></pre></td></tr></table></figure>
+
+<h1 id="可调用对象"><a href="#可调用对象" class="headerlink" title="可调用对象"></a>可调用对象</h1><p>对于一个对象或者一个表达式，如果可以对其使用调用运算符，则称为可调用对象，如果类定义了调用运算符，则该类的对象称作函数对象</p>
+<p>一个 lambda 表达式表示一个可调用的代码单元</p>
 
       
     </div>
@@ -268,7 +273,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/10/%E7%90%90%E4%BA%8B/%E5%8A%9E%E7%90%86%E8%90%A5%E4%B8%9A%E6%89%A7%E7%85%A7/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_thread/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -282,7 +287,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/10/%E7%90%90%E4%BA%8B/%E5%8A%9E%E7%90%86%E8%90%A5%E4%B8%9A%E6%89%A7%E7%85%A7/" class="post-title-link" itemprop="url">办理营业执照</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_thread/" class="post-title-link" itemprop="url">c++ thread</a>
         </h1>
 
         <div class="post-meta">
@@ -292,14 +297,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-03-10 15:52:20" itemprop="dateCreated datePublished" datetime="2021-03-10T15:52:20+08:00">2021-03-10</time>
+              <time title="Created: 2021-07-02 07:55:17" itemprop="dateCreated datePublished" datetime="2021-07-02T07:55:17+08:00">2021-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
+                <time title="Modified: 2021-07-04 11:56:08" itemprop="dateModified" datetime="2021-07-04T11:56:08+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -307,8 +312,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -324,11 +329,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>因为需要申请微信支付，而个人订阅号不能申请，所以申请了个体工商户的营业执照。</p>
-<p>我所在的地方，是需要村里先开个证明，模板最好找工商所要最新的，不然他们不认可。</p>
-<p>然后自已下载一个”登记注册身份验证”的app，是国家工商总局开发的。在里面选择”新用户注册”，然后人脸识别。这一步不会的可以让工作人员帮你弄。</p>
-<p>不要多久，就会给你把执照打印出来了。（工本费25元）</p>
-<p>临走记得说声谢谢。</p>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::thread thread_obj(func, params);</span><br><span class="line"></span><br><span class="line">std::thread::join()  &#x2F;&#x2F;wait for a thread </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> std::thread t1(callable);   &#x2F;&#x2F; Start thread t1   </span><br><span class="line"> t1.join(); &#x2F;&#x2F; Wait for t1 to finish</span><br><span class="line"> </span><br><span class="line"> if(joinable())&#123;</span><br><span class="line">表示线程已结束</span><br><span class="line">&#125;</span><br><span class="line">终止线程，需要先设置一个循环退出变量，然后检查是否joinable,然后用join等待退出</span><br></pre></td></tr></table></figure>
+
+<h1 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> std::this_thread::sleep_for(std::chrono::seconds(1));</span><br><span class="line">std::this_thread::sleep_for(std::chrono::milliseconds(interval));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">auto start &#x3D; std::chrono::high_resolution_clock::now(); &#x2F;&#x2F;#include &lt;chrono&gt;</span><br><span class="line">  std::this_thread::sleep_for(2000ms);  &#x2F;&#x2F;Blocks the execution of the current thread</span><br><span class="line">  auto end &#x3D; std::chrono::high_resolution_clock::now();</span><br><span class="line">  std::chrono::duration&lt;double, std::milli&gt; elapsed &#x3D; end-start;</span><br><span class="line">  std::cout &lt;&lt; &quot;Waited &quot; &lt;&lt; elapsed.count() &lt;&lt; &quot; ms\n&quot;;   &#x2F;&#x2F;Waited 2000.12 ms</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Sleep 函数告诉操作系统 “在未来的多少毫秒内我不参与 CPU 竞争”。</p>
+<p>Thread.Sleep(0) 的作用是 “触发操作系统立刻重新进行一次 CPU 竞争”。竞争的结果也许是当前线程仍然获得 CPU 控制权，也许会换成别的线程获得 CPU 控制权。</p>
+<p>1秒(s) ＝1000毫秒(ms)</p>
+<p>1毫秒(ms)＝1000微秒 (us)</p>
+<p>1微秒(us)＝1000纳秒 (ns)</p>
+<p>1秒=10的9次方</p>
+<p><a href="https://zh.wikipedia.org/zh-hans/数量级_(时间)" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-hans/%E6%95%B0%E9%87%8F%E7%BA%A7_(%E6%97%B6%E9%97%B4)</a></p>
+<p>1ks千秒=10的3次方秒</p>
+<p>1Ms兆秒=10的6次方秒</p>
+<p>1吉秒Gs=10的9次方秒，约31.7年。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">离开作用域就释放mutex了</span><br><span class="line">std::lock_guard&lt;std::mutex&gt; lock(io_mutex); &#x2F;&#x2F;lock_guard是一个类，是mutex的包装 https:&#x2F;&#x2F;en.cppreference.com&#x2F;w&#x2F;cpp&#x2F;thread&#x2F;lock_guard</span><br><span class="line">std::unique_lock&lt;std::mutex&gt; locker(mutex_);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown" target="_blank" rel="noopener">https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown</a>.</p>
+<h2 id="detach"><a href="#detach" class="headerlink" title="detach"></a>detach</h2><p>使用join(),线程运行完,main函数才能结束。</p>
+<p>当使用detach()函数时，主调线程继续运行，被调线程驻留后台运行，主调线程无法再取得该被调线程的控制权。当主调线程结束时，由运行时库负责清理与被调线程相关的资源。使用detach(),main函数不用等待线程结束才能结束。有时候线程还没运行完，main函数就已经结束了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://en.cppreference.com/w/cpp/thread/thread/detach" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/detach</a></p>
+<p><a href="https://en.cppreference.com/w/cpp/thread/thread/joinable" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/joinable</a></p>
+<p><a href="https://www.cplusplus.com/reference/thread/thread/detach/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/thread/thread/detach/</a></p>
+<p><a href="https://www.geeksforgeeks.org/multithreading-in-cpp/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/multithreading-in-cpp/</a></p>
 
       
     </div>
@@ -348,7 +373,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/03/10/%E9%A1%B9%E7%9B%AE/proj_06/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -362,7 +387,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/10/%E9%A1%B9%E7%9B%AE/proj_06/" class="post-title-link" itemprop="url">微信公众号开发</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/" class="post-title-link" itemprop="url">c++ list</a>
         </h1>
 
         <div class="post-meta">
@@ -371,24 +396,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-03-10 15:49:44" itemprop="dateCreated datePublished" datetime="2021-03-10T15:49:44+08:00">2021-03-10</time>
+              <time title="Created: 2021-07-02 07:50:13 / Modified: 07:53:11" itemprop="dateCreated datePublished" datetime="2021-07-02T07:50:13+08:00">2021-07-02</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-26 16:48:37" itemprop="dateModified" datetime="2021-06-26T16:48:37+08:00">2021-06-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">项目</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -404,7 +423,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="樱花部落"><a href="#樱花部落" class="headerlink" title="樱花部落"></a>樱花部落</h3>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">std::list&lt;int&gt; first;                                &#x2F;&#x2F; empty list of ints</span><br><span class="line"> std::list&lt;int&gt; second (4,100);                       &#x2F;&#x2F; four ints with value 100</span><br><span class="line"> std::list&lt;int&gt; third (second.begin(),second.end());  &#x2F;&#x2F; iterating through second</span><br><span class="line"> std::list&lt;int&gt; fourth (third);                       &#x2F;&#x2F; a copy of third</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> mylist.push_back(77);</span><br><span class="line">mylist.front()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace_front(10,&#39;a&#39;);</span><br><span class="line"> </span><br><span class="line">  mylist.emplace_back(10,&#39;a&#39;);</span><br><span class="line"> mylist.emplace_back(20,&#39;b&#39;);</span><br><span class="line"> </span><br><span class="line"> first.assign (7,100);                      &#x2F;&#x2F; 7 ints with value 100</span><br><span class="line"> second.assign (first.begin(),first.end()); &#x2F;&#x2F; a copy of first</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace ( mylist.begin(), 100, &#39;x&#39; );</span><br><span class="line"> </span><br><span class="line"> erase根据位置删除</span><br><span class="line">remove根据值删除</span><br><span class="line">double mydoubles[]&#x3D;&#123; 12.15,  2.72, 73.0,  12.77,  3.14,  12.77, 73.35, 72.25, 15.3,  72.25 &#125;;</span><br><span class="line"> std::list&lt;double&gt; mylist (mydoubles,mydoubles+10);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/list/list/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/list/list/</a></p>
+
       
     </div>
 
@@ -423,7 +445,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -469,20 +491,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

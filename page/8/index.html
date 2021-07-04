@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">Electron打包</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">指针和引用的区别</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 08:17:04 / Modified: 08:19:53" itemprop="dateCreated datePublished" datetime="2021-07-03T08:17:04+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-04 10:28:17 / Modified: 10:30:16" itemprop="dateCreated datePublished" datetime="2021-07-04T10:28:17+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Electron/" itemprop="url" rel="index">
-                    <span itemprop="name">Electron</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -241,26 +241,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>打包用electron-builder，它比electron-packager有更丰富的的功能，可以生成安装程序，支持自动更新</p>
-<p><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="noopener">https://github.com/electron-userland/electron-builder</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g yarn  # package manager，类似npm</span><br><span class="line">yarn add electron-builder --dev</span><br></pre></td></tr></table></figure>
-
-<p>需要在package.json里面指定build配置，</p>
-<p>比如files指定把哪些文件打包，在scripts里面定义打包的key，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;pack&quot;: &quot;electron-builder --dir&quot;,   &#x2F;&#x2F;运行yarn pack,用于测试</span><br><span class="line">  &quot;dist&quot;: &quot;electron-builder&quot;,  &#x2F;&#x2F;运行yarn dist打包成windows installer等</span><br><span class="line">&quot;postinstall&quot;: &quot;electron-builder install-app-deps&quot;  &#x2F;&#x2F;依赖</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>electron-webpack：Scripts and configurations to compile Electron applications using webpack</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron-userland&#x2F;electron-webpack-quick-start.git</span><br><span class="line">yarn  # install dependencies，可能需要如下配置：</span><br><span class="line">yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">yarn dist  #compile source code ,create webpack output and build with electron-builder,这步会下载https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;releases&#x2F;download&#x2F;v8.2.0&#x2F;electron-v8.2.0-win32-x64.zip,可以自已下载后放到%LOCALAPPDATA%&#x2F;electron&#x2F;Cache</span><br></pre></td></tr></table></figure>
-
-<p>最终会生成一个安装包程序。</p>
-<ul>
-<li>32位系统的包怎么打？</li>
-</ul>
-<p><a href="https://www.electron.build/cli" target="_blank" rel="noopener">https://www.electron.build/cli</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &#123;</span><br><span class="line">  &quot;win&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;target&quot;: &quot;nsis&quot;,</span><br><span class="line">        &quot;arch&quot;: [</span><br><span class="line">          &quot;x64&quot;,</span><br><span class="line">          &quot;ia32&quot;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>electron-forge combines electron-packager and electron-builder together into one tool in order to perform both parts in one go (plus other features).</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/xiaoniuzai/p/12356208.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoniuzai/p/12356208.html</a></p>
+          <p>1.指针有自己的一块空间，而引用只是一个别名；</p>
+<p>2.使用sizeof看一个指针的大小是4，而引用则是被引用对象的大小；</p>
+<p>3.指针可以被初始化为NULL，而引用<strong>必须被初始化</strong>且必须是一个已有对象的引用；</p>
+<p>4.作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引用的修改都会改变引用所指向的对象；</p>
+<p>5.可以有const指针，但是没有const引用；</p>
+<p>6.指针在使用中可以指向其它对象，但是引用只能是一个对象的引用，不能被改变；</p>
+<p>7.指针可以有多级指针（**p），而引用只有一级；</p>
+<p>8.指针和引用使用++运算符的意义不一样；</p>
+<p>9.如果返回 动态内存分配 的对象或者内存，必须使用指针，引用可能引起内存泄露。</p>
 
       
     </div>
@@ -280,7 +269,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E5%86%99%E4%BD%9C/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -294,7 +283,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Electron简明教程</a>
+            <a href="/2021/07/03/%E5%86%99%E4%BD%9C/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">Markdown常用语法手册</a>
         </h1>
 
         <div class="post-meta">
@@ -305,7 +294,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 07:50:34 / Modified: 08:18:44" itemprop="dateCreated datePublished" datetime="2021-07-03T07:50:34+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-03 23:16:02 / Modified: 23:18:22" itemprop="dateCreated datePublished" datetime="2021-07-03T23:16:02+08:00">2021-07-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,8 +302,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Electron/" itemprop="url" rel="index">
-                    <span itemprop="name">Electron</span>
+                  <a href="/categories/Markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">Markdown</span>
                   </a>
                 </span>
             </span>
@@ -330,33 +319,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>GitHub开发的，可通过JavaScript（主要还是node.js）, HTML和CSS开发跨平台的桌面软件，兼容 Mac、Windows 和 Linux，vscode就是基于electron开发的。teams也是</p>
-<p>2021年，有道云笔记也用这个了。</p>
-<p><a href="https://github.com/electron/electron" target="_blank" rel="noopener">https://github.com/electron/electron</a></p>
-<p><a href="https://www.electronjs.org/" target="_blank" rel="noopener">https://www.electronjs.org/</a></p>
-<p>参考：<a href="https://www.zhihu.com/question/53230344" target="_blank" rel="noopener">https://www.zhihu.com/question/53230344</a></p>
-<h1 id="electron-quick-start"><a href="#electron-quick-start" class="headerlink" title="electron-quick-start"></a>electron-quick-start</h1><p>Electron不是某个GUI库的javascript版本，可以把它当作一个精简版的 Chromium 浏览器，使用web页面作为它的GUI</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron --save-dev &#x2F;&#x2F;Mac下不要-g</span><br></pre></td></tr></table></figure>
+          <p>markdown让你专注于文字而不是排版</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在文本前面加上 # 即可，同理，还可以增加二到六级标题，总共六级</p>
+<p>注：# 和「一级标题」之间建议保留一个字符的空格</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>如果只有一行可以用 ` （Esc下面的那个键）将语句括起来。</p>
+<p>如果为多行，可以将```置于这段代码的首行和末行。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表在前面加上<strong>星号、减号</strong>或是加号</p>
+<p>有序列表，直接在文字前面加上 1. 2. 3. 就可以：</p>
+<p>注：-、1.和文本之间要保留一个字符的空格。</p>
+<h2 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h2><p>两个 * 包含一段文本</p>
+<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>一个 * 包含一段文本</p>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>参考 <a href="https://www.runoob.com/markdown/md-link.html" target="_blank" rel="noopener">https://www.runoob.com/markdown/md-link.html</a></p>
+<p>图片：<a href="https://www.jianshu.com/p/280c6a6f2594" target="_blank" rel="noopener">https://www.jianshu.com/p/280c6a6f2594</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](链接地址)</span><br><span class="line">![avatar](&#x2F;home&#x2F;picture&#x2F;1.png)</span><br></pre></td></tr></table></figure>
 
-<p>示例工程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start</span><br><span class="line">cd electron-quick-start</span><br><span class="line">npm install</span><br><span class="line">npm start  &#x2F;&#x2F;npm start命令会让npm执行定义在package.json中的start命令</span><br></pre></td></tr></table></figure>
-
-<p>这样会生成一个GUI桌面程序，参考文档：<a href="https://electronjs.org/docs/tutorial/quick-start" target="_blank" rel="noopener">https://electronjs.org/docs/tutorial/quick-start</a></p>
-<p>应用的入口是 package.json 文件，</p>
-<p>最基本的 Electron 应用一般包含3个文件， package.json，main.js(应用的启动脚本)和index.html</p>
-<p>electron.app负责管理Electron 应用程序的生命周期</p>
-<p>electron.BrowserWindow类负责创建窗口</p>
-<p>第一行是js解构赋值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; &#x3D; require(&#39;electron&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>参考var {name, age, passport} = person;</p>
-<h1 id="electron-api-demos"><a href="#electron-api-demos" class="headerlink" title="electron-api-demos"></a>electron-api-demos</h1><p><a href="https://github.com/electron/electron-api-demos" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos</a> &amp;&amp; <a href="https://github.com/electron/electron-api-demos/blob/master/docs.md" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos/blob/master/docs.md</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-api-demos</span><br><span class="line">$ cd electron-api-demos</span><br><span class="line">$ npm install</span><br><span class="line">$ npm start  &#x2F;&#x2F;or npm run dev</span><br></pre></td></tr></table></figure>
-
-<h1 id="electron-sample-apps"><a href="#electron-sample-apps" class="headerlink" title="electron-sample-apps"></a>electron-sample-apps</h1><p><a href="https://github.com/sindresorhus/awesome-electron" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome-electron</a></p>
-<p><a href="https://github.com/hokein/electron-sample-apps" target="_blank" rel="noopener">https://github.com/hokein/electron-sample-apps</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron</span><br><span class="line">electron &lt;electron-sample-apps-path&gt;&#x2F;&lt;sample-name&gt;</span><br></pre></td></tr></table></figure>
-
+<h2 id="为何要用markdown"><a href="#为何要用markdown" class="headerlink" title="为何要用markdown"></a>为何要用markdown</h2><p>无论是 EPUB, mobi，还是 Kindle 用的专有格式 .azw，都只是把一堆 HTML 文件打包而已。如果你写的是书，用 Markdown 标注格式之后，可以很方便地转为以上格式</p>
+<p>使用Word时，我们会花费大量力气去排版，试图让文档变得漂亮一些。是粗体还是斜体，是宋体还是黑体，对创作来说，有那么重要吗？</p>
+<ol>
+<li>方便版本跟踪：每一位自杀的写作者电脑里，都必然有一个Word文档，从V1.0到V20.0的无数版本.</li>
+<li>方便协作</li>
+<li>Markdown语法简单到每个人都可以在5分钟以内学会。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="noopener">http://www.jianshu.com/p/q81RER</a></p>
+<p><a href="http://www.appinn.com/markdown/" target="_blank" rel="noopener">http://www.appinn.com/markdown/</a></p>
+<p><a href="https://laravel-china.org/topics/621/you-will-be-able-to-master-these-markdown-grammars" target="_blank" rel="noopener">https://laravel-china.org/topics/621/you-will-be-able-to-master-these-markdown-grammars</a></p>
+<p><a href="http://www.jianshu.com/p/qqGjLN" target="_blank" rel="noopener">http://www.jianshu.com/p/qqGjLN</a></p>
+<p><a href="http://www.jianshu.com/p/PpDNMG" target="_blank" rel="noopener">http://www.jianshu.com/p/PpDNMG</a></p>
 
       
     </div>
@@ -376,7 +364,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E5%8E%86%E5%8F%B2/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%98%B6%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -390,7 +378,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Qt简明教程</a>
+            <a href="/2021/07/03/%E5%8E%86%E5%8F%B2/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E9%98%B6%E6%AE%B5/" class="post-title-link" itemprop="url">中国历史阶段</a>
         </h1>
 
         <div class="post-meta">
@@ -399,24 +387,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-07-02 22:17:26" itemprop="dateCreated datePublished" datetime="2021-07-02T22:17:26+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-03 22:37:26 / Modified: 22:53:23" itemprop="dateCreated datePublished" datetime="2021-07-03T22:37:26+08:00">2021-07-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 10:25:15" itemprop="dateModified" datetime="2021-07-04T10:25:15+08:00">2021-07-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Qt/" itemprop="url" rel="index">
-                    <span itemprop="name">Qt</span>
+                  <a href="/categories/%E5%8E%86%E5%8F%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">历史</span>
                   </a>
                 </span>
             </span>
@@ -432,69 +414,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://doc.qt.io/qt-6/gettingstarted.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/gettingstarted.html</a></p>
-<table>
-<thead>
-<tr>
-<th>时间</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2005年6月27日</td>
-<td>Qt 4.0</td>
-</tr>
-<tr>
-<td>2008年5月</td>
-<td>Qt 4.4</td>
-</tr>
-<tr>
-<td>2012年12月19日</td>
-<td>Qt 5.0</td>
-</tr>
-<tr>
-<td>2017年5月31日</td>
-<td>Qt 5.9</td>
-</tr>
-<tr>
-<td>2020年5月26日</td>
-<td>Qt 5.15</td>
-</tr>
-<tr>
-<td>2020.12.8</td>
-<td>Qt6</td>
-</tr>
-<tr>
-<td>2021年7月1日</td>
-<td>Qt 6.1.2</td>
-</tr>
-</tbody></table>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://download.qt.io/archive/qt/5.9/5.9.9/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.9/5.9.9/</a> open source offline installers are not available any more since Qt 5.15 </p>
-<p><a href="https://download.qt.io/official_releases/online_installers/" target="_blank" rel="noopener">https://download.qt.io/official_releases/online_installers/</a></p>
-<p>声明槽</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public slots:</span><br></pre></td></tr></table></figure>
-
-<p>关联</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(sender, SIGNAL(signal()), receiver, SLOT(slot()));</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>一个信号可以连接多个槽</li>
-<li>一个信号可以连接另外一个信号</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(spinNum, SIGNAL(valueChanged(int)), this, SIGNAL (refreshInfo(int));</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>信号与槽的参数个数和类型需要一致</li>
-</ul>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>为了将界面上的各个组件的分布设计得更加美观，经常使用一些容器类，如 QgoupBox、QtabWidget、QFrame 等</p>
-<h3 id="在UI界面上关联信号与槽"><a href="#在UI界面上关联信号与槽" class="headerlink" title="在UI界面上关联信号与槽"></a>在UI界面上关联信号与槽</h3><p>ui中选中比如一个 chkBoxUnder 组件，右键调出其快捷菜单。在快捷菜单中单击菜单项“Go to slot…”</p>
-<p>头文件声明的函数名上面，右键，选择“Refactor重构”→“Add Definition in elesos.cpp”，就可以自动在cpp中生成定义。</p>
-<p>在 UI 设计器里，单击上方工具栏里的“Edit Signals/Slots”按钮，窗体进入信号与槽函数编辑状态</p>
-<p>将鼠标移动到按钮上方，再按下鼠标左键，移动到窗体的空白区域释放左键，这时出现信号与槽的关联设置对话框。左侧的列表框里信号，右边的列表框里显示了槽函数（如果没有显示，把复选框勾选上）。</p>
-<p><a href="http://c.biancheng.net/view/1822.html" target="_blank" rel="noopener">http://c.biancheng.net/view/1822.html</a></p>
-<p><a href="https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html" target="_blank" rel="noopener">https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html</a></p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><a href="https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html</a></p>
-<p>创建一个Qt Widgets Application</p>
+          <p>中国近代史分为前后两个阶段，从1840年鸦片战争到1919年“五四”运动前夕，是旧民主主义革命阶段；从1919年“五四”运动到1949年中华人民共和国成立前夕，是新民主主义革命阶段。</p>
+<p>经典历史书籍推荐</p>
+<p>国史大纲-钱穆</p>
+<p>剑桥中国史</p>
+<p>万历十五年</p>
+<p>明朝那些事儿</p>
+<p>大秦帝国</p>
+<p>徐中约的《中国近代史》，香港大学出版社，很中立的写从清朝建立到2000</p>
+<p>易中天《品三国》</p>
+<p><a href="https://www.zhihu.com/question/19817884" target="_blank" rel="noopener">https://www.zhihu.com/question/19817884</a></p>
+<p><strong>中国历代政治得失</strong></p>
 
       
     </div>
@@ -514,7 +444,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -560,20 +490,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -58,7 +58,7 @@
 <meta property="og:description" content="123456789101112std::thread thread_obj(func, params);std::thread::join()  &#x2F;&#x2F;wait for a thread  std::thread t1(callable);   &#x2F;&#x2F; Start thread t1    t1.join(); &#x2F;&#x2F; Wait for t1">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-01T23:55:17.000Z">
-<meta property="article:modified_time" content="2021-07-02T00:02:17.867Z">
+<meta property="article:modified_time" content="2021-07-04T03:56:08.215Z">
 <meta property="article:author" content="elesos">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
@@ -215,10 +215,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-07-02 07:55:17 / Modified: 08:02:17" itemprop="dateCreated datePublished" datetime="2021-07-02T07:55:17+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 07:55:17" itemprop="dateCreated datePublished" datetime="2021-07-02T07:55:17+08:00">2021-07-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-04 11:56:08" itemprop="dateModified" datetime="2021-07-04T11:56:08+08:00">2021-07-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -248,8 +254,16 @@
 
 
 
-
-
+<p>Sleep 函数告诉操作系统 “在未来的多少毫秒内我不参与 CPU 竞争”。</p>
+<p>Thread.Sleep(0) 的作用是 “触发操作系统立刻重新进行一次 CPU 竞争”。竞争的结果也许是当前线程仍然获得 CPU 控制权，也许会换成别的线程获得 CPU 控制权。</p>
+<p>1秒(s) ＝1000毫秒(ms)</p>
+<p>1毫秒(ms)＝1000微秒 (us)</p>
+<p>1微秒(us)＝1000纳秒 (ns)</p>
+<p>1秒=10的9次方</p>
+<p><a href="https://zh.wikipedia.org/zh-hans/数量级_(时间)" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-hans/%E6%95%B0%E9%87%8F%E7%BA%A7_(%E6%97%B6%E9%97%B4)</a></p>
+<p>1ks千秒=10的3次方秒</p>
+<p>1Ms兆秒=10的6次方秒</p>
+<p>1吉秒Gs=10的9次方秒，约31.7年。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">离开作用域就释放mutex了</span><br><span class="line">std::lock_guard&lt;std::mutex&gt; lock(io_mutex); &#x2F;&#x2F;lock_guard是一个类，是mutex的包装 https:&#x2F;&#x2F;en.cppreference.com&#x2F;w&#x2F;cpp&#x2F;thread&#x2F;lock_guard</span><br><span class="line">std::unique_lock&lt;std::mutex&gt; locker(mutex_);</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown" target="_blank" rel="noopener">https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown</a>.</p>
@@ -345,20 +359,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

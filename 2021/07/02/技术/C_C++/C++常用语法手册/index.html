@@ -58,7 +58,7 @@
 <meta property="og:description" content="C++98是第一个C++标准，1998年发布。 C++11，第三个C++标准，2011年 C++14，第四个C++标准，2014年 C++17，第五个C++标准，2017年 C++20 , 2020 下一代是C++23 关键字https:&#x2F;&#x2F;www.runoob.com&#x2F;w3cnote&#x2F;cpp-keyword-intro.html 范围for using代替typedef 用vector和迭代器代">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-02T13:17:07.000Z">
-<meta property="article:modified_time" content="2021-07-04T02:52:11.831Z">
+<meta property="article:modified_time" content="2021-07-04T03:57:50.920Z">
 <meta property="article:author" content="elesos">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 10:52:11" itemprop="dateModified" datetime="2021-07-04T10:52:11+08:00">2021-07-04</time>
+                <time title="Modified: 2021-07-04 11:57:50" itemprop="dateModified" datetime="2021-07-04T11:57:50+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,6 +285,54 @@
 <p>通常用来判断一个数是否能被另一个数整除。</p>
 <h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p><a href="https://www.cplusplus.com/reference/cstdio/fread/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/fread/</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fseek (pFile , 0 , SEEK_END);</span><br><span class="line">lSize &#x3D; ftell (pFile);</span><br><span class="line">rewind (pFile); &#x2F;&#x2F;Set position of stream to the beginning</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-atomic-用法"><a href="#Std-atomic-用法" class="headerlink" title="Std::atomic 用法"></a>Std::atomic 用法</h1><p>C++中对共享数据的存取在并发条件下可能会引起data race的undifined行为，需要限制并发程序以某种特定的顺序执行，有两种方式：使用mutex保护共享数据，原子操作</p>
+<p>原子类型操作要不一步完成，要么不做，不可能出现操作一半被切换CPU，这样防止由于多线程指令交叉执行带来的可能错误。非原子操作下，某个线程可能看见的是一个其它线程操作未完成的数据。</p>
+<p>atomic 原子操作支持bool、int、char等数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::atomic &lt;bool&gt;   atomic_bool_test1(false);</span><br><span class="line">a.load() 返回数值a的copy</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-async"><a href="#Std-async" class="headerlink" title="Std::async"></a>Std::async</h1><p>Call function asynchronously</p>
+<p><a href="https://www.cplusplus.com/reference/future/async/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/future/async/</a></p>
+<p>The value returned by fn can be accessed through the future object returned (by calling its member future::get).</p>
+<h1 id="Static-关键字的作用"><a href="#Static-关键字的作用" class="headerlink" title="Static 关键字的作用"></a>Static 关键字的作用</h1><p>\1. 全局静态变量</p>
+<p>在全局变量前加上关键字static，全局变量就定义成一个全局静态变量.</p>
+<p>静态存储区，在整个程序运行期间一直存在。</p>
+<p>初始化：未经初始化的全局静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：全局静态变量在声明他的文件之外是不可见的，准确地说是从定义处开始，到本文件结尾。</p>
+<p>\2. 局部静态变量</p>
+<p>在局部变量前加上关键字static，局部变量就成为一个局部静态变量。</p>
+<p>内存中的位置：静态存储区</p>
+<p>初始化：未经初始化的局部静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：作用域仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变；</p>
+<p>\3. 静态函数</p>
+<p>函数的定义和声明默认情况下都是extern的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。</p>
+<p>函数的实现使用static修饰，那么这个函数只可在本cpp内使用，不会同其他cpp中的同名函数引起冲突；</p>
+<p>注：不要在头文件中声明static的全局函数，不要在cpp内声明非static的全局函数，如果你要在多个cpp中复用该函数，就把它的声明提到头文件里去，否则cpp内部声明需加上static修饰；</p>
+<p>\4. 类的静态成员</p>
+<p>在类中，静态成员可以实现多个对象之间的数据共享，并且使用静态数据成员还不会破坏隐藏的原则，即保证了安全性。因此，静态成员是类的所有对象中共享的成员，而不是某个对象的成员。对多个对象来说，静态数据成员只存储一处，供所有对象共用</p>
+<p>\5. 类的静态函数</p>
+<p>静态成员函数和静态数据成员一样，它们都属于类的静态成员，它们都不是对象成员。因此，对静态成员的引用不需要用对象名。</p>
+<p>在静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员（这点非常重要）。如果静态成员函数中要引用非静态成员时，可通过对象来引用。</p>
+<h1 id="Sprintf"><a href="#Sprintf" class="headerlink" title="Sprintf"></a>Sprintf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sprintf ( char * str, const char * format, ... );</span><br></pre></td></tr></table></figure>
+
+<p>stored C string in the buffer pointed by str.</p>
+<p>On success, the total number of characters written is returned. 否则返回负数</p>
+<p><a href="https://www.cplusplus.com/reference/cstdio/sprintf/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/sprintf/</a></p>
+<h1 id="Std-bind"><a href="#Std-bind" class="headerlink" title="Std::bind"></a>Std::bind</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind (Fn&amp;&amp; fn, Args&amp;&amp;... args);</span><br></pre></td></tr></table></figure>
+
+<p>Returns a function object based on fn, but with its arguments bound to args.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::bind(&amp;callback);</span><br><span class="line">std::bind(&amp;aClass::callback, this);</span><br><span class="line">std::bind(&amp;aClass::callback, this， info);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/functional/bind/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/functional/bind/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using namespace std::placeholders;    &#x2F;&#x2F; adds visibility of _1, _2, _3  占位</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-condition-variable"><a href="#Std-condition-variable" class="headerlink" title="Std::condition variable"></a>Std::condition variable</h1><p><a href="https://www.cplusplus.com/reference/condition_variable/condition_variable/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/condition_variable/condition_variable/</a></p>
+<p>block the calling thread until notified to resume.</p>
+<p>It uses a unique_lock to lock the thread when one of its wait functions is called. The thread remains blocked until woken up by another thread that calls a notification function on the same condition_variable object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait  The execution of the current thread  is blocked until notified. 第2个参数：A callable object or function that takes no arguments and returns a value that can be evaluated as a bool. This is called repeatedly until it evaluates to true.</span><br><span class="line">notify_one</span><br><span class="line">notify_all</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-remove"><a href="#Std-remove" class="headerlink" title="Std::remove"></a>Std::remove</h1><p>Remove value from range</p>
+<p><a href="https://www.cplusplus.com/reference/algorithm/remove/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/algorithm/remove/</a></p>
 
     </div>
 
@@ -355,7 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宏"><span class="nav-number"></span> <span class="nav-text">宏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#namespace"><span class="nav-number"></span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#max"><span class="nav-number"></span> <span class="nav-text">max</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#乘法注意"><span class="nav-number"></span> <span class="nav-text">乘法注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用运算符"><span class="nav-number"></span> <span class="nav-text">常用运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">%</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件读写"><span class="nav-number"></span> <span class="nav-text">文件读写</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">1.</span> <span class="nav-text">关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宏"><span class="nav-number"></span> <span class="nav-text">宏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#namespace"><span class="nav-number"></span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#max"><span class="nav-number"></span> <span class="nav-text">max</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#乘法注意"><span class="nav-number"></span> <span class="nav-text">乘法注意</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用运算符"><span class="nav-number"></span> <span class="nav-text">常用运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">%</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件读写"><span class="nav-number"></span> <span class="nav-text">文件读写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-atomic-用法"><span class="nav-number"></span> <span class="nav-text">Std::atomic 用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-async"><span class="nav-number"></span> <span class="nav-text">Std::async</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Static-关键字的作用"><span class="nav-number"></span> <span class="nav-text">Static 关键字的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sprintf"><span class="nav-number"></span> <span class="nav-text">Sprintf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-bind"><span class="nav-number"></span> <span class="nav-text">Std::bind</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-condition-variable"><span class="nav-number"></span> <span class="nav-text">Std::condition variable</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Std-remove"><span class="nav-number"></span> <span class="nav-text">Std::remove</span></a></div>
       </div>
       <!--/noindex-->
 
@@ -371,20 +419,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
