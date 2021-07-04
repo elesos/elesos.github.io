@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E8%BD%AF%E4%BB%B6/VS2017%E4%B8%93%E4%B8%9A%E7%89%88%E5%92%8C%E4%BC%81%E4%B8%9A%E7%89%88%E6%BF%80%E6%B4%BB%E5%AF%86%E9%92%A5/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/cross_compiles/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E8%BD%AF%E4%BB%B6/VS2017%E4%B8%93%E4%B8%9A%E7%89%88%E5%92%8C%E4%BC%81%E4%B8%9A%E7%89%88%E6%BF%80%E6%B4%BB%E5%AF%86%E9%92%A5/" class="post-title-link" itemprop="url">VS2017专业版和企业版激活密钥</a>
+            <a href="/2021/07/04/docs/gn/cross_compiles/" class="post-title-link" itemprop="url">docs/gn/cross_compiles</a>
         </h1>
 
         <div class="post-meta">
@@ -216,18 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 12:02:20 / Modified: 12:03:07" itemprop="dateCreated datePublished" datetime="2021-07-04T12:02:20+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vs/" itemprop="url" rel="index">
-                    <span itemprop="name">vs</span>
-                  </a>
-                </span>
+              <time title="Created: 2021-07-04 14:16:23 / Modified: 14:10:24" itemprop="dateCreated datePublished" datetime="2021-07-04T14:16:23+08:00">2021-07-04</time>
             </span>
 
           
@@ -241,14 +230,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>visual studio 2017</p>
-<p>Enterprise:</p>
-<p>NJVYC-BMHX2-G77MM-4XJMR-6Q8QF</p>
-<p>Professional:</p>
-<p>KBJFW-NXHK6-W4WJM-CRMQB-G3CDH</p>
-<p>切换语言 Tools -&gt; Options -&gt; Environment -&gt; International Settings</p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123</a></p>
-<p>Visual Assist</p>
+          <h1 id="How-GN-handles-cross-compiling"><a href="#How-GN-handles-cross-compiling" class="headerlink" title="How GN handles cross-compiling"></a>How GN handles cross-compiling</h1><h2 id="As-a-GN-user"><a href="#As-a-GN-user" class="headerlink" title="As a GN user"></a>As a GN user</h2><p>GN has robust support for doing cross compiles and building things for<br>multiple architectures in a single build (e.g., to build some things to<br>run locally and some things to run on an embedded device). In fact,<br>there is no limit on the number of different architectures you can build<br>at once; the Chromium build uses at least four in some configurations.</p>
+<p>To start, GN has the concepts of a <em>host</em> and a <em>target</em>. The host is<br>the platform that the build is run on, and the target is the platform<br>where the code will actually run (This is different from<br><a href="http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html" target="_blank" rel="noopener">autotools</a>‘<br>terminology, but uses the more common terminology for cross<br>compiling).</p>
+<p>(Confusingly, GN also refers to each build artifact – an executable,<br>library, etc. – as a target. On this page, we will use “target” only to<br>refer to the system you want to run your code on, and use “rule” or some<br>other synonym to refer to a specific build artifact).</p>
+<p>When GN starts up, the <code>host_os</code> and <code>host_cpu</code> variables are set<br>automatically to match the operating system (they can be overridden in<br>args files, which can be useful in weird corner cases). The user can<br>specify that they want to do a cross-compile by setting either or both<br>of <code>target_os</code> and <code>target_cpu</code>; if they are not set, the build config<br>files will usually set them to the host’s values, though the Chromium<br>build will set target_cpu to “arm” if target_os is set to “android”).</p>
+<p>So, for example, running on an x64 Linux machine:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default</span><br></pre></td></tr></table></figure>
+
+<p>is equivalent to:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;linux&quot; target_cpu&#x3D;&quot;x64&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>To do an 32-bit ARM Android cross-compile, do:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;android&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>(We don’t have to specify target_cpu because of the conditionals<br>mentioned above).</p>
+<p>And, to do a 64-bit MIPS Chrome OS cross-compile:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;chromeos&quot; target_cpu&#x3D;&quot;mips64el&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="As-a-BUILD-gn-author"><a href="#As-a-BUILD-gn-author" class="headerlink" title="As a BUILD.gn author"></a>As a BUILD.gn author</h2><p>If you are editing build files outside of the //build directory (i.e.,<br>not directly working on toolchains, compiler configs, etc.), generally<br>you only need to worry about a few things:</p>
+<p>The <code>current_toolchain</code>, <code>current_cpu</code>, and <code>current_os</code> variables<br>reflect the settings that are <strong>currently</strong> in effect in a given rule.<br>The <code>is_linux</code>, <code>is_win</code> etc. variables are updated to reflect the<br>current settings, and changes to <code>cflags</code>, <code>ldflags</code> and so forth also<br>only apply to the current toolchain and the current thing being built.</p>
+<p>You can also refer to the <code>target_cpu</code> and <code>target_os</code> variables. This<br>is useful if you need to do something different on the host depending on<br>which target_arch is requested; the values are constant across all<br>toolchains. You can do similar things for the <code>host_cpu</code> and <code>host_os</code><br>variables, but should generally never need to.</p>
+<p>For the default toolchain, <code>target_cpu</code> and <code>current_cpu</code> are the same. For a<br>secondary toolchain, <code>current_cpu</code> is set based on the toolchain definition<br>and <code>target_cpu</code> remains the same. When writing rules, <strong><code>current_cpu</code> should<br>be used rather than <code>target_cpu</code> most of the time</strong>.</p>
+<p>By default, dependencies listed in the <code>deps</code> variable of a rule use the<br>same (currently active) toolchain. You may specify a different toolchain<br>using the <code>foo(bar)</code> label notation as described in <a href="reference.md#Toolchains">the label section<br>of the reference doc</a>.</p>
+<p>Here’s an example of when to use <code>target_cpu</code> vs <code>current_cpu</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">declare_args() &#123;</span><br><span class="line">  # Applies only to toolchains targeting target_cpu.</span><br><span class="line">  sysroot &#x3D; &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">config(&quot;my_config&quot;) &#123;</span><br><span class="line">  # Uses current_cpu because compile flags are toolchain-dependent.</span><br><span class="line">  if (current_cpu &#x3D;&#x3D; &quot;arm&quot;) &#123;</span><br><span class="line">    defines &#x3D; [ &quot;CPU_IS_32_BIT&quot; ]</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    defines &#x3D; [ &quot;CPU_IS_64_BIT&quot; ]</span><br><span class="line">  &#125;</span><br><span class="line">  # Compares current_cpu with target_cpu to see whether current_toolchain</span><br><span class="line">  # has the same architecture as target_toolchain.</span><br><span class="line">  if (sysroot !&#x3D; &quot;&quot; &amp;&amp; current_cpu &#x3D;&#x3D; target_cpu) &#123;</span><br><span class="line">    cflags &#x3D; [</span><br><span class="line">      &quot;-isysroot&quot;,</span><br><span class="line">      sysroot,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="As-a-build-config-or-build-toolchain-author"><a href="#As-a-build-config-or-build-toolchain-author" class="headerlink" title="As a //build/config or //build/toolchain author"></a>As a //build/config or //build/toolchain author</h2><p>The <code>default_toolchain</code> is declared in the <code>BUILDCONFIG.gn</code> file (in Google<br>projects this normally is in the <code>//build/config</code> directory). Usually the<br><code>default_toolchain</code> should be the toolchain for the <code>target_os</code> and<br><code>target_cpu</code>. The <code>current_toolchain</code> reflects the toolchain that is currently<br>in effect for a rule.</p>
+<p>Be sure you understand the differences between <code>host_cpu</code>, <code>target_cpu</code>,<br><code>current_cpu</code>, and <code>toolchain_cpu</code> (and the os equivalents). The first<br>two are set as described above. You are responsible for making sure that<br><code>current_cpu</code> is set appropriately in your toolchain definitions; if you<br>are using the stock templates like <code>gcc_toolchain</code> and <code>msvc_toolchain</code>,<br>that means you are responsible for making sure that <code>toolchain_cpu</code> and<br><code>toolchain_os</code> are set as appropriate in the template invocations.</p>
 
       
     </div>
@@ -268,7 +276,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E5%86%99%E4%BD%9C/Vim%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/Google%20gn%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -282,7 +290,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E5%86%99%E4%BD%9C/Vim%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Vim简明教程</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/Google%20gn%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Google gn简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -293,7 +301,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 12:01:11 / Modified: 12:01:56" itemprop="dateCreated datePublished" datetime="2021-07-04T12:01:11+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 14:16:08" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -301,8 +309,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vim/" itemprop="url" rel="index">
-                    <span itemprop="name">Vim</span>
+                  <a href="/categories/gn/" itemprop="url" rel="index">
+                    <span itemprop="name">gn</span>
                   </a>
                 </span>
             </span>
@@ -318,34 +326,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br></pre></td></tr></table></figure>
+          <p><a href="https://gn.googlesource.com/gn/" target="_blank" rel="noopener">https://gn.googlesource.com/gn/</a></p>
+<p>generates build files for <a href="https://ninja-build.org/" target="_blank" rel="noopener">Ninja</a>.</p>
+<h2 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h2><p>.gn : Defines root of GN build tree</p>
+<p>共享的变量放在gni文件中，通过 import导入</p>
+<p>查有哪些targets</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn ls out&#x2F;Default “&#x2F;&#x2F;base&#x2F;*”</span><br></pre></td></tr></table></figure>
 
-<h2 id="跳到文件头和文末结尾"><a href="#跳到文件头和文末结尾" class="headerlink" title="跳到文件头和文末结尾"></a>跳到文件头和文末结尾</h2><p>gg ： 跳转到文件头 Shift+g ： 跳转到文件末尾</p>
-<h3 id="清空整个文件内容"><a href="#清空整个文件内容" class="headerlink" title="清空整个文件内容"></a>清空整个文件内容</h3><p>首先，使用gg调整光标到首行，然后使用dG命令即可。</p>
-<h3 id="全局替换"><a href="#全局替换" class="headerlink" title="全局替换"></a>全局替换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:[addr]s&#x2F;源字符串&#x2F;目的字符串&#x2F;[option]  #s表示替换操作</span><br><span class="line">如：</span><br><span class="line">:%s&#x2F;源字符串&#x2F;目的字符串&#x2F;c</span><br><span class="line">:%s&#x2F;源字符串&#x2F;目的字符串&#x2F;g</span><br></pre></td></tr></table></figure>
+<p>查看变量的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gn args out&#x2F;Default</span><br><span class="line">gn args --list out&#x2F;Default</span><br></pre></td></tr></table></figure>
 
-<p>[addr] 表示检索范围：</p>
-<p>如：“1，20” ：表示从第1行到20行；</p>
-<p>“%” ：表示整个文件，同“1,$”；</p>
-<p>“. ,$” ：从当前行到文件尾；</p>
-<p>[option] : 表示操作类型，如：</p>
-<p>g 表示全局替换;</p>
-<p>c 表示进行确认</p>
-<p>p 表示替代结果逐行显示（Ctrl + L恢复屏幕）；</p>
-<p>省略option时仅对每行第一个匹配串进行替换；</p>
-<p>如果在源字符串和目的字符串中出现特殊字符，需要用”\”转义</p>
-<h2 id="乱码"><a href="#乱码" class="headerlink" title="乱码"></a>乱码</h2><p>查看文件编码格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set fileencoding</span><br></pre></td></tr></table></figure>
-
-<p>先检查ssh工具的终端编码格式，不行再编辑~/.vimrc文件，没有就新建该文件，加上如下几行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>
-
-<h2 id="批量注释"><a href="#批量注释" class="headerlink" title="批量注释"></a>批量注释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 按 ESC 进入 Normal 模式，移动游标定位到 12 行的位置。</span><br><span class="line">2. 按 ctrl+v 即进入纵向编辑模式。</span><br><span class="line">3. 多次按 j 定位到 23 行（结束位置）。</span><br><span class="line">4. 按 I（大写的 i） 进入首行插入模式。</span><br><span class="line">5. 按 # 号注释配置项，这时首行会被注释掉。</span><br><span class="line">6. 在按 ESC 退出纵向编辑模式的同时所有选中的字符前都加了注释，需要等待 1-2 秒才能看到效果。</span><br></pre></td></tr></table></figure>
-
-<h2 id="批量删除注释"><a href="#批量删除注释" class="headerlink" title="批量删除注释"></a>批量删除注释</h2><p>Normal模式-&gt;ctrl+v进入列编辑模式-&gt;上下箭头选中内容-&gt;d删除-&gt;:wq保存即可</p>
-<h2 id="批量删除多行"><a href="#批量删除多行" class="headerlink" title="批量删除多行"></a>批量删除多行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.首先在命令模式下，输入“：set nu”显示行号；</span><br><span class="line">2.通过行号确定你要删除的行；</span><br><span class="line">3.命令输入“：32,65d”,回车键，32-65行就被删除了</span><br></pre></td></tr></table></figure>
-
-<p>如果无意中删除错了，可以使用‘u’键恢复</p>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><p><a href="https://gn.googlesource.com/gn/+/main/docs/quick_start.md" target="_blank" rel="noopener">https://gn.googlesource.com/gn/+/main/docs/quick_start.md</a></p>
+<p>先下载示例代码 </p>
+<p><code>git clone https://gn.googlesource.com/gn</code></p>
+<p>我的在 <a href="https://github.com/elesos/gn" target="_blank" rel="noopener">https://github.com/elesos/gn</a></p>
 
       
     </div>
@@ -365,7 +359,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Swift%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -379,7 +373,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Swift%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Swift简明教程</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">tar简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -390,7 +384,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 12:00:20 / Modified: 12:00:45" itemprop="dateCreated datePublished" datetime="2021-07-04T12:00:20+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 12:12:30 / Modified: 12:13:49" itemprop="dateCreated datePublished" datetime="2021-07-04T12:12:30+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -398,8 +392,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/tar/" itemprop="url" rel="index">
+                    <span itemprop="name">tar</span>
                   </a>
                 </span>
             </span>
@@ -415,13 +409,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>使用自动引用计数（Automatic Reference Counting, ARC）简化内存管理。</p>
-<p>可以兼容 Objective-C 代码。</p>
-<p>支持代码预览，这个革命性的特性可以允许程序员在不编译和运行应用程序的前提下运行 Swift 代码并实时查看结果。</p>
-<p>next <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html" target="_blank" rel="noopener">https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html</a></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html" target="_blank" rel="noopener">https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html</a> 官方文档</p>
-<p><a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/content/chapter1/01_swift.html" target="_blank" rel="noopener">http://numbbbbb.gitbooks.io/-the-swift-programming-language-/content/chapter1/01_swift.html</a></p>
-<p><a href="http://www.zhihu.com/question/24002984" target="_blank" rel="noopener">如何评价 Swift 语言？</a></p>
+          <h2 id="常见压缩文件的扩展名"><a href="#常见压缩文件的扩展名" class="headerlink" title="常见压缩文件的扩展名"></a>常见压缩文件的扩展名</h2><ul>
+<li><p>.gz：gzip压缩的；</p>
+</li>
+<li><p>.bz2：bzip2压缩的；</p>
+</li>
+<li><p>.tar：tar程序打包但没有压缩的；</p>
+</li>
+<li><p>.tar.gz：打包后并经过gzip压缩的；</p>
+</li>
+<li><p>.tar.bz2：打包后并经过bzip2压缩的；</p>
+</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar [-j或-z][cv][-f 生成的压缩文件名]  要被压缩的文件或目录   &#x2F;&#x2F;打包与压缩</span><br><span class="line">tar [-j或-z][xv][-f 生成的压缩文件名][-C  解压目录]       &#x2F;&#x2F;解压</span><br><span class="line">tar [-j或-z][tv][-f 生成的压缩文件名]                  &#x2F;&#x2F;查看</span><br></pre></td></tr></table></figure>
+
+<p>参数解释： c建立打包档案，x解压, t查看含有哪些文件，（cxt不能同时使用）v显示处理信息</p>
+<p>j用于tar.bz2</p>
+<p>z用于.tar.gz，tgz</p>
+<h2 id="排除某些文件夹"><a href="#排除某些文件夹" class="headerlink" title="排除某些文件夹"></a>排除某些文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zcvf  tomcat.tar.gz --exclude&#x3D;tomcat&#x2F;logs --exclude&#x3D;tomcat&#x2F;webapp&#x2F;xxxx&#x2F;&#x2F;WEB-INF&#x2F;logs tomcat</span><br></pre></td></tr></table></figure>
+
+<p>将tomcat目录中，除了tomcat/logs 和 tomcat/webapp/xxxx//WEB-INF/logs 之外的文件压缩成压缩包：tomcat.tar.gz</p>
+<p>注意，去除的文件夹后面不能带/,否则该文件夹依然会被压缩！</p>
+<p>又如：如果123目录下有3个子目录，aa、bb、cc。我现在想只对aa和bb目录打包压缩，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf 123.tar.gz --exclude&#x3D;cc 123    #在123目录的外面运行</span><br></pre></td></tr></table></figure>
+
+<p>使用exclude参数来过滤不需要的目录或文件，排除某个文件的操作和目录一样。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以test目录为例：</p>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>首先进入上一层目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jcv-f test.tar.bz2 test</span><br></pre></td></tr></table></figure>
+
+<p>查看压缩包里有什么文件:（t重点在查看含有哪些文件，v显示详细信息）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -jtv-f test.tar.bz2</span><br><span class="line">tar -jt-f test.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jx-f test.tar.bz2 -C&#x2F;tmp   &#x2F;&#x2F;熟悉后，可以直接tar-jxf test.tar.bz2 -C&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压xz"><a href="#解压xz" class="headerlink" title="解压xz"></a>解压xz</h2><p>解压tar.xz文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf test.tar.xz</span><br></pre></td></tr></table></figure>
+
+<p>如果不能解压，请先执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install xz xz-devel</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压rar"><a href="#解压rar" class="headerlink" title="解压rar"></a>解压rar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;www.rarlab.com&#x2F;rar&#x2F;rarlinux-3.8.0.tar.gz </span><br><span class="line">tar zxvf rarlinux-3.8.0.tar.gz   </span><br><span class="line">cd rar </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>解压rar文件，可以使用unrar x **.rar</p>
+<p>如果报错：unrar: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory</p>
+<p>解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-y install libstdc++.so.6</span><br></pre></td></tr></table></figure>
+
+<h2 id="zip文件unzip"><a href="#zip文件unzip" class="headerlink" title="zip文件unzip"></a>zip文件unzip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y unzip zip</span><br><span class="line">tar (child): bzip2: Cannot exec: No such file or directory</span><br><span class="line">yum install bzip2</span><br><span class="line">tar: command not found</span><br><span class="line">yum install tar -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="Zip-只打包不压缩"><a href="#Zip-只打包不压缩" class="headerlink" title="Zip 只打包不压缩"></a>Zip 只打包不压缩</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip -0 -r mydirectory.zip mydirectory</span><br><span class="line">-0 means store and don&#39;t compress (-r recursive, -p preserve relative path).</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ha97.com/4024.html" target="_blank" rel="noopener">http://www.ha97.com/4024.html</a></p>
+<p><a href="http://dl528888.blog.51cto.com/2382721/739871" target="_blank" rel="noopener">http://dl528888.blog.51cto.com/2382721/739871</a></p>
+<p><a href="http://blog.is36.com/rar_for_linux/" target="_blank" rel="noopener">http://blog.is36.com/rar_for_linux/</a></p>
 
       
     </div>
@@ -441,7 +482,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -487,20 +528,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

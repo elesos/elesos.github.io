@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_string/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_string/" class="post-title-link" itemprop="url">c++ string</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">C++经典书籍推荐</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 07:47:31 / Modified: 21:19:12" itemprop="dateCreated datePublished" datetime="2021-07-02T07:47:31+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 21:14:22 / Modified: 21:15:37" itemprop="dateCreated datePublished" datetime="2021-07-02T21:14:22+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,34 +241,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">std::string s2 (s0); &#x2F;&#x2F;copy </span><br><span class="line"> std::string s3 (s0, 8, 3);  &#x2F;&#x2F; 获取子串 http:&#x2F;&#x2F;www.cplusplus.com&#x2F;reference&#x2F;string&#x2F;string&#x2F;string&#x2F;</span><br><span class="line"> std::string s4 (&quot;A character sequence&quot;);</span><br><span class="line"> std::string s5 (&quot;Another character sequence&quot;, 12); </span><br><span class="line"> std::string s6a (10, &#39;x&#39;);   &#x2F;&#x2F;填充x</span><br><span class="line"> std::string s6b (10, 42);      &#x2F;&#x2F; 42 is the ASCII code for &#39;*&#39;</span><br><span class="line"> std::string s7 (s0.begin(), s0.begin()+7);</span><br><span class="line"> </span><br><span class="line"> str.size()跟str.length()一样返回大小</span><br><span class="line">str.clear();</span><br><span class="line"></span><br><span class="line">assign</span><br><span class="line">append</span><br><span class="line">str.push_back(&#39;s&#39;);</span><br><span class="line">insert</span><br><span class="line"></span><br><span class="line">find_first_of</span><br><span class="line">substr (pos &#x3D; 0, len &#x3D; npos)</span><br><span class="line">compare</span><br><span class="line"></span><br><span class="line">判断标志npos</span><br><span class="line"></span><br><span class="line">const char* data() const;&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char greeting[] &#x3D; &quot;Hello&quot;;&#x2F;&#x2F;C风格 #include &lt;cstring&gt;</span><br><span class="line">strchr(s1, ch);返回指针，指向字符串 s1 中字符 ch 第一次出现的位置，如果输出会输出剩余字符串。</span><br><span class="line">strstr(s1, s2);返回指针，指向字符串 s1 中字符串 s2 第一次出现的位置，如果输出会输出剩余字符串。</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string&gt;</span><br><span class="line">构造函数：</span><br><span class="line">string s1();         &#x2F;&#x2F; si &#x3D; &quot;&quot;</span><br><span class="line">string s2(&quot;Hello&quot;);  &#x2F;&#x2F; s2 &#x3D; &quot;Hello&quot;</span><br><span class="line">string s3(4, &#39;K&#39;);  &#x2F;&#x2F; s3 &#x3D; &quot;KKKK&quot;</span><br><span class="line">string s4(&quot;12345&quot;, 1, 3);  &#x2F;&#x2F;s4 &#x3D; &quot;234&quot;，从下标 1 开始，长度为 3 的子串</span><br><span class="line">长度：length 和size</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">子串：</span><br><span class="line">s1 &#x3D; &quot;this is ok&quot;;</span><br><span class="line">s2 &#x3D; s1.substr(2, 4);  &#x2F;&#x2F; s2 &#x3D; &quot;is i&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">查找子串和字符，返回值都是子串或字符的位置：</span><br><span class="line">find：从前往后查找子串或字符出现的位置。</span><br><span class="line">rfind：从后往前查找子串或字符出现的位置。</span><br><span class="line">find_first_of：从前往后查找何处出现另一个字符串中包含的字符。如：s1.find_first_of(&quot;abc&quot;);  &#x2F;&#x2F;查找s1中第一次出现&quot;abc&quot;中任一字符的位置</span><br><span class="line">find_last_of： 从后往前查找何处出现另一个字符串中包含的字符。</span><br><span class="line">find_first_not_of：从前往后查找何处出现另一个字符串中没有包含的字符。</span><br><span class="line">find_last_not_of：从后往前查找何处出现另一个字符串中没有包含的字符。</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ((n &#x3D; s1.find(&#39;u&#39;)) !&#x3D; string::npos) &#x2F;&#x2F;查找 u 出现的位置，查不到则返回静态常量string::npos</span><br><span class="line">       cout &lt;&lt; &quot;1) &quot; &lt;&lt; n &lt;&lt; &quot;,&quot; &lt;&lt; s1.substr(n) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">替换：replace</span><br><span class="line">删除子串：erase </span><br><span class="line">插入字符串：insert</span><br></pre></td></tr></table></figure>
-
-<p>用算法操作string</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    string s(&quot;afgcbed&quot;);</span><br><span class="line">    string::iterator p &#x3D; find(s.begin(), s.end(), &#39;c&#39;);</span><br><span class="line">    if (p!&#x3D; s.end())</span><br><span class="line">        cout &lt;&lt; p - s.begin() &lt;&lt; endl;  &#x2F;&#x2F;输出 3</span><br><span class="line">    sort(s.begin(), s.end());</span><br><span class="line">    cout &lt;&lt; s &lt;&lt; endl;  &#x2F;&#x2F;输出 abcdefg  </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a href="http://www.cplusplus.com/reference/string/string/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/string/string/</a></p>
-<p><a href="https://www.geeksforgeeks.org/stdstring-class-in-c/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/stdstring-class-in-c/</a></p>
-<p><a href="https://www.tutorialspoint.com/cplusplus/cpp_strings.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/cplusplus/cpp_strings.htm</a></p>
+          <p><a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list" target="_blank" rel="noopener">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
+<p>definitive：最权威的</p>
 
       
     </div>
@@ -288,7 +262,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -302,7 +276,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">YUV格式分析</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">Curl编译</a>
         </h1>
 
         <div class="post-meta">
@@ -313,7 +287,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-01 08:07:24 / Modified: 08:16:28" itemprop="dateCreated datePublished" datetime="2021-07-01T08:07:24+08:00">2021-07-01</time>
+              <time title="Created: 2021-07-02 21:09:41 / Modified: 21:13:05" itemprop="dateCreated datePublished" datetime="2021-07-02T21:09:41+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -321,8 +295,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
-                    <span itemprop="name">音视频</span>
+                  <a href="/categories/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index">
+                    <span itemprop="name">编译</span>
                   </a>
                 </span>
             </span>
@@ -338,42 +312,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="大小计算"><a href="#大小计算" class="headerlink" title="大小计算"></a>大小计算</h2><p>RGB24 size＝w×h×3 Byte</p>
-<p>RGB32 size＝w×h×4 Byte</p>
-<p>I420（yuv420p）的数据量是 size＝w×h×1.5 Byte。 # w<em>h+ (w</em>h) / 4 + (w<em>h) / 4 = (w</em>h) * 3 / 2</p>
-<p>yuv420p示意图：</p>
-<ul>
-<li><img src="/images/2021/yuv-1.jpeg" alt=""></li>
-</ul>
-<p>其中前w<em>h Byte存储Y，接着的（w</em>h)/4 Byte存储U，最后(w*h)/4 Byte存储V</p>
-<p>注意上图中的yuv颜色对应关系，4个Y对应一组uv</p>
-<p>即： I420: YYYYYYYY UU VV =&gt;YUV420P</p>
-<p>YV12: YYYYYYYY VV UU =&gt;YUV420P # YV12虽然也是（4：2：0）,但是和I420在存储空间上面有些区别：UV的顺序不同，Plane模式, 类似格式：YU12</p>
-<p>NV12: YYYYYYYY UV UV =&gt;YUV420SP</p>
-<p>NV21: YYYYYYYY VU VU =&gt;YUV420SP</p>
-<p>ffmpeg中像素格式名称后面有“P”的，代表是planar格式，否则有可能是packed格式</p>
-<p>YUV格式有两大类：planar和packed。对于planar的YUV格式，先连续存储所有像素点的Y，紧接着存储所有像素点的U，随后是所有像素点的V。对于packed的YUV格式，每个像素点的Y,U,V是连续<strong>交叉存储</strong>的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AV_PIX_FMT_YUV420P,    &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp&#x3D;1.5B*8&#x3D;12, (1 Cr &amp; Cb sample per 2x2 Y samples, 相当1比4的关系)   </span><br><span class="line">AV_PIX_FMT_NV12,       &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first byte U and the </span><br><span class="line">following byte V)  ，一种two-plane模式，即Y和UV分为两个Plane，但是UV（CbCr）为交错存储,U&#x3D;Cb</span><br><span class="line">AV_PIX_FMT_NV21,       &#x2F;&#x2F;&#x2F;&lt; as above, but U and V bytes are swapped  </span><br><span class="line">AV_PIX_FMT_YUYV422,   &#x2F;&#x2F;&#x2F;&lt; packed YUV 4:2:2, 16bpp</span><br></pre></td></tr></table></figure>
+          <p>先编译openssl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.git</span><br><span class="line">autoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO</span><br><span class="line">.&#x2F;configure  --with-ssl&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl  --prefix&#x3D;   </span><br><span class="line">make </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<h2 id="采样方式"><a href="#采样方式" class="headerlink" title="采样方式"></a>采样方式</h2><p>主流的采样方式有三种，YUV4:4:4，YUV4:2:2，YUV4:2:0</p>
-<p>以黑点表示采样该像素点的Y分量，以空心圆圈表示采用该像素点的UV分量:</p>
-<p><img src="/images/2021/yuv-2.png" alt=""></p>
-<p>YUV 4:2:0采样，每四个Y共用一组UV分量， 1.5B*8=12</p>
-<p>YUV 4:2:2采样，每两个Y共用一组UV分量， wh+wh/2+wh/2=2wh=16bit</p>
-<p>YUV 4:4:4采样，每一个Y对应一组UV分量</p>
-<h2 id="YUYV"><a href="#YUYV" class="headerlink" title="YUYV"></a>YUYV</h2><p>属于YUV422,每两个Y共用一组UV分量</p>
-<h2 id="YUV422P"><a href="#YUV422P" class="headerlink" title="YUV422P"></a>YUV422P</h2><p>属于YUV422,先存所有的Y，然后存所有的U，最后存所有的V</p>
-<h2 id="YUY2"><a href="#YUY2" class="headerlink" title="YUY2"></a>YUY2</h2><p>4:2:2，应该是指YUYV</p>
-<p><img src="/images/2021/yuy2.gif" alt=""></p>
-<p>Y0 U0 Y1 V0, Y2 U1 Y3 V1</p>
-<h2 id="UYVY"><a href="#UYVY" class="headerlink" title="UYVY"></a>UYVY</h2><p>4:2:2</p>
-<p><img src="/images/2021/uyvy.gif" alt=""></p>
-<p>U0 Y0 V0 Y1,U1 Y2 V1 Y3</p>
-<h1 id="读"><a href="#读" class="headerlink" title="读"></a>读</h1><h1 id="写"><a href="#写" class="headerlink" title="写"></a>写</h1><h2 id="保存YUV420P"><a href="#保存YUV420P" class="headerlink" title="保存YUV420P"></a>保存YUV420P</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fwrite(pFrameYUV-&gt;data[0],wxh,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[1],wxh&#x2F;4,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[2],wxh&#x2F;4,1,output);</span><br></pre></td></tr></table></figure>
+<p>If you have OpenSSL installed in /usr/local/ssl, you can run configure like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
 
-<h1 id="编码器需要的格式"><a href="#编码器需要的格式" class="headerlink" title="编码器需要的格式"></a>编码器需要的格式</h1><p>x264 支持直接输入YUV420P，NV12 h264_omx，mpeg1video支持YUV420P</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering</a></p>
-<p><a href="https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422" target="_blank" rel="noopener">https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422</a></p>
+<p>否则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl&#x3D;&#x2F;opt&#x2F;OpenSSL</span><br></pre></td></tr></table></figure>
+
+<p>If you have OpenSSL installed, but with the libraries in one place and the header files somewhere else, you have to set the LDFLAGS and CPPFLAGS environment variables prior to running configure. Something like this should work:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPPFLAGS&#x3D;&quot;-I&#x2F;path&#x2F;to&#x2F;ssl&#x2F;include&quot; LDFLAGS&#x3D;&quot;-L&#x2F;path&#x2F;to&#x2F;ssl&#x2F;lib&quot; .&#x2F;configure  &#x2F;&#x2F;如果删除了动态库的软链接，还需要修改pc文件。</span><br></pre></td></tr></table></figure>
+
+<p>If you have shared SSL libs installed in a directory where your run-time linker doesn’t find them (which usually causes configure failures), you can provide this option to gcc to set a hard-coded path to the run-time linker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS&#x3D;-Wl,-R&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib .&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apple&#39;s SSL&#x2F;TLS implementation ,secure transport: --with-secure-transport  or --with-darwin-ssl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ARCH&#x3D;x86_64</span><br><span class="line">export SDK&#x3D;macosx</span><br><span class="line">export DEPLOYMENT_TARGET&#x3D;10.8</span><br><span class="line"></span><br><span class="line">export CFLAGS&#x3D;&quot;-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min&#x3D;$DEPLOYMENT_TARGET&quot;</span><br><span class="line">.&#x2F;configure --host&#x3D;$ARCH-apple-darwin --prefix $(pwd)&#x2F;artifacts --with-darwin-ssl</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>其它选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--disable-static --with-zlib&#x3D;PATH</span><br></pre></td></tr></table></figure>
+
+<h2 id="win"><a href="#win" class="headerlink" title="win"></a>win</h2><p>开始菜单中打开 Visual Studio 目录中的 VS2017的开发人员命令提示符，并切换到 curl 解压目录下的 winbuild 目录下；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll &#x2F;&#x2F;输出在 curl 目录 builds 下。</span><br><span class="line">静态 nmake &#x2F;f Makefile.vc mode&#x3D;static ENABLE_IDN&#x3D;no</span><br><span class="line"></span><br><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll ZLIB_PATH&#x3D;D:\fvbl\3rdparty\libz\win SSL_PATH&#x3D;D:\fvbl\3rdparty\OpenSSL\win ENABLE_WINSSL&#x3D;no WITH_SSL&#x3D;dll WITH_ZLIB&#x3D;dll MACHINE&#x3D;x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-ssl&#x3D;xxx&#x2F;OpenSSL--with-zlib&#x3D;&#x2F;xxx&#x2F;zlib&#x2F; --disable-static</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://curl.haxx.se/docs/install.html" target="_blank" rel="noopener">https://curl.haxx.se/docs/install.html</a></p>
+<p><a href="https://curl.se/download.html" target="_blank" rel="noopener">https://curl.se/download.html</a></p>
+<p><a href="https://www.cnblogs.com/rxbook/p/10881822.html" target="_blank" rel="noopener">https://www.cnblogs.com/rxbook/p/10881822.html</a></p>
 
       
     </div>
@@ -393,7 +361,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -407,7 +375,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">Python常见错误</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">c++ 互相调用</a>
         </h1>
 
         <div class="post-meta">
@@ -416,24 +384,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-07-01 07:55:19 / Modified: 08:05:32" itemprop="dateCreated datePublished" datetime="2021-07-01T07:55:19+08:00">2021-07-01</time>
+              <time title="Created: 2021-07-02 08:13:01" itemprop="dateCreated datePublished" datetime="2021-07-02T08:13:01+08:00">2021-07-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-04 10:42:02" itemprop="dateModified" datetime="2021-07-04T10:42:02+08:00">2021-07-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSL/" itemprop="url" rel="index">
-                    <span itemprop="name">SSL</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -449,27 +417,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="‘SSLCertVerificationError’-object-has-no-attribute-‘message’"><a href="#‘SSLCertVerificationError’-object-has-no-attribute-‘message’" class="headerlink" title="‘SSLCertVerificationError’ object has no attribute ‘message’"></a>‘SSLCertVerificationError’ object has no attribute ‘message’</h1><p>‘SSLCertVerificationError’ object has no attribute ‘message’ 错误：调试python后定位到</p>
-<p>‘[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1125)’</p>
-<p>The error indicates that a certificate is missing.</p>
-<p>one solution: Run /Applications/Python\ 3.7/Install\ Certificates.command（this command replaces the root certificates of the default Python installation with the ones shipped through the certifi package. ） certifi模块目录下面有一个cacert.pem，上面的命令应该是拷贝那个certifi下面的证书到openssl目录下。</p>
-<p><a href="https://www.openssl.org/docs/faq.html" target="_blank" rel="noopener">https://www.openssl.org/docs/faq.html</a> Why does <SSL program> fail with a certificate verify error?</p>
-<p>This problem is usually indicated by log messages saying something like “unable to get local issuer certificate” or “self signed certificate”.</p>
-<p>When a certificate is verified its root CA must be “trusted” by OpenSSL this typically means that</p>
-<p>the CA certificate must be placed in a directory or file</p>
-<p>and the relevant相关的 program configured to read it.</p>
-<p>you trust one specific certificate because you trust the parent of that certificate</p>
-<p><a href="https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate" target="_blank" rel="noopener">https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate</a></p>
-<p>指定编译的python3.8.0时, 在vs code中遇到 调试设置中的 python 路径无效， 无法使用自定义的python解释器:最后发现需要搞一个没有rpath的python3.8.0才能调试。</p>
-<p>在settings.json</p>
-<p><code>&quot;python.pythonPath&quot;:&quot;python3.8.0_for_debug&quot;</code></p>
-<p>在launch.json</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;env&quot;:&#123;&quot;DYLD_LIBRARY_PATH&quot;:&quot;&#x2F;path&#x2F;to&#x2F;python3&#x2F;mac&#x2F;lib:&#x2F;path&#x2F;to&#x2F;openssl&#x2F;lib&quot;&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="C-调C"><a href="#C-调C" class="headerlink" title="C++调C"></a>C++调C</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;c头文件或函数</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
 
-<p>最后通过在代码中加入下面2行解决。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">os.environ[&#39;REQUESTS_CA_BUNDLE&#39;]&#x3D; &#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39;</span><br><span class="line">os.environ[&#39;SSL_CERT_FILE&#39;]&#x3D;&#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39; 或者参考上面的命令Install Certificates.command里面建立软链接。不过openssl的目录可能不对。</span><br><span class="line">或者用certifi.where() 代替上面的路径！！！</span><br></pre></td></tr></table></figure>
+<h1 id="C-中调用C库"><a href="#C-中调用C库" class="headerlink" title="C++中调用C库"></a>C++中调用C库</h1><p>做一个C动态库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void hello()&#123;  </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">gcc -shared -fPIC -o libhello.so hello.c</span><br></pre></td></tr></table></figure>
 
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror" target="_blank" rel="noopener">https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror</a></p>
+<p>C++程序调用它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp  -lhello</span><br></pre></td></tr></table></figure>
+
+<h1 id="C中调用C-库"><a href="#C中调用C-库" class="headerlink" title="C中调用C++库"></a>C中调用C++库</h1><p>将 C++ 函数声明为extern “C”（在你的 C++ 代码里做这个声明）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world()</span><br><span class="line">&#123;  </span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;world&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译并copy到系统库目录下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC -o libworld.so world.cpp </span><br><span class="line">cp libworld.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>做一个中间接口库，对C++库进行二次封装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; mid.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world();</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;  &#x2F;&#x2F; 即使这是一个C++程序，下列这个函数的实现也要以C约定的风格！</span><br><span class="line">#endif  </span><br><span class="line"> </span><br><span class="line">void m_world()  </span><br><span class="line">&#123;    </span><br><span class="line"></span><br><span class="line">  world();  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>其中m_world为libworld库中world方法的二次封装， 编译并copy到系统库目录下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared  -fPIC -o libmid.so mid.cpp -lworld</span><br><span class="line">cp libmid.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>在C程序中通过链接<strong>二次接口库</strong>去调用C++库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  m_world(); </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gcc test.c -lmid -o test</span><br></pre></td></tr></table></figure>
+
+<p>注：对于C++库中含有类的，可以在二次接口函数中生成临时对象来调用对应的功能函数。</p>
+<p><a href="http://www.cppblog.com/wolf/articles/77828.html" target="_blank" rel="noopener">http://www.cppblog.com/wolf/articles/77828.html</a></p>
+<h1 id="C-调用-Python"><a href="#C-调用-Python" class="headerlink" title="C++ 调用 Python"></a>C++ 调用 Python</h1><p>Python 本身就是一个C库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyRun_SimpleString(&quot;print &#39;Hello Python!&#39;\n&quot;);</span><br><span class="line">所有Python元素，module、function、tuple、string等等，实际上都是PyObject。C语言里操纵它们，一律使用PyObject *</span><br><span class="line">创建Python类型的变量，使用PyXXX_New可以创建类型为XXX的变量 PyTuple_New(1);</span><br></pre></td></tr></table></figure>
+
+<p>环境变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH&#x3D;.:$PYTHONPATH</span><br></pre></td></tr></table></figure>
+
+<p>//加载模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyImport_ImportModule(char *name)</span><br><span class="line">PyObject* PyImport_Import(PyObject *name)</span><br><span class="line">PyObject* PyString_FromString(const char*)</span><br></pre></td></tr></table></figure>
+
+<p>上面两个api都是用来动态加载python模块的。区别在于前者一个使用的是C的字符串，而后者的name是一个python对象，这个python对象需要通过PyString_FromString(const char*)来生成，其值为要导入的模块名</p>
+<p>//导入函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyModule_GetDict( PyObject *module)</span><br></pre></td></tr></table></figure>
+
+<p>可以获得Python模块中的函数列表。函数返回一个字典。字典中的关键字为函数名，值为函数的调用地址。 字典里面的值可以通过PyObject* PyDict_GetItemString( PyObject *p, const char *key) 函数来获取，其中p是PyModule_GetDict()的字典，而key则是对应的函数名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_GetAttrString(PyObject *o, char *attr_name)</span><br></pre></td></tr></table></figure>
+
+<p>返回模块对象中的attr_name属性或<strong>函数</strong>，相当于Python中表达式语句：o.attr_name</p>
+<p>//调用函数相关</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_CallObject( PyObject *callable_object, PyObject *args)</span><br><span class="line">PyObject* PyObject_CallFunction( PyObject *callable_object, char *format, ...)</span><br></pre></td></tr></table></figure>
+
+<p>使用上面两个函数可以在C程序中调用Python中的函数。callable_object为要调用的函数对象，也就是通过上述导入函数得到的函数对象，</p>
+<p>区别在于前者使用python的tuple来传参，后者则使用类似c语言printf的风格进行传参。</p>
+<p>如果不需要参数，那么args可能为NULL。返回成功时调用的结果，或失败时返回NULL。</p>
+<p>相当于Python表达式 apply(callable_object, args) 或 callable_object(*args)</p>
+<p>对数字和字符串进行转换处理，使之变成Python中相应的数据类型。 PyObject* Py_BuildValue( const char *format, …) format是要构造的参数的类型列表，函数中剩余的参数即要转换的C语言中的整型、浮点型或者字符串等。其返回值为PyObject型的指针。</p>
+<p>PyObject* PyList_New( Py_ssize_t len)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建一个新的Python列表，len为所创建列表的长度</span><br></pre></td></tr></table></figure>
+
+
+<p>PyObject* PyTuple_New( Py_ssize_t len)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyTuple_New()函数返回所创建的元组。</span><br></pre></td></tr></table></figure>
+
+
+<p>PyObject* PyDict_New()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyDict_New()函数返回所创建的字典。</span><br></pre></td></tr></table></figure>
+
+<p>向 Python 传递参数 使用 PyTuple_New 创建元组， PyTuple_SetItem 设置元组值</p>
+<p>转换 Python 返回值</p>
+<p>库里面的一些函数将返回值转换为 C++ , 例如 PyInt_AsLong，PyFloat_AsDouble， PyString_AsString 等。</p>
+<p>还可以使用 PyArg_ParseTuple 函数来将返回值作为元组解析</p>
+<p>把Python代码直接变成C代码 easy_install -U cython <a href="http://docs.cython.org/en/latest/index.html" target="_blank" rel="noopener">http://docs.cython.org/en/latest/index.html</a></p>
+<p><a href="https://docs.python.org/2/c-api/index.html" target="_blank" rel="noopener">https://docs.python.org/2/c-api/index.html</a></p>
+<p><a href="https://docs.python.org/2/extending/embedding.html" target="_blank" rel="noopener">https://docs.python.org/2/extending/embedding.html</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/20150641" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20150641</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/79896193" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79896193</a></p>
+<p><a href="https://blog.csdn.net/tobacco5648/article/details/50890106" target="_blank" rel="noopener">https://blog.csdn.net/tobacco5648/article/details/50890106</a></p>
 
       
     </div>
@@ -489,7 +507,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -535,20 +553,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

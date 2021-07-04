@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Abseil/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/C++%E5%BA%93%E7%AE%A1%E7%90%86%E5%99%A8vcpkg/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Abseil/" class="post-title-link" itemprop="url">Abseil</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/C++%E5%BA%93%E7%AE%A1%E7%90%86%E5%99%A8vcpkg/" class="post-title-link" itemprop="url">C++库管理器vcpkg</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 15:21:59 / Modified: 15:22:15" itemprop="dateCreated datePublished" datetime="2021-07-03T15:21:59+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-04 10:49:13 / Modified: 10:49:51" itemprop="dateCreated datePublished" datetime="2021-07-04T10:49:13+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%8D%E5%A5%BD%E5%88%86%E7%B1%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">不好分类</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -241,9 +241,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>一个开源的C++库，从谷歌的代码库里面收集而来，可以扩展C++标准库的功能</p>
-<p>通过Bazel来编译，也可以使用cmake</p>
-<p><a href="https://github.com/abseil/abseil-cpp" target="_blank" rel="noopener">https://github.com/abseil/abseil-cpp</a></p>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;Microsoft&#x2F;vcpkg.git</span><br><span class="line">cd vcpkg</span><br><span class="line">.&#x2F;bootstrap-vcpkg.sh</span><br><span class="line">.&#x2F;vcpkg integrate install   若您希望在 Visual Studio 中使用vcpkg</span><br><span class="line">.&#x2F;vcpkg install kcp   &#x2F;&#x2F; .&#x2F;vcpkg install sdl2 curl     .&#x2F;vcpkg install cpr</span><br></pre></td></tr></table></figure>
+
+<p>上面will install x86 libraries by default. To install x64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcpkg install package:x64-windows</span><br></pre></td></tr></table></figure>
+
+<p>需要vs英文语言包</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/Microsoft/vcpkg" target="_blank" rel="noopener">https://github.com/Microsoft/vcpkg</a></p>
 
       
     </div>
@@ -263,7 +267,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/ffmpeg/FFmpeg%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/socket%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -277,7 +281,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/ffmpeg/FFmpeg%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">FFmpeg简明教程</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/socket%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">socket简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -288,7 +292,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-03 11:10:29 / Modified: 13:54:29" itemprop="dateCreated datePublished" datetime="2021-07-03T11:10:29+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-04 10:44:51 / Modified: 10:48:51" itemprop="dateCreated datePublished" datetime="2021-07-04T10:44:51+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -296,8 +300,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -313,7 +317,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="数据传输方式"><a href="#数据传输方式" class="headerlink" title="数据传输方式"></a>数据传输方式</h2><p>常用的有两种：SOCK_STREAM 可靠和 SOCK_DGRAM不可靠，效率高。</p>
+<p>client 运行后，通过 connect() 函数向 server 发起请求，处于监听状态的 server 被激活，执行 accept() 函数，接受客户端的请求，然后执行 <strong>write() 函数</strong>向 client 传回数据。client 接收到传回的数据后，connect() 才运行结束，然后使用 read() 将数据读取出来。</p>
+<p><strong>程序运行到 accept() 函数会被阻塞，等待客户端发起请求</strong></p>
+<p><strong>windows</strong>下,用send代替write,recv代替read</p>
+<p>关闭 socket 时，Linux 使用 close() 函数，而 Windows 使用 closesocket() 函数。</p>
+<p>Linux上对于所有的文件，都可以使用 read() 函数读取数据，使用 write() 函数写入数据。</p>
+<p>&lt;sys/socket.h&gt; //windows上是WinSock2.h</p>
+<h2 id="常用结构体"><a href="#常用结构体" class="headerlink" title="常用结构体"></a>常用结构体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">struct sockaddr_in&#123;</span><br><span class="line">    sa_family_t     sin_family;   &#x2F;&#x2F;如AF_INET6 表示 IPv6 地址</span><br><span class="line">    uint16_t        sin_port;     &#x2F;&#x2F;16位的端口号。端口号需要用 htons() 函数转换</span><br><span class="line">    struct in_addr  sin_addr;     &#x2F;&#x2F;32位IP地址</span><br><span class="line">    char            sin_zero[8];  &#x2F;&#x2F;不使用，一般用0填充</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct in_addr&#123;</span><br><span class="line">    in_addr_t  s_addr;  &#x2F;&#x2F;32位的IP地址，&lt;netinet&#x2F;in.h&gt;,    可赋值htonl(INADDR_ANY)表示自动获取IP地址，INADDR_ANY等于0，或inet_addr(&quot;127.0.0.1&quot;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct sockaddr&#123;</span><br><span class="line">    sa_family_t  sin_family;   </span><br><span class="line">    char         sa_data[14];  &#x2F;&#x2F;IP地址和端口号</span><br><span class="line">&#125;;</span><br><span class="line">可以认为，sockaddr 是一种通用的结构体，可以用来保存多种类型的IP地址和端口号，而 sockaddr_in 是专门用来保存 IPv4 地址的结构体。另外还有 sockaddr_in6，用来保存 IPv6 地址，先对 sockaddr_in 结构体赋值，然后再强制转换为 sockaddr 类型。</span><br><span class="line"></span><br><span class="line">struct sockaddr_in6 &#123; </span><br><span class="line">    sa_family_t sin6_family;  &#x2F;&#x2F;(2)地址类型，取值为AF_INET6</span><br><span class="line">    in_port_t sin6_port;  &#x2F;&#x2F;(2)16位端口号</span><br><span class="line">    uint32_t sin6_flowinfo;  &#x2F;&#x2F;(4)IPv6流信息</span><br><span class="line">    struct in6_addr sin6_addr;  &#x2F;&#x2F;(4)具体的IPv6地址</span><br><span class="line">    uint32_t sin6_scope_id;  &#x2F;&#x2F;(4)接口范围ID</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>server中 close() 不仅会关闭服务器端的 socket，还会通知客户端连接已断开，客户端也会清理 socket 相关资源， client下次发起请求时需要重新创建socket。</p>
+<p>缓冲区的默认大小一般是 8K,</p>
+<p>write时如果缓存区不满足条件，会被阻塞，<strong>read时如果没有数据，也会阻塞</strong>，直到收到数据。</p>
+<p>注：read()/recv() 函数并不知道数据包的开始或结束标志。</p>
+<p>connect() 建立连接时，<strong>三次握手</strong>（Three-way Handshaking）：</p>
+<ul>
+<li>[Shake 1] 套接字A：“你好，套接字B，我这里有数据要传送给你，建立连接吧。”</li>
+<li>[Shake 2] 套接字B：“好的，我这边已准备就绪。”</li>
+<li>[Shake 3] 套接字A：“谢谢你受理我的请求。”</li>
+</ul>
+<p>断开连接需要<strong>四次握手</strong>：</p>
+<ul>
+<li>[Shake 1] 套接字A：“任务处理完毕，我希望断开连接。”</li>
+<li>[Shake 2] 套接字B：“哦，是吗？请稍等，我准备一下。”</li>
+<li>等待片刻后……</li>
+<li>[Shake 3] 套接字B：“我准备好了，可以断开连接了。”</li>
+<li>[Shake 4] 套接字A：“好的，谢谢合作。”</li>
+</ul>
+<p>UDP 没有建立连接和断开连接的过程，也不需要ACK包确认。<strong>server不必调用 listen() 和 accept(),client也不必调用connect,</strong></p>
+<p>TCP中，如果要向10个客户端提供服务，那么除了负责监听的套接字外，还需要创建10个套接字。但在UDP中，不管是服务器端还是客户端都只需要1个套接字，不过每次传输数据都要添加目标地址信息，发送数据使用 sendto，接收数据使用 recvfrom()</p>
+<p>UDP不同于TCP，不存在请求连接和受理过程，因此在某种意义上无法明确区分服务器端和客户端</p>
+<h2 id="使用域名"><a href="#使用域名" class="headerlink" title="使用域名"></a>使用域名</h2><p>gethostbyname将域名转换成IP地址，返回的结构体如下，只需关注最后一个成员 h_addr_list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct hostent&#123;</span><br><span class="line">    char *h_name;  &#x2F;&#x2F;official name</span><br><span class="line">    char **h_aliases;  &#x2F;&#x2F;alias list</span><br><span class="line">    int  h_addrtype;  &#x2F;&#x2F;host address type，如IPv6 对应 AF_INET6</span><br><span class="line">    int  h_length;  &#x2F;&#x2F;保存IP地址长度。IPv4 的长度为4个字节，IPv6 的长度为16个字节。</span><br><span class="line">    char **h_addr_list;  &#x2F;&#x2F;address list</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;IP地址</span><br><span class="line">for(int i&#x3D;0; host-&gt;h_addr_list[i]; i++)&#123;</span><br><span class="line">   printf(&quot;IP addr %d: %s\n&quot;, i+1, inet_ntoa( *(struct in_addr*)host-&gt;h_addr_list[i] ) );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>close和shutdown的区别</p>
+<p>close 会立即向网络中发送FIN包，不管发送缓冲区中是否还有数据，而shutdown() 会等发送缓冲区中的数据传输完毕再发送FIN包。</p>
+<h2 id="setsockopt"><a href="#setsockopt" class="headerlink" title="setsockopt"></a>setsockopt</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int setsockopt(int sock, int level, int optname, const void * optval, ,socklen_t optlen);</span><br></pre></td></tr></table></figure>
+
+<p>成功则返回0</p>
+<p>level一般设置为SOL_SOCKET</p>
+<p>第3个参数表示要设置的选项：</p>
+<ul>
+<li>SO_REUSEADDR ：本地地址重复使用</li>
+<li>SO_DONTROUTE： 送出的数据包不要利用路由设备来传输.</li>
+<li>SO_BROADCAST： 使用广播方式传送</li>
+<li>SO_SNDBUF 设置送出的暂存区大小</li>
+<li>SO_RCVBUF 设置接收的暂存区大小</li>
+<li>SO_KEEPALIVE 保持连接</li>
+<li>SO_OOBINLINE 当接收到OOB 数据时会马上送至标准输入设备</li>
+<li>SO_LINGER 确保数据安全且可靠的传送出去.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 接收缓冲区，对于客户，O_RCVBUF选项必须在connect之前设置；对于服务器，SO_RCVBUF选项必须在listen前设置。</span><br><span class="line">int nRecvBuf&#x3D;32*1024;         &#x2F;&#x2F;设置为32K</span><br><span class="line">setsockopt(s,SOL_SOCKET,SO_RCVBUF,(const char*)&amp;nRecvBuf,sizeof(int));</span><br><span class="line">&#x2F;&#x2F;发送缓冲区</span><br><span class="line">int nSendBuf&#x3D;32*1024;&#x2F;&#x2F;设置为32K</span><br><span class="line">setsockopt(s,SOL_SOCKET,SO_SNDBUF,(const char*)&amp;nSendBuf,sizeof(int));</span><br></pre></td></tr></table></figure>
+
+<h2 id="fcntl"><a href="#fcntl" class="headerlink" title="fcntl"></a>fcntl</h2><p>file control文件控制函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int fcntl(int fd, int cmd);</span><br><span class="line">int fcntl(int fd, int cmd, long arg);</span><br></pre></td></tr></table></figure>
+
+<p>cmd:欲操作的指令:</p>
+<ul>
+<li>获得／设置文件描述符标记(cmd=F_GETFD或F_SETFD).</li>
+<li>获得／设置文件状态标记(cmd=F_GETFL或F_SETFL).参数arg 为新旗标, 但只允许O_APPEND、O_NONBLOCK非阻塞 和O_ASYNC 位的改变</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flags |&#x3D; O_NONBLOCK; &#x2F;&#x2F;非阻塞</span><br><span class="line">flags &amp;&#x3D; ~O_NONBLOCK; &#x2F;&#x2F;关闭非阻塞，即阻塞</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://c.biancheng.net/cpp/socket/" target="_blank" rel="noopener">http://c.biancheng.net/cpp/socket/</a></p>
+<p><a href="https://www.cnblogs.com/eeexu123/p/5275783.html" target="_blank" rel="noopener">https://www.cnblogs.com/eeexu123/p/5275783.html</a></p>
+
       
     </div>
 
@@ -332,7 +400,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc/webrtc%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/%E7%A5%9E%E7%AD%96SDK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -346,7 +414,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc/webrtc%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">webrtc简明教程</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/%E7%A5%9E%E7%AD%96SDK/" class="post-title-link" itemprop="url">神策SDK</a>
         </h1>
 
         <div class="post-meta">
@@ -355,24 +423,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2021-07-03 11:10:12" itemprop="dateCreated datePublished" datetime="2021-07-03T11:10:12+08:00">2021-07-03</time>
+              <time title="Created: 2021-07-04 10:42:29 / Modified: 10:43:31" itemprop="dateCreated datePublished" datetime="2021-07-04T10:42:29+08:00">2021-07-04</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 10:24:38" itemprop="dateModified" datetime="2021-07-04T10:24:38+08:00">2021-07-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/webrtc/" itemprop="url" rel="index">
-                    <span itemprop="name">webrtc</span>
+                  <a href="/categories/3%E6%96%B9%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">3方库</span>
                   </a>
                 </span>
             </span>
@@ -388,14 +450,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;webrtc.googlesource.com&#x2F;src</span><br></pre></td></tr></table></figure>
-
-<p>API:  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API</a></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://webrtc.org/" target="_blank" rel="noopener">https://webrtc.org/</a>  官网</p>
-<p><a href="https://webrtc.github.io/webrtc-org/" target="_blank" rel="noopener">https://webrtc.github.io/webrtc-org/</a>   我搭建的文档站 <a href="https://elesos.github.io/webrtc.org/">https://elesos.github.io/webrtc.org/</a></p>
-<p><a href="https://webrtc.github.io/samples/" target="_blank" rel="noopener">https://webrtc.github.io/samples/</a>       我搭建的示例<a href="https://elesos.github.io/sites/webrtc/samples/">https://elesos.github.io/sites/webrtc/samples/</a></p>
-<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>sdk\android\src\jni\audio_device与modules\audio_device\android 下面都有一个opensles_common.h</p>
-<p>sdk的函数在jni的namespace下。</p>
+          <h1 id="C-SDK"><a href="#C-SDK" class="headerlink" title="C++ SDK"></a>C++ SDK</h1><p><a href="https://github.com/sensorsdata/sa-sdk-cpp" target="_blank" rel="noopener">https://github.com/sensorsdata/sa-sdk-cpp</a></p>
+<p>若直接引入源代码文件并使用 Visual Studio 编译报错，</p>
+<p>文件-&gt;高级保存选项-&gt;编码-&gt;Unicode-代码页1200”</p>
+<h2 id="神策分析"><a href="#神策分析" class="headerlink" title="神策分析"></a>神策分析</h2><p>在哪些地方埋什么样的点，需要数据产品经理输出埋点需求文档 （拆解为单个的点击或浏览） 如果遇到一些会发生变化的属性，比如用户的 VIP 等级，不能只作为用户属 性传进用户表中，还需在事件表中，记录一个 “当前发生事件 VIP 等级” 这个属性 因为当前会员等级的统计，和发生事件时用户的会员等级统计是两种情况。</p>
+<h2 id="用户关联"><a href="#用户关联" class="headerlink" title="用户关联"></a>用户关联</h2><p>如果用设备 ID 来唯一标识这名用户，缺点是同一台手机被多个用户用过，老用户换新手机也会被识别为一个全新的用户</p>
+<p>在用户未登录的情况下，神策会选取设备 ID 作为唯一标识，登录状态下选取 userid ，通过“用户关联”将同一个用户的设备 ID 和登录 ID 关联到一起</p>
+<p>关联时机一般在用户发生注册、登录以及第三方登录时进行关联，另外初始化 SDK 之后，也需要调用神策的“关联接口”</p>
+<p>first_id 取值为设备 ID，second_id 取值为 user_id。</p>
+<p>需要注意属性类型，如Android 端的金额属性叫 money，类型是数字，而 iOS 端使用的是字符串类型，会导致数据无法导入。</p>
+<p>客户端埋点 Vs. 在后端记录 Event 除非某个行为只在前端发生，对后端没有任何请求，否则建议在后端收集数据。</p>
 
       
     </div>
@@ -415,7 +479,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -461,20 +525,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

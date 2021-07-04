@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,192 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">C++常用语法手册</a>
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">Electron打包</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-03 08:17:04 / Modified: 08:19:53" itemprop="dateCreated datePublished" datetime="2021-07-03T08:17:04+08:00">2021-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Electron/" itemprop="url" rel="index">
+                    <span itemprop="name">Electron</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>打包用electron-builder，它比electron-packager有更丰富的的功能，可以生成安装程序，支持自动更新</p>
+<p><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="noopener">https://github.com/electron-userland/electron-builder</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g yarn  # package manager，类似npm</span><br><span class="line">yarn add electron-builder --dev</span><br></pre></td></tr></table></figure>
+
+<p>需要在package.json里面指定build配置，</p>
+<p>比如files指定把哪些文件打包，在scripts里面定义打包的key，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;pack&quot;: &quot;electron-builder --dir&quot;,   &#x2F;&#x2F;运行yarn pack,用于测试</span><br><span class="line">  &quot;dist&quot;: &quot;electron-builder&quot;,  &#x2F;&#x2F;运行yarn dist打包成windows installer等</span><br><span class="line">&quot;postinstall&quot;: &quot;electron-builder install-app-deps&quot;  &#x2F;&#x2F;依赖</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>electron-webpack：Scripts and configurations to compile Electron applications using webpack</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron-userland&#x2F;electron-webpack-quick-start.git</span><br><span class="line">yarn  # install dependencies，可能需要如下配置：</span><br><span class="line">yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">yarn dist  #compile source code ,create webpack output and build with electron-builder,这步会下载https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;releases&#x2F;download&#x2F;v8.2.0&#x2F;electron-v8.2.0-win32-x64.zip,可以自已下载后放到%LOCALAPPDATA%&#x2F;electron&#x2F;Cache</span><br></pre></td></tr></table></figure>
+
+<p>最终会生成一个安装包程序。</p>
+<ul>
+<li>32位系统的包怎么打？</li>
+</ul>
+<p><a href="https://www.electron.build/cli" target="_blank" rel="noopener">https://www.electron.build/cli</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &#123;</span><br><span class="line">  &quot;win&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;target&quot;: &quot;nsis&quot;,</span><br><span class="line">        &quot;arch&quot;: [</span><br><span class="line">          &quot;x64&quot;,</span><br><span class="line">          &quot;ia32&quot;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>electron-forge combines electron-packager and electron-builder together into one tool in order to perform both parts in one go (plus other features).</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/xiaoniuzai/p/12356208.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoniuzai/p/12356208.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Electron简明教程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-03 07:50:34 / Modified: 08:18:44" itemprop="dateCreated datePublished" datetime="2021-07-03T07:50:34+08:00">2021-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Electron/" itemprop="url" rel="index">
+                    <span itemprop="name">Electron</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>GitHub开发的，可通过JavaScript（主要还是node.js）, HTML和CSS开发跨平台的桌面软件，兼容 Mac、Windows 和 Linux，vscode就是基于electron开发的。teams也是</p>
+<p>2021年，有道云笔记也用这个了。</p>
+<p><a href="https://github.com/electron/electron" target="_blank" rel="noopener">https://github.com/electron/electron</a></p>
+<p><a href="https://www.electronjs.org/" target="_blank" rel="noopener">https://www.electronjs.org/</a></p>
+<p>参考：<a href="https://www.zhihu.com/question/53230344" target="_blank" rel="noopener">https://www.zhihu.com/question/53230344</a></p>
+<h1 id="electron-quick-start"><a href="#electron-quick-start" class="headerlink" title="electron-quick-start"></a>electron-quick-start</h1><p>Electron不是某个GUI库的javascript版本，可以把它当作一个精简版的 Chromium 浏览器，使用web页面作为它的GUI</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron --save-dev &#x2F;&#x2F;Mac下不要-g</span><br></pre></td></tr></table></figure>
+
+<p>示例工程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-quick-start</span><br><span class="line">cd electron-quick-start</span><br><span class="line">npm install</span><br><span class="line">npm start  &#x2F;&#x2F;npm start命令会让npm执行定义在package.json中的start命令</span><br></pre></td></tr></table></figure>
+
+<p>这样会生成一个GUI桌面程序，参考文档：<a href="https://electronjs.org/docs/tutorial/quick-start" target="_blank" rel="noopener">https://electronjs.org/docs/tutorial/quick-start</a></p>
+<p>应用的入口是 package.json 文件，</p>
+<p>最基本的 Electron 应用一般包含3个文件， package.json，main.js(应用的启动脚本)和index.html</p>
+<p>electron.app负责管理Electron 应用程序的生命周期</p>
+<p>electron.BrowserWindow类负责创建窗口</p>
+<p>第一行是js解构赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; app, BrowserWindow &#125; &#x3D; require(&#39;electron&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>参考var {name, age, passport} = person;</p>
+<h1 id="electron-api-demos"><a href="#electron-api-demos" class="headerlink" title="electron-api-demos"></a>electron-api-demos</h1><p><a href="https://github.com/electron/electron-api-demos" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos</a> &amp;&amp; <a href="https://github.com/electron/electron-api-demos/blob/master/docs.md" target="_blank" rel="noopener">https://github.com/electron/electron-api-demos/blob/master/docs.md</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron-api-demos</span><br><span class="line">$ cd electron-api-demos</span><br><span class="line">$ npm install</span><br><span class="line">$ npm start  &#x2F;&#x2F;or npm run dev</span><br></pre></td></tr></table></figure>
+
+<h1 id="electron-sample-apps"><a href="#electron-sample-apps" class="headerlink" title="electron-sample-apps"></a>electron-sample-apps</h1><p><a href="https://github.com/sindresorhus/awesome-electron" target="_blank" rel="noopener">https://github.com/sindresorhus/awesome-electron</a></p>
+<p><a href="https://github.com/hokein/electron-sample-apps" target="_blank" rel="noopener">https://github.com/hokein/electron-sample-apps</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g electron</span><br><span class="line">electron &lt;electron-sample-apps-path&gt;&#x2F;&lt;sample-name&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Qt简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -215,14 +400,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-02 21:17:07" itemprop="dateCreated datePublished" datetime="2021-07-02T21:17:07+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 22:17:26" itemprop="dateCreated datePublished" datetime="2021-07-02T22:17:26+08:00">2021-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 11:57:50" itemprop="dateModified" datetime="2021-07-04T11:57:50+08:00">2021-07-04</time>
+                <time title="Modified: 2021-07-04 10:25:15" itemprop="dateModified" datetime="2021-07-04T10:25:15+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,8 +415,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
                   </a>
                 </span>
             </span>
@@ -247,261 +432,69 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>C++98是第一个C++标准，1998年发布。</p>
-<p>C++11，第三个C++标准，2011年</p>
-<p>C++14，第四个C++标准，2014年</p>
-<p>C++17，第五个C++标准，2017年</p>
-<p>C++20 , 2020</p>
-<p>下一代是C++23</p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><a href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-keyword-intro.html</a></p>
-<p>范围for</p>
-<p>using代替typedef</p>
-<p>用vector和迭代器代替数组和指针</p>
-<p>用string代替c风格字符串 常量对象只能调用常成员函数</p>
-<p>拷贝构造函数何时调用：</p>
-<p>一个对象初始化另一个对象；函数参数；返回对象</p>
-<p>构造函数调用顺序：先调用内嵌对象的构造函数，按定义顺序 在类外对静态数据成员定义和初始化</p>
-<p>静态函数成员一般用于访问静态数据成员，如果要访问非静态数据，需要传递对象进来。</p>
-<p>常对象（数据成员不能改变）只能调用常成员函数（不能改数据成员，不能调普通函数）</p>
-<p>explicit 构造函数用来防止隐式转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D; default; 指示编译器自动生成函数体</span><br><span class="line">建议重载的方法都加了override 关键字。防止出现不正确的继承行为</span><br></pre></td></tr></table></figure>
+          <p><a href="https://doc.qt.io/qt-6/gettingstarted.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/gettingstarted.html</a></p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2005年6月27日</td>
+<td>Qt 4.0</td>
+</tr>
+<tr>
+<td>2008年5月</td>
+<td>Qt 4.4</td>
+</tr>
+<tr>
+<td>2012年12月19日</td>
+<td>Qt 5.0</td>
+</tr>
+<tr>
+<td>2017年5月31日</td>
+<td>Qt 5.9</td>
+</tr>
+<tr>
+<td>2020年5月26日</td>
+<td>Qt 5.15</td>
+</tr>
+<tr>
+<td>2020.12.8</td>
+<td>Qt6</td>
+</tr>
+<tr>
+<td>2021年7月1日</td>
+<td>Qt 6.1.2</td>
+</tr>
+</tbody></table>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://download.qt.io/archive/qt/5.9/5.9.9/" target="_blank" rel="noopener">https://download.qt.io/archive/qt/5.9/5.9.9/</a> open source offline installers are not available any more since Qt 5.15 </p>
+<p><a href="https://download.qt.io/official_releases/online_installers/" target="_blank" rel="noopener">https://download.qt.io/official_releases/online_installers/</a></p>
+<p>声明槽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public slots:</span><br></pre></td></tr></table></figure>
 
-<p><a href="http://c.biancheng.net/view/400.html" target="_blank" rel="noopener">http://c.biancheng.net/view/400.html</a></p>
-<h1 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#表示：对应变量字符串化  </span><br><span class="line"></span><br><span class="line">##表示：把宏参数名与宏定义代码序列中的标识符连接在一起，形成一个新的标识符</span><br></pre></td></tr></table></figure>
+<p>关联</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(sender, SIGNAL(signal()), receiver, SLOT(slot()));</span><br></pre></td></tr></table></figure>
 
-<h1 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h1><p>匿名命名空间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当定义一个命名空间时，可以忽略这个命名空间的名称：</span><br><span class="line">    namespce &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    编译器在内部会为这个命名空间生成一个唯一的名字，而且还会为这个匿名的命名空间生成一条using指令。所以上面的代码在效果上等同于：</span><br><span class="line">    namespace __UNIQUE_NAME_ &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    using namespace __UNIQUE_NAME_;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一个信号可以连接多个槽</li>
+<li>一个信号可以连接另外一个信号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(spinNum, SIGNAL(valueChanged(int)), this, SIGNAL (refreshInfo(int));</span><br></pre></td></tr></table></figure>
 
-<p>在匿名命名空间中声明的名称,具有internal链接属性，这和声明为static的全局名称的链接属性是相同的，即名称的作用域被限制在当前文件中</p>
-<p><strong>C++ 新的标准中提倡使用匿名命名空间,而不推荐使用static</strong></p>
-<p>可以在匿名的空间里面声明很多变量和函数,这样可以省去了对每个变量和函数添加static声明. 实质上匿名空间的功能跟static声明是一样的.</p>
-<h1 id="max"><a href="#max" class="headerlink" title="max"></a>max</h1><p> int max: Value of INT_MAX is 2147483647</p>
-<p><a href="https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160</a></p>
-<h1 id="乘法注意"><a href="#乘法注意" class="headerlink" title="乘法注意"></a>乘法注意</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interval &#x3D; 29LL * 24 * 3600 * 1000;</span><br></pre></td></tr></table></figure>
-
-<p>不加LL会在赋值之前就溢出</p>
-<h1 id="常用运算符"><a href="#常用运算符" class="headerlink" title="常用运算符"></a>常用运算符</h1><h2 id=""><a href="#" class="headerlink" title="%"></a>%</h2><p>取模运算符“%”的作用是求两个数相除的余数。</p>
-<p>通常用来判断一个数是否能被另一个数整除。</p>
-<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p><a href="https://www.cplusplus.com/reference/cstdio/fread/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/fread/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fseek (pFile , 0 , SEEK_END);</span><br><span class="line">lSize &#x3D; ftell (pFile);</span><br><span class="line">rewind (pFile); &#x2F;&#x2F;Set position of stream to the beginning</span><br></pre></td></tr></table></figure>
-
-<h1 id="Std-atomic-用法"><a href="#Std-atomic-用法" class="headerlink" title="Std::atomic 用法"></a>Std::atomic 用法</h1><p>C++中对共享数据的存取在并发条件下可能会引起data race的undifined行为，需要限制并发程序以某种特定的顺序执行，有两种方式：使用mutex保护共享数据，原子操作</p>
-<p>原子类型操作要不一步完成，要么不做，不可能出现操作一半被切换CPU，这样防止由于多线程指令交叉执行带来的可能错误。非原子操作下，某个线程可能看见的是一个其它线程操作未完成的数据。</p>
-<p>atomic 原子操作支持bool、int、char等数据类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::atomic &lt;bool&gt;   atomic_bool_test1(false);</span><br><span class="line">a.load() 返回数值a的copy</span><br></pre></td></tr></table></figure>
-
-<h1 id="Std-async"><a href="#Std-async" class="headerlink" title="Std::async"></a>Std::async</h1><p>Call function asynchronously</p>
-<p><a href="https://www.cplusplus.com/reference/future/async/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/future/async/</a></p>
-<p>The value returned by fn can be accessed through the future object returned (by calling its member future::get).</p>
-<h1 id="Static-关键字的作用"><a href="#Static-关键字的作用" class="headerlink" title="Static 关键字的作用"></a>Static 关键字的作用</h1><p>\1. 全局静态变量</p>
-<p>在全局变量前加上关键字static，全局变量就定义成一个全局静态变量.</p>
-<p>静态存储区，在整个程序运行期间一直存在。</p>
-<p>初始化：未经初始化的全局静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
-<p>作用域：全局静态变量在声明他的文件之外是不可见的，准确地说是从定义处开始，到本文件结尾。</p>
-<p>\2. 局部静态变量</p>
-<p>在局部变量前加上关键字static，局部变量就成为一个局部静态变量。</p>
-<p>内存中的位置：静态存储区</p>
-<p>初始化：未经初始化的局部静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
-<p>作用域：作用域仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变；</p>
-<p>\3. 静态函数</p>
-<p>函数的定义和声明默认情况下都是extern的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。</p>
-<p>函数的实现使用static修饰，那么这个函数只可在本cpp内使用，不会同其他cpp中的同名函数引起冲突；</p>
-<p>注：不要在头文件中声明static的全局函数，不要在cpp内声明非static的全局函数，如果你要在多个cpp中复用该函数，就把它的声明提到头文件里去，否则cpp内部声明需加上static修饰；</p>
-<p>\4. 类的静态成员</p>
-<p>在类中，静态成员可以实现多个对象之间的数据共享，并且使用静态数据成员还不会破坏隐藏的原则，即保证了安全性。因此，静态成员是类的所有对象中共享的成员，而不是某个对象的成员。对多个对象来说，静态数据成员只存储一处，供所有对象共用</p>
-<p>\5. 类的静态函数</p>
-<p>静态成员函数和静态数据成员一样，它们都属于类的静态成员，它们都不是对象成员。因此，对静态成员的引用不需要用对象名。</p>
-<p>在静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员（这点非常重要）。如果静态成员函数中要引用非静态成员时，可通过对象来引用。</p>
-<h1 id="Sprintf"><a href="#Sprintf" class="headerlink" title="Sprintf"></a>Sprintf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sprintf ( char * str, const char * format, ... );</span><br></pre></td></tr></table></figure>
-
-<p>stored C string in the buffer pointed by str.</p>
-<p>On success, the total number of characters written is returned. 否则返回负数</p>
-<p><a href="https://www.cplusplus.com/reference/cstdio/sprintf/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/sprintf/</a></p>
-<h1 id="Std-bind"><a href="#Std-bind" class="headerlink" title="Std::bind"></a>Std::bind</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind (Fn&amp;&amp; fn, Args&amp;&amp;... args);</span><br></pre></td></tr></table></figure>
-
-<p>Returns a function object based on fn, but with its arguments bound to args.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::bind(&amp;callback);</span><br><span class="line">std::bind(&amp;aClass::callback, this);</span><br><span class="line">std::bind(&amp;aClass::callback, this， info);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.cplusplus.com/reference/functional/bind/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/functional/bind/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using namespace std::placeholders;    &#x2F;&#x2F; adds visibility of _1, _2, _3  占位</span><br></pre></td></tr></table></figure>
-
-<h1 id="Std-condition-variable"><a href="#Std-condition-variable" class="headerlink" title="Std::condition variable"></a>Std::condition variable</h1><p><a href="https://www.cplusplus.com/reference/condition_variable/condition_variable/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/condition_variable/condition_variable/</a></p>
-<p>block the calling thread until notified to resume.</p>
-<p>It uses a unique_lock to lock the thread when one of its wait functions is called. The thread remains blocked until woken up by another thread that calls a notification function on the same condition_variable object.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait  The execution of the current thread  is blocked until notified. 第2个参数：A callable object or function that takes no arguments and returns a value that can be evaluated as a bool. This is called repeatedly until it evaluates to true.</span><br><span class="line">notify_one</span><br><span class="line">notify_all</span><br></pre></td></tr></table></figure>
-
-<h1 id="Std-remove"><a href="#Std-remove" class="headerlink" title="Std::remove"></a>Std::remove</h1><p>Remove value from range</p>
-<p><a href="https://www.cplusplus.com/reference/algorithm/remove/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/algorithm/remove/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/" class="post-title-link" itemprop="url">C++经典书籍推荐</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-02 21:14:22 / Modified: 21:15:37" itemprop="dateCreated datePublished" datetime="2021-07-02T21:14:22+08:00">2021-07-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list" target="_blank" rel="noopener">https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list</a></p>
-<p>definitive：最权威的</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/Curl%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">Curl编译</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-02 21:09:41 / Modified: 21:13:05" itemprop="dateCreated datePublished" datetime="2021-07-02T21:09:41+08:00">2021-07-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E8%AF%91/" itemprop="url" rel="index">
-                    <span itemprop="name">编译</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>先编译openssl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl.git</span><br><span class="line">autoreconf -fi	#只有git下载的有这一步 https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;blob&#x2F;master&#x2F;GIT-INFO</span><br><span class="line">.&#x2F;configure  --with-ssl&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl  --prefix&#x3D;   </span><br><span class="line">make </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>If you have OpenSSL installed in /usr/local/ssl, you can run configure like:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
-
-<p>否则</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --with-openssl&#x3D;&#x2F;opt&#x2F;OpenSSL</span><br></pre></td></tr></table></figure>
-
-<p>If you have OpenSSL installed, but with the libraries in one place and the header files somewhere else, you have to set the LDFLAGS and CPPFLAGS environment variables prior to running configure. Something like this should work:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CPPFLAGS&#x3D;&quot;-I&#x2F;path&#x2F;to&#x2F;ssl&#x2F;include&quot; LDFLAGS&#x3D;&quot;-L&#x2F;path&#x2F;to&#x2F;ssl&#x2F;lib&quot; .&#x2F;configure  &#x2F;&#x2F;如果删除了动态库的软链接，还需要修改pc文件。</span><br></pre></td></tr></table></figure>
-
-<p>If you have shared SSL libs installed in a directory where your run-time linker doesn’t find them (which usually causes configure failures), you can provide this option to gcc to set a hard-coded path to the run-time linker:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LDFLAGS&#x3D;-Wl,-R&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib .&#x2F;configure --with-openssl</span><br></pre></td></tr></table></figure>
-
-<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apple&#39;s SSL&#x2F;TLS implementation ,secure transport: --with-secure-transport  or --with-darwin-ssl</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export ARCH&#x3D;x86_64</span><br><span class="line">export SDK&#x3D;macosx</span><br><span class="line">export DEPLOYMENT_TARGET&#x3D;10.8</span><br><span class="line"></span><br><span class="line">export CFLAGS&#x3D;&quot;-arch $ARCH -isysroot $(xcrun -sdk $SDK --show-sdk-path) -m$SDK-version-min&#x3D;$DEPLOYMENT_TARGET&quot;</span><br><span class="line">.&#x2F;configure --host&#x3D;$ARCH-apple-darwin --prefix $(pwd)&#x2F;artifacts --with-darwin-ssl</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-
-<p>其它选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--disable-static --with-zlib&#x3D;PATH</span><br></pre></td></tr></table></figure>
-
-<h2 id="win"><a href="#win" class="headerlink" title="win"></a>win</h2><p>开始菜单中打开 Visual Studio 目录中的 VS2017的开发人员命令提示符，并切换到 curl 解压目录下的 winbuild 目录下；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll &#x2F;&#x2F;输出在 curl 目录 builds 下。</span><br><span class="line">静态 nmake &#x2F;f Makefile.vc mode&#x3D;static ENABLE_IDN&#x3D;no</span><br><span class="line"></span><br><span class="line">nmake &#x2F;f Makefile.vc mode&#x3D;dll ZLIB_PATH&#x3D;D:\fvbl\3rdparty\libz\win SSL_PATH&#x3D;D:\fvbl\3rdparty\OpenSSL\win ENABLE_WINSSL&#x3D;no WITH_SSL&#x3D;dll WITH_ZLIB&#x3D;dll MACHINE&#x3D;x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;xxx --with-ssl&#x3D;xxx&#x2F;OpenSSL--with-zlib&#x3D;&#x2F;xxx&#x2F;zlib&#x2F; --disable-static</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://curl.haxx.se/docs/install.html" target="_blank" rel="noopener">https://curl.haxx.se/docs/install.html</a></p>
-<p><a href="https://curl.se/download.html" target="_blank" rel="noopener">https://curl.se/download.html</a></p>
-<p><a href="https://www.cnblogs.com/rxbook/p/10881822.html" target="_blank" rel="noopener">https://www.cnblogs.com/rxbook/p/10881822.html</a></p>
+<ul>
+<li>信号与槽的参数个数和类型需要一致</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>为了将界面上的各个组件的分布设计得更加美观，经常使用一些容器类，如 QgoupBox、QtabWidget、QFrame 等</p>
+<h3 id="在UI界面上关联信号与槽"><a href="#在UI界面上关联信号与槽" class="headerlink" title="在UI界面上关联信号与槽"></a>在UI界面上关联信号与槽</h3><p>ui中选中比如一个 chkBoxUnder 组件，右键调出其快捷菜单。在快捷菜单中单击菜单项“Go to slot…”</p>
+<p>头文件声明的函数名上面，右键，选择“Refactor重构”→“Add Definition in elesos.cpp”，就可以自动在cpp中生成定义。</p>
+<p>在 UI 设计器里，单击上方工具栏里的“Edit Signals/Slots”按钮，窗体进入信号与槽函数编辑状态</p>
+<p>将鼠标移动到按钮上方，再按下鼠标左键，移动到窗体的空白区域释放左键，这时出现信号与槽的关联设置对话框。左侧的列表框里信号，右边的列表框里显示了槽函数（如果没有显示，把复选框勾选上）。</p>
+<p><a href="http://c.biancheng.net/view/1822.html" target="_blank" rel="noopener">http://c.biancheng.net/view/1822.html</a></p>
+<p><a href="https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html" target="_blank" rel="noopener">https://www.cnblogs.com/schips/p/framework-cpp-qt-02-ui-layout-manage.html</a></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><a href="https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html" target="_blank" rel="noopener">https://doc.qt.io/qt-6/qtwidgets-tutorials-notepad-example.html</a></p>
+<p>创建一个Qt Widgets Application</p>
 
       
     </div>
@@ -521,7 +514,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -567,20 +560,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

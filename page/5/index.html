@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/LodePNG/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/Vue-js%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/LodePNG/" class="post-title-link" itemprop="url">LodePNG</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/Vue-js%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Vue.js简明教程</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 10:55:14 / Modified: 10:55:47" itemprop="dateCreated datePublished" datetime="2021-07-04T10:55:14+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 12:05:07 / Modified: 12:06:00" itemprop="dateCreated datePublished" datetime="2021-07-04T12:05:07+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/3%E6%96%B9%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">3方库</span>
+                  <a href="/categories/Vue-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue.js</span>
                   </a>
                 </span>
             </span>
@@ -241,8 +241,51 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>PNG encoder and decoder in C and C++, without dependencies</p>
-<p><a href="https://github.com/lvandeve/lodepng" target="_blank" rel="noopener">https://github.com/lvandeve/lodepng</a></p>
+          <p><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var app &#x3D; new Vue(&#123;</span><br><span class="line"> el: &#39;#app&#39;,  #el 表示挂载绑定的html元素</span><br></pre></td></tr></table></figure>
+
+<h2 id="元素属性绑定"><a href="#元素属性绑定" class="headerlink" title="元素属性绑定"></a>元素属性绑定</h2><p>元素的属性，可以用v-bind绑定</p>
+<p>缩写，可以不用前面的v-bind，如:href=</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-bind:href&#x3D;&quot;url&quot;&gt;点我&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a :href&#x3D;&quot;url&quot;&gt;点我&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><p>html页面中值的显示用2个大括号包围起来 <div id="app">  </div> 这些渲染的代码可以放在单文件组件的template元素里面</p>
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p>v-if，如果想用v-if同时控制多个html元素，可将这些html元素放在一个<template>元素里面，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;template v-if&#x3D;&quot;ok&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在组件上用v-for（key是必须存在的） :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component v-for&#x3D;&quot;item in items&quot; :key&#x3D;&quot;item.id&quot;&gt;&lt;&#x2F;my-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>v-for 还支持一个可选的第二个参数，即当前项的索引。</p>
+<p>也可以将第2个参数作为键名</p>
+<p>用第三个参数作为索引</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a v-on:click&#x3D;&quot;doSomething&quot;&gt;执行事件&lt;&#x2F;a&gt;  可以@click缩写</span><br><span class="line">&lt;a @click&#x3D;&quot;doSomething&quot;&gt;...&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>会执行在methods中定义的事件函数</p>
+<h2 id="向组件传递数据"><a href="#向组件传递数据" class="headerlink" title="向组件传递数据"></a>向组件传递数据</h2><p>用props，包括向嵌套的子组件传递数据也是用props</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post</span><br><span class="line"> v-for&#x3D;&quot;post in posts&quot;</span><br><span class="line"> v-bind:key&#x3D;&quot;post.id&quot;</span><br><span class="line"> v-bind:post&#x3D;&quot;post&quot;</span><br><span class="line">&gt;&lt;&#x2F;blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中blog-post是一个组件，post是一个对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props: [&#39;post&#39;],    在props中的变量不要用驼峰命名，可以用my_data这种形式。</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components.html</a></p>
+<p>不带参数的v-bind，可以传递一个对象的所有属性，下面假设有id和title2个属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post v-bind&#x3D;&quot;post&quot;&gt;&lt;&#x2F;blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p>等价于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;blog-post</span><br><span class="line"> v-bind:id&#x3D;&quot;post.id&quot;</span><br><span class="line"> v-bind:title&#x3D;&quot;post.title&quot;</span><br><span class="line">&gt;&lt;&#x2F;blog-post&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
+<h2 id="给组件传一个数组"><a href="#给组件传一个数组" class="headerlink" title="给组件传一个数组"></a>给组件传一个数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;elesos-component :my_data&#x3D;&#39;@json($tag_name_arr)&#39;&gt;&lt;&#x2F;elesos-component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中的my_data是在props里面声明的变量。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>如何给button 绑定事件，并获取button的值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-button v-for&#x3D;&quot;(value, name, index) in my_data&quot; v-bind:value&#x3D;&quot;name&quot; @click&#x3D;&quot;process_click(name)&quot; type&#x3D;&quot;success&quot; plain&gt;&#123;&#123;name&#125;&#125;&#123;&#123;value&#125;&#125;&lt;&#x2F;el-button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>声明变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props: [&#39;my_data&#39;],</span><br></pre></td></tr></table></figure>
+
+<p>事件函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">process_click:function (name) &#123;</span><br><span class="line">               console.log(name);            </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -262,7 +305,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/cJSON%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc/WebRTC%20%E5%BC%80%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -276,7 +319,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/cJSON%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">cJSON 使用手册</a>
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/webrtc/WebRTC%20%E5%BC%80%E6%BA%90%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">WebRTC 开源服务器</a>
         </h1>
 
         <div class="post-meta">
@@ -287,7 +330,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 10:54:00 / Modified: 10:54:55" itemprop="dateCreated datePublished" datetime="2021-07-04T10:54:00+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 12:03:47 / Modified: 12:04:26" itemprop="dateCreated datePublished" datetime="2021-07-04T12:03:47+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,8 +338,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/3%E6%96%B9%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">3方库</span>
+                  <a href="/categories/webrtc/" itemprop="url" rel="index">
+                    <span itemprop="name">webrtc</span>
                   </a>
                 </span>
             </span>
@@ -312,8 +355,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://github.com/myforkers/cJSON" target="_blank" rel="noopener">https://github.com/myforkers/cJSON</a></p>
-<p>拷贝cJSON.h 和 cJSON.c 即可</p>
+          <h2 id="Jitsi"><a href="#Jitsi" class="headerlink" title="Jitsi"></a>Jitsi</h2><p>SFU， 开发语言（java, lua）</p>
+<h2 id="Kurento"><a href="#Kurento" class="headerlink" title="Kurento"></a>Kurento</h2><p>开发语言（java）</p>
+<h2 id="mediasoup"><a href="#mediasoup" class="headerlink" title="mediasoup"></a>mediasoup</h2><h2 id="Janus"><a href="#Janus" class="headerlink" title="Janus"></a>Janus</h2><p>开发语言（C语言）</p>
+<h2 id="Licode"><a href="#Licode" class="headerlink" title="Licode"></a>Licode</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ctiforum.com/news/guonei/572996.html" target="_blank" rel="noopener">http://www.ctiforum.com/news/guonei/572996.html</a></p>
 
       
     </div>
@@ -333,7 +378,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/C%E5%92%8CC++%E8%AF%AD%E8%A8%80%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E8%BD%AF%E4%BB%B6/VS2017%E4%B8%93%E4%B8%9A%E7%89%88%E5%92%8C%E4%BC%81%E4%B8%9A%E7%89%88%E6%BF%80%E6%B4%BB%E5%AF%86%E9%92%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -347,7 +392,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/C%E5%92%8CC++%E8%AF%AD%E8%A8%80%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">C和C++语言常见问题</a>
+            <a href="/2021/07/04/%E8%BD%AF%E4%BB%B6/VS2017%E4%B8%93%E4%B8%9A%E7%89%88%E5%92%8C%E4%BC%81%E4%B8%9A%E7%89%88%E6%BF%80%E6%B4%BB%E5%AF%86%E9%92%A5/" class="post-title-link" itemprop="url">VS2017专业版和企业版激活密钥</a>
         </h1>
 
         <div class="post-meta">
@@ -358,7 +403,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 10:52:49 / Modified: 12:11:22" itemprop="dateCreated datePublished" datetime="2021-07-04T10:52:49+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 12:02:20 / Modified: 12:03:07" itemprop="dateCreated datePublished" datetime="2021-07-04T12:02:20+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -366,8 +411,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/vs/" itemprop="url" rel="index">
+                    <span itemprop="name">vs</span>
                   </a>
                 </span>
             </span>
@@ -383,49 +428,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>#pragma pack(push,1)</li>
-</ul>
-<p>结构体字节对齐方式设置，把原来对齐方式压栈，并将新的对齐方式设置为一个字节对齐</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma pack(pop)            恢复对齐状态</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/vbLittleBoy/article/details/6935165" target="_blank" rel="noopener">https://blog.csdn.net/vbLittleBoy/article/details/6935165</a></p>
-<ul>
-<li>enum不要将变量写在后面</li>
-</ul>
-<p>正确的是enum test{}; 而不是enum {} test;</p>
-<ul>
-<li>cpp编译时：error: use of undeclared identifier ‘memcpy’</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;string.h&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>xcode non-portable path to file specified path differs in case from file name on disk</li>
-</ul>
-<p>可能是Include的文件大小写不对。</p>
-<ul>
-<li><p>xcode __stdcall calling convention ignored for this target</p>
-<p>stdcall is used only on Windows and has no meaning in Linux</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ifndef WIN32 </span><br><span class="line">#define __stdcall</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>warning C4018: “&lt;”: 有符号/无符号不匹配</li>
-</ul>
-<p>一般都是加上强制转换符 (size_t)(bytes - begin) &lt; str.length()</p>
-<ul>
-<li>overrides a member function but is not marked ‘override’</li>
-</ul>
-<p>覆盖的函数加上override关键字</p>
-<ul>
-<li>Use of undeclared identifier ‘std’</li>
-</ul>
-<p>看看std后面用的什么组件。加上它的头文件</p>
-<ul>
-<li>error LNK2001</li>
-</ul>
-<p>看是不是把dllimport误写成dllexport了</p>
+          <p>visual studio 2017</p>
+<p>Enterprise:</p>
+<p>NJVYC-BMHX2-G77MM-4XJMR-6Q8QF</p>
+<p>Professional:</p>
+<p>KBJFW-NXHK6-W4WJM-CRMQB-G3CDH</p>
+<p>切换语言 Tools -&gt; Options -&gt; Environment -&gt; International Settings</p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123</a></p>
+<p>Visual Assist</p>
 
       
     </div>
@@ -445,7 +455,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -491,20 +501,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

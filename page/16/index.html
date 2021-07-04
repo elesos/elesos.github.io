@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/PCM%E6%A0%BC%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/" class="post-title-link" itemprop="url">c++ Lambda</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/PCM%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">PCM格式</a>
         </h1>
 
         <div class="post-meta">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-02 08:04:02 / Modified: 08:07:55" itemprop="dateCreated datePublished" datetime="2021-07-02T08:04:02+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 21:28:55 / Modified: 21:29:46" itemprop="dateCreated datePublished" datetime="2021-07-02T21:28:55+08:00">2021-07-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,8 +224,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/%E6%A0%BC%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">格式</span>
                   </a>
                 </span>
             </span>
@@ -241,19 +241,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>方便定义匿名函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[capture list] (params list) mutable exception-&gt; return type &#123; function body &#125;</span><br><span class="line">[capture list] (params list) -&gt; return type &#123;function body&#125;</span><br><span class="line">[capture list] (params list) &#123;function body&#125;</span><br><span class="line">[capture list] &#123;function body&#125;</span><br></pre></td></tr></table></figure>
+          <p>48000Hz=48000采样/s</p>
+<p>PCM16LE双声道数据左声道和右声道的采样值是间隔存储的</p>
+<p>pcm大小计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">声道数*采样率*位深度（每个采样所占字节数）</span><br><span class="line">2 tracks * 44,100 samples&#x2F;second * 16 bits&#x2F;sample &#x3D; 1,411,200 bits&#x2F;second.   &#x3D; 176400Byte</span><br></pre></td></tr></table></figure>
 
-<p>capture list：捕获外部变量列表 , &amp;, a, b除a和b按值进行传递外，其他参数都按引用进行传递。 a, &amp;b 将a按值进行传递，b按引用进行传递。 =，&amp;a, &amp;b 除a和b按引用进行传递外，其他参数都按值进行传递。</p>
-<p>params list：形参</p>
-<p>mutable指示符：用来说明是否可以修改捕获的变量</p>
-<p>exception：异常设定</p>
-<p>return type：返回类型</p>
-<p>function body：函数体</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a &#x3D; 123;</span><br><span class="line">  auto f &#x3D; [a]()mutable &#123; cout &lt;&lt; ++a; &#125;; &#x2F;&#x2F; 不会报错</span><br><span class="line">  cout &lt;&lt; a &lt;&lt; endl; &#x2F;&#x2F; 输出：123</span><br><span class="line">  f(); &#x2F;&#x2F; 输出：124</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ar 48000 -ac 1 -f s16le -i in.pcm -ar 16000 -ac 1  -f s16le -c:a pcm_s16le aec_far_16k.pcm</span><br></pre></td></tr></table></figure>
 
-<h1 id="可调用对象"><a href="#可调用对象" class="headerlink" title="可调用对象"></a>可调用对象</h1><p>对于一个对象或者一个表达式，如果可以对其使用调用运算符，则称为可调用对象，如果类定义了调用运算符，则该类的对象称作函数对象</p>
-<p>一个 lambda 表达式表示一个可调用的代码单元</p>
+<p><a href="http://www.lehman.edu/faculty/hoffmann/itc/techteach/audio/audiotechinfo.html" target="_blank" rel="noopener">http://www.lehman.edu/faculty/hoffmann/itc/techteach/audio/audiotechinfo.html</a></p>
 
       
     </div>
@@ -273,7 +268,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_thread/">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/FLV%E6%A0%BC%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -287,7 +282,93 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_thread/" class="post-title-link" itemprop="url">c++ thread</a>
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/FLV%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">FLV格式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-02 21:27:19 / Modified: 21:28:30" itemprop="dateCreated datePublished" datetime="2021-07-02T21:27:19+08:00">2021-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%BC%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">格式</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>由一个个TAG组成</p>
+<h2 id="头"><a href="#头" class="headerlink" title="头"></a>头</h2><p>刚开始是9字节的头（看第5个字节就行，它代表类型，其它基本都是固定值）：前3个字节固定为FLV（46 4C 56）</p>
+<p>第5个字节：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TypeFlagsReserved UB[5] 0</span><br><span class="line">TypeFlagsAudio    UB[1] 1 &#x3D; 有音频</span><br><span class="line">TypeFlagsReserved UB[1] 0</span><br><span class="line">TypeFlagsVideo    UB[1] 1 &#x3D; 有视频</span><br></pre></td></tr></table></figure>
+
+<p>所以，<strong>为1时，只有视频，为4时只有音频，为5时都有</strong>。</p>
+<p>最后4个字节：固定为00 00 00 09</p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>9个字节之后就由连续的 <strong>pre_tag_size（4个字节）+tag</strong> 组成，其中第一个pre_tag_size固定为00 00 00 00</p>
+<h2 id="tag"><a href="#tag" class="headerlink" title="tag"></a>tag</h2><p>tag前面为<strong>11个字节</strong>的头：</p>
+<p>tag一般分音频和视频tag，通过<strong>第一个字节的后5位</strong>区分，<strong>8音9视</strong></p>
+<p>然后是3个字节的大小（从streamid开始往后算的大小）</p>
+<p>然后是4个字节的时间戳。</p>
+<p>最后是3个字节的streamID（固定为0)</p>
+<p>后面就是数据了,比如:</p>
+<p>对于音频，是<strong>音频头+数据</strong>，如果是aac，音频头有2个字节</p>
+<p>对于视频，是<strong>视频头+数据</strong>。如果是avc，视频头有5个字节</p>
+<p>不支持封装opus</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">C++常用语法手册</a>
         </h1>
 
         <div class="post-meta">
@@ -297,14 +378,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-02 07:55:17" itemprop="dateCreated datePublished" datetime="2021-07-02T07:55:17+08:00">2021-07-02</time>
+              <time title="Created: 2021-07-02 21:17:07" itemprop="dateCreated datePublished" datetime="2021-07-02T21:17:07+08:00">2021-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 11:56:08" itemprop="dateModified" datetime="2021-07-04T11:56:08+08:00">2021-07-04</time>
+                <time title="Modified: 2021-07-04 11:57:50" itemprop="dateModified" datetime="2021-07-04T11:57:50+08:00">2021-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,103 +410,91 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::thread thread_obj(func, params);</span><br><span class="line"></span><br><span class="line">std::thread::join()  &#x2F;&#x2F;wait for a thread </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> std::thread t1(callable);   &#x2F;&#x2F; Start thread t1   </span><br><span class="line"> t1.join(); &#x2F;&#x2F; Wait for t1 to finish</span><br><span class="line"> </span><br><span class="line"> if(joinable())&#123;</span><br><span class="line">表示线程已结束</span><br><span class="line">&#125;</span><br><span class="line">终止线程，需要先设置一个循环退出变量，然后检查是否joinable,然后用join等待退出</span><br></pre></td></tr></table></figure>
+          <p>C++98是第一个C++标准，1998年发布。</p>
+<p>C++11，第三个C++标准，2011年</p>
+<p>C++14，第四个C++标准，2014年</p>
+<p>C++17，第五个C++标准，2017年</p>
+<p>C++20 , 2020</p>
+<p>下一代是C++23</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><a href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-keyword-intro.html</a></p>
+<p>范围for</p>
+<p>using代替typedef</p>
+<p>用vector和迭代器代替数组和指针</p>
+<p>用string代替c风格字符串 常量对象只能调用常成员函数</p>
+<p>拷贝构造函数何时调用：</p>
+<p>一个对象初始化另一个对象；函数参数；返回对象</p>
+<p>构造函数调用顺序：先调用内嵌对象的构造函数，按定义顺序 在类外对静态数据成员定义和初始化</p>
+<p>静态函数成员一般用于访问静态数据成员，如果要访问非静态数据，需要传递对象进来。</p>
+<p>常对象（数据成员不能改变）只能调用常成员函数（不能改数据成员，不能调普通函数）</p>
+<p>explicit 构造函数用来防止隐式转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D; default; 指示编译器自动生成函数体</span><br><span class="line">建议重载的方法都加了override 关键字。防止出现不正确的继承行为</span><br></pre></td></tr></table></figure>
 
-<h1 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> std::this_thread::sleep_for(std::chrono::seconds(1));</span><br><span class="line">std::this_thread::sleep_for(std::chrono::milliseconds(interval));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">auto start &#x3D; std::chrono::high_resolution_clock::now(); &#x2F;&#x2F;#include &lt;chrono&gt;</span><br><span class="line">  std::this_thread::sleep_for(2000ms);  &#x2F;&#x2F;Blocks the execution of the current thread</span><br><span class="line">  auto end &#x3D; std::chrono::high_resolution_clock::now();</span><br><span class="line">  std::chrono::duration&lt;double, std::milli&gt; elapsed &#x3D; end-start;</span><br><span class="line">  std::cout &lt;&lt; &quot;Waited &quot; &lt;&lt; elapsed.count() &lt;&lt; &quot; ms\n&quot;;   &#x2F;&#x2F;Waited 2000.12 ms</span><br></pre></td></tr></table></figure>
+<p><a href="http://c.biancheng.net/view/400.html" target="_blank" rel="noopener">http://c.biancheng.net/view/400.html</a></p>
+<h1 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#表示：对应变量字符串化  </span><br><span class="line"></span><br><span class="line">##表示：把宏参数名与宏定义代码序列中的标识符连接在一起，形成一个新的标识符</span><br></pre></td></tr></table></figure>
 
+<h1 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h1><p>匿名命名空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当定义一个命名空间时，可以忽略这个命名空间的名称：</span><br><span class="line">    namespce &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    编译器在内部会为这个命名空间生成一个唯一的名字，而且还会为这个匿名的命名空间生成一条using指令。所以上面的代码在效果上等同于：</span><br><span class="line">    namespace __UNIQUE_NAME_ &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    using namespace __UNIQUE_NAME_;</span><br></pre></td></tr></table></figure>
 
+<p>在匿名命名空间中声明的名称,具有internal链接属性，这和声明为static的全局名称的链接属性是相同的，即名称的作用域被限制在当前文件中</p>
+<p><strong>C++ 新的标准中提倡使用匿名命名空间,而不推荐使用static</strong></p>
+<p>可以在匿名的空间里面声明很多变量和函数,这样可以省去了对每个变量和函数添加static声明. 实质上匿名空间的功能跟static声明是一样的.</p>
+<h1 id="max"><a href="#max" class="headerlink" title="max"></a>max</h1><p> int max: Value of INT_MAX is 2147483647</p>
+<p><a href="https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160</a></p>
+<h1 id="乘法注意"><a href="#乘法注意" class="headerlink" title="乘法注意"></a>乘法注意</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interval &#x3D; 29LL * 24 * 3600 * 1000;</span><br></pre></td></tr></table></figure>
 
-<p>Sleep 函数告诉操作系统 “在未来的多少毫秒内我不参与 CPU 竞争”。</p>
-<p>Thread.Sleep(0) 的作用是 “触发操作系统立刻重新进行一次 CPU 竞争”。竞争的结果也许是当前线程仍然获得 CPU 控制权，也许会换成别的线程获得 CPU 控制权。</p>
-<p>1秒(s) ＝1000毫秒(ms)</p>
-<p>1毫秒(ms)＝1000微秒 (us)</p>
-<p>1微秒(us)＝1000纳秒 (ns)</p>
-<p>1秒=10的9次方</p>
-<p><a href="https://zh.wikipedia.org/zh-hans/数量级_(时间)" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-hans/%E6%95%B0%E9%87%8F%E7%BA%A7_(%E6%97%B6%E9%97%B4)</a></p>
-<p>1ks千秒=10的3次方秒</p>
-<p>1Ms兆秒=10的6次方秒</p>
-<p>1吉秒Gs=10的9次方秒，约31.7年。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">离开作用域就释放mutex了</span><br><span class="line">std::lock_guard&lt;std::mutex&gt; lock(io_mutex); &#x2F;&#x2F;lock_guard是一个类，是mutex的包装 https:&#x2F;&#x2F;en.cppreference.com&#x2F;w&#x2F;cpp&#x2F;thread&#x2F;lock_guard</span><br><span class="line">std::unique_lock&lt;std::mutex&gt; locker(mutex_);</span><br></pre></td></tr></table></figure>
+<p>不加LL会在赋值之前就溢出</p>
+<h1 id="常用运算符"><a href="#常用运算符" class="headerlink" title="常用运算符"></a>常用运算符</h1><h2 id=""><a href="#" class="headerlink" title="%"></a>%</h2><p>取模运算符“%”的作用是求两个数相除的余数。</p>
+<p>通常用来判断一个数是否能被另一个数整除。</p>
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p><a href="https://www.cplusplus.com/reference/cstdio/fread/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/fread/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fseek (pFile , 0 , SEEK_END);</span><br><span class="line">lSize &#x3D; ftell (pFile);</span><br><span class="line">rewind (pFile); &#x2F;&#x2F;Set position of stream to the beginning</span><br></pre></td></tr></table></figure>
 
-<p><a href="https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown" target="_blank" rel="noopener">https://www.cplusplus.com/reference/mutex/unique_lock/#:~:text=std%3A%3Aunique_lock&amp;text=This%20class%20guarantees%20an%20unlocked,case%20an%20exception%20is%20thrown</a>.</p>
-<h2 id="detach"><a href="#detach" class="headerlink" title="detach"></a>detach</h2><p>使用join(),线程运行完,main函数才能结束。</p>
-<p>当使用detach()函数时，主调线程继续运行，被调线程驻留后台运行，主调线程无法再取得该被调线程的控制权。当主调线程结束时，由运行时库负责清理与被调线程相关的资源。使用detach(),main函数不用等待线程结束才能结束。有时候线程还没运行完，main函数就已经结束了。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://en.cppreference.com/w/cpp/thread/thread/detach" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/detach</a></p>
-<p><a href="https://en.cppreference.com/w/cpp/thread/thread/joinable" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/thread/thread/joinable</a></p>
-<p><a href="https://www.cplusplus.com/reference/thread/thread/detach/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/thread/thread/detach/</a></p>
-<p><a href="https://www.geeksforgeeks.org/multithreading-in-cpp/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/multithreading-in-cpp/</a></p>
+<h1 id="Std-atomic-用法"><a href="#Std-atomic-用法" class="headerlink" title="Std::atomic 用法"></a>Std::atomic 用法</h1><p>C++中对共享数据的存取在并发条件下可能会引起data race的undifined行为，需要限制并发程序以某种特定的顺序执行，有两种方式：使用mutex保护共享数据，原子操作</p>
+<p>原子类型操作要不一步完成，要么不做，不可能出现操作一半被切换CPU，这样防止由于多线程指令交叉执行带来的可能错误。非原子操作下，某个线程可能看见的是一个其它线程操作未完成的数据。</p>
+<p>atomic 原子操作支持bool、int、char等数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::atomic &lt;bool&gt;   atomic_bool_test1(false);</span><br><span class="line">a.load() 返回数值a的copy</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<h1 id="Std-async"><a href="#Std-async" class="headerlink" title="Std::async"></a>Std::async</h1><p>Call function asynchronously</p>
+<p><a href="https://www.cplusplus.com/reference/future/async/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/future/async/</a></p>
+<p>The value returned by fn can be accessed through the future object returned (by calling its member future::get).</p>
+<h1 id="Static-关键字的作用"><a href="#Static-关键字的作用" class="headerlink" title="Static 关键字的作用"></a>Static 关键字的作用</h1><p>\1. 全局静态变量</p>
+<p>在全局变量前加上关键字static，全局变量就定义成一个全局静态变量.</p>
+<p>静态存储区，在整个程序运行期间一直存在。</p>
+<p>初始化：未经初始化的全局静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：全局静态变量在声明他的文件之外是不可见的，准确地说是从定义处开始，到本文件结尾。</p>
+<p>\2. 局部静态变量</p>
+<p>在局部变量前加上关键字static，局部变量就成为一个局部静态变量。</p>
+<p>内存中的位置：静态存储区</p>
+<p>初始化：未经初始化的局部静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：作用域仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变；</p>
+<p>\3. 静态函数</p>
+<p>函数的定义和声明默认情况下都是extern的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。</p>
+<p>函数的实现使用static修饰，那么这个函数只可在本cpp内使用，不会同其他cpp中的同名函数引起冲突；</p>
+<p>注：不要在头文件中声明static的全局函数，不要在cpp内声明非static的全局函数，如果你要在多个cpp中复用该函数，就把它的声明提到头文件里去，否则cpp内部声明需加上static修饰；</p>
+<p>\4. 类的静态成员</p>
+<p>在类中，静态成员可以实现多个对象之间的数据共享，并且使用静态数据成员还不会破坏隐藏的原则，即保证了安全性。因此，静态成员是类的所有对象中共享的成员，而不是某个对象的成员。对多个对象来说，静态数据成员只存储一处，供所有对象共用</p>
+<p>\5. 类的静态函数</p>
+<p>静态成员函数和静态数据成员一样，它们都属于类的静态成员，它们都不是对象成员。因此，对静态成员的引用不需要用对象名。</p>
+<p>在静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员（这点非常重要）。如果静态成员函数中要引用非静态成员时，可通过对象来引用。</p>
+<h1 id="Sprintf"><a href="#Sprintf" class="headerlink" title="Sprintf"></a>Sprintf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sprintf ( char * str, const char * format, ... );</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<p>stored C string in the buffer pointed by str.</p>
+<p>On success, the total number of characters written is returned. 否则返回负数</p>
+<p><a href="https://www.cplusplus.com/reference/cstdio/sprintf/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/sprintf/</a></p>
+<h1 id="Std-bind"><a href="#Std-bind" class="headerlink" title="Std::bind"></a>Std::bind</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind (Fn&amp;&amp; fn, Args&amp;&amp;... args);</span><br></pre></td></tr></table></figure>
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/">
+<p>Returns a function object based on fn, but with its arguments bound to args.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::bind(&amp;callback);</span><br><span class="line">std::bind(&amp;aClass::callback, this);</span><br><span class="line">std::bind(&amp;aClass::callback, this， info);</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
+<p><a href="https://www.cplusplus.com/reference/functional/bind/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/functional/bind/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using namespace std::placeholders;    &#x2F;&#x2F; adds visibility of _1, _2, _3  占位</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/" class="post-title-link" itemprop="url">c++ list</a>
-        </h1>
+<h1 id="Std-condition-variable"><a href="#Std-condition-variable" class="headerlink" title="Std::condition variable"></a>Std::condition variable</h1><p><a href="https://www.cplusplus.com/reference/condition_variable/condition_variable/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/condition_variable/condition_variable/</a></p>
+<p>block the calling thread until notified to resume.</p>
+<p>It uses a unique_lock to lock the thread when one of its wait functions is called. The thread remains blocked until woken up by another thread that calls a notification function on the same condition_variable object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait  The execution of the current thread  is blocked until notified. 第2个参数：A callable object or function that takes no arguments and returns a value that can be evaluated as a bool. This is called repeatedly until it evaluates to true.</span><br><span class="line">notify_one</span><br><span class="line">notify_all</span><br></pre></td></tr></table></figure>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-02 07:50:13 / Modified: 07:53:11" itemprop="dateCreated datePublished" datetime="2021-07-02T07:50:13+08:00">2021-07-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">std::list&lt;int&gt; first;                                &#x2F;&#x2F; empty list of ints</span><br><span class="line"> std::list&lt;int&gt; second (4,100);                       &#x2F;&#x2F; four ints with value 100</span><br><span class="line"> std::list&lt;int&gt; third (second.begin(),second.end());  &#x2F;&#x2F; iterating through second</span><br><span class="line"> std::list&lt;int&gt; fourth (third);                       &#x2F;&#x2F; a copy of third</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> mylist.push_back(77);</span><br><span class="line">mylist.front()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace_front(10,&#39;a&#39;);</span><br><span class="line"> </span><br><span class="line">  mylist.emplace_back(10,&#39;a&#39;);</span><br><span class="line"> mylist.emplace_back(20,&#39;b&#39;);</span><br><span class="line"> </span><br><span class="line"> first.assign (7,100);                      &#x2F;&#x2F; 7 ints with value 100</span><br><span class="line"> second.assign (first.begin(),first.end()); &#x2F;&#x2F; a copy of first</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace ( mylist.begin(), 100, &#39;x&#39; );</span><br><span class="line"> </span><br><span class="line"> erase根据位置删除</span><br><span class="line">remove根据值删除</span><br><span class="line">double mydoubles[]&#x3D;&#123; 12.15,  2.72, 73.0,  12.77,  3.14,  12.77, 73.35, 72.25, 15.3,  72.25 &#125;;</span><br><span class="line"> std::list&lt;double&gt; mylist (mydoubles,mydoubles+10);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.cplusplus.com/reference/list/list/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/list/list/</a></p>
+<h1 id="Std-remove"><a href="#Std-remove" class="headerlink" title="Std::remove"></a>Std::remove</h1><p>Remove value from range</p>
+<p><a href="https://www.cplusplus.com/reference/algorithm/remove/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/algorithm/remove/</a></p>
 
       
     </div>
@@ -445,7 +514,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -491,20 +560,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
