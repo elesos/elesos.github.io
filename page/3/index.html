@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:48:13" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 18:41:44" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,13 +248,56 @@
 <p>查有哪些targets</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn ls out&#x2F;Default “&#x2F;&#x2F;base&#x2F;*”</span><br></pre></td></tr></table></figure>
 
-<p>查看变量的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gn args out&#x2F;Default</span><br><span class="line">gn args --list out&#x2F;Default</span><br></pre></td></tr></table></figure>
-
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><p><a href="https://gn.googlesource.com/gn/+/main/docs/quick_start.md" target="_blank" rel="noopener">https://gn.googlesource.com/gn/+/main/docs/quick_start.md</a>  备份</p>
+<h2 id="查看可用参数列表及其默认值"><a href="#查看可用参数列表及其默认值" class="headerlink" title="查看可用参数列表及其默认值"></a>查看可用参数列表及其默认值</h2><p><code>gn args --list out/my_build &gt; args_list.log</code>，生成的log不在my_build目录，在运行命令的目录，应该是src下, 需要先运行gn args out/my_build</p>
+<p><a href="https://gn.googlesource.com/gn/+/main/docs/quick_start.md" target="_blank" rel="noopener">https://gn.googlesource.com/gn/+/main/docs/quick_start.md</a>  备份<a href="https://elesos.github.io/2021/07/04/docs/gn/quick_start/">https://elesos.github.io/2021/07/04/docs/gn/quick_start/</a></p>
 <p>先下载示例代码 </p>
 <p><code>git clone https://gn.googlesource.com/gn</code></p>
 <p>我的在 <a href="https://github.com/elesos/gn" target="_blank" rel="noopener">https://github.com/elesos/gn</a></p>
+<p> 要运行gn，需要先安装depot_tools</p>
+<h2 id="安装depot-tools"><a href="#安装depot-tools" class="headerlink" title="安装depot_tools"></a>安装depot_tools</h2><p>A collection of tools for dealing with Chromium development.</p>
+<p>Chromium and Chromium OS use a package of scripts called <a href="https://dev.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener"><strong>depot_tools</strong></a> to manage checkouts and code reviews.  The <strong>depot_tools</strong> package includes <code>gclient</code>, <code>gcl</code>, <code>git-cl</code>, <code>repo</code>, and others.</p>
+<p><a href="https://dev.chromium.org/developers/how-tos/install-depot-tools" target="_blank" rel="noopener">https://dev.chromium.org/developers/how-tos/install-depot-tools</a></p>
+<p><a href="https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html" target="_blank" rel="noopener">https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html</a></p>
+<p><a href="https://www.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener">https://www.chromium.org/developers/how-tos/depottools</a></p>
+<p>首先Confirm git and python are installed. </p>
+<h4 id="LINUX-MAC"><a href="#LINUX-MAC" class="headerlink" title="LINUX / MAC"></a>LINUX / MAC</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;chromium.googlesource.com&#x2F;chromium&#x2F;tools&#x2F;depot_tools.git</span><br><span class="line">或 https:&#x2F;&#x2F;github.com&#x2F;elesos&#x2F;depot_tools使用里面的 depot_tools.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<p>Add depot_tools to your PATH:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&#x2F;path&#x2F;to&#x2F;depot_tools:$PATH   &#x2F;&#x2F;put depot_tools ahead of everything else放在最前面</span><br></pre></td></tr></table></figure>
+
+<h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><p>使用里面的压缩包depot_tools.zip  <a href="https://github.com/elesos/depot_tools" target="_blank" rel="noopener">https://github.com/elesos/depot_tools</a></p>
+<p>From a <code>cmd.exe</code> shell, run the command <code>gclient</code> (without arguments). On first run, gclient will install all the Windows-specific bits needed to work with the code, including msysgit and python.</p>
+<h2 id="DEPS-file"><a href="#DEPS-file" class="headerlink" title="DEPS file"></a>DEPS file</h2><p>A DEPS file specifies dependencies of a project.</p>
+<h2 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h2><p>target_os = “android” </p>
+<p>target_cpu = “arm” </p>
+<p>target_cpu = “x86” </p>
+<p>target_cpu = “x64”</p>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>根目录下有.gn 这个文件所在目录为根目录 ，这个文件里面可能会指定A master build config file. 如Chrome’s is <code>//build/config/BUILDCONFIG.gn</code></p>
+<p>子模块目录新建BUILD.gn</p>
+<p>根目录也有这个BUILD.gn(GN starts by loading this root<br>file)</p>
+<p>创建一个静态库</p>
+<p>tools/gn/tutorial/BUILD.gn</p>
+<p>static_library(“hello”) {  sources = [    “hello.cc”,  ] }</p>
+<p>现在让我们添加一个依赖于这个库的可执行文件：</p>
+<p>executable(“say_hello”) {  sources = [    “say_hello.cc”,  ]  deps = [    “:hello”,  ] }</p>
+<p>也可以用 全部的//tools/gn/tutorial:hello  同一个文件中可以直接用:hello</p>
+<p> ninja -C out/Default say_hello</p>
+<p>Create a <code>tools/gn/tutorial/BUILD.gn</code> file</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">executable(&quot;hello_world&quot;) &#123;  sources &#x3D; [    &quot;hello_world.cc&quot;,  ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在根目录，BUILD.gn file</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group(&quot;root&quot;) &#123;  deps &#x3D; [    ...    &quot;&#x2F;&#x2F;url&quot;,    &quot;&#x2F;&#x2F;tools&#x2F;gn&#x2F;tutorial:hello_world&quot;,  ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>“//” (代表 source root)</strong>， 冒号后面是 target name</p>
+<p>在根目录下</p>
+<p>gn gen out/Default </p>
+<p>ninja -C out/Default hello_world</p>
+<p>或</p>
+<p>ninja -C out/Default tools/gn/tutorial:hello_world   不要前面的//符号</p>
+<h2 id="标签含义"><a href="#标签含义" class="headerlink" title="标签含义"></a>标签含义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;chrome&#x2F;browser:version</span><br><span class="line">→ Looks for “version” in chrome&#x2F;browser&#x2F;BUILD.gn</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;base</span><br><span class="line">→ Shorthand for &#x2F;&#x2F;base:base</span><br><span class="line"></span><br><span class="line">In current file当前文件里面的，只需要在前面加冒号</span><br><span class="line">:baz</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
