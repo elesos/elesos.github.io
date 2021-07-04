@@ -50,17 +50,17 @@
   };
 </script>
 
-  <meta name="description" content="GN Style Guide[TOC] Naming and ordering within the fileLocation of build filesIt usually makes sense to have more build files closer to the code thanfewer ones at the top level; this is in contrast wi">
+  <meta name="description" content="Naming and ordering within the fileLocation of build filesIt usually makes sense to have more build files closer to the code thanfewer ones at the top level; this is in contrast with what we did withG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docs&#x2F;gn&#x2F;style_guide">
+<meta property="og:title" content="GN Style Guide">
 <meta property="og:url" content="https://elesos.github.io/2021/07/04/docs/gn/style_guide/">
 <meta property="og:site_name" content="艺搜天下 | 视频技术博客">
-<meta property="og:description" content="GN Style Guide[TOC] Naming and ordering within the fileLocation of build filesIt usually makes sense to have more build files closer to the code thanfewer ones at the top level; this is in contrast wi">
+<meta property="og:description" content="Naming and ordering within the fileLocation of build filesIt usually makes sense to have more build files closer to the code thanfewer ones at the top level; this is in contrast with what we did withG">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-04T06:16:23.091Z">
-<meta property="article:modified_time" content="2021-07-04T06:10:24.000Z">
+<meta property="article:published_time" content="2021-07-04T05:30:10.000Z">
+<meta property="article:modified_time" content="2021-07-04T08:46:54.573Z">
 <meta property="article:author" content="elesos">
-<meta property="article:tag" content="视频经验，视频解答，视频教程，视频教学">
+<meta property="article:tag" content="gn">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://elesos.github.io/2021/07/04/docs/gn/style_guide/">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>docs/gn/style_guide | 艺搜天下 | 视频技术博客</title>
+  <title>GN Style Guide | 艺搜天下 | 视频技术博客</title>
   
 
 
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          docs/gn/style_guide
+          GN Style Guide
         </h1>
 
         <div class="post-meta">
@@ -217,7 +217,18 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 14:16:23 / Modified: 14:10:24" itemprop="dateCreated datePublished" datetime="2021-07-04T14:16:23+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:46:54" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gn/" itemprop="url" rel="index">
+                    <span itemprop="name">gn</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -231,8 +242,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="GN-Style-Guide"><a href="#GN-Style-Guide" class="headerlink" title="GN Style Guide"></a>GN Style Guide</h1><p>[TOC]</p>
-<h2 id="Naming-and-ordering-within-the-file"><a href="#Naming-and-ordering-within-the-file" class="headerlink" title="Naming and ordering within the file"></a>Naming and ordering within the file</h2><h3 id="Location-of-build-files"><a href="#Location-of-build-files" class="headerlink" title="Location of build files"></a>Location of build files</h3><p>It usually makes sense to have more build files closer to the code than<br>fewer ones at the top level; this is in contrast with what we did with<br>GYP. This makes things easier to find, and also makes the set of owners<br>required for reviews smaller since changes are more focused to particular<br>subdirectories.</p>
+        <h2 id="Naming-and-ordering-within-the-file"><a href="#Naming-and-ordering-within-the-file" class="headerlink" title="Naming and ordering within the file"></a>Naming and ordering within the file</h2><h3 id="Location-of-build-files"><a href="#Location-of-build-files" class="headerlink" title="Location of build files"></a>Location of build files</h3><p>It usually makes sense to have more build files closer to the code than<br>fewer ones at the top level; this is in contrast with what we did with<br>GYP. This makes things easier to find, and also makes the set of owners<br>required for reviews smaller since changes are more focused to particular<br>subdirectories.</p>
 <h3 id="Targets"><a href="#Targets" class="headerlink" title="Targets"></a>Targets</h3><ul>
 <li>Most BUILD files should have a target with the same name as the<br>directory. This target should be the first target.</li>
 <li>Other targets should be in some logical order – usually<br>more important targets will be first, and unit tests will follow the<br>corresponding target. If there’s no clear ordering, consider<br>alphabetical order.</li>
@@ -323,21 +333,24 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gn/" rel="tag"># gn</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2021/07/04/docs/gn/quick_start/" rel="next" title="docs/gn/quick_start">
-                  <i class="fa fa-chevron-left"></i> docs/gn/quick_start
+                <a href="/2021/07/04/docs/gn/standalone/" rel="next" title="Introduction">
+                  <i class="fa fa-chevron-left"></i> Introduction
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2021/07/04/docs/gn/standalone/" rel="prev" title="docs/gn/standalone">
-                  docs/gn/standalone <i class="fa fa-chevron-right"></i>
+                <a href="/2021/07/04/docs/gn/language/" rel="prev" title="GN Language and Operation">
+                  GN Language and Operation <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -382,7 +395,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GN-Style-Guide"><span class="nav-number">1.</span> <span class="nav-text">GN Style Guide</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Naming-and-ordering-within-the-file"><span class="nav-number">1.1.</span> <span class="nav-text">Naming and ordering within the file</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-of-build-files"><span class="nav-number">1.1.1.</span> <span class="nav-text">Location of build files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Targets"><span class="nav-number">1.1.2.</span> <span class="nav-text">Targets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configs"><span class="nav-number">1.1.3.</span> <span class="nav-text">Configs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.1.4.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ordering-within-a-target"><span class="nav-number">1.2.</span> <span class="nav-text">Ordering within a target</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditions"><span class="nav-number">1.2.1.</span> <span class="nav-text">Conditions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Formatting-and-indenting"><span class="nav-number">1.3.</span> <span class="nav-text">Formatting and indenting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sources"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deps"><span class="nav-number">1.3.2.</span> <span class="nav-text">Deps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import"><span class="nav-number">1.3.3.</span> <span class="nav-text">Import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">1.4.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-sets-versus-static-libraries"><span class="nav-number">1.4.1.</span> <span class="nav-text">Source sets versus static libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components-versus-shared-libraries-versus-source-sets"><span class="nav-number">1.4.2.</span> <span class="nav-text">Components versus shared libraries versus source sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loadable-modules-versus-shared-libraries"><span class="nav-number">1.4.3.</span> <span class="nav-text">Loadable modules versus shared libraries</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-arguments"><span class="nav-number">1.5.</span> <span class="nav-text">Build arguments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scope"><span class="nav-number">1.5.1.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type"><span class="nav-number">1.5.2.</span> <span class="nav-text">Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naming-conventions"><span class="nav-number">1.5.3.</span> <span class="nav-text">Naming conventions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Variables"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">Variables</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Naming-and-ordering-within-the-file"><span class="nav-number">1.</span> <span class="nav-text">Naming and ordering within the file</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-of-build-files"><span class="nav-number">1.1.</span> <span class="nav-text">Location of build files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Targets"><span class="nav-number">1.2.</span> <span class="nav-text">Targets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configs"><span class="nav-number">1.3.</span> <span class="nav-text">Configs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.4.</span> <span class="nav-text">Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ordering-within-a-target"><span class="nav-number">2.</span> <span class="nav-text">Ordering within a target</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Conditions"><span class="nav-number">2.1.</span> <span class="nav-text">Conditions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Formatting-and-indenting"><span class="nav-number">3.</span> <span class="nav-text">Formatting and indenting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sources"><span class="nav-number">3.1.</span> <span class="nav-text">Sources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deps"><span class="nav-number">3.2.</span> <span class="nav-text">Deps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import"><span class="nav-number">3.3.</span> <span class="nav-text">Import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-number">4.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-sets-versus-static-libraries"><span class="nav-number">4.1.</span> <span class="nav-text">Source sets versus static libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Components-versus-shared-libraries-versus-source-sets"><span class="nav-number">4.2.</span> <span class="nav-text">Components versus shared libraries versus source sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loadable-modules-versus-shared-libraries"><span class="nav-number">4.3.</span> <span class="nav-text">Loadable modules versus shared libraries</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-arguments"><span class="nav-number">5.</span> <span class="nav-text">Build arguments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scope"><span class="nav-number">5.1.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type"><span class="nav-number">5.2.</span> <span class="nav-text">Type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Naming-conventions"><span class="nav-number">5.3.</span> <span class="nav-text">Naming conventions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Variables"><span class="nav-number">5.3.1.</span> <span class="nav-text">Variables</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -50,17 +50,17 @@
   };
 </script>
 
-  <meta name="description" content="How GN handles cross-compilingAs a GN userGN has robust support for doing cross compiles and building things formultiple architectures in a single build (e.g., to build some things torun locally and s">
+  <meta name="description" content="As a GN userGN has robust support for doing cross compiles and building things formultiple architectures in a single build (e.g., to build some things torun locally and some things to run on an embedd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docs&#x2F;gn&#x2F;cross_compiles">
+<meta property="og:title" content="How GN handles cross-compiling">
 <meta property="og:url" content="https://elesos.github.io/2021/07/04/docs/gn/cross_compiles/">
 <meta property="og:site_name" content="艺搜天下 | 视频技术博客">
-<meta property="og:description" content="How GN handles cross-compilingAs a GN userGN has robust support for doing cross compiles and building things formultiple architectures in a single build (e.g., to build some things torun locally and s">
+<meta property="og:description" content="As a GN userGN has robust support for doing cross compiles and building things formultiple architectures in a single build (e.g., to build some things torun locally and some things to run on an embedd">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-04T06:16:23.083Z">
-<meta property="article:modified_time" content="2021-07-04T06:10:24.000Z">
+<meta property="article:published_time" content="2021-07-04T05:30:10.000Z">
+<meta property="article:modified_time" content="2021-07-04T08:47:13.703Z">
 <meta property="article:author" content="elesos">
-<meta property="article:tag" content="视频经验，视频解答，视频教程，视频教学">
+<meta property="article:tag" content="gn">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://elesos.github.io/2021/07/04/docs/gn/cross_compiles/">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>docs/gn/cross_compiles | 艺搜天下 | 视频技术博客</title>
+  <title>How GN handles cross-compiling | 艺搜天下 | 视频技术博客</title>
   
 
 
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          docs/gn/cross_compiles
+          How GN handles cross-compiling
         </h1>
 
         <div class="post-meta">
@@ -217,7 +217,18 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-04 14:16:23 / Modified: 14:10:24" itemprop="dateCreated datePublished" datetime="2021-07-04T14:16:23+08:00">2021-07-04</time>
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:47:13" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gn/" itemprop="url" rel="index">
+                    <span itemprop="name">gn</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -231,7 +242,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="How-GN-handles-cross-compiling"><a href="#How-GN-handles-cross-compiling" class="headerlink" title="How GN handles cross-compiling"></a>How GN handles cross-compiling</h1><h2 id="As-a-GN-user"><a href="#As-a-GN-user" class="headerlink" title="As a GN user"></a>As a GN user</h2><p>GN has robust support for doing cross compiles and building things for<br>multiple architectures in a single build (e.g., to build some things to<br>run locally and some things to run on an embedded device). In fact,<br>there is no limit on the number of different architectures you can build<br>at once; the Chromium build uses at least four in some configurations.</p>
+        <h2 id="As-a-GN-user"><a href="#As-a-GN-user" class="headerlink" title="As a GN user"></a>As a GN user</h2><p>GN has robust support for doing cross compiles and building things for<br>multiple architectures in a single build (e.g., to build some things to<br>run locally and some things to run on an embedded device). In fact,<br>there is no limit on the number of different architectures you can build<br>at once; the Chromium build uses at least four in some configurations.</p>
 <p>To start, GN has the concepts of a <em>host</em> and a <em>target</em>. The host is<br>the platform that the build is run on, and the target is the platform<br>where the code will actually run (This is different from<br><a href="http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html" target="_blank" rel="noopener">autotools</a>‘<br>terminology, but uses the more common terminology for cross<br>compiling).</p>
 <p>(Confusingly, GN also refers to each build artifact – an executable,<br>library, etc. – as a target. On this page, we will use “target” only to<br>refer to the system you want to run your code on, and use “rule” or some<br>other synonym to refer to a specific build artifact).</p>
 <p>When GN starts up, the <code>host_os</code> and <code>host_cpu</code> variables are set<br>automatically to match the operating system (they can be overridden in<br>args files, which can be useful in weird corner cases). The user can<br>specify that they want to do a cross-compile by setting either or both<br>of <code>target_os</code> and <code>target_cpu</code>; if they are not set, the build config<br>files will usually set them to the host’s values, though the Chromium<br>build will set target_cpu to “arm” if target_os is set to “android”).</p>
@@ -266,21 +277,24 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gn/" rel="tag"># gn</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/Google%20gn%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" rel="next" title="Google gn简明教程">
-                  <i class="fa fa-chevron-left"></i> Google gn简明教程
+                <a href="/2021/07/04/docs/gn/language/" rel="next" title="GN Language and Operation">
+                  <i class="fa fa-chevron-left"></i> GN Language and Operation
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2021/07/04/docs/gn/quick_start/" rel="prev" title="docs/gn/quick_start">
-                  docs/gn/quick_start <i class="fa fa-chevron-right"></i>
+                <a href="/2021/07/04/docs/gn/faq/" rel="prev" title="GN Frequently Asked Questions">
+                  GN Frequently Asked Questions <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -325,7 +339,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#How-GN-handles-cross-compiling"><span class="nav-number">1.</span> <span class="nav-text">How GN handles cross-compiling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#As-a-GN-user"><span class="nav-number">1.1.</span> <span class="nav-text">As a GN user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#As-a-BUILD-gn-author"><span class="nav-number">1.2.</span> <span class="nav-text">As a BUILD.gn author</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#As-a-build-config-or-build-toolchain-author"><span class="nav-number">1.3.</span> <span class="nav-text">As a &#x2F;&#x2F;build&#x2F;config or &#x2F;&#x2F;build&#x2F;toolchain author</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#As-a-GN-user"><span class="nav-number">1.</span> <span class="nav-text">As a GN user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#As-a-BUILD-gn-author"><span class="nav-number">2.</span> <span class="nav-text">As a BUILD.gn author</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#As-a-build-config-or-build-toolchain-author"><span class="nav-number">3.</span> <span class="nav-text">As a &#x2F;&#x2F;build&#x2F;config or &#x2F;&#x2F;build&#x2F;toolchain author</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
