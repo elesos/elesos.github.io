@@ -191,6 +191,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/" class="post-title-link" itemprop="url">c sizeof</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 10:39:37 / Modified: 10:40:33" itemprop="dateCreated datePublished" datetime="2021-07-04T10:39:37+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>功能：计算字节数</p>
+<p>所有指针变量的sizeof结果均为4。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *p;</span><br><span class="line">sizeof(p)&#x3D;4;但sizeof(*p)相当于sizeof(int);</span><br><span class="line">int a[10];</span><br><span class="line">sizeof(a)等于4*10&#x3D;40;</span><br></pre></td></tr></table></figure>
+
+<p>注意对比与strlen的不同：计算字符串的长度，且长度不包括’\0’</p>
+<h2 id="结构体的空间计算"><a href="#结构体的空间计算" class="headerlink" title="结构体的空间计算"></a>结构体的空间计算</h2><p>遵循两个原则：</p>
+<p>(1)整体空间是 占用空间最大的成员的类型所占字节数的整倍数</p>
+<p>(2)数据对齐原则：内存按结构成员的先后顺序排列，当排到该成员变量时，其前面已摆放的空间大小必须是该成员类型大小的整倍数，如果不够则补齐。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct s1&#123;</span><br><span class="line"> char a;</span><br><span class="line"> double b;&#x2F;&#x2F;8</span><br><span class="line"> int c;</span><br><span class="line"> char d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">struct s2&#123;</span><br><span class="line"> char a;</span><br><span class="line"> char b;</span><br><span class="line"> int c;</span><br><span class="line"> double d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">cout&lt;&lt;sizeof(s1)&lt;&lt;endl;&#x2F;&#x2F; 24</span><br><span class="line">cout&lt;&lt;sizeof(s2)&lt;&lt;endl;&#x2F;&#x2F; 16</span><br></pre></td></tr></table></figure>
+
+<p>同样是两个char型，一个int，一个double型，</p>
+<p>但因为对齐问题，导致他们的大小不同。</p>
+<p>计算结构体大小可以采用元素摆放法，首先判断结构体的对界，s1和s2的对界都取最大的元素类型，也就是double类型的对界8。然后开始摆放每个元素。</p>
+<p>对于s1，首先把a放到8的对界，假定是0，此时下一个空闲的地址是1，但是下一个元素b是double类型，要放到8的对界上，离1最接近的地址是8了，所以b被放在了8，此时下一个空闲地址变成了16，下一个元素c的对界是4，16可以满足，所以c放在了16，此时下一个空闲地址变成了20，下一个元素d需要对界1，也正好落在对界上，所以d放在了20，结构体在地址21处结束。由于s1的大小需要是8的倍数，所以21-23的空间被保留，s1的大小变成了24。</p>
+<p>对于s2，首先把a放到8的对界，假定是0，此时下一个空闲地址是1，下一个元素的对界也是1，所以b摆放在1，下一个空闲地址变成了2；下一个元素c的对界是4，所以取离2最近的地址4摆放c，下一个空闲地址变成了8，下一个元素d的对界是8，所以d摆放在8，所有元素摆放完毕，结构体在15处结束，占用总空间为16，正好是8的倍数。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://en.wikipedia.org/wiki/Sizeof" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Sizeof</a></p>
+<p><a href="http://en.cppreference.com/w/cpp/language/sizeof" target="_blank" rel="noopener">http://en.cppreference.com/w/cpp/language/sizeof</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%84C%E5%92%8CC++%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -754,101 +840,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E5%86%99%E4%BD%9C/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/03/%E5%86%99%E4%BD%9C/Markdown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">Markdown常用语法手册</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-03 23:16:02 / Modified: 23:18:22" itemprop="dateCreated datePublished" datetime="2021-07-03T23:16:02+08:00">2021-07-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">Markdown</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>markdown让你专注于文字而不是排版</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>在文本前面加上 # 即可，同理，还可以增加二到六级标题，总共六级</p>
-<p>注：# 和「一级标题」之间建议保留一个字符的空格</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>如果只有一行可以用 ` （Esc下面的那个键）将语句括起来。</p>
-<p>如果为多行，可以将```置于这段代码的首行和末行。</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>无序列表在前面加上<strong>星号、减号</strong>或是加号</p>
-<p>有序列表，直接在文字前面加上 1. 2. 3. 就可以：</p>
-<p>注：-、1.和文本之间要保留一个字符的空格。</p>
-<h2 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h2><p>两个 * 包含一段文本</p>
-<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>一个 * 包含一段文本</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>参考 <a href="https://www.runoob.com/markdown/md-link.html" target="_blank" rel="noopener">https://www.runoob.com/markdown/md-link.html</a></p>
-<p>图片：<a href="https://www.jianshu.com/p/280c6a6f2594" target="_blank" rel="noopener">https://www.jianshu.com/p/280c6a6f2594</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](链接地址)</span><br><span class="line">![avatar](&#x2F;home&#x2F;picture&#x2F;1.png)</span><br></pre></td></tr></table></figure>
-
-<h2 id="为何要用markdown"><a href="#为何要用markdown" class="headerlink" title="为何要用markdown"></a>为何要用markdown</h2><p>无论是 EPUB, mobi，还是 Kindle 用的专有格式 .azw，都只是把一堆 HTML 文件打包而已。如果你写的是书，用 Markdown 标注格式之后，可以很方便地转为以上格式</p>
-<p>使用Word时，我们会花费大量力气去排版，试图让文档变得漂亮一些。是粗体还是斜体，是宋体还是黑体，对创作来说，有那么重要吗？</p>
-<ol>
-<li>方便版本跟踪：每一位自杀的写作者电脑里，都必然有一个Word文档，从V1.0到V20.0的无数版本.</li>
-<li>方便协作</li>
-<li>Markdown语法简单到每个人都可以在5分钟以内学会。</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="noopener">http://www.jianshu.com/p/q81RER</a></p>
-<p><a href="http://www.appinn.com/markdown/" target="_blank" rel="noopener">http://www.appinn.com/markdown/</a></p>
-<p><a href="https://laravel-china.org/topics/621/you-will-be-able-to-master-these-markdown-grammars" target="_blank" rel="noopener">https://laravel-china.org/topics/621/you-will-be-able-to-master-these-markdown-grammars</a></p>
-<p><a href="http://www.jianshu.com/p/qqGjLN" target="_blank" rel="noopener">http://www.jianshu.com/p/qqGjLN</a></p>
-<p><a href="http://www.jianshu.com/p/PpDNMG" target="_blank" rel="noopener">http://www.jianshu.com/p/PpDNMG</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -899,20 +890,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

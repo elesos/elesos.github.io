@@ -191,6 +191,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/%E9%9F%B3%E8%A7%86%E9%A2%91/YUV%E6%A0%BC%E5%BC%8F%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">YUV格式分析</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-01 08:07:24 / Modified: 08:16:28" itemprop="dateCreated datePublished" datetime="2021-07-01T08:07:24+08:00">2021-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" itemprop="url" rel="index">
+                    <span itemprop="name">音视频</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="大小计算"><a href="#大小计算" class="headerlink" title="大小计算"></a>大小计算</h2><p>RGB24 size＝w×h×3 Byte</p>
+<p>RGB32 size＝w×h×4 Byte</p>
+<p>I420（yuv420p）的数据量是 size＝w×h×1.5 Byte。 # w<em>h+ (w</em>h) / 4 + (w<em>h) / 4 = (w</em>h) * 3 / 2</p>
+<p>yuv420p示意图：</p>
+<ul>
+<li><img src="/images/2021/yuv-1.jpeg" alt=""></li>
+</ul>
+<p>其中前w<em>h Byte存储Y，接着的（w</em>h)/4 Byte存储U，最后(w*h)/4 Byte存储V</p>
+<p>注意上图中的yuv颜色对应关系，4个Y对应一组uv</p>
+<p>即： I420: YYYYYYYY UU VV =&gt;YUV420P</p>
+<p>YV12: YYYYYYYY VV UU =&gt;YUV420P # YV12虽然也是（4：2：0）,但是和I420在存储空间上面有些区别：UV的顺序不同，Plane模式, 类似格式：YU12</p>
+<p>NV12: YYYYYYYY UV UV =&gt;YUV420SP</p>
+<p>NV21: YYYYYYYY VU VU =&gt;YUV420SP</p>
+<p>ffmpeg中像素格式名称后面有“P”的，代表是planar格式，否则有可能是packed格式</p>
+<p>YUV格式有两大类：planar和packed。对于planar的YUV格式，先连续存储所有像素点的Y，紧接着存储所有像素点的U，随后是所有像素点的V。对于packed的YUV格式，每个像素点的Y,U,V是连续<strong>交叉存储</strong>的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AV_PIX_FMT_YUV420P,    &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp&#x3D;1.5B*8&#x3D;12, (1 Cr &amp; Cb sample per 2x2 Y samples, 相当1比4的关系)   </span><br><span class="line">AV_PIX_FMT_NV12,       &#x2F;&#x2F;&#x2F;&lt; planar YUV 4:2:0, 12bpp, 1 plane for Y and 1 plane for the UV components, which are interleaved (first byte U and the </span><br><span class="line">following byte V)  ，一种two-plane模式，即Y和UV分为两个Plane，但是UV（CbCr）为交错存储,U&#x3D;Cb</span><br><span class="line">AV_PIX_FMT_NV21,       &#x2F;&#x2F;&#x2F;&lt; as above, but U and V bytes are swapped  </span><br><span class="line">AV_PIX_FMT_YUYV422,   &#x2F;&#x2F;&#x2F;&lt; packed YUV 4:2:2, 16bpp</span><br></pre></td></tr></table></figure>
+
+<h2 id="采样方式"><a href="#采样方式" class="headerlink" title="采样方式"></a>采样方式</h2><p>主流的采样方式有三种，YUV4:4:4，YUV4:2:2，YUV4:2:0</p>
+<p>以黑点表示采样该像素点的Y分量，以空心圆圈表示采用该像素点的UV分量:</p>
+<p><img src="/images/2021/yuv-2.png" alt=""></p>
+<p>YUV 4:2:0采样，每四个Y共用一组UV分量， 1.5B*8=12</p>
+<p>YUV 4:2:2采样，每两个Y共用一组UV分量， wh+wh/2+wh/2=2wh=16bit</p>
+<p>YUV 4:4:4采样，每一个Y对应一组UV分量</p>
+<h2 id="YUYV"><a href="#YUYV" class="headerlink" title="YUYV"></a>YUYV</h2><p>属于YUV422,每两个Y共用一组UV分量</p>
+<h2 id="YUV422P"><a href="#YUV422P" class="headerlink" title="YUV422P"></a>YUV422P</h2><p>属于YUV422,先存所有的Y，然后存所有的U，最后存所有的V</p>
+<h2 id="YUY2"><a href="#YUY2" class="headerlink" title="YUY2"></a>YUY2</h2><p>4:2:2，应该是指YUYV</p>
+<p><img src="/images/2021/yuy2.gif" alt=""></p>
+<p>Y0 U0 Y1 V0, Y2 U1 Y3 V1</p>
+<h2 id="UYVY"><a href="#UYVY" class="headerlink" title="UYVY"></a>UYVY</h2><p>4:2:2</p>
+<p><img src="/images/2021/uyvy.gif" alt=""></p>
+<p>U0 Y0 V0 Y1,U1 Y2 V1 Y3</p>
+<h1 id="读"><a href="#读" class="headerlink" title="读"></a>读</h1><h1 id="写"><a href="#写" class="headerlink" title="写"></a>写</h1><h2 id="保存YUV420P"><a href="#保存YUV420P" class="headerlink" title="保存YUV420P"></a>保存YUV420P</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fwrite(pFrameYUV-&gt;data[0],wxh,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[1],wxh&#x2F;4,1,output); </span><br><span class="line">fwrite(pFrameYUV-&gt;data[2],wxh&#x2F;4,1,output);</span><br></pre></td></tr></table></figure>
+
+<h1 id="编码器需要的格式"><a href="#编码器需要的格式" class="headerlink" title="编码器需要的格式"></a>编码器需要的格式</h1><p>x264 支持直接输入YUV420P，NV12 h264_omx，mpeg1video支持YUV420P</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/win32/medfound/recommended-8-bit-yuv-formats-for-video-rendering</a></p>
+<p><a href="https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422" target="_blank" rel="noopener">https://wiki.multimedia.cx/index.php/PIX_FMT_YUYV422</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,76 +570,6 @@ https://www.liaoxuefeng.com/wiki/1016959663602400/1017595944503424</code></pre>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/06/27/%E9%98%85%E8%AF%BB/%E8%AF%AD%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/27/%E9%98%85%E8%AF%BB/%E8%AF%AD%E5%BD%95/" class="post-title-link" itemprop="url">语录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-06-27 07:30:51 / Modified: 07:31:14" itemprop="dateCreated datePublished" datetime="2021-06-27T07:30:51+08:00">2021-06-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%AD%E5%BD%95/" itemprop="url" rel="index">
-                    <span itemprop="name">语录</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>人生就像玻璃窗上的苍蝇，前途一片光明，却找不到出路。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -585,20 +620,20 @@ https://www.liaoxuefeng.com/wiki/1016959663602400/1017595944503424</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -191,6 +191,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">Electron打包</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-03 08:17:04 / Modified: 08:19:53" itemprop="dateCreated datePublished" datetime="2021-07-03T08:17:04+08:00">2021-07-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Electron/" itemprop="url" rel="index">
+                    <span itemprop="name">Electron</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>打包用electron-builder，它比electron-packager有更丰富的的功能，可以生成安装程序，支持自动更新</p>
+<p><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="noopener">https://github.com/electron-userland/electron-builder</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g yarn  # package manager，类似npm</span><br><span class="line">yarn add electron-builder --dev</span><br></pre></td></tr></table></figure>
+
+<p>需要在package.json里面指定build配置，</p>
+<p>比如files指定把哪些文件打包，在scripts里面定义打包的key，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;pack&quot;: &quot;electron-builder --dir&quot;,   &#x2F;&#x2F;运行yarn pack,用于测试</span><br><span class="line">  &quot;dist&quot;: &quot;electron-builder&quot;,  &#x2F;&#x2F;运行yarn dist打包成windows installer等</span><br><span class="line">&quot;postinstall&quot;: &quot;electron-builder install-app-deps&quot;  &#x2F;&#x2F;依赖</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>electron-webpack：Scripts and configurations to compile Electron applications using webpack</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;electron-userland&#x2F;electron-webpack-quick-start.git</span><br><span class="line">yarn  # install dependencies，可能需要如下配置：</span><br><span class="line">yarn config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">yarn dist  #compile source code ,create webpack output and build with electron-builder,这步会下载https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;releases&#x2F;download&#x2F;v8.2.0&#x2F;electron-v8.2.0-win32-x64.zip,可以自已下载后放到%LOCALAPPDATA%&#x2F;electron&#x2F;Cache</span><br></pre></td></tr></table></figure>
+
+<p>最终会生成一个安装包程序。</p>
+<ul>
+<li>32位系统的包怎么打？</li>
+</ul>
+<p><a href="https://www.electron.build/cli" target="_blank" rel="noopener">https://www.electron.build/cli</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &#123;</span><br><span class="line">  &quot;win&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;target&quot;: &quot;nsis&quot;,</span><br><span class="line">        &quot;arch&quot;: [</span><br><span class="line">          &quot;x64&quot;,</span><br><span class="line">          &quot;ia32&quot;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>electron-forge combines electron-packager and electron-builder together into one tool in order to perform both parts in one go (plus other features).</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/xiaoniuzai/p/12356208.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaoniuzai/p/12356208.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/03/%E6%8A%80%E6%9C%AF/Electron/Electron%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -421,79 +510,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E5%92%8CElectron%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/qt/Qt%E5%92%8CElectron%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">Qt和Electron的区别</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-02 22:12:31 / Modified: 22:16:54" itemprop="dateCreated datePublished" datetime="2021-07-02T22:12:31+08:00">2021-07-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Qt/" itemprop="url" rel="index">
-                    <span itemprop="name">Qt</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Qt适合一些性能要求高的桌面应用，比如你要做个类似绘声绘影的视频编辑器，那你用electron要么是没法做，要不就是体验非常烂。</p>
-<p>Electron适合一些偏业务的应用，对性能没有很多要求，主要是业务逻辑和UI展示，比较轻量级的应用。</p>
-<p>也可以QtWidgets + libcef + 若干 C++ 第三方库。</p>
-<h1 id="Chromium-Embedded-Framework-CEF"><a href="#Chromium-Embedded-Framework-CEF" class="headerlink" title="Chromium Embedded Framework CEF"></a>Chromium Embedded Framework CEF</h1><p><a href="https://github.com/chromiumembedded/cef" target="_blank" rel="noopener">https://github.com/chromiumembedded/cef</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -544,20 +560,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

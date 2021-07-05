@@ -191,6 +191,233 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/language/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/docs/gn/language/" class="post-title-link" itemprop="url">GN Language and Operation</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:46:05" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gn/" itemprop="url" rel="index">
+                    <span itemprop="name">gn</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>This page describes many of the language details and behaviors.</p>
+<h3 id="Use-the-built-in-help"><a href="#Use-the-built-in-help" class="headerlink" title="Use the built-in help!"></a>Use the built-in help!</h3><p>GN has an extensive built-in help system which provides a reference for<br>every function and built-in variable. This page is more high-level.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn help</span><br></pre></td></tr></table></figure>
+
+<p>You can also see the<br><a href="https://docs.google.com/presentation/d/15Zwb53JcncHfEwHpnG_PoIbbzQ3GQi_cpujYwbpcbZo/edit?usp=sharing" target="_blank" rel="noopener">slides</a><br>from a March, 2016 introduction to GN. The speaker notes contain the full<br>content.</p>
+<h3 id="Design-philosophy"><a href="#Design-philosophy" class="headerlink" title="Design philosophy"></a>Design philosophy</h3><ul>
+<li><p>Writing build files should not be a creative endeavour. Ideally two<br>people should produce the same buildfile given the same<br>requirements. There should be no flexibility unless it’s absolutely<br>needed. As many things should be fatal errors as possible.</p>
+</li>
+<li><p>The definition should read more like code than rules. I don’t want<br>to write or debug Prolog. But everybody on our team can write and<br>debug C++ and Python.</p>
+</li>
+<li><p>The build language should be opinionated as to how the build should<br>work. It should not necessarily be easy or even possible to express<br>arbitrary things. We should be changing source and tooling to make<br>the build simpler rather than making everything more complicated to<br>conform to external requirements (within reason).</p>
+</li>
+<li><p>Be like Blaze when it makes sense (see “Differences and similarities<br>to Blaze” below).</p>
+</li>
+</ul>
+<h2 id="Language"><a href="#Language" class="headerlink" title="Language"></a>Language</h2><p>GN uses an extremely simple, dynamically typed language. The types are:</p>
+<ul>
+<li>Boolean (<code>true</code>, <code>false</code>).</li>
+<li>64-bit signed integers.</li>
+<li>Strings.</li>
+<li>Lists (of any other types).</li>
+<li>Scopes (sort of like a dictionary, only for built-in stuff).</li>
+</ul>
+<p>There are some built-in variables whose values depend on the current<br>environment. See <code>gn help</code> for more.</p>
+<p>There are purposefully many omissions in the language. There are no<br>user-defined function calls, for example (templates are the closest thing). As<br>per the above design philosophy, if you need this kind of thing you’re probably<br>doing it wrong.</p>
+<p>The full grammar for language nerds is available in <code>gn help grammar</code>.</p>
+<h3 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h3><p>Strings are enclosed in double-quotes and use backslash as the escape<br>character. The only escape sequences supported are:</p>
+<ul>
+<li><code>\&quot;</code> (for literal quote)</li>
+<li><code>\$</code> (for literal dollars sign)</li>
+<li><code>\\</code> (for literal backslash)</li>
+</ul>
+<p>Any other use of a backslash is treated as a literal backslash. So, for<br>example, <code>\b</code> used in patterns does not need to be escaped, nor do most Windows<br>paths like <code>&quot;C:\foo\bar.h&quot;</code>.</p>
+<p>Simple variable substitution is supported via <code>$</code>, where the word<br>following the dollars sign is replaced with the value of the variable.<br>You can optionally surround the name with <code>{}</code> if there is not a<br>non-variable-name character to terminate the variable name. More complex<br>expressions are not supported, only variable name substitution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; &quot;mypath&quot;</span><br><span class="line">b &#x3D; &quot;$a&#x2F;foo.cc&quot;  # b -&gt; &quot;mypath&#x2F;foo.cc&quot;</span><br><span class="line">c &#x3D; &quot;foo$&#123;a&#125;bar.cc&quot;  # c -&gt; &quot;foomypathbar.cc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>You can encode 8-bit characters using “$0xFF” syntax, so a string with newlines<br>(hex 0A) would <code>&quot;look$0x0Alike$0x0Athis&quot;</code>.</p>
+<h3 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h3><p>Aside from telling empty lists from non empty lists (<code>a == []</code>), there is no<br>way to get the length of a list. If you find yourself wanting to do this kind<br>of thing, you’re trying to do too much work in the build.</p>
+<p>Lists support appending:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [ &quot;first&quot; ]</span><br><span class="line">a +&#x3D; [ &quot;second&quot; ]  # [ &quot;first&quot;, &quot;second&quot; ]</span><br><span class="line">a +&#x3D; [ &quot;third&quot;, &quot;fourth&quot; ]  # [ &quot;first&quot;, &quot;second&quot;, &quot;third&quot;, &quot;fourth&quot; ]</span><br><span class="line">b &#x3D; a + [ &quot;fifth&quot; ]  # [ &quot;first&quot;, &quot;second&quot;, &quot;third&quot;, &quot;fourth&quot;, &quot;fifth&quot; ]</span><br></pre></td></tr></table></figure>
+
+<p>Appending a list to another list appends the items in the second list<br>rather than appending the list as a nested member.</p>
+<p>You can remove items from a list:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [ &quot;first&quot;, &quot;second&quot;, &quot;third&quot;, &quot;first&quot; ]</span><br><span class="line">b &#x3D; a - [ &quot;first&quot; ]  # [ &quot;second&quot;, &quot;third&quot; ]</span><br><span class="line">a -&#x3D; [ &quot;second&quot; ]  # [ &quot;first&quot;, &quot;third&quot;, &quot;first&quot; ]</span><br></pre></td></tr></table></figure>
+
+<p>The - operator on a list searches for matches and removes all matching<br>items. Subtracting a list from another list will remove each item in the<br>second list.</p>
+<p>If no matching items are found, an error will be thrown, so you need to<br>know in advance that the item is there before removing it. Given that<br>there is no way to test for inclusion, the main use-case is to set up a<br>master list of files or flags, and to remove ones that don’t apply to<br>the current build based on various conditions.</p>
+<p>Stylistically, prefer to only add to lists and have each source file or<br>dependency appear once. This is the opposite of the advice Chrome-team used to<br>give for GYP (GYP would prefer to list all files, and then remove the ones you<br>didn’t want in conditionals).</p>
+<p>Lists support zero-based subscripting to extract values:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [ &quot;first&quot;, &quot;second&quot;, &quot;third&quot; ]</span><br><span class="line">b &#x3D; a[1]  # -&gt; &quot;second&quot;</span><br></pre></td></tr></table></figure>
+
+<p>The [] operator is read-only and can not be used to mutate the<br>list. The primary use-case of this is when an external script returns<br>several known values and you want to extract them.</p>
+<p>There are some cases where it’s easy to overwrite a list when you mean<br>to append to it instead. To help catch this case, it is an error to<br>assign a nonempty list to a variable containing an existing nonempty<br>list. If you want to get around this restriction, first assign the<br>destination variable to the empty list.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [ &quot;one&quot; ]</span><br><span class="line">a &#x3D; [ &quot;two&quot; ]  # Error: overwriting nonempty list with a nonempty list.</span><br><span class="line">a &#x3D; []         # OK</span><br><span class="line">a &#x3D; [ &quot;two&quot; ]  # OK</span><br></pre></td></tr></table></figure>
+
+<p>Note that execution of the build script is done without intrinsic<br>knowledge of the meaning of the underlying data. This means that it<br>doesn’t know that <code>sources</code> is a list of file names, for example. So if<br>you remove an item, it must match the literal string rather than<br>specifying a different name that will resolve to the same file name.</p>
+<h3 id="Conditionals"><a href="#Conditionals" class="headerlink" title="Conditionals"></a>Conditionals</h3><p>Conditionals look like C:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (is_linux || (is_win &amp;&amp; target_cpu &#x3D;&#x3D; &quot;x86&quot;)) &#123;</span><br><span class="line">  sources -&#x3D; [ &quot;something.cc&quot; ]</span><br><span class="line">&#125; else if (...) &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You can use them in most places, even around entire targets if the<br>target should only be declared in certain circumstances.</p>
+<h3 id="Looping"><a href="#Looping" class="headerlink" title="Looping"></a>Looping</h3><p>You can iterate over a list with <code>foreach</code>. This is discouraged. Most things<br>the build should do can normally be expressed without doing this, and if you<br>find it necessary it may be an indication you’re doing too much work in the<br>metabuild.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foreach(i, mylist) &#123;</span><br><span class="line">  print(i)  # Note: i is a copy of each element, not a reference to it.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Function-calls"><a href="#Function-calls" class="headerlink" title="Function calls"></a>Function calls</h3><p>Simple function calls look like most other languages:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;hello, world&quot;)</span><br><span class="line">assert(is_win, &quot;This should only be executed on Windows&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>Such functions are built-in and the user can not define new ones.</p>
+<p>Some functions take a block of code enclosed by <code>{ }</code> following them:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">static_library(&quot;mylibrary&quot;) &#123;</span><br><span class="line">  sources &#x3D; [ &quot;a.cc&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Most of these define targets. The user can define new functions like this<br>with the template mechanism discussed below.</p>
+<p>Precisely, this expression means that the block becomes an argument to the<br>function for the function to execute. Most of the block-style functions execute<br>the block and treat the resulting scope as a dictionary of variables to read.</p>
+<h3 id="Scoping-and-execution"><a href="#Scoping-and-execution" class="headerlink" title="Scoping and execution"></a>Scoping and execution</h3><p>Files and function calls followed by <code>{ }</code> blocks introduce new scopes. Scopes<br>are nested. When you read a variable, the containing scopes will be searched in<br>reverse order until a matching name is found. Variable writes always go to the<br>innermost scope.</p>
+<p>There is no way to modify any enclosing scope other than the innermost<br>one. This means that when you define a target, for example, nothing you<br>do inside of the block will “leak out” into the rest of the file.</p>
+<p><code>if</code>/<code>else</code>/<code>foreach</code> statements, even though they use <code>{ }</code>, do not introduce<br>a new scope so changes will persist outside of the statement.</p>
+<h2 id="Naming-things"><a href="#Naming-things" class="headerlink" title="Naming things"></a>Naming things</h2><h3 id="File-and-directory-names"><a href="#File-and-directory-names" class="headerlink" title="File and directory names"></a>File and directory names</h3><p>File and directory names are strings and are interpreted as relative to<br>the current build file’s directory. There are three possible forms:</p>
+<p>Relative names:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;foo.cc&quot;</span><br><span class="line">&quot;src&#x2F;foo.cc&quot;</span><br><span class="line">&quot;..&#x2F;src&#x2F;foo.cc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Source-tree absolute names:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;&#x2F;&#x2F;net&#x2F;foo.cc&quot;</span><br><span class="line">&quot;&#x2F;&#x2F;base&#x2F;test&#x2F;foo.cc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>System absolute names (rare, normally used for include directories):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;&#x2F;usr&#x2F;local&#x2F;include&#x2F;&quot;</span><br><span class="line">&quot;&#x2F;C:&#x2F;Program Files&#x2F;Windows Kits&#x2F;Include&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Build-configuration"><a href="#Build-configuration" class="headerlink" title="Build configuration"></a>Build configuration</h2><h2 id="Targets"><a href="#Targets" class="headerlink" title="Targets"></a>Targets</h2><p>A target is a node in the build graph. It usually represents some kind<br>of executable or library file that will be generated. Targets depend on<br>other targets. The built-in target types (see <code>gn help &lt;targettype&gt;</code> for<br>more help) are:</p>
+<ul>
+<li><code>action</code>: Run a script to generate a file.</li>
+<li><code>action_foreach</code>: Run a script once for each source file.</li>
+<li><code>bundle_data</code>: Declare data to go into a Mac/iOS bundle.</li>
+<li><code>create_bundle</code>: Creates a Mac/iOS bundle.</li>
+<li><code>executable</code>: Generates an executable file.</li>
+<li><code>group</code>: A virtual dependency node that refers to one or more other<br>targets.</li>
+<li><code>shared_library</code>: A .dll or .so.</li>
+<li><code>loadable_module</code>: A .dll or .so loadable only at runtime.</li>
+<li><code>source_set</code>: A lightweight virtual static library (usually<br>preferrable over a real static library since it will build faster).</li>
+<li><code>static_library</code>: A .lib or .a file (normally you’ll want a<br><code>source_set</code> instead).</li>
+</ul>
+<p>You can extend this to make custom target types using templates (see below). In<br>Chrome some of the more commonly-used templates are:</p>
+<ul>
+<li><code>component</code>: Either a source set or shared library, depending on the<br>build type.</li>
+<li><code>test</code>: A test executable. On mobile this will create the appropriate<br>native app type for tests.</li>
+<li><code>app</code>: Executable or Mac/iOS application.</li>
+<li><code>android_apk</code>: Make an APK. There are a <em>lot</em> of other Android ones, see<br><code>//build/config/android/rules.gni</code>.</li>
+</ul>
+<h2 id="Configs"><a href="#Configs" class="headerlink" title="Configs"></a>Configs</h2><p>Configs are named objects that specify sets of flags, include<br>directories, and defines. They can be applied to a target and pushed to<br>dependent targets.</p>
+<p>To define a config:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config(&quot;myconfig&quot;) &#123;</span><br><span class="line">  includes &#x3D; [ &quot;src&#x2F;include&quot; ]</span><br><span class="line">  defines &#x3D; [ &quot;ENABLE_DOOM_MELON&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>To apply a config to a target:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">executable(&quot;doom_melon&quot;) &#123;</span><br><span class="line">  configs &#x3D; [ &quot;:myconfig&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>It is common for the build config file to specify target defaults that<br>set a default list of configs. Targets can add or remove to this list as<br>needed. So in practice you would usually use <code>configs += &quot;:myconfig&quot;</code> to<br>append to the list of defaults.</p>
+<p>See <code>gn help config</code> for more information about how configs are declared<br>and applied.</p>
+<h3 id="Public-configs"><a href="#Public-configs" class="headerlink" title="Public configs"></a>Public configs</h3><p>A target can apply settings to other targets that depend on it. The most<br>common example is a third party target that requires some defines or<br>include directories for its headers to compile properly. You want these<br>settings to apply both to the compile of the third party library itself,<br>as well as all targets that use the library.</p>
+<p>To do this, you write a config with the settings you want to apply:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config(&quot;my_external_library_config&quot;) &#123;</span><br><span class="line">  includes &#x3D; &quot;.&quot;</span><br><span class="line">  defines &#x3D; [ &quot;DISABLE_JANK&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then this config is added to the target as a “public” config. It will<br>apply both to the target as well as targets that directly depend on it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shared_library(&quot;my_external_library&quot;) &#123;</span><br><span class="line">  ...</span><br><span class="line">  # Targets that depend on this get this config applied.</span><br><span class="line">  public_configs &#x3D; [ &quot;:my_external_library_config&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Dependent targets can in turn forward this up the dependency tree<br>another level by adding your target as a “public” dependency.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static_library(&quot;intermediate_library&quot;) &#123;</span><br><span class="line">  ...</span><br><span class="line">  # Targets that depend on this one also get the configs from &quot;my external library&quot;.</span><br><span class="line">  public_deps &#x3D; [ &quot;:my_external_library&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A target can forward a config to all dependents until a link boundary is<br>reached by setting it as an <code>all_dependent_config</code>. This is strongly<br>discouraged as it can spray flags and defines over more of the build than<br>necessary. Instead, use public_deps to control which flags apply where.</p>
+<p>In Chrome, prefer the build flag header system (<code>build/buildflag_header.gni</code>)<br>for defines which prevents most screw-ups with compiler defines.</p>
+<h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h2><p>Templates are GN’s primary way to re-use code. Typically, a template<br>would expand to one or more other target types.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Declares a script that compiles IDL files to source, and then compiles those</span><br><span class="line"># source files.</span><br><span class="line">template(&quot;idl&quot;) &#123;</span><br><span class="line">  # Always base helper targets on target_name so they&#39;re unique. Target name</span><br><span class="line">  # will be the string passed as the name when the template is invoked.</span><br><span class="line">  idl_target_name &#x3D; &quot;$&#123;target_name&#125;_generate&quot;</span><br><span class="line">  action_foreach(idl_target_name) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  # Your template should always define a target with the name target_name.</span><br><span class="line">  # When other targets depend on your template invocation, this will be the</span><br><span class="line">  # destination of that dependency.</span><br><span class="line">  source_set(target_name) &#123;</span><br><span class="line">    ...</span><br><span class="line">    deps &#x3D; [ &quot;:$idl_target_name&quot; ]  # Require the sources to be compiled.</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Typically your template definition would go in a <code>.gni</code> file and users<br>would import that file to see the template definition:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import(&quot;&#x2F;&#x2F;tools&#x2F;idl_compiler.gni&quot;)</span><br><span class="line"></span><br><span class="line">idl(&quot;my_interfaces&quot;) &#123;</span><br><span class="line">  sources &#x3D; [ &quot;a.idl&quot;, &quot;b.idl&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Declaring a template creates a closure around the variables in scope at<br>that time. When the template is invoked, the magic variable <code>invoker</code> is<br>used to read variables out of the invoking scope. The template would<br>generally copy the values its interested in into its own scope:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template(&quot;idl&quot;) &#123;</span><br><span class="line">  source_set(target_name) &#123;</span><br><span class="line">    sources &#x3D; invoker.sources</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The current directory when a template executes will be that of the<br>invoking build file rather than the template source file. This is so<br>files passed in from the template invoker will be correct (this<br>generally accounts for most file handling in a template). However, if<br>the template has files itself (perhaps it generates an action that runs<br>a script), you will want to use absolute paths (“//foo/…”) to refer to<br>these files to account for the fact that the current directory will be<br>unpredictable during invocation. See <code>gn help template</code> for more<br>information and more complete examples.</p>
+<h2 id="Other-features"><a href="#Other-features" class="headerlink" title="Other features"></a>Other features</h2><h3 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h3><p>You can import <code>.gni</code> files into the current scope with the <code>import</code><br>function. This is <em>not</em> an include in the C++ sense. The imported file is<br>executed independently and the resulting scope is copied into the current file<br>(C++ executes the included file in the current context of when the<br>include directive appeared). This allows the results of the import to be<br>cached, and also prevents some of the more “creative” uses of includes like<br>multiply-included files.</p>
+<p>Typically, a <code>.gni</code> would define build arguments and templates. See <code>gn
+help import</code> for more.</p>
+<p>Your <code>.gni</code> file can define temporary variables that are not exported files<br>that include it by using a preceding underscore in the name like <code>_this</code>.</p>
+<h3 id="Path-processing"><a href="#Path-processing" class="headerlink" title="Path processing"></a>Path processing</h3><p>Often you will want to make a file name or a list of file names relative<br>to a different directory. This is especially common when running<br>scripts, which are executed with the build output directory as the<br>current directory, while build files usually refer to files relative to<br>their containing directory.</p>
+<p>You can use <code>rebase_path</code> to convert directories. See <code>gn help
+rebase_path</code> for more help and examples. Typical usage to convert a file<br>name relative to the current directory to be relative to the root build<br>directory would be: <code>new_paths = rebase_path(&quot;myfile.c&quot;,
+root_build_dir)</code></p>
+<h3 id="Patterns"><a href="#Patterns" class="headerlink" title="Patterns"></a>Patterns</h3><p>Patterns are used to generate the output file names for a given set of<br>inputs for custom target types, and to automatically remove files from<br>the list values (see <code>gn help filter_include</code> and <code>gn help filter_exclude</code>).</p>
+<p>They are like simple regular expressions. See <code>gn help label_pattern</code><br>for more.</p>
+<h3 id="Executing-scripts"><a href="#Executing-scripts" class="headerlink" title="Executing scripts"></a>Executing scripts</h3><p>There are two ways to execute scripts. All external scripts in GN are in<br>Python. The first way is as a build step. Such a script would take some<br>input and generate some output as part of the build. Targets that invoke<br>scripts are declared with the “action” target type (see <code>gn help
+action</code>).</p>
+<p>The second way to execute scripts is synchronously during build file<br>execution. This is necessary in some cases to determine the set of files<br>to compile, or to get certain system configurations that the build file<br>might depend on. The build file can read the stdout of the script and<br>act on it in different ways.</p>
+<p>Synchronous script execution is done by the <code>exec_script</code> function (see<br><code>gn help exec_script</code> for details and examples). Because synchronously<br>executing a script requires that the current buildfile execution be<br>suspended until a Python process completes execution, relying on<br>external scripts is slow and should be minimized.</p>
+<p>To prevent abuse, files permitted to call <code>exec_script</code> can be whitelisted in<br>the toplevel <code>.gn</code> file. Chrome does this to require additional code review<br>for such additions. See <code>gn help dotfile</code>.</p>
+<p>You can synchronously read and write files which is discouraged but<br>occasionally necessary when synchronously running scripts. The typical use-case<br>would be to pass a list of file names longer than the command-line limits of<br>the current platform. See <code>gn help read_file</code> and <code>gn help write_file</code> for how<br>to read and write files. These functions should be avoided if at all possible.</p>
+<p>Actions that exceed command-line length limits can use response files to<br>get around this limitation without synchronously writing files. See<br><code>gn help response_file_contents</code>.</p>
+<h1 id="Differences-and-similarities-to-Blaze"><a href="#Differences-and-similarities-to-Blaze" class="headerlink" title="Differences and similarities to Blaze"></a>Differences and similarities to Blaze</h1><p>Blaze is Google’s internal build system, now publicly released as<br><a href="http://bazel.io/" target="_blank" rel="noopener">Bazel</a>. It has inspired a number of other systems such as<br><a href="http://www.pantsbuild.org/" target="_blank" rel="noopener">Pants</a> and <a href="http://facebook.github.io/buck/" target="_blank" rel="noopener">Buck</a>.</p>
+<p>In Google’s homogeneous environment, the need for conditionals is very<br>low and they can get by with a few hacks (<code>abi_deps</code>). Chrome uses<br>conditionals all over the place and the need to add these is the main<br>reason for the files looking different.</p>
+<p>GN also adds the concept of “configs” to manage some of the trickier<br>dependency and configuration problems which likewise don’t arise on the<br>server. Blaze has a concept of a “configuration” which is like a GN<br>toolchain, but built into the tool itself. The way that toolchains work<br>in GN is a result of trying to separate this concept out into the build<br>files in a clean way.</p>
+<p>GN keeps some GYP concept like “all dependent” settings which work a bit<br>differently in Blaze. This is partially to make conversion from the existing<br>GYP code easier, and the GYP constructs generally offer more fine-grained<br>control (which is either good or bad, depending on the situation).</p>
+<p>GN also uses GYP names like “sources” instead of “srcs” since<br>abbreviating this seems needlessly obscure, although it uses Blaze’s<br>“deps” since “dependencies” is so hard to type. Chromium also compiles<br>multiple languages in one target so specifying the language type on the<br>target name prefix was dropped (e.g. from <code>cc_library</code>).</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/style_guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -425,132 +652,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/Google%20gn%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/Google%20gn%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Google gn简明教程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 13:30:10 / Modified: 18:41:44" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gn/" itemprop="url" rel="index">
-                    <span itemprop="name">gn</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://gn.googlesource.com/gn/" target="_blank" rel="noopener">https://gn.googlesource.com/gn/</a></p>
-<p>generates build files for <a href="https://ninja-build.org/" target="_blank" rel="noopener">Ninja</a>.</p>
-<h2 id="重要文件"><a href="#重要文件" class="headerlink" title="重要文件"></a>重要文件</h2><p>.gn : Defines root of GN build tree</p>
-<p>共享的变量放在gni文件中，通过 import导入</p>
-<p>查有哪些targets</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn ls out&#x2F;Default “&#x2F;&#x2F;base&#x2F;*”</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看可用参数列表及其默认值"><a href="#查看可用参数列表及其默认值" class="headerlink" title="查看可用参数列表及其默认值"></a>查看可用参数列表及其默认值</h2><p><code>gn args --list out/my_build &gt; args_list.log</code>，生成的log不在my_build目录，在运行命令的目录，应该是src下, 需要先运行gn args out/my_build</p>
-<p><a href="https://gn.googlesource.com/gn/+/main/docs/quick_start.md" target="_blank" rel="noopener">https://gn.googlesource.com/gn/+/main/docs/quick_start.md</a>  备份<a href="https://elesos.github.io/2021/07/04/docs/gn/quick_start/">https://elesos.github.io/2021/07/04/docs/gn/quick_start/</a></p>
-<p>先下载示例代码 </p>
-<p><code>git clone https://gn.googlesource.com/gn</code></p>
-<p>我的在 <a href="https://github.com/elesos/gn" target="_blank" rel="noopener">https://github.com/elesos/gn</a></p>
-<p> 要运行gn，需要先安装depot_tools</p>
-<h2 id="安装depot-tools"><a href="#安装depot-tools" class="headerlink" title="安装depot_tools"></a>安装depot_tools</h2><p>A collection of tools for dealing with Chromium development.</p>
-<p>Chromium and Chromium OS use a package of scripts called <a href="https://dev.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener"><strong>depot_tools</strong></a> to manage checkouts and code reviews.  The <strong>depot_tools</strong> package includes <code>gclient</code>, <code>gcl</code>, <code>git-cl</code>, <code>repo</code>, and others.</p>
-<p><a href="https://dev.chromium.org/developers/how-tos/install-depot-tools" target="_blank" rel="noopener">https://dev.chromium.org/developers/how-tos/install-depot-tools</a></p>
-<p><a href="https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html" target="_blank" rel="noopener">https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html</a></p>
-<p><a href="https://www.chromium.org/developers/how-tos/depottools" target="_blank" rel="noopener">https://www.chromium.org/developers/how-tos/depottools</a></p>
-<p>首先Confirm git and python are installed. </p>
-<h4 id="LINUX-MAC"><a href="#LINUX-MAC" class="headerlink" title="LINUX / MAC"></a>LINUX / MAC</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;chromium.googlesource.com&#x2F;chromium&#x2F;tools&#x2F;depot_tools.git</span><br><span class="line">或 https:&#x2F;&#x2F;github.com&#x2F;elesos&#x2F;depot_tools使用里面的 depot_tools.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p>Add depot_tools to your PATH:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&#x2F;path&#x2F;to&#x2F;depot_tools:$PATH   &#x2F;&#x2F;put depot_tools ahead of everything else放在最前面</span><br></pre></td></tr></table></figure>
-
-<h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><p>使用里面的压缩包depot_tools.zip  <a href="https://github.com/elesos/depot_tools" target="_blank" rel="noopener">https://github.com/elesos/depot_tools</a></p>
-<p>From a <code>cmd.exe</code> shell, run the command <code>gclient</code> (without arguments). On first run, gclient will install all the Windows-specific bits needed to work with the code, including msysgit and python.</p>
-<h2 id="DEPS-file"><a href="#DEPS-file" class="headerlink" title="DEPS file"></a>DEPS file</h2><p>A DEPS file specifies dependencies of a project.</p>
-<h2 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h2><p>target_os = “android” </p>
-<p>target_cpu = “arm” </p>
-<p>target_cpu = “x86” </p>
-<p>target_cpu = “x64”</p>
-<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>根目录下有.gn 这个文件所在目录为根目录 ，这个文件里面可能会指定A master build config file. 如Chrome’s is <code>//build/config/BUILDCONFIG.gn</code></p>
-<p>子模块目录新建BUILD.gn</p>
-<p>根目录也有这个BUILD.gn(GN starts by loading this root<br>file)</p>
-<p>创建一个静态库</p>
-<p>tools/gn/tutorial/BUILD.gn</p>
-<p>static_library(“hello”) {  sources = [    “hello.cc”,  ] }</p>
-<p>现在让我们添加一个依赖于这个库的可执行文件：</p>
-<p>executable(“say_hello”) {  sources = [    “say_hello.cc”,  ]  deps = [    “:hello”,  ] }</p>
-<p>也可以用 全部的//tools/gn/tutorial:hello  同一个文件中可以直接用:hello</p>
-<p> ninja -C out/Default say_hello</p>
-<p>Create a <code>tools/gn/tutorial/BUILD.gn</code> file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">executable(&quot;hello_world&quot;) &#123;  sources &#x3D; [    &quot;hello_world.cc&quot;,  ] &#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后在根目录，BUILD.gn file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group(&quot;root&quot;) &#123;  deps &#x3D; [    ...    &quot;&#x2F;&#x2F;url&quot;,    &quot;&#x2F;&#x2F;tools&#x2F;gn&#x2F;tutorial:hello_world&quot;,  ] &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>“//” (代表 source root)</strong>， 冒号后面是 target name</p>
-<p>在根目录下</p>
-<p>gn gen out/Default </p>
-<p>ninja -C out/Default hello_world</p>
-<p>或</p>
-<p>ninja -C out/Default tools/gn/tutorial:hello_world   不要前面的//符号</p>
-<h2 id="标签含义"><a href="#标签含义" class="headerlink" title="标签含义"></a>标签含义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;chrome&#x2F;browser:version</span><br><span class="line">→ Looks for “version” in chrome&#x2F;browser&#x2F;BUILD.gn</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;base</span><br><span class="line">→ Shorthand for &#x2F;&#x2F;base:base</span><br><span class="line"></span><br><span class="line">In current file当前文件里面的，只需要在前面加冒号</span><br><span class="line">:baz</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -601,20 +702,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

@@ -191,6 +191,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/C++%E5%BA%93%E7%AE%A1%E7%90%86%E5%99%A8vcpkg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/C++%E5%BA%93%E7%AE%A1%E7%90%86%E5%99%A8vcpkg/" class="post-title-link" itemprop="url">C++库管理器vcpkg</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 10:49:13 / Modified: 10:49:51" itemprop="dateCreated datePublished" datetime="2021-07-04T10:49:13+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;Microsoft&#x2F;vcpkg.git</span><br><span class="line">cd vcpkg</span><br><span class="line">.&#x2F;bootstrap-vcpkg.sh</span><br><span class="line">.&#x2F;vcpkg integrate install   若您希望在 Visual Studio 中使用vcpkg</span><br><span class="line">.&#x2F;vcpkg install kcp   &#x2F;&#x2F; .&#x2F;vcpkg install sdl2 curl     .&#x2F;vcpkg install cpr</span><br></pre></td></tr></table></figure>
+
+<p>上面will install x86 libraries by default. To install x64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcpkg install package:x64-windows</span><br></pre></td></tr></table></figure>
+
+<p>需要vs英文语言包</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/Microsoft/vcpkg" target="_blank" rel="noopener">https://github.com/Microsoft/vcpkg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/socket%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -399,92 +475,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/C_C++/c%20sizeof/" class="post-title-link" itemprop="url">c sizeof</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 10:39:37 / Modified: 10:40:33" itemprop="dateCreated datePublished" datetime="2021-07-04T10:39:37+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>功能：计算字节数</p>
-<p>所有指针变量的sizeof结果均为4。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *p;</span><br><span class="line">sizeof(p)&#x3D;4;但sizeof(*p)相当于sizeof(int);</span><br><span class="line">int a[10];</span><br><span class="line">sizeof(a)等于4*10&#x3D;40;</span><br></pre></td></tr></table></figure>
-
-<p>注意对比与strlen的不同：计算字符串的长度，且长度不包括’\0’</p>
-<h2 id="结构体的空间计算"><a href="#结构体的空间计算" class="headerlink" title="结构体的空间计算"></a>结构体的空间计算</h2><p>遵循两个原则：</p>
-<p>(1)整体空间是 占用空间最大的成员的类型所占字节数的整倍数</p>
-<p>(2)数据对齐原则：内存按结构成员的先后顺序排列，当排到该成员变量时，其前面已摆放的空间大小必须是该成员类型大小的整倍数，如果不够则补齐。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct s1&#123;</span><br><span class="line"> char a;</span><br><span class="line"> double b;&#x2F;&#x2F;8</span><br><span class="line"> int c;</span><br><span class="line"> char d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">struct s2&#123;</span><br><span class="line"> char a;</span><br><span class="line"> char b;</span><br><span class="line"> int c;</span><br><span class="line"> double d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">cout&lt;&lt;sizeof(s1)&lt;&lt;endl;&#x2F;&#x2F; 24</span><br><span class="line">cout&lt;&lt;sizeof(s2)&lt;&lt;endl;&#x2F;&#x2F; 16</span><br></pre></td></tr></table></figure>
-
-<p>同样是两个char型，一个int，一个double型，</p>
-<p>但因为对齐问题，导致他们的大小不同。</p>
-<p>计算结构体大小可以采用元素摆放法，首先判断结构体的对界，s1和s2的对界都取最大的元素类型，也就是double类型的对界8。然后开始摆放每个元素。</p>
-<p>对于s1，首先把a放到8的对界，假定是0，此时下一个空闲的地址是1，但是下一个元素b是double类型，要放到8的对界上，离1最接近的地址是8了，所以b被放在了8，此时下一个空闲地址变成了16，下一个元素c的对界是4，16可以满足，所以c放在了16，此时下一个空闲地址变成了20，下一个元素d需要对界1，也正好落在对界上，所以d放在了20，结构体在地址21处结束。由于s1的大小需要是8的倍数，所以21-23的空间被保留，s1的大小变成了24。</p>
-<p>对于s2，首先把a放到8的对界，假定是0，此时下一个空闲地址是1，下一个元素的对界也是1，所以b摆放在1，下一个空闲地址变成了2；下一个元素c的对界是4，所以取离2最近的地址4摆放c，下一个空闲地址变成了8，下一个元素d的对界是8，所以d摆放在8，所有元素摆放完毕，结构体在15处结束，占用总空间为16，正好是8的倍数。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://en.wikipedia.org/wiki/Sizeof" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Sizeof</a></p>
-<p><a href="http://en.cppreference.com/w/cpp/language/sizeof" target="_blank" rel="noopener">http://en.cppreference.com/w/cpp/language/sizeof</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -535,20 +525,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
