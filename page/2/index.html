@@ -191,6 +191,188 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/faq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/docs/gn/faq/" class="post-title-link" itemprop="url">GN Frequently Asked Questions</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:46:29" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gn/" itemprop="url" rel="index">
+                    <span itemprop="name">gn</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Where-is-the-GN-documentation"><a href="#Where-is-the-GN-documentation" class="headerlink" title="Where is the GN documentation?"></a>Where is the GN documentation?</h2><p>GN has extensive built-in help, so you can run <code>gn help</code>, but you can<br>also see all of the help on <a href="reference.md">the reference page</a>. See<br>also the <a href="quick_start.md">quick start</a> guide and the <a href="language.md">language and<br>operation details</a>.</p>
+<h2 id="Can-I-generate-XCode-or-Visual-Studio-projects"><a href="#Can-I-generate-XCode-or-Visual-Studio-projects" class="headerlink" title="Can I generate XCode or Visual Studio projects?"></a>Can I generate XCode or Visual Studio projects?</h2><p>You can generate skeleton (or wrapper) projects for Xcode, Visual Studio,<br>QTCreator, and Eclipse that will list the files and targets in the<br>build, but use Ninja to do the actual build. You cannot generate “real”<br>projects that look like native ones like GYP could.</p>
+<p>Run <code>gn help gen</code> for more details.</p>
+<h2 id="How-do-I-generate-common-build-variants"><a href="#How-do-I-generate-common-build-variants" class="headerlink" title="How do I generate common build variants?"></a>How do I generate common build variants?</h2><p>In GN, args go with a build directory rather than being global in the<br>environment. To edit the args for your <code>out/Default</code> build directory:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn args out&#x2F;Default</span><br></pre></td></tr></table></figure>
+
+<p>You can set variables in that file:</p>
+<ul>
+<li>The default is a debug build. To do a release build add<br><code>is_debug = false</code></li>
+<li>The default is a static build. To do a component build add<br><code>is_component_build = true</code></li>
+<li>The default is a developer build. To do an official build, set<br><code>is_official_build = true</code></li>
+<li>The default is Chromium branding. To do Chrome branding, set<br><code>is_chrome_branded = true</code></li>
+</ul>
+<h2 id="How-do-I-do-cross-compiles"><a href="#How-do-I-do-cross-compiles" class="headerlink" title="How do I do cross-compiles?"></a>How do I do cross-compiles?</h2><p>GN has robust support for doing cross compiles and building things for<br>multiple architectures in a single build.</p>
+<p>See <a href="cross_compiles.md">GNCrossCompiles</a> for more info.</p>
+<h2 id="Can-I-control-what-targets-are-built-by-default"><a href="#Can-I-control-what-targets-are-built-by-default" class="headerlink" title="Can I control what targets are built by default?"></a>Can I control what targets are built by default?</h2><p>Yes! If you create a group target called “default” in the top-level (root)<br>build file, i.e., “//:default”, GN will tell Ninja to build that by<br>default, rather than building everything.</p>
+<h2 id="Are-there-any-public-presentations-on-GN"><a href="#Are-there-any-public-presentations-on-GN" class="headerlink" title="Are there any public presentations on GN?"></a>Are there any public presentations on GN?</h2><p><a href="https://docs.google.com/presentation/d/15Zwb53JcncHfEwHpnG_PoIbbzQ3GQi_cpujYwbpcbZo/edit?usp=sharing" target="_blank" rel="noopener">There’s at least one</a>, from 2015. There<br>haven’t been big changes since then apart from moving it to a standalone<br>repo, so it should still be relevant.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/cross_compiles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/docs/gn/cross_compiles/" class="post-title-link" itemprop="url">How GN handles cross-compiling</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:47:13" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gn/" itemprop="url" rel="index">
+                    <span itemprop="name">gn</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="As-a-GN-user"><a href="#As-a-GN-user" class="headerlink" title="As a GN user"></a>As a GN user</h2><p>GN has robust support for doing cross compiles and building things for<br>multiple architectures in a single build (e.g., to build some things to<br>run locally and some things to run on an embedded device). In fact,<br>there is no limit on the number of different architectures you can build<br>at once; the Chromium build uses at least four in some configurations.</p>
+<p>To start, GN has the concepts of a <em>host</em> and a <em>target</em>. The host is<br>the platform that the build is run on, and the target is the platform<br>where the code will actually run (This is different from<br><a href="http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html" target="_blank" rel="noopener">autotools</a>‘<br>terminology, but uses the more common terminology for cross<br>compiling).</p>
+<p>(Confusingly, GN also refers to each build artifact – an executable,<br>library, etc. – as a target. On this page, we will use “target” only to<br>refer to the system you want to run your code on, and use “rule” or some<br>other synonym to refer to a specific build artifact).</p>
+<p>When GN starts up, the <code>host_os</code> and <code>host_cpu</code> variables are set<br>automatically to match the operating system (they can be overridden in<br>args files, which can be useful in weird corner cases). The user can<br>specify that they want to do a cross-compile by setting either or both<br>of <code>target_os</code> and <code>target_cpu</code>; if they are not set, the build config<br>files will usually set them to the host’s values, though the Chromium<br>build will set target_cpu to “arm” if target_os is set to “android”).</p>
+<p>So, for example, running on an x64 Linux machine:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default</span><br></pre></td></tr></table></figure>
+
+<p>is equivalent to:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;linux&quot; target_cpu&#x3D;&quot;x64&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>To do an 32-bit ARM Android cross-compile, do:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;android&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+<p>(We don’t have to specify target_cpu because of the conditionals<br>mentioned above).</p>
+<p>And, to do a 64-bit MIPS Chrome OS cross-compile:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;chromeos&quot; target_cpu&#x3D;&quot;mips64el&quot;&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="As-a-BUILD-gn-author"><a href="#As-a-BUILD-gn-author" class="headerlink" title="As a BUILD.gn author"></a>As a BUILD.gn author</h2><p>If you are editing build files outside of the //build directory (i.e.,<br>not directly working on toolchains, compiler configs, etc.), generally<br>you only need to worry about a few things:</p>
+<p>The <code>current_toolchain</code>, <code>current_cpu</code>, and <code>current_os</code> variables<br>reflect the settings that are <strong>currently</strong> in effect in a given rule.<br>The <code>is_linux</code>, <code>is_win</code> etc. variables are updated to reflect the<br>current settings, and changes to <code>cflags</code>, <code>ldflags</code> and so forth also<br>only apply to the current toolchain and the current thing being built.</p>
+<p>You can also refer to the <code>target_cpu</code> and <code>target_os</code> variables. This<br>is useful if you need to do something different on the host depending on<br>which target_arch is requested; the values are constant across all<br>toolchains. You can do similar things for the <code>host_cpu</code> and <code>host_os</code><br>variables, but should generally never need to.</p>
+<p>For the default toolchain, <code>target_cpu</code> and <code>current_cpu</code> are the same. For a<br>secondary toolchain, <code>current_cpu</code> is set based on the toolchain definition<br>and <code>target_cpu</code> remains the same. When writing rules, <strong><code>current_cpu</code> should<br>be used rather than <code>target_cpu</code> most of the time</strong>.</p>
+<p>By default, dependencies listed in the <code>deps</code> variable of a rule use the<br>same (currently active) toolchain. You may specify a different toolchain<br>using the <code>foo(bar)</code> label notation as described in <a href="reference.md#Toolchains">the label section<br>of the reference doc</a>.</p>
+<p>Here’s an example of when to use <code>target_cpu</code> vs <code>current_cpu</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">declare_args() &#123;</span><br><span class="line">  # Applies only to toolchains targeting target_cpu.</span><br><span class="line">  sysroot &#x3D; &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">config(&quot;my_config&quot;) &#123;</span><br><span class="line">  # Uses current_cpu because compile flags are toolchain-dependent.</span><br><span class="line">  if (current_cpu &#x3D;&#x3D; &quot;arm&quot;) &#123;</span><br><span class="line">    defines &#x3D; [ &quot;CPU_IS_32_BIT&quot; ]</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    defines &#x3D; [ &quot;CPU_IS_64_BIT&quot; ]</span><br><span class="line">  &#125;</span><br><span class="line">  # Compares current_cpu with target_cpu to see whether current_toolchain</span><br><span class="line">  # has the same architecture as target_toolchain.</span><br><span class="line">  if (sysroot !&#x3D; &quot;&quot; &amp;&amp; current_cpu &#x3D;&#x3D; target_cpu) &#123;</span><br><span class="line">    cflags &#x3D; [</span><br><span class="line">      &quot;-isysroot&quot;,</span><br><span class="line">      sysroot,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="As-a-build-config-or-build-toolchain-author"><a href="#As-a-build-config-or-build-toolchain-author" class="headerlink" title="As a //build/config or //build/toolchain author"></a>As a //build/config or //build/toolchain author</h2><p>The <code>default_toolchain</code> is declared in the <code>BUILDCONFIG.gn</code> file (in Google<br>projects this normally is in the <code>//build/config</code> directory). Usually the<br><code>default_toolchain</code> should be the toolchain for the <code>target_os</code> and<br><code>target_cpu</code>. The <code>current_toolchain</code> reflects the toolchain that is currently<br>in effect for a rule.</p>
+<p>Be sure you understand the differences between <code>host_cpu</code>, <code>target_cpu</code>,<br><code>current_cpu</code>, and <code>toolchain_cpu</code> (and the os equivalents). The first<br>two are set as described above. You are responsible for making sure that<br><code>current_cpu</code> is set appropriately in your toolchain definitions; if you<br>are using the stock templates like <code>gcc_toolchain</code> and <code>msvc_toolchain</code>,<br>that means you are responsible for making sure that <code>toolchain_cpu</code> and<br><code>toolchain_os</code> are set as appropriate in the template invocations.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/language/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -414,249 +596,11 @@ action</code>).</p>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/style_guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/docs/gn/style_guide/" class="post-title-link" itemprop="url">GN Style Guide</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:46:54" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gn/" itemprop="url" rel="index">
-                    <span itemprop="name">gn</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Naming-and-ordering-within-the-file"><a href="#Naming-and-ordering-within-the-file" class="headerlink" title="Naming and ordering within the file"></a>Naming and ordering within the file</h2><h3 id="Location-of-build-files"><a href="#Location-of-build-files" class="headerlink" title="Location of build files"></a>Location of build files</h3><p>It usually makes sense to have more build files closer to the code than<br>fewer ones at the top level; this is in contrast with what we did with<br>GYP. This makes things easier to find, and also makes the set of owners<br>required for reviews smaller since changes are more focused to particular<br>subdirectories.</p>
-<h3 id="Targets"><a href="#Targets" class="headerlink" title="Targets"></a>Targets</h3><ul>
-<li>Most BUILD files should have a target with the same name as the<br>directory. This target should be the first target.</li>
-<li>Other targets should be in some logical order – usually<br>more important targets will be first, and unit tests will follow the<br>corresponding target. If there’s no clear ordering, consider<br>alphabetical order.</li>
-<li>Test support libraries should be static libraries named “test_support”.<br>For example, “//ui/compositor:test_support”. Test support libraries should<br>include as public deps the non-test-support version of the library<br>so tests need only depend on the test_support target (rather than<br>both).</li>
-</ul>
-<p>Naming advice</p>
-<ul>
-<li>Targets and configs should be named using lowercase with underscores<br>separating words, unless there is a strong reason to do otherwise.</li>
-<li>Source sets, groups, and static libraries do not need globally unique names.<br>Prefer to give such targets short, non-redundant names without worrying<br>about global uniqueness. For example, it looks much better to write a<br>dependency as <code>&quot;//mojo/public/bindings&quot;</code> rather than<br><code>&quot;//mojo/public/bindings:mojo_bindings&quot;</code></li>
-<li>Shared libraries (and by extension, components) must have globally unique<br>output names. Give such targets short non-unique names above, and then<br>provide a globally unique <code>output_name</code> for that target.</li>
-<li>Executables and tests should be given a globally unique name. Technically<br>only the output names must be unique, but since only the output names<br>appear in the shell and on bots, it’s much less confusing if the name<br>matches the other places the executable appears.</li>
-</ul>
-<h3 id="Configs"><a href="#Configs" class="headerlink" title="Configs"></a>Configs</h3><ul>
-<li>A config associated with a single target should be named the same as<br>the target with <code>_config</code> following it.</li>
-<li>A config should appear immediately before the corresponding target<br>that uses it.</li>
-</ul>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Example for the <code>src/foo/BUILD.gn</code> file:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Copyright 2016 The Chromium Authors. All rights reserved.</span><br><span class="line"># Use of this source code is governed by a BSD-style license that can be</span><br><span class="line"># found in the LICENSE file.</span><br><span class="line"></span><br><span class="line"># Config for foo is named foo_config and immediately precedes it in the file.</span><br><span class="line">config(&quot;foo_config&quot;) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Target matching path name is the first target.</span><br><span class="line">executable(&quot;foo&quot;) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># Test for foo follows it.</span><br><span class="line">test(&quot;foo_unittests&quot;) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">config(&quot;bar_config&quot;) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">source_set(&quot;bar&quot;) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Ordering-within-a-target"><a href="#Ordering-within-a-target" class="headerlink" title="Ordering within a target"></a>Ordering within a target</h2><ol>
-<li><code>output_name</code> / <code>visibility</code> / <code>testonly</code></li>
-<li><code>sources</code></li>
-<li><code>cflags</code>, <code>include_dirs</code>, <code>defines</code>, <code>configs</code> etc. in whatever<br>order makes sense to you.</li>
-<li><code>public_deps</code></li>
-<li><code>deps</code></li>
-</ol>
-<h3 id="Conditions"><a href="#Conditions" class="headerlink" title="Conditions"></a>Conditions</h3><p>Simple conditions affecting just one variable (e.g. adding a single<br>source or adding a flag for one particular OS) can go beneath the<br>variable they affect. More complicated conditions affecting more than<br>one thing should go at the bottom.</p>
-<p>Conditions should be written to minimize the number of conditional blocks.</p>
-<h2 id="Formatting-and-indenting"><a href="#Formatting-and-indenting" class="headerlink" title="Formatting and indenting"></a>Formatting and indenting</h2><p>GN contains a built-in code formatter which defines the formatting style.<br>Some additional notes:</p>
-<ul>
-<li>Variables are <code>lower_case_with_underscores</code>.</li>
-<li>Comments should be complete sentences with periods at the end.</li>
-<li>Compiler flags and such should always be commented with what they do<br>and why the flag is needed.</li>
-</ul>
-<h3 id="Sources"><a href="#Sources" class="headerlink" title="Sources"></a>Sources</h3><p>Prefer to list sources only once. It is OK to conditionally include sources<br>rather than listing them all at the top and then conditionally excluding them<br>when they don’t apply. Conditional inclusion is often clearer since a file is<br>only listed once and it’s easier to reason about when reading.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sources &#x3D; [</span><br><span class="line">  &quot;main.cc&quot;,</span><br><span class="line">]</span><br><span class="line">if (use_aura) &#123;</span><br><span class="line">  sources +&#x3D; [ &quot;thing_aura.cc&quot; ]</span><br><span class="line">&#125;</span><br><span class="line">if (use_gtk) &#123;</span><br><span class="line">  sources +&#x3D; [ &quot;thing_gtk.cc&quot; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Deps"><a href="#Deps" class="headerlink" title="Deps"></a>Deps</h3><ul>
-<li>Deps should be in alphabetical order.</li>
-<li>Deps within the current file should be written first and not<br>qualified with the file name (just <code>:foo</code>).</li>
-<li>Other deps should always use fully-qualified path names unless<br>relative ones are required for some reason.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deps &#x3D; [</span><br><span class="line">  &quot;:a_thing&quot;,</span><br><span class="line">  &quot;:mystatic&quot;,</span><br><span class="line">  &quot;&#x2F;&#x2F;foo&#x2F;bar:other_thing&quot;,</span><br><span class="line">  &quot;&#x2F;&#x2F;foo&#x2F;baz:that_thing&quot;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><p>Use fully-qualified paths for imports:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import(&quot;&#x2F;&#x2F;foo&#x2F;bar&#x2F;baz.gni&quot;)  # Even if this file is in the foo&#x2F;bar directory</span><br></pre></td></tr></table></figure>
-
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Source-sets-versus-static-libraries"><a href="#Source-sets-versus-static-libraries" class="headerlink" title="Source sets versus static libraries"></a>Source sets versus static libraries</h3><p>Source sets and static libraries can be used interchangeably in most cases. If<br>you’re unsure what to use, a source set is almost never wrong and is less likely<br>to cause problems, but on a large project using the right kind of target can<br>be important, so you should know about the following tradeoffs.</p>
-<p>Static libraries follow different linking rules. When a static library is<br>included in a link, only the object files that contain unresolved symbols will<br>be brought into the build. Source sets result in every object file being added<br>to the link line of the final binary.</p>
-<ul>
-<li><p>If you’re eventually linking code into a component, shared library, or<br>loadable module, you normally need to use source sets. This is because<br>object files with no symbols referenced from within the shared library will<br>not be linked into the final library at all. This omission will happen even<br>if that object file has a symbol marked for export that targets dependent<br>on that shared library need. This will result in undefined symbols when<br>linking later targets.</p>
-</li>
-<li><p>Unit tests (and anything else with static initializers with side effects)<br>must use source sets. The gtest TEST macros create static initializers<br>that register the test. But since no code references symbols in the object<br>file, linking a test into a static library and then into a test executable<br>means the tests will get stripped.</p>
-</li>
-<li><p>On some platforms, static libraries may involve duplicating all of the<br>data in the object files that comprise it. This takes more disk space and<br>for certain very large libraries in configurations with very large object<br>files can cause internal limits on the size of static libraries to be<br>exceeded. Source sets do not have this limitation. Some targets switch<br>between source sets and static libraries depending on the build<br>configuration to avoid this problem. Some platforms (or toolchains) may<br>support something called “thin archives” which don’t have this problem;<br>but you can’t rely on this as a portable solution.</p>
-</li>
-<li><p>Source sets can have no sources, while static libraries will give strange<br>platform-specific errors if they have no sources. If a target has only<br>headers (for include checking purposes) or conditionally has no sources on<br>some platforms, use a source set.</p>
-</li>
-<li><p>In cases where a lot of the symbols are not needed for a particular link<br>(this especially happens when linking test binaries), putting that code in<br>a static library can dramatically increase linking performance. This is<br>because the object files not needed for the link are never considered in<br>the first place, rather than forcing the linker to strip the unused code<br>in a later pass when nothing references it.</p>
-</li>
-</ul>
-<h3 id="Components-versus-shared-libraries-versus-source-sets"><a href="#Components-versus-shared-libraries-versus-source-sets" class="headerlink" title="Components versus shared libraries versus source sets"></a>Components versus shared libraries versus source sets</h3><p>A component is a Chrome template (rather than a built-in GN concept) that<br>expands either to a shared library or a static library / source set depending<br>on the value of the <code>is_component_build</code> variable. This allows release builds<br>to be linked statically in a large binary, but for developers to use shared<br>libraries for most operations. Chrome developers should almost always use<br>a component instead of shared library directly.</p>
-<p>Much like the source set versus static library tradeoff, there’s no hard<br>and fast rule as to when you should use a component or not. Using<br>components can significantly speed up incremental builds by making<br>linking much faster, but they require you to have to think about which<br>symbols need to be exported from the target.</p>
-<h3 id="Loadable-modules-versus-shared-libraries"><a href="#Loadable-modules-versus-shared-libraries" class="headerlink" title="Loadable modules versus shared libraries"></a>Loadable modules versus shared libraries</h3><p>A shared library will be listed on the link line of dependent targets and will<br>be loaded automatically by the operating system when the application starts<br>and symbols automatically resolved. A loadable module will not be linked<br>directly and the application must manually load it.</p>
-<p>On Windows and Linux shared libraries and loadable modules result in the same<br>type of file (<code>.dll</code> and <code>.so</code>, respectively). The only difference is in how<br>they are linked to dependent targets. On these platforms, having a <code>deps</code><br>dependency on a loadable module is the same as having a <code>data_deps</code><br>(non-linked) dependency on a shared library.</p>
-<p>On Mac, these targets have different formats: a shared library will generate a<br><code>.dylib</code> file and a loadable module will generate a <code>.so</code> file.</p>
-<p>Use loadable modules for things like plugins. In the case of plugin-like<br>libraries, it’s good practice to use both a loadable module for the target type<br>(even for platforms where it doesn’t matter) and data deps for targets that<br>depend on it so it’s clear from both places that how the library will be linked<br>and loaded.</p>
-<h2 id="Build-arguments"><a href="#Build-arguments" class="headerlink" title="Build arguments"></a>Build arguments</h2><h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><p>Build arguments should be scoped to a unit of behavior, e.g. enabling a feature.<br>Typically an argument would be declared in an imported file to share it with<br>the subset of the build that could make use of it.</p>
-<p>Chrome has many legacy flags in <code>//build/config/features.gni</code>,<br><code>//build/config/ui.gni</code>. These locations are deprecated. Feature flags should<br>go along with the code for the feature. Many browser-level features can go<br>somewhere in <code>//chrome/</code> without lower-level code knowing about it. Some<br>UI environment flags can go into <code>//ui/</code>, and many flags can also go with<br>the corresponding code in <code>//components/</code>. You can write a <code>.gni</code> file in<br>components and have build files in chrome or content import it if necessary.</p>
-<p>The way to think about things in the <code>//build</code> directory is that this is<br>DEPSed into various projects like V8 and WebRTC. Build flags specific to<br>code outside of the build directory shouldn’t be in the build directory, and<br>V8 shouldn’t get feature defines for Chrome features.</p>
-<p>New feature defines should use the buildflag system. See<br><code>//build/buildflag_header.gni</code> which allows preprocessor defines to be<br>modularized without many of the disadvantages that made us use global defines<br>in the past.</p>
-<h3 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h3><p>Arguments support all the <a href="language.md#Language">GN language types</a>.</p>
-<p>In the vast majority of cases <code>boolean</code> is the preferred type, since most<br>arguments are enabling or disabling features or includes.</p>
-<p><code>String</code>s are typically used for filepaths. They are also used for enumerated<br>types, though <code>integer</code>s are sometimes used as well.</p>
-<h3 id="Naming-conventions"><a href="#Naming-conventions" class="headerlink" title="Naming conventions"></a>Naming conventions</h3><p>While there are no hard and fast rules around argument naming there are<br>many common conventions. If you ever want to see the current list of argument<br>names and default values for your current checkout use<br><code>gn args out/Debug --list --short</code>.</p>
-<p><code>use_foo</code> - indicates dependencies or major codepaths to include (e.g.<br><code>use_open_ssl</code>, <code>use_ozone</code>, <code>use_cups</code>)</p>
-<p><code>enable_foo</code> - indicates feature or tools to be enabled (e.g.<br><code>enable_google_now</code>, <code>enable_nacl</code>, <code>enable_remoting</code>, <code>enable_pdf</code>)</p>
-<p><code>disable_foo</code> - <em>NOT</em> recommended, use <code>enable_foo</code> instead with swapped default<br>value</p>
-<p><code>is_foo</code> - usually a global state descriptor (e.g. <code>is_chrome_branded</code>,<br><code>is_desktop_linux</code>); poor choice for non-globals</p>
-<p><code>foo_use_bar</code> - prefixes can be used to indicate a limited scope for an argument<br>(e.g. <code>rtc_use_h264</code>, <code>v8_use_snapshot</code>)</p>
-<h4 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h4><p>Prefix top-level local variables within <code>.gni</code> files with an underscore. This<br>prefix causes variables to be unavailable to importing scripts.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_this_var_will_not_be_exported &#x3D; 1</span><br><span class="line">but_this_one_will &#x3D; 2</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/standalone/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/docs/gn/standalone/" class="post-title-link" itemprop="url">Introduction</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:44:22" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gn/" itemprop="url" rel="index">
-                    <span itemprop="name">gn</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>This page is about how to design a project that can build independently<br>with GN but also be brought into the Chrome build.</p>
-<p>GN is in principle no different than GYP in that there is some core<br>configuration that must be the same between both the standalone build<br>and the Chrome build. However, GN is much more explicit in its naming<br>and configuration, so the similarities between the two builds are also<br>much more explicit and there is less flexibility in how things are<br>configured.</p>
-<h1 id="What-you-need-for-a-minimal-GN-build"><a href="#What-you-need-for-a-minimal-GN-build" class="headerlink" title="What you need for a minimal GN build"></a>What you need for a minimal GN build</h1><p>Requirements:</p>
-<ul>
-<li>A master build config file. Chrome’s is <code>//build/config/BUILDCONFIG.gn</code></li>
-<li>A separate build file for the toolchain definition. It’s not a good idea<br>to put these in a BUILD.gn file shared with any target definitions for<br>complex reasons. Chrome’s are in <code>//build/toolchain/&lt;platform&gt;/BUILD.gn</code>.</li>
-<li>A <code>BUILD.gn</code> file in the root directory. This will be loaded after the<br>build config file to start the build.</li>
-</ul>
-<p>You may want a <code>.gn</code> file in the root directory. When you run GN it<br>recursively looks up the directory tree until it finds this file, and it<br>treats the containing directory as the “source root”. This file also<br>defines the location of the master build config file:</p>
-<ul>
-<li>See Chrome’s <code>src/.gn</code> file.</li>
-<li>Unlike Chrome, you probably don’t need to define a secondary root.</li>
-<li>see <code>gn help dotfile</code> for more.</li>
-</ul>
-<p>Adding a <code>.gn</code> file in a repository that is pulled into Chrome means<br>that then running GN in your subdirectory will configure a build for<br>your subproject rather than for all of Chrome. This could be an<br>advantage or a disadvantage.</p>
-<p>If you are in a directory with such a file and you want to not use it<br>(e.g., to do the full Chrome build instead), you can use the command-line<br>flags <code>--root</code> and <code>--dotfile</code> to set the values you want.</p>
-<p>If you want a completely standalone build that has nothing to do with Chrome<br>and doesn’t use Chrome’s <code>//build</code> files, you can look at an example in<br><a href="../tools/gn/example">//tools/gn/example</a>.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -702,20 +646,20 @@ action</code>).</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
