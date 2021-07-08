@@ -191,6 +191,119 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/05/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/openssl%E7%BC%96%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/05/%E6%8A%80%E6%9C%AF/3%E6%96%B9%E5%BA%93/openssl%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">openssl编译</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-05 23:16:40 / Modified: 23:22:15" itemprop="dateCreated datePublished" datetime="2021-07-05T23:16:40+08:00">2021-07-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3%E6%96%B9%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">3方库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>the second generation abandons the monolithic Configure and places individual configurations in the Configurations directory.</p>
+<p>you should always perform a make test to ensure the library performs as expected under its self tests.</p>
+<p>If you are building OpenSSL 1.1.0 and above, then you will also need PERL 5.10 or higher (see README.PERL for details).</p>
+<p>using Configure and config. 最好用Configure</p>
+<p>You can run Configure LIST to see a list of available platforms.</p>
+<p>You can also configure on Darwin by exporting KERNEL_BITS: $ export KERNEL_BITS=64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;config shared no-ssl2 no-ssl3 enable-ec_nistp_64_gcc_128 --openssldir&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;macosx-x64&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>you should perform a make clean to ensure the list of objects files is accurate after a reconfiguration.</p>
+<p>when building a shared object, both the static archive and shared objects are built. You do not need to do anything special to build both when shared is specified.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--prefix&#x3D;XXX --openssldir shared no-ssl2</span><br></pre></td></tr></table></figure>
+
+<p>Using RPATHs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;config -Wl,-rpath&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib -Wl,--enable-new-dtags</span><br></pre></td></tr></table></figure>
+
+<p>verify the settings stuck: $ readelf -d ./libssl.so | grep -i -E ‘rpath|runpath’</p>
+<p>$ ldd /usr/local/ssl/lib/libssl.so linux-vdso.so.1 =&gt; (0x00007ffceff6c000)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ibcrypto.so.1.0.0 &#x3D;&gt; &#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib&#x2F;libcrypto.so.1.0.0 (0x00007ff5eff96000)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>make</p>
+<p>make test</p>
+<p>sudo make install</p>
+<h2 id="OS-X"><a href="#OS-X" class="headerlink" title="OS X"></a>OS X</h2><p>./Configure darwin64-x86_64-cc shared enable-ec_nistp_64_gcc_128 no-ssl2 no-ssl3 no-comp –openssldir=/usr/local/ssl/macos-x86_64 make depend sudo make install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;Configure darwin64-x86_64-cc shared no-ssl2 --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;openssl_build --openssldir&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;openssl_build -Wl,-rpath&#x3D;&#x2F;usr&#x2F;local&#x2F;myssl&#x2F;lib -Wl,--enable-new-dtags</span><br><span class="line">.&#x2F;config shared no-ssl2 --prefix&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;openssl_build --openssldir&#x3D;&#x2F;Users&#x2F;ws&#x2F;Downloads&#x2F;openssl_build -Wl,-rpath&#x3D;&#x2F;usr&#x2F;local&#x2F;myssl&#x2F;lib -Wl,--enable-new-dtags</span><br><span class="line"> &#39;-Wl,--enable-new-dtags,-rpath,$(LIBRPATH)&#39;</span><br></pre></td></tr></table></figure>
+
+<p>如果不识别 RPATH</p>
+<p>unknown option: -rpath=</p>
+<p>hard coding the RPATH into a configure line. For example, on Debian x86_64 open the file Configure in an editor, copy linux-x86_64, name it linux-x86_64-rpath, and make the following change to add the -rpath option. Notice the addition of -Wl,-rpath=… in two places.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;linux-x86_64-rpath&quot;, &quot;gcc:-m64 -DL_ENDIAN -O3 -Wall -Wl,-rpath&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib::</span><br><span class="line"> -D_REENTRANT::-Wl,-rpath&#x3D;&#x2F;usr&#x2F;local&#x2F;ssl&#x2F;lib -ldl:SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_INT DES_UNROLL:</span><br><span class="line"> $&#123;x86_64_asm&#125;:elf:dlfcn:linux-shared:-fPIC:-m64:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR):::64&quot;,</span><br></pre></td></tr></table></figure>
+
+<p>Above, fields 2 and 6 were changed. They correspond to $cflag and $ldflag in OpenSSL’s builds system. Then, Configure with the new configuration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  .&#x2F;Configure linux-x86_64-rpath</span><br></pre></td></tr></table></figure>
+
+<p>小结：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export MACOSX_DEPLOYMENT_TARGET&#x3D;10.13 &amp;&amp;  .&#x2F;Configure darwin64-x86_64-cc shared --prefix&#x3D;xxx --openssldir&#x3D;xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>/usr/include/openssl/opensslv.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl version -a</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wiki.openssl.org/index.php/Compilation_and_Installation" target="_blank" rel="noopener">https://wiki.openssl.org/index.php/Compilation_and_Installation</a></p>
+<p><a href="https://github.com/openssl/openssl/blob/master/INSTALL.md" target="_blank" rel="noopener">https://github.com/openssl/openssl/blob/master/INSTALL.md</a></p>
+<p><a href="https://www.openssl.org/docs/faq.html" target="_blank" rel="noopener">https://www.openssl.org/docs/faq.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/quick_start/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -441,102 +554,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/docs/gn/cross_compiles/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/docs/gn/cross_compiles/" class="post-title-link" itemprop="url">How GN handles cross-compiling</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 13:30:10 / Modified: 16:47:13" itemprop="dateCreated datePublished" datetime="2021-07-04T13:30:10+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gn/" itemprop="url" rel="index">
-                    <span itemprop="name">gn</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="As-a-GN-user"><a href="#As-a-GN-user" class="headerlink" title="As a GN user"></a>As a GN user</h2><p>GN has robust support for doing cross compiles and building things for<br>multiple architectures in a single build (e.g., to build some things to<br>run locally and some things to run on an embedded device). In fact,<br>there is no limit on the number of different architectures you can build<br>at once; the Chromium build uses at least four in some configurations.</p>
-<p>To start, GN has the concepts of a <em>host</em> and a <em>target</em>. The host is<br>the platform that the build is run on, and the target is the platform<br>where the code will actually run (This is different from<br><a href="http://www.gnu.org/software/automake/manual/html_node/Cross_002dCompilation.html" target="_blank" rel="noopener">autotools</a>‘<br>terminology, but uses the more common terminology for cross<br>compiling).</p>
-<p>(Confusingly, GN also refers to each build artifact – an executable,<br>library, etc. – as a target. On this page, we will use “target” only to<br>refer to the system you want to run your code on, and use “rule” or some<br>other synonym to refer to a specific build artifact).</p>
-<p>When GN starts up, the <code>host_os</code> and <code>host_cpu</code> variables are set<br>automatically to match the operating system (they can be overridden in<br>args files, which can be useful in weird corner cases). The user can<br>specify that they want to do a cross-compile by setting either or both<br>of <code>target_os</code> and <code>target_cpu</code>; if they are not set, the build config<br>files will usually set them to the host’s values, though the Chromium<br>build will set target_cpu to “arm” if target_os is set to “android”).</p>
-<p>So, for example, running on an x64 Linux machine:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default</span><br></pre></td></tr></table></figure>
-
-<p>is equivalent to:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;linux&quot; target_cpu&#x3D;&quot;x64&quot;&#39;</span><br></pre></td></tr></table></figure>
-
-<p>To do an 32-bit ARM Android cross-compile, do:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;android&quot;&#39;</span><br></pre></td></tr></table></figure>
-
-<p>(We don’t have to specify target_cpu because of the conditionals<br>mentioned above).</p>
-<p>And, to do a 64-bit MIPS Chrome OS cross-compile:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out&#x2F;Default --args&#x3D;&#39;target_os&#x3D;&quot;chromeos&quot; target_cpu&#x3D;&quot;mips64el&quot;&#39;</span><br></pre></td></tr></table></figure>
-
-<h2 id="As-a-BUILD-gn-author"><a href="#As-a-BUILD-gn-author" class="headerlink" title="As a BUILD.gn author"></a>As a BUILD.gn author</h2><p>If you are editing build files outside of the //build directory (i.e.,<br>not directly working on toolchains, compiler configs, etc.), generally<br>you only need to worry about a few things:</p>
-<p>The <code>current_toolchain</code>, <code>current_cpu</code>, and <code>current_os</code> variables<br>reflect the settings that are <strong>currently</strong> in effect in a given rule.<br>The <code>is_linux</code>, <code>is_win</code> etc. variables are updated to reflect the<br>current settings, and changes to <code>cflags</code>, <code>ldflags</code> and so forth also<br>only apply to the current toolchain and the current thing being built.</p>
-<p>You can also refer to the <code>target_cpu</code> and <code>target_os</code> variables. This<br>is useful if you need to do something different on the host depending on<br>which target_arch is requested; the values are constant across all<br>toolchains. You can do similar things for the <code>host_cpu</code> and <code>host_os</code><br>variables, but should generally never need to.</p>
-<p>For the default toolchain, <code>target_cpu</code> and <code>current_cpu</code> are the same. For a<br>secondary toolchain, <code>current_cpu</code> is set based on the toolchain definition<br>and <code>target_cpu</code> remains the same. When writing rules, <strong><code>current_cpu</code> should<br>be used rather than <code>target_cpu</code> most of the time</strong>.</p>
-<p>By default, dependencies listed in the <code>deps</code> variable of a rule use the<br>same (currently active) toolchain. You may specify a different toolchain<br>using the <code>foo(bar)</code> label notation as described in <a href="reference.md#Toolchains">the label section<br>of the reference doc</a>.</p>
-<p>Here’s an example of when to use <code>target_cpu</code> vs <code>current_cpu</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">declare_args() &#123;</span><br><span class="line">  # Applies only to toolchains targeting target_cpu.</span><br><span class="line">  sysroot &#x3D; &quot;&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">config(&quot;my_config&quot;) &#123;</span><br><span class="line">  # Uses current_cpu because compile flags are toolchain-dependent.</span><br><span class="line">  if (current_cpu &#x3D;&#x3D; &quot;arm&quot;) &#123;</span><br><span class="line">    defines &#x3D; [ &quot;CPU_IS_32_BIT&quot; ]</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    defines &#x3D; [ &quot;CPU_IS_64_BIT&quot; ]</span><br><span class="line">  &#125;</span><br><span class="line">  # Compares current_cpu with target_cpu to see whether current_toolchain</span><br><span class="line">  # has the same architecture as target_toolchain.</span><br><span class="line">  if (sysroot !&#x3D; &quot;&quot; &amp;&amp; current_cpu &#x3D;&#x3D; target_cpu) &#123;</span><br><span class="line">    cflags &#x3D; [</span><br><span class="line">      &quot;-isysroot&quot;,</span><br><span class="line">      sysroot,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="As-a-build-config-or-build-toolchain-author"><a href="#As-a-build-config-or-build-toolchain-author" class="headerlink" title="As a //build/config or //build/toolchain author"></a>As a //build/config or //build/toolchain author</h2><p>The <code>default_toolchain</code> is declared in the <code>BUILDCONFIG.gn</code> file (in Google<br>projects this normally is in the <code>//build/config</code> directory). Usually the<br><code>default_toolchain</code> should be the toolchain for the <code>target_os</code> and<br><code>target_cpu</code>. The <code>current_toolchain</code> reflects the toolchain that is currently<br>in effect for a rule.</p>
-<p>Be sure you understand the differences between <code>host_cpu</code>, <code>target_cpu</code>,<br><code>current_cpu</code>, and <code>toolchain_cpu</code> (and the os equivalents). The first<br>two are set as described above. You are responsible for making sure that<br><code>current_cpu</code> is set appropriately in your toolchain definitions; if you<br>are using the stock templates like <code>gcc_toolchain</code> and <code>msvc_toolchain</code>,<br>that means you are responsible for making sure that <code>toolchain_cpu</code> and<br><code>toolchain_os</code> are set as appropriate in the template invocations.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -587,7 +604,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -191,6 +191,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Xcode%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Xcode%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Xcode简明教程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 12:06:30 / Modified: 12:10:22" itemprop="dateCreated datePublished" datetime="2021-07-04T12:06:30+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Xcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Xcode</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://help.apple.com/xcode/mac/current/" target="_blank" rel="noopener">https://help.apple.com/xcode/mac/current/</a></p>
+<p><a href="https://developer.apple.com/documentation/xcode/" target="_blank" rel="noopener">https://developer.apple.com/documentation/xcode/</a></p>
+<h1 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h1><p>用文本编辑器打开,保存</p>
+<h1 id="Xcode-select是什么"><a href="#Xcode-select是什么" class="headerlink" title="Xcode-select是什么"></a>Xcode-select是什么</h1><p>Print or change the path to the active developer directory. This directory controls which tools are used for the Xcode command line tools</p>
+<p>你可以在 Xcode -&gt; Preference -&gt; Locations 去选择自己得 Command Line Tools，</p>
+<p>在这里选择 效力等同于 xcode-select,</p>
+<h1 id="XCode环境变量"><a href="#XCode环境变量" class="headerlink" title="XCode环境变量"></a>XCode环境变量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(PROJECT_DIR) .xcodeproj所在目录</span><br><span class="line">$(TARGETNAME) 工程名称</span><br></pre></td></tr></table></figure>
+
+<h1 id="调试-填写-命令行参数"><a href="#调试-填写-命令行参数" class="headerlink" title="调试 填写 命令行参数"></a>调试 填写 命令行参数</h1><p>Edit Scheme，弹出一个对话框如下，在Run-&gt;Arguments按顺序填写需要的命令行参数。</p>
+<h1 id="Xcode-scheme-排列-乱序"><a href="#Xcode-scheme-排列-乱序" class="headerlink" title="Xcode scheme 排列 乱序"></a>Xcode scheme 排列 乱序</h1><p>Open the file [YourApp].xcodeproj/xcuserdata/[YourUsername].xcuserdata/xcschemes/xcschememanagement.plist</p>
+<p>The “SchemeUserState” dictionary has entries for each scheme. In my file at least, they seem to be in alphabetical order. However, there is an integer key “orderHint” that seems to control the order in the scheme dropdown.</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/Vue-js%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,83 +454,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E8%BD%AF%E4%BB%B6/VS2017%E4%B8%93%E4%B8%9A%E7%89%88%E5%92%8C%E4%BC%81%E4%B8%9A%E7%89%88%E6%BF%80%E6%B4%BB%E5%AF%86%E9%92%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/%E8%BD%AF%E4%BB%B6/VS2017%E4%B8%93%E4%B8%9A%E7%89%88%E5%92%8C%E4%BC%81%E4%B8%9A%E7%89%88%E6%BF%80%E6%B4%BB%E5%AF%86%E9%92%A5/" class="post-title-link" itemprop="url">VS2017专业版和企业版激活密钥</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 12:02:20 / Modified: 12:03:07" itemprop="dateCreated datePublished" datetime="2021-07-04T12:02:20+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vs/" itemprop="url" rel="index">
-                    <span itemprop="name">vs</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>visual studio 2017</p>
-<p>Enterprise:</p>
-<p>NJVYC-BMHX2-G77MM-4XJMR-6Q8QF</p>
-<p>Professional:</p>
-<p>KBJFW-NXHK6-W4WJM-CRMQB-G3CDH</p>
-<p>切换语言 Tools -&gt; Options -&gt; Environment -&gt; International Settings</p>
-<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a href="https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=TheQtCompany.QtVisualStudioTools-19123</a></p>
-<p>Visual Assist</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -501,7 +504,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

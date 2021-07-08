@@ -191,6 +191,166 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%89%8B%E5%86%8C/" class="post-title-link" itemprop="url">C++常用语法手册</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-02 21:17:07" itemprop="dateCreated datePublished" datetime="2021-07-02T21:17:07+08:00">2021-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-04 11:57:50" itemprop="dateModified" datetime="2021-07-04T11:57:50+08:00">2021-07-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>C++98是第一个C++标准，1998年发布。</p>
+<p>C++11，第三个C++标准，2011年</p>
+<p>C++14，第四个C++标准，2014年</p>
+<p>C++17，第五个C++标准，2017年</p>
+<p>C++20 , 2020</p>
+<p>下一代是C++23</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><a href="https://www.runoob.com/w3cnote/cpp-keyword-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-keyword-intro.html</a></p>
+<p>范围for</p>
+<p>using代替typedef</p>
+<p>用vector和迭代器代替数组和指针</p>
+<p>用string代替c风格字符串 常量对象只能调用常成员函数</p>
+<p>拷贝构造函数何时调用：</p>
+<p>一个对象初始化另一个对象；函数参数；返回对象</p>
+<p>构造函数调用顺序：先调用内嵌对象的构造函数，按定义顺序 在类外对静态数据成员定义和初始化</p>
+<p>静态函数成员一般用于访问静态数据成员，如果要访问非静态数据，需要传递对象进来。</p>
+<p>常对象（数据成员不能改变）只能调用常成员函数（不能改数据成员，不能调普通函数）</p>
+<p>explicit 构造函数用来防止隐式转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x3D; default; 指示编译器自动生成函数体</span><br><span class="line">建议重载的方法都加了override 关键字。防止出现不正确的继承行为</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://c.biancheng.net/view/400.html" target="_blank" rel="noopener">http://c.biancheng.net/view/400.html</a></p>
+<h1 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#表示：对应变量字符串化  </span><br><span class="line"></span><br><span class="line">##表示：把宏参数名与宏定义代码序列中的标识符连接在一起，形成一个新的标识符</span><br></pre></td></tr></table></figure>
+
+<h1 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h1><p>匿名命名空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当定义一个命名空间时，可以忽略这个命名空间的名称：</span><br><span class="line">    namespce &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    编译器在内部会为这个命名空间生成一个唯一的名字，而且还会为这个匿名的命名空间生成一条using指令。所以上面的代码在效果上等同于：</span><br><span class="line">    namespace __UNIQUE_NAME_ &#123;</span><br><span class="line">        char c;</span><br><span class="line">        int i;</span><br><span class="line">        double d;</span><br><span class="line">    &#125;</span><br><span class="line">    using namespace __UNIQUE_NAME_;</span><br></pre></td></tr></table></figure>
+
+<p>在匿名命名空间中声明的名称,具有internal链接属性，这和声明为static的全局名称的链接属性是相同的，即名称的作用域被限制在当前文件中</p>
+<p><strong>C++ 新的标准中提倡使用匿名命名空间,而不推荐使用static</strong></p>
+<p>可以在匿名的空间里面声明很多变量和函数,这样可以省去了对每个变量和函数添加static声明. 实质上匿名空间的功能跟static声明是一样的.</p>
+<h1 id="max"><a href="#max" class="headerlink" title="max"></a>max</h1><p> int max: Value of INT_MAX is 2147483647</p>
+<p><a href="https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-160</a></p>
+<h1 id="乘法注意"><a href="#乘法注意" class="headerlink" title="乘法注意"></a>乘法注意</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interval &#x3D; 29LL * 24 * 3600 * 1000;</span><br></pre></td></tr></table></figure>
+
+<p>不加LL会在赋值之前就溢出</p>
+<h1 id="常用运算符"><a href="#常用运算符" class="headerlink" title="常用运算符"></a>常用运算符</h1><h2 id=""><a href="#" class="headerlink" title="%"></a>%</h2><p>取模运算符“%”的作用是求两个数相除的余数。</p>
+<p>通常用来判断一个数是否能被另一个数整除。</p>
+<h1 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h1><p><a href="https://www.cplusplus.com/reference/cstdio/fread/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/fread/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fseek (pFile , 0 , SEEK_END);</span><br><span class="line">lSize &#x3D; ftell (pFile);</span><br><span class="line">rewind (pFile); &#x2F;&#x2F;Set position of stream to the beginning</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-atomic-用法"><a href="#Std-atomic-用法" class="headerlink" title="Std::atomic 用法"></a>Std::atomic 用法</h1><p>C++中对共享数据的存取在并发条件下可能会引起data race的undifined行为，需要限制并发程序以某种特定的顺序执行，有两种方式：使用mutex保护共享数据，原子操作</p>
+<p>原子类型操作要不一步完成，要么不做，不可能出现操作一半被切换CPU，这样防止由于多线程指令交叉执行带来的可能错误。非原子操作下，某个线程可能看见的是一个其它线程操作未完成的数据。</p>
+<p>atomic 原子操作支持bool、int、char等数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::atomic &lt;bool&gt;   atomic_bool_test1(false);</span><br><span class="line">a.load() 返回数值a的copy</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-async"><a href="#Std-async" class="headerlink" title="Std::async"></a>Std::async</h1><p>Call function asynchronously</p>
+<p><a href="https://www.cplusplus.com/reference/future/async/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/future/async/</a></p>
+<p>The value returned by fn can be accessed through the future object returned (by calling its member future::get).</p>
+<h1 id="Static-关键字的作用"><a href="#Static-关键字的作用" class="headerlink" title="Static 关键字的作用"></a>Static 关键字的作用</h1><p>\1. 全局静态变量</p>
+<p>在全局变量前加上关键字static，全局变量就定义成一个全局静态变量.</p>
+<p>静态存储区，在整个程序运行期间一直存在。</p>
+<p>初始化：未经初始化的全局静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：全局静态变量在声明他的文件之外是不可见的，准确地说是从定义处开始，到本文件结尾。</p>
+<p>\2. 局部静态变量</p>
+<p>在局部变量前加上关键字static，局部变量就成为一个局部静态变量。</p>
+<p>内存中的位置：静态存储区</p>
+<p>初始化：未经初始化的局部静态变量会被自动初始化为0（自动对象的值是任意的，除非被显式初始化）；</p>
+<p>作用域：作用域仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变；</p>
+<p>\3. 静态函数</p>
+<p>函数的定义和声明默认情况下都是extern的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。</p>
+<p>函数的实现使用static修饰，那么这个函数只可在本cpp内使用，不会同其他cpp中的同名函数引起冲突；</p>
+<p>注：不要在头文件中声明static的全局函数，不要在cpp内声明非static的全局函数，如果你要在多个cpp中复用该函数，就把它的声明提到头文件里去，否则cpp内部声明需加上static修饰；</p>
+<p>\4. 类的静态成员</p>
+<p>在类中，静态成员可以实现多个对象之间的数据共享，并且使用静态数据成员还不会破坏隐藏的原则，即保证了安全性。因此，静态成员是类的所有对象中共享的成员，而不是某个对象的成员。对多个对象来说，静态数据成员只存储一处，供所有对象共用</p>
+<p>\5. 类的静态函数</p>
+<p>静态成员函数和静态数据成员一样，它们都属于类的静态成员，它们都不是对象成员。因此，对静态成员的引用不需要用对象名。</p>
+<p>在静态成员函数的实现中不能直接引用类中说明的非静态成员，可以引用类中说明的静态成员（这点非常重要）。如果静态成员函数中要引用非静态成员时，可通过对象来引用。</p>
+<h1 id="Sprintf"><a href="#Sprintf" class="headerlink" title="Sprintf"></a>Sprintf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int sprintf ( char * str, const char * format, ... );</span><br></pre></td></tr></table></figure>
+
+<p>stored C string in the buffer pointed by str.</p>
+<p>On success, the total number of characters written is returned. 否则返回负数</p>
+<p><a href="https://www.cplusplus.com/reference/cstdio/sprintf/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/cstdio/sprintf/</a></p>
+<h1 id="Std-bind"><a href="#Std-bind" class="headerlink" title="Std::bind"></a>Std::bind</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind (Fn&amp;&amp; fn, Args&amp;&amp;... args);</span><br></pre></td></tr></table></figure>
+
+<p>Returns a function object based on fn, but with its arguments bound to args.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::bind(&amp;callback);</span><br><span class="line">std::bind(&amp;aClass::callback, this);</span><br><span class="line">std::bind(&amp;aClass::callback, this， info);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/functional/bind/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/functional/bind/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using namespace std::placeholders;    &#x2F;&#x2F; adds visibility of _1, _2, _3  占位</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-condition-variable"><a href="#Std-condition-variable" class="headerlink" title="Std::condition variable"></a>Std::condition variable</h1><p><a href="https://www.cplusplus.com/reference/condition_variable/condition_variable/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/condition_variable/condition_variable/</a></p>
+<p>block the calling thread until notified to resume.</p>
+<p>It uses a unique_lock to lock the thread when one of its wait functions is called. The thread remains blocked until woken up by another thread that calls a notification function on the same condition_variable object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wait  The execution of the current thread  is blocked until notified. 第2个参数：A callable object or function that takes no arguments and returns a value that can be evaluated as a bool. This is called repeatedly until it evaluates to true.</span><br><span class="line">notify_one</span><br><span class="line">notify_all</span><br></pre></td></tr></table></figure>
+
+<h1 id="Std-remove"><a href="#Std-remove" class="headerlink" title="Std::remove"></a>Std::remove</h1><p>Remove value from range</p>
+<p><a href="https://www.cplusplus.com/reference/algorithm/remove/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/algorithm/remove/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/C++%E7%BB%8F%E5%85%B8%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -357,152 +517,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++%E4%BA%92%E7%9B%B8%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">c++ 互相调用</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-02 08:13:01" itemprop="dateCreated datePublished" datetime="2021-07-02T08:13:01+08:00">2021-07-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-04 10:42:02" itemprop="dateModified" datetime="2021-07-04T10:42:02+08:00">2021-07-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-调C"><a href="#C-调C" class="headerlink" title="C++调C"></a>C++调C</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;               &#x2F;&#x2F; 告诉编译器下列代码要以C链接约定的模式进行链接</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;c头文件或函数</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<h1 id="C-中调用C库"><a href="#C-中调用C库" class="headerlink" title="C++中调用C库"></a>C++中调用C库</h1><p>做一个C动态库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void hello()&#123;  </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line">gcc -shared -fPIC -o libhello.so hello.c</span><br></pre></td></tr></table></figure>
-
-<p>C++程序调用它：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp  -lhello</span><br></pre></td></tr></table></figure>
-
-<h1 id="C中调用C-库"><a href="#C中调用C-库" class="headerlink" title="C中调用C++库"></a>C中调用C++库</h1><p>将 C++ 函数声明为extern “C”（在你的 C++ 代码里做这个声明）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world()</span><br><span class="line">&#123;  </span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; &quot;world&quot; &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译并copy到系统库目录下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared -fPIC -o libworld.so world.cpp </span><br><span class="line">cp libworld.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>做一个中间接口库，对C++库进行二次封装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; mid.cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">void world();</span><br><span class="line"> </span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;  &#x2F;&#x2F; 即使这是一个C++程序，下列这个函数的实现也要以C约定的风格！</span><br><span class="line">#endif  </span><br><span class="line"> </span><br><span class="line">void m_world()  </span><br><span class="line">&#123;    </span><br><span class="line"></span><br><span class="line">  world();  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<p>其中m_world为libworld库中world方法的二次封装， 编译并copy到系统库目录下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -shared  -fPIC -o libmid.so mid.cpp -lworld</span><br><span class="line">cp libmid.so &#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>在C程序中通过链接<strong>二次接口库</strong>去调用C++库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  m_world(); </span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">gcc test.c -lmid -o test</span><br></pre></td></tr></table></figure>
-
-<p>注：对于C++库中含有类的，可以在二次接口函数中生成临时对象来调用对应的功能函数。</p>
-<p><a href="http://www.cppblog.com/wolf/articles/77828.html" target="_blank" rel="noopener">http://www.cppblog.com/wolf/articles/77828.html</a></p>
-<h1 id="C-调用-Python"><a href="#C-调用-Python" class="headerlink" title="C++ 调用 Python"></a>C++ 调用 Python</h1><p>Python 本身就是一个C库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyRun_SimpleString(&quot;print &#39;Hello Python!&#39;\n&quot;);</span><br><span class="line">所有Python元素，module、function、tuple、string等等，实际上都是PyObject。C语言里操纵它们，一律使用PyObject *</span><br><span class="line">创建Python类型的变量，使用PyXXX_New可以创建类型为XXX的变量 PyTuple_New(1);</span><br></pre></td></tr></table></figure>
-
-<p>环境变量：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PYTHONPATH&#x3D;.:$PYTHONPATH</span><br></pre></td></tr></table></figure>
-
-<p>//加载模块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyImport_ImportModule(char *name)</span><br><span class="line">PyObject* PyImport_Import(PyObject *name)</span><br><span class="line">PyObject* PyString_FromString(const char*)</span><br></pre></td></tr></table></figure>
-
-<p>上面两个api都是用来动态加载python模块的。区别在于前者一个使用的是C的字符串，而后者的name是一个python对象，这个python对象需要通过PyString_FromString(const char*)来生成，其值为要导入的模块名</p>
-<p>//导入函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyModule_GetDict( PyObject *module)</span><br></pre></td></tr></table></figure>
-
-<p>可以获得Python模块中的函数列表。函数返回一个字典。字典中的关键字为函数名，值为函数的调用地址。 字典里面的值可以通过PyObject* PyDict_GetItemString( PyObject *p, const char *key) 函数来获取，其中p是PyModule_GetDict()的字典，而key则是对应的函数名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_GetAttrString(PyObject *o, char *attr_name)</span><br></pre></td></tr></table></figure>
-
-<p>返回模块对象中的attr_name属性或<strong>函数</strong>，相当于Python中表达式语句：o.attr_name</p>
-<p>//调用函数相关</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PyObject* PyObject_CallObject( PyObject *callable_object, PyObject *args)</span><br><span class="line">PyObject* PyObject_CallFunction( PyObject *callable_object, char *format, ...)</span><br></pre></td></tr></table></figure>
-
-<p>使用上面两个函数可以在C程序中调用Python中的函数。callable_object为要调用的函数对象，也就是通过上述导入函数得到的函数对象，</p>
-<p>区别在于前者使用python的tuple来传参，后者则使用类似c语言printf的风格进行传参。</p>
-<p>如果不需要参数，那么args可能为NULL。返回成功时调用的结果，或失败时返回NULL。</p>
-<p>相当于Python表达式 apply(callable_object, args) 或 callable_object(*args)</p>
-<p>对数字和字符串进行转换处理，使之变成Python中相应的数据类型。 PyObject* Py_BuildValue( const char *format, …) format是要构造的参数的类型列表，函数中剩余的参数即要转换的C语言中的整型、浮点型或者字符串等。其返回值为PyObject型的指针。</p>
-<p>PyObject* PyList_New( Py_ssize_t len)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建一个新的Python列表，len为所创建列表的长度</span><br></pre></td></tr></table></figure>
-
-
-<p>PyObject* PyTuple_New( Py_ssize_t len)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyTuple_New()函数返回所创建的元组。</span><br></pre></td></tr></table></figure>
-
-
-<p>PyObject* PyDict_New()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PyDict_New()函数返回所创建的字典。</span><br></pre></td></tr></table></figure>
-
-<p>向 Python 传递参数 使用 PyTuple_New 创建元组， PyTuple_SetItem 设置元组值</p>
-<p>转换 Python 返回值</p>
-<p>库里面的一些函数将返回值转换为 C++ , 例如 PyInt_AsLong，PyFloat_AsDouble， PyString_AsString 等。</p>
-<p>还可以使用 PyArg_ParseTuple 函数来将返回值作为元组解析</p>
-<p>把Python代码直接变成C代码 easy_install -U cython <a href="http://docs.cython.org/en/latest/index.html" target="_blank" rel="noopener">http://docs.cython.org/en/latest/index.html</a></p>
-<p><a href="https://docs.python.org/2/c-api/index.html" target="_blank" rel="noopener">https://docs.python.org/2/c-api/index.html</a></p>
-<p><a href="https://docs.python.org/2/extending/embedding.html" target="_blank" rel="noopener">https://docs.python.org/2/extending/embedding.html</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/20150641" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20150641</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/79896193" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79896193</a></p>
-<p><a href="https://blog.csdn.net/tobacco5648/article/details/50890106" target="_blank" rel="noopener">https://blog.csdn.net/tobacco5648/article/details/50890106</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -553,7 +567,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

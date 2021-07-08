@@ -191,6 +191,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/linux/Linux%20%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4%20tar%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">tar简明教程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-04 12:12:30 / Modified: 12:13:49" itemprop="dateCreated datePublished" datetime="2021-07-04T12:12:30+08:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tar/" itemprop="url" rel="index">
+                    <span itemprop="name">tar</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="常见压缩文件的扩展名"><a href="#常见压缩文件的扩展名" class="headerlink" title="常见压缩文件的扩展名"></a>常见压缩文件的扩展名</h2><ul>
+<li><p>.gz：gzip压缩的；</p>
+</li>
+<li><p>.bz2：bzip2压缩的；</p>
+</li>
+<li><p>.tar：tar程序打包但没有压缩的；</p>
+</li>
+<li><p>.tar.gz：打包后并经过gzip压缩的；</p>
+</li>
+<li><p>.tar.bz2：打包后并经过bzip2压缩的；</p>
+</li>
+</ul>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar [-j或-z][cv][-f 生成的压缩文件名]  要被压缩的文件或目录   &#x2F;&#x2F;打包与压缩</span><br><span class="line">tar [-j或-z][xv][-f 生成的压缩文件名][-C  解压目录]       &#x2F;&#x2F;解压</span><br><span class="line">tar [-j或-z][tv][-f 生成的压缩文件名]                  &#x2F;&#x2F;查看</span><br></pre></td></tr></table></figure>
+
+<p>参数解释： c建立打包档案，x解压, t查看含有哪些文件，（cxt不能同时使用）v显示处理信息</p>
+<p>j用于tar.bz2</p>
+<p>z用于.tar.gz，tgz</p>
+<h2 id="排除某些文件夹"><a href="#排除某些文件夹" class="headerlink" title="排除某些文件夹"></a>排除某些文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zcvf  tomcat.tar.gz --exclude&#x3D;tomcat&#x2F;logs --exclude&#x3D;tomcat&#x2F;webapp&#x2F;xxxx&#x2F;&#x2F;WEB-INF&#x2F;logs tomcat</span><br></pre></td></tr></table></figure>
+
+<p>将tomcat目录中，除了tomcat/logs 和 tomcat/webapp/xxxx//WEB-INF/logs 之外的文件压缩成压缩包：tomcat.tar.gz</p>
+<p>注意，去除的文件夹后面不能带/,否则该文件夹依然会被压缩！</p>
+<p>又如：如果123目录下有3个子目录，aa、bb、cc。我现在想只对aa和bb目录打包压缩，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf 123.tar.gz --exclude&#x3D;cc 123    #在123目录的外面运行</span><br></pre></td></tr></table></figure>
+
+<p>使用exclude参数来过滤不需要的目录或文件，排除某个文件的操作和目录一样。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>以test目录为例：</p>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><p>首先进入上一层目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jcv-f test.tar.bz2 test</span><br></pre></td></tr></table></figure>
+
+<p>查看压缩包里有什么文件:（t重点在查看含有哪些文件，v显示详细信息）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -jtv-f test.tar.bz2</span><br><span class="line">tar -jt-f test.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jx-f test.tar.bz2 -C&#x2F;tmp   &#x2F;&#x2F;熟悉后，可以直接tar-jxf test.tar.bz2 -C&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压xz"><a href="#解压xz" class="headerlink" title="解压xz"></a>解压xz</h2><p>解压tar.xz文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf test.tar.xz</span><br></pre></td></tr></table></figure>
+
+<p>如果不能解压，请先执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install xz xz-devel</span><br></pre></td></tr></table></figure>
+
+<h2 id="解压rar"><a href="#解压rar" class="headerlink" title="解压rar"></a>解压rar</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;www.rarlab.com&#x2F;rar&#x2F;rarlinux-3.8.0.tar.gz </span><br><span class="line">tar zxvf rarlinux-3.8.0.tar.gz   </span><br><span class="line">cd rar </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>解压rar文件，可以使用unrar x **.rar</p>
+<p>如果报错：unrar: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory</p>
+<p>解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-y install libstdc++.so.6</span><br></pre></td></tr></table></figure>
+
+<h2 id="zip文件unzip"><a href="#zip文件unzip" class="headerlink" title="zip文件unzip"></a>zip文件unzip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y unzip zip</span><br><span class="line">tar (child): bzip2: Cannot exec: No such file or directory</span><br><span class="line">yum install bzip2</span><br><span class="line">tar: command not found</span><br><span class="line">yum install tar -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="Zip-只打包不压缩"><a href="#Zip-只打包不压缩" class="headerlink" title="Zip 只打包不压缩"></a>Zip 只打包不压缩</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip -0 -r mydirectory.zip mydirectory</span><br><span class="line">-0 means store and don&#39;t compress (-r recursive, -p preserve relative path).</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ha97.com/4024.html" target="_blank" rel="noopener">http://www.ha97.com/4024.html</a></p>
+<p><a href="http://dl528888.blog.51cto.com/2382721/739871" target="_blank" rel="noopener">http://dl528888.blog.51cto.com/2382721/739871</a></p>
+<p><a href="http://blog.is36.com/rar_for_linux/" target="_blank" rel="noopener">http://blog.is36.com/rar_for_linux/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E5%86%99%E4%BD%9C/YAML%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -337,86 +460,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Xcode%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/%E6%8A%80%E6%9C%AF/mac/Xcode%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Xcode简明教程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-04 12:06:30 / Modified: 12:10:22" itemprop="dateCreated datePublished" datetime="2021-07-04T12:06:30+08:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Xcode/" itemprop="url" rel="index">
-                    <span itemprop="name">Xcode</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://help.apple.com/xcode/mac/current/" target="_blank" rel="noopener">https://help.apple.com/xcode/mac/current/</a></p>
-<p><a href="https://developer.apple.com/documentation/xcode/" target="_blank" rel="noopener">https://developer.apple.com/documentation/xcode/</a></p>
-<h1 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h1><p>用文本编辑器打开,保存</p>
-<h1 id="Xcode-select是什么"><a href="#Xcode-select是什么" class="headerlink" title="Xcode-select是什么"></a>Xcode-select是什么</h1><p>Print or change the path to the active developer directory. This directory controls which tools are used for the Xcode command line tools</p>
-<p>你可以在 Xcode -&gt; Preference -&gt; Locations 去选择自己得 Command Line Tools，</p>
-<p>在这里选择 效力等同于 xcode-select,</p>
-<h1 id="XCode环境变量"><a href="#XCode环境变量" class="headerlink" title="XCode环境变量"></a>XCode环境变量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(PROJECT_DIR) .xcodeproj所在目录</span><br><span class="line">$(TARGETNAME) 工程名称</span><br></pre></td></tr></table></figure>
-
-<h1 id="调试-填写-命令行参数"><a href="#调试-填写-命令行参数" class="headerlink" title="调试 填写 命令行参数"></a>调试 填写 命令行参数</h1><p>Edit Scheme，弹出一个对话框如下，在Run-&gt;Arguments按顺序填写需要的命令行参数。</p>
-<h1 id="Xcode-scheme-排列-乱序"><a href="#Xcode-scheme-排列-乱序" class="headerlink" title="Xcode scheme 排列 乱序"></a>Xcode scheme 排列 乱序</h1><p>Open the file [YourApp].xcodeproj/xcuserdata/[YourUsername].xcuserdata/xcschemes/xcschememanagement.plist</p>
-<p>The “SchemeUserState” dictionary has entries for each scheme. In my file at least, they seem to be in alphabetical order. However, there is an integer key “orderHint” that seems to control the order in the scheme dropdown.</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -467,7 +510,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
