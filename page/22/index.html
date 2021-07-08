@@ -191,6 +191,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/01/%E6%8A%80%E6%9C%AF/Python/Python%20%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" class="post-title-link" itemprop="url">Python常见错误</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-01 07:55:19 / Modified: 08:05:32" itemprop="dateCreated datePublished" datetime="2021-07-01T07:55:19+08:00">2021-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSL/" itemprop="url" rel="index">
+                    <span itemprop="name">SSL</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="‘SSLCertVerificationError’-object-has-no-attribute-‘message’"><a href="#‘SSLCertVerificationError’-object-has-no-attribute-‘message’" class="headerlink" title="‘SSLCertVerificationError’ object has no attribute ‘message’"></a>‘SSLCertVerificationError’ object has no attribute ‘message’</h1><p>‘SSLCertVerificationError’ object has no attribute ‘message’ 错误：调试python后定位到</p>
+<p>‘[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1125)’</p>
+<p>The error indicates that a certificate is missing.</p>
+<p>one solution: Run /Applications/Python\ 3.7/Install\ Certificates.command（this command replaces the root certificates of the default Python installation with the ones shipped through the certifi package. ） certifi模块目录下面有一个cacert.pem，上面的命令应该是拷贝那个certifi下面的证书到openssl目录下。</p>
+<p><a href="https://www.openssl.org/docs/faq.html" target="_blank" rel="noopener">https://www.openssl.org/docs/faq.html</a> Why does <SSL program> fail with a certificate verify error?</p>
+<p>This problem is usually indicated by log messages saying something like “unable to get local issuer certificate” or “self signed certificate”.</p>
+<p>When a certificate is verified its root CA must be “trusted” by OpenSSL this typically means that</p>
+<p>the CA certificate must be placed in a directory or file</p>
+<p>and the relevant相关的 program configured to read it.</p>
+<p>you trust one specific certificate because you trust the parent of that certificate</p>
+<p><a href="https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate" target="_blank" rel="noopener">https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate</a></p>
+<p>指定编译的python3.8.0时, 在vs code中遇到 调试设置中的 python 路径无效， 无法使用自定义的python解释器:最后发现需要搞一个没有rpath的python3.8.0才能调试。</p>
+<p>在settings.json</p>
+<p><code>&quot;python.pythonPath&quot;:&quot;python3.8.0_for_debug&quot;</code></p>
+<p>在launch.json</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;env&quot;:&#123;&quot;DYLD_LIBRARY_PATH&quot;:&quot;&#x2F;path&#x2F;to&#x2F;python3&#x2F;mac&#x2F;lib:&#x2F;path&#x2F;to&#x2F;openssl&#x2F;lib&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后通过在代码中加入下面2行解决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">os.environ[&#39;REQUESTS_CA_BUNDLE&#39;]&#x3D; &#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39;</span><br><span class="line">os.environ[&#39;SSL_CERT_FILE&#39;]&#x3D;&#39;&#x2F;path&#x2F;to&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;certifi&#x2F;cacert.pem&#39; 或者参考上面的命令Install Certificates.command里面建立软链接。不过openssl的目录可能不对。</span><br><span class="line">或者用certifi.where() 代替上面的路径！！！</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror" target="_blank" rel="noopener">https://stackoverflow.com/questions/10667960/python-requests-throwing-sslerror</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/06/27/%E6%8A%80%E6%9C%AF/Python/Python%20%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -439,89 +535,11 @@ https://www.liaoxuefeng.com/wiki/1016959663602400/1017595944503424</code></pre>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/06/26/%E5%BC%82%E6%83%B3%E5%A4%A9%E5%88%8A/about-daily/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/26/%E5%BC%82%E6%83%B3%E5%A4%A9%E5%88%8A/about-daily/" class="post-title-link" itemprop="url">关于异想天刊</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-06-26 22:32:37 / Modified: 22:51:09" itemprop="dateCreated datePublished" datetime="2021-06-26T22:32:37+08:00">2021-06-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%82%E6%83%B3%E5%A4%A9%E5%88%8A/" itemprop="url" rel="index">
-                    <span itemprop="name">异想天刊</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>阮一峰老师搞了一个周刊，<a href="https://www.ruanyifeng.com/blog/weekly/" target="_blank" rel="noopener">https://www.ruanyifeng.com/blog/weekly/</a></p>
-<p>我在想我是不是也来抄袭一下。</p>
-<p>有时信息一周才发出来，感觉太久了，比如我也想记录一些我所在时代正在发生的大事，比如袁隆平去世，比如微软发布win11</p>
-<p>当然了，不可能什么都乱发一气，比如不会发娱乐明星的日常，要发一些热门的，排行榜上的，精华的，值得推荐的。有价值的。</p>
-<p>一周太久，只争朝夕。</p>
-<p>不过虽为daily，也不可能会天天发，只能尽量天天发了。</p>
-<p>暂时取名异想天刊吧。</p>
-<p>本刊开源（<a href="https://github.com/elesos/elesos.github.io" target="_blank" rel="noopener">https://github.com/elesos/elesos.github.io</a> ），欢迎大家提交 issue 投稿或推荐排行榜文章，有价值的文章。</p>
-<p>如果你发现了什么好东西生怕别人知道，你可以尝试放在这里让大家都知道。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -567,20 +585,20 @@ https://www.liaoxuefeng.com/wiki/1016959663602400/1017595944503424</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-count">124</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
