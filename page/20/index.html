@@ -191,89 +191,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_map_pair/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="elesos">
-      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_map_pair/" class="post-title-link" itemprop="url">c++ map pair</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-02 08:06:59 / Modified: 08:11:11" itemprop="dateCreated datePublished" datetime="2021-07-02T08:06:59+08:00">2021-07-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;utility&gt;      &#x2F;&#x2F; std::pair, std::make_pair</span><br><span class="line"></span><br><span class="line">pair &lt;string,double&gt; product1;                     &#x2F;&#x2F; default constructor</span><br><span class="line">pair &lt;string,double&gt; product2 (&quot;tomatoes&quot;,2.30);   &#x2F;&#x2F; value init</span><br><span class="line">pair &lt;string,double&gt; product3 (product2);          &#x2F;&#x2F; copy constructor</span><br><span class="line"></span><br><span class="line">product1 &#x3D; make_pair(string(&quot;lightbulbs&quot;), 0.99);   &#x2F;&#x2F; using make_pair (move)</span><br><span class="line">g2 &#x3D; make_pair(1, &#39;a&#39;);</span><br><span class="line"></span><br><span class="line">product2.first &#x3D; &quot;shoes&quot;;                &#x2F;&#x2F;赋值</span><br><span class="line">product2.second &#x3D; 39.90;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.cplusplus.com/reference/utility/pair/pair/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/utility/pair/pair/</a></p>
-<p><a href="https://www.geeksforgeeks.org/pair-in-cpp-stl/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/pair-in-cpp-stl/</a></p>
-<h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><p>map are slower than unordered_map containers to access individual elements by their key, but they allow the direct iteration迭代 on subsets based on their order.</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>元素排了序</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mymap.insert ( pair&lt;char,int&gt;(&#39;a&#39;,100) );  &#x2F;&#x2F;map_name.insert(&#123;key, element&#125;)</span><br><span class="line">mymap.insert (it, pair&lt;char,int&gt;(&#39;b&#39;,300));</span><br><span class="line">anothermap.insert(mymap.begin(),mymap.find(&#39;c&#39;));  </span><br><span class="line"></span><br><span class="line">map&lt;char,int&gt; mymap;</span><br><span class="line">mymap.emplace(&#39;x&#39;,100);  &#x2F;&#x2F;map_name.emplace(key, element)</span><br><span class="line">for (auto &amp;x: mymap)</span><br><span class="line">   cout &lt;&lt; &quot; [&quot; &lt;&lt; x.first &lt;&lt; &#39;:&#39; &lt;&lt; x.second &lt;&lt; &#39;]&#39;;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line"> find</span><br><span class="line"> </span><br><span class="line"> 删除</span><br><span class="line"> mymap.erase (it);  </span><br><span class="line">mymap.erase (&#39;c&#39;);                  &#x2F;&#x2F; erasing by key</span><br><span class="line">mymap.erase ( it, mymap.end() );    &#x2F;&#x2F; erasing by range</span><br><span class="line"></span><br><span class="line">clear</span><br><span class="line">count(key) &#x2F;&#x2F;Count elements with a specific key</span><br></pre></td></tr></table></figure>
-
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>all containers (vector, stack, queue, set, map, etc) support both insert and emplace operations.</p>
-<p>emplace不copy of object.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ms.insert(make_pair(&#39;b&#39;, 25));</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/</a></p>
-<p><a href="https://www.cplusplus.com/reference/map/map/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/map/map/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_Lambda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -452,11 +369,83 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://elesos.github.io/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="elesos">
+      <meta itemprop="description" content="视频经验，视频解答，视频教程，视频教学">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艺搜天下 | 视频技术博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/02/%E6%8A%80%E6%9C%AF/C_C++/c++_list/" class="post-title-link" itemprop="url">c++ list</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-02 07:50:13 / Modified: 07:53:11" itemprop="dateCreated datePublished" datetime="2021-07-02T07:50:13+08:00">2021-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">std::list&lt;int&gt; first;                                &#x2F;&#x2F; empty list of ints</span><br><span class="line"> std::list&lt;int&gt; second (4,100);                       &#x2F;&#x2F; four ints with value 100</span><br><span class="line"> std::list&lt;int&gt; third (second.begin(),second.end());  &#x2F;&#x2F; iterating through second</span><br><span class="line"> std::list&lt;int&gt; fourth (third);                       &#x2F;&#x2F; a copy of third</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> mylist.push_back(77);</span><br><span class="line">mylist.front()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace_front(10,&#39;a&#39;);</span><br><span class="line"> </span><br><span class="line">  mylist.emplace_back(10,&#39;a&#39;);</span><br><span class="line"> mylist.emplace_back(20,&#39;b&#39;);</span><br><span class="line"> </span><br><span class="line"> first.assign (7,100);                      &#x2F;&#x2F; 7 ints with value 100</span><br><span class="line"> second.assign (first.begin(),first.end()); &#x2F;&#x2F; a copy of first</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> std::list&lt; std::pair&lt;int,char&gt; &gt; mylist;</span><br><span class="line"> mylist.emplace ( mylist.begin(), 100, &#39;x&#39; );</span><br><span class="line"> </span><br><span class="line"> erase根据位置删除</span><br><span class="line">remove根据值删除</span><br><span class="line">double mydoubles[]&#x3D;&#123; 12.15,  2.72, 73.0,  12.77,  3.14,  12.77, 73.35, 72.25, 15.3,  72.25 &#125;;</span><br><span class="line"> std::list&lt;double&gt; mylist (mydoubles,mydoubles+10);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cplusplus.com/reference/list/list/" target="_blank" rel="noopener">https://www.cplusplus.com/reference/list/list/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -502,7 +491,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
