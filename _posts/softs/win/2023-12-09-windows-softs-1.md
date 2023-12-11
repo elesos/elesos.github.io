@@ -6,6 +6,8 @@ categories: [windows软件推荐]
 tags: [windows软件推荐]
 ---
 
-snipaste https://zh.snipaste.com/
+snipaste <https://zh.snipaste.com/>
 
 按F1即可截图
+
+mac下也可以使用
