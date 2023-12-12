@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 开源软件推荐系列3:Electron
+title: 开源软件推荐系列3:ohmyzsh
 date: 2023-12-12 23:30:00 +0800
 categories: [开源软件推荐系列]
 tags: [开源软件推荐系列]
