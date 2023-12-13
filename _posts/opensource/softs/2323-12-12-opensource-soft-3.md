@@ -38,7 +38,7 @@ unzstd yourfile.tar.zst
 zsh --version
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```bash
+```
 配置 zsh 为 bash 默认终端
 
 编辑 ~/.bashrc，或者是 C:\Program Files\Git\etc\bash.bashrc，加入下面的几行。
