@@ -21,7 +21,7 @@ win上下载 [depot_tools.zip](https://storage.googleapis.com/chrome-infra/depot
 或 
 
 ```bash
-**git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git**
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 ```
 
 将 C:\src\depot_tools 添加到PATH环境变量的最前面
