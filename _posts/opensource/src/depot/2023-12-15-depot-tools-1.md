@@ -32,7 +32,7 @@ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 
 然后在cmd.exe里面进入depot_tools目录下运行gclient（不需要加.bat后缀，它会安装msysgit and python）
 
-最好把windows index索引关闭。
+最好把windows index索引关闭。包括任务管理器里面和服务里面的Windows search
 
 当运行 `gclient`时depot_tools会自动更新，首次更新后，可以设置环境变量DEPOT_TOOLS_UPDATE=0禁用更新
 
