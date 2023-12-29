@@ -30,12 +30,14 @@ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 
 设置`vs2022_install`环境变量为vs2022安装地址：C:\Program Files\Microsoft Visual Studio\2022\Professional
 
+最好把windows index索引关闭。包括任务管理器里面和服务里面的Windows search
+
+最好将其它版本python删除，包括那些Python虚拟环境。
+
 然后在cmd.exe里面进入depot_tools目录下运行gclient（不需要加.bat后缀，它会安装msysgit and python）
 
 注意不要用其它终端运行！包括后面的chromium和webrtc源码编译
 
-最好把windows index索引关闭。包括任务管理器里面和服务里面的Windows search
-
 当运行 `gclient`时depot_tools会自动更新，首次更新后，可以设置环境变量DEPOT_TOOLS_UPDATE=0禁用更新
 
-运行下where python确保python已经安装并且在最前面，最好将其它版本python删除，包括那些Python虚拟环境。
+运行下where python确保python已经安装并且在最前面。
