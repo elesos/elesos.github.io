@@ -38,6 +38,6 @@ git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 
 注意不要用其它终端运行！包括后面的chromium和webrtc源码编译
 
-当运行 `gclient`时depot_tools会自动更新，首次更新后，可以设置环境变量DEPOT_TOOLS_UPDATE=0禁用更新
+当运行 `gclient`时depot_tools会自动更新，首次更新后，可以设置环境变量DEPOT_TOOLS_UPDATE=0禁用更新，不然每次同步代码它都会检查更新。即使你checkout到了某个提交。
 
 运行下where python确保python已经安装并且在最前面。
