@@ -28,6 +28,9 @@ gco= git checkout
 ```bash
 brew install zstd
 unzstd yourfile.tar.zst
+
+linux
+tar -I zstd -xf xxx
 ```
 解压会生成etc与usr目录
 
