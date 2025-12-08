@@ -8,6 +8,11 @@ order: 4
 不断修正
 
 不断完善
+
+程序员一定要折腾
+
+有想法就先干起来
+
 ## 联系方式
 - Email: hnrayer#gmail.com
 - 微信公众号: toprank520，
